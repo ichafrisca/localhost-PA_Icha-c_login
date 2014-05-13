@@ -14,10 +14,10 @@
 			echo '<fieldset>
 				<legend style="font-size:20px; text-align:center;">Login Admin</legend>
 				<label>Username
-					'. form_input('user') .'
+					<input type="text" name="user" placeholder="Input Username"/>
 				</label>
 				<label>Password
-					'. form_password('pass') .'
+					<input type="password" name="pass" placeholder="Input Password"/>
 				</label>
 				<label>
 					<input type="submit" value="Login" class="button radius expand">
