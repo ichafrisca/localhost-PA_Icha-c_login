@@ -8,7 +8,7 @@
 	<body>
 		   
  <!-- Header and Nav -->
-  <nav class="top-bar" data-topbar>
+  	<nav class="top-bar" data-topbar>
     <ul class="title-area">
       <!-- Title Area -->
       <li class="name">
@@ -21,30 +21,83 @@
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
  
-    <section class="top-bar-section">
-      <!-- Left Nav Section -->
-      <ul class="left">
-        <li class="divider"></li>
-        <li><a href="#">Data Pegawai</a></li>
-        <li class="divider"></li>
-        <li class="has-dropdown">
-          <a href="#">Jadwal Pegawai</a>
-          <ul class="dropdown">
+	<section class="top-bar-section">
+    <!-- Left Nav Section -->
+    	<ul class="left">
+    		<li class="divider"></li>
+        		<li><a href="#">Data Pegawai</a></li>
+        	<li class="divider"></li>
+
+        <!-- Jadwal Pegawai -->
+        	<li class="has-dropdown">
+          		<a href="#">Jadwal Pegawai</a>
+          	<ul class="dropdown">
+
+        <!-- has dropdown -->
             <li class="has-dropdown">
-              <a href="#" class="">Grammar</a>
-              <ul class="dropdown">
-                <li class="has-dropdown">
-                  <a href="#">Fundamental English</a>
-                  <ul class="dropdown test">
-                    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                  </ul>
-                </li>
-                <li class="has-dropdown">
-                  <a href="#">Basic Program 1</a>
-                  <ul class="dropdown test">
-                    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
+             	<a href="#" class="">Grammar</a>
+            <ul class="dropdown">
+            <li class="has-dropdown">
+                <a href="#">Fundamental English</a>
+                  	<ul class="dropdown test">
+                    	<li><a href="#">Periode tanggal 10</a></li>
+                    	<li><a href="#">Periode tanggal 25</a></li>
+                  	</ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Basic Program 1</a>
+            	    <ul class="dropdown test">
+                	    <li><a href="#">Periode tanggal 10</a></li>
+                	    <li><a href="#">Periode tanggal 25</a></li>
+                  	</ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Basic Program 2</a>
+            	    <ul class="dropdown test">
+                	    <li><a href="#">Periode tanggal 10</a></li>
+                    	<li><a href="#">Periode tanggal 25</a></li>
+                	</ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Translation</a>
+            	    <ul class="dropdown test">
+            	        <li><a href="#">Periode tanggal 10</a></li>
+            	        <li><a href="#">Periode tanggal 25</a></li>
+            	    </ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Grammar School</a>
+            	    <ul class="dropdown test">
+            	        <li><a href="#">Periode tanggal 10</a></li>
+            	        <li><a href="#">Periode tanggal 25</a></li>
+            	    </ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Writing</a>
+            	    <ul class="dropdown test">
+            	        <li><a href="#">Periode tanggal 10</a></li>
+            	        <li><a href="#">Periode tanggal 25</a></li>
+            	    </ul>
+           	</li>
+            </ul>
+            </li>
+
+    	<!-- speaking program -->
+            <li class="has-dropdown">
+            	<a href="#" class="">Speaking</a>
+            <ul class="dropdown">
+            <li class="has-dropdown">
+                <a href="#">Elementary Stage</a>
+            		<ul class="dropdown test">
+                		<li><a href="#">Periode tanggal 10</a></li>
+                		<li><a href="#">Periode tanggal 25</a></li>
+            		</ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="#">Talk More</a>
+            	    <ul class="dropdown test">
+            	        <li><a href="#">Periode tanggal 10</a></li>
+            	        <li><a href="#">Periode tanggal 25</a></li>
                   </ul>
                 </li>
                 <li class="has-dropdown">
@@ -77,7 +130,6 @@
                 </li>
               </ul>
             </li>
-            <li><a href="#">Dropdown Option</a></li>
             <li><a href="#">Dropdown Option</a></li>
             <li class="divider"></li>
             <li><label>Section Name</label></li>
