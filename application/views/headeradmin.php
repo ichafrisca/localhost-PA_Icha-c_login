@@ -33,19 +33,48 @@
             <li class="has-dropdown">
               <a href="#" class="">Grammar</a>
               <ul class="dropdown">
-                <li><a href="#">Speaking</a></li>
-                <li><a href="#">Writing</a></li>
                 <li class="has-dropdown">
-                  <a href="#">Has Dropdown, Level 2</a>
+                  <a href="#">Fundamental English</a>
                   <ul class="dropdown test">
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
+                    <li><a href="#">Periode tanggal 10</a></li>
+                    <li><a href="#">Periode tanggal 25</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
+                <li class="has-dropdown">
+                  <a href="#">Basic Program 1</a>
+                  <ul class="dropdown test">
+                    <li><a href="#">Periode tanggal 10</a></li>
+                    <li><a href="#">Periode tanggal 25</a></li>
+                  </ul>
+                </li>
+                <li class="has-dropdown">
+                  <a href="#">Basic Program 2</a>
+                  <ul class="dropdown test">
+                    <li><a href="#">Periode tanggal 10</a></li>
+                    <li><a href="#">Periode tanggal 25</a></li>
+                  </ul>
+                </li>
+                <li class="has-dropdown">
+                  <a href="#">Translation</a>
+                  <ul class="dropdown test">
+                    <li><a href="#">Periode tanggal 10</a></li>
+                    <li><a href="#">Periode tanggal 25</a></li>
+                  </ul>
+                </li>
+                <li class="has-dropdown">
+                  <a href="#">Grammar School</a>
+                  <ul class="dropdown test">
+                    <li><a href="#">Periode tanggal 10</a></li>
+                    <li><a href="#">Periode tanggal 25</a></li>
+                  </ul>
+                </li>
+                <li class="has-dropdown">
+                  <a href="#">Writing</a>
+                  <ul class="dropdown test">
+                    <li><a href="#">Periode tanggal 10</a></li>
+                    <li><a href="#">Periode tanggal 25</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
             <li><a href="#">Dropdown Option</a></li>
