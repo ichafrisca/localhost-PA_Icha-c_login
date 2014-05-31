@@ -5,10 +5,10 @@ class Admin extends CI_Controller{
 		$this->load->view('admin_login');
 	}
 	public function adminlogin(){
-		$this->output->set_header('Last-Modified: '.gmdate("D, d M Y H:i:s") . 'GMT');
-		$this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-		$this->output->set_header('Pragma: no-cache');
-		$this->output->set_header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+		// $this->output->set_header('Last-Modified: '.gmdate("D, d M Y H:i:s") . 'GMT');
+		// $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+		// $this->output->set_header('Pragma: no-cache');
+		// $this->output->set_header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 			$this->db->select('USERNAME','PASSWORD');
 			$this->db->where("USERNAME",$this->input->post('user'));
 			$this->db->where("PASSWORD",$this->input->post('pass'));
