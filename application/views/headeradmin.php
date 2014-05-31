@@ -17,17 +17,19 @@
           </a>
         </h1>
       </li>
+
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
- 
-	<section class="top-bar-section">
-    <!-- Left Nav Section -->
+
+    <!-- MENU DATA PEGAWAI -->
+	  <section class="top-bar-section">
+        <!-- Left Nav Section -->
     	<ul class="left">
     		<li class="divider"></li>
         		<li><a href="#">Data Pegawai</a></li>
         	<li class="divider"></li>
 
-        <!-- JADWAL PEGAWAI -->
+    <!-- MENU JADWAL PEGAWAI -->
         	<li class="has-dropdown">
           		<a href="#">Jadwal Pegawai</a>
           	<ul class="dropdown">
@@ -234,7 +236,7 @@
             </ul>
             </li>
 
-        <!-- TOEFL PROGRAM-->
+    	<!-- TOEFL PROGRAM-->
             <li class="has-dropdown">
             	<a href="#" class="">TOEFL</a>
             <ul class="dropdown">
@@ -298,7 +300,7 @@
             </ul>
             </li>
 
-	<!-- PAKET PROGRAM-->
+		<!-- PAKET PROGRAM-->
             <li class="has-dropdown">
             	<a href="#" class="">E-fast & Scoring TOEFL</a>
             <ul class="dropdown">
@@ -341,41 +343,17 @@
             </ul>
             </li>
 
+    	<!-- PEGAWAI OFFICE SHIFT PAGI -->
+          	<li><a href="#">Office Shift Pagi</a></li>
+          	<li><a href="#">Office Shift Siang</a></li>
           </ul>
         </li>
 
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<!-- MENU PRESENSI-->
 
         	<li class="divider"></li>
         	<li class="has-dropdown">
-          <a href="#">Main Item 3</a>
+          <a href="#">Presensi Pegawai</a>
           <ul class="dropdown">
             <li><a href="#">Dropdown Option</a></li>
             <li><a href="#">Dropdown Option</a></li>
@@ -426,16 +404,7 @@
         <li class="divider"></li>
         <li><a href="#">Main Item 5</a></li>
         <li class="divider"></li>
-        <li class="has-dropdown">
-          <a href="#">Main Item 6</a>
-          <ul class="dropdown">
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><a href="#">See all →</a></li>
-          </ul>
-        </li>
+        <a href="<?php echo base_url();?>admin/logout" style="color:white; font-size:16px; text-align:center; font-family:Helvetica">Logout</a>
       </ul>
     </section>
 </nav>
