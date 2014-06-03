@@ -8,10 +8,10 @@
 <body style="background-color:#E9E0DB;">
 	<!-- HEADER -->
 	<div class="column">
-  		<div class="small-9 small-centered columns" style="background-color:#C9A798; border-radius: 30px 30px 30px 30px; margin-top:20px; margin-bottom:20px;">
+		<div class="small-9 small-centered columns" style="background-color:#C9A798; border-radius: 30px 30px 30px 30px; margin-top:20px; margin-bottom:20px;">
   			<a href="utama"><img src="<?php echo base_url();?>assets/slider home/logo elfast.png" style="width:380px; height:120; margin-top:40px; margin-bottom:40px;"/></a>
 		</div>
-
+		
 		<!-- BODY -->
 		<div class="row" style="margin-top:20px;">
 			<div class="large-12 medium-8 columns">
@@ -25,7 +25,7 @@
 								</a>
 							</section>
 							<section class="right tab-bar-section">
-								<h1 class="title">Home</h1>
+								<h1 class="title">Profil</h1>
 							</section>
 						</nav>
 						<aside class="left-off-canvas-menu">
@@ -43,26 +43,14 @@
     							<div class="large-12 columns">
     								<br>
     								<center><h3>Selamat Datang di Portal Anda</h3></center>
-    								<h4>Albert Einstein</h4>
-    								<p>Insanity is doing the same thing, over and over again, but expecting different results -
-										Albert Einstein
-										the principal founder of modern theoretical physics</p>
+    								<h4>Profil</h4>
+    								
     							</div>
     						</div>
     					</section>
     					<a class="exit-off-canvas"></a>
 					</div>
 			  	</div>
-			</div>
-		</div>
-		<br><br><br><br><br><br><br>
-		<div class="elfast-footer-bottom">
-			<div class="row">
-				<div class="large-3 columns"></div>
-	  			<div class="large-7 columns">
-	  				<center><p class="copyright" style="font-size:11px;">@ 2007 - 2014 ELFAST, English Course. All rights reserved.</p></center>
-	  			</div>
-				<div class="large-3 columns"></div>
 			</div>
 		</div>
 	</div>
