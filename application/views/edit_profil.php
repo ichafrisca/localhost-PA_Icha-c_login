@@ -8,13 +8,14 @@
 <body style="background-color:lightgrey;">
 	<!-- HEADER -->
 	<div class="column">
-  		<div class="small-9 small-centered columns" style="background-color:#C9A798; border-radius: 30px 30px 30px 30px; margin-top:20px; margin-bottom:20px;">
-  			<a href="utama"><img src="<?php echo base_url();?>assets/slider home/logo elfast.png" style="width:380px; height:120; margin-top:40px; margin-bottom:40px;"/></a>
-  			<center><h3>Selamat Datang di Portal Anda</h3></left></center>
+		<div class="small-9 small-centered columns" style="background-color:#C9A798; border-radius: 30px 30px 30px 30px; margin-top:20px; margin-bottom:20px;">
+  			<a href="utama"><img src="<?php echo base_url();?>assets/slider home/logo elfast.png" style="width:380px; height:120; margin-top:40px; margin-bottom:40px;"/>
+  			<center><h3>Selamat Datang di Portal Anda</h3></center>
   			</a>
 		</div>
-
+		
 		<!-- BODY -->
+		<border>
 		<div class="row" style="margin-top:20px;">
 			<div class="large-12 medium-8 columns">
 				<div class="off-canvas-wrap docs-wrap" data-offcanvas>
@@ -27,7 +28,7 @@
 								</a>
 							</section>
 							<section class="right tab-bar-section">
-								<h1 class="title">Home</h1>
+								<h1 class="title">Profil Pegawai</h1>
 							</section>
 						</nav>
 						<aside class="left-off-canvas-menu">
@@ -35,8 +36,8 @@
 						        <li><label>Menu</label></li>
 						        <li><a href="<?php echo base_url().'utama'?>">Home</a></li>
 						        <li><a href="<?php echo base_url().'utama/profil'?>">Profil</a></li>
-						        <li><a href="<?php echo base_url().'utama/jadwal'?>">Jadwal</a></li>
-						        <li><a href="<?php echo base_url().'utama/presensi'?>">Presensi</a></li>
+						        <li><a href="#">Jadwal</a></li>
+						        <li><a href="#">Presensi</a></li>
 						    </ul>
     					</aside>
 
@@ -44,10 +45,46 @@
     						<div class="row">
     							<div class="large-12 columns">
     								<br>
-    								<h4>Albert Einstein</h4>
-    								<p>Insanity is doing the same thing, over and over again, but expecting different results -
-										Albert Einstein
-										the principal founder of modern theoretical physics</p>
+    								<br>
+    								<?php
+										foreach ($query->result_array() as $row)
+											echo form_open('cmember/edit');
+												echo '<h3>Edit Member</h3>
+												<table>
+													<form method="post">
+														<tr>
+															<td>ID Member</td>
+															<td>:</td>
+															<td>'.form_input('IDMEMBER',$row['ID_MEMBER'],'readonly').'</td>
+														</tr>
+														<tr>
+															<td>Nama</td>
+															<td>:</td>
+															<td>'.form_input('NAMA',$row['NAMA']).'</td>
+														</tr>										
+														<tr>
+															<td>Username</td>
+															<td>:</td>
+															<td>'.form_input('USERNAME',$row['USERNAME']).'</td>
+														</tr>														
+														<tr>
+															<td>Nama</td>
+															<td>:</td>
+															<td>'.form_input('ALAMAT',$row['ALAMAT']).'</td>
+														</tr>														
+														<tr>
+															<td>No. Telp</td>
+															<td>:</td>
+															<td>'.form_input('NO_TELP',$row['NO_TELP']).'</td>
+														</tr>														
+														<tr>
+															<td>Email</td>
+															<td>:</td>
+															<td>'.form_input('EMAIL',$row['EMAIL']).'</td>
+														</tr>										
+													<td>'.form_submit('submit','update');'</td>';
+											echo form_close();		
+										?>
     							</div>
     						</div>
     					</section>
@@ -56,7 +93,7 @@
 			  	</div>
 			</div>
 		</div>
-	
+		</border>
 		<div class="elfast-footer-bottom">
 			<div class="row" style="margin-top:20px;">
 				<div class="large-3 columns">&nbsp;</div>
@@ -67,7 +104,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<!-- Javascript foundation -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
