@@ -408,7 +408,74 @@
       </ul>
     </section>
 </nav>
-   
+<br><br><br>
+
+  <!-- PEGAWAI -->
+  <div class="row">
+    <div class="large-12 medium-9 columns">
+      <h2 id="tables">Data Pegawai</h2>
+          <table>
+            <thead>
+              <tr>
+                <th width="8%">No</th>
+                <th width="10%">ID Pegawai</th>
+                <th width="20%">Nama</th>
+                <th width="20%">Alamat</th>
+                <th width="150">TTL</th>
+                <th width="150">No. telp</th>
+                <th width="150">Status Pegawai</th>
+                <th width="150">Username</th>
+                <th width="150">Password</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php
+                $i=1;
+                  if (is_array($query)){
+                    foreach($query->result_array() as $rows){
+              ?>
+                <tr>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $rows->IDPEG; ?></td>
+                    <td><?php echo $rows->NAMA; ?></td>
+                    <td><?php echo $rows->ALAMAT; ?></td>
+                    <td><?php echo $rows->TTL; ?></td>
+                    <td><?php echo $rows->NO_TELP; ?></td>
+                    <td><?php echo $rows->STATUS; ?></td>
+                    <td><?php echo $rows->USERNAME; ?></td>
+                    <td><?php echo $rows->PASSWORD; ?></td>
+                </tr>
+              <?php } 
+                    }?>
+
+
+               <!-- echo "<tr>";
+                $i=1;
+                  foreach($query -> result_array() as $rows) {
+                    echo "<td>".$i."</td>";
+                    echo "<td>".$rows['IDPEG']."</td>";
+                    echo "<td>".$rows['NAMA']."</td>";
+                    echo "<td>".$rows['ALAMAT']."</td>";
+                    echo "<td>".$rows['TTL']."</td>";
+                    echo "<td>".$rows['N0_TELP']."</td>";
+                    echo "<td>".$rows['STATUS']."</td>";
+                    echo "<td>".$rows['USERNAME']."</td>";
+                    echo "<td>".$rows['PASSWORD']."</td>";
+                    // echo "<tr><td>".('C_dtpegawai/form_update_peg/'.$rows['IDPEG'].'<input type="submit" value="Edit Profil" class="button radius" style="position:center;">')."</td></tr>";
+                $i++;
+                echo "</tr>";
+                  }
+                 -->
+            </tbody>
+            <tr>
+              <td>
+                <input type="submit" value="Edit Profil" class="button radius" style="position:center;">
+              </td>
+            </tr>
+          </table>
+    </div>
+  </div>
 		<!-- javascript foundation -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>

@@ -22,9 +22,8 @@ class Admin extends CI_Controller{
 			$this->session->set_userdata($data1);
 				$this->load->model('m_logadmin');
 				$this->load->view('headeradmin');
-				//$this->load->model('modmember');
-				//$data ['query'] = $this ->modmember ->ambil_data_member();
-				//$this->load->view('registerad',$data); 
+				$this->load->model('m_dtpegawai');
+				$data ['query'] = $this->m_dtpegawai->ambil_data_pegawai(); 
 		} 
 		else {
 			$this->session->set_flashdata('message','Wrong Username or Password');

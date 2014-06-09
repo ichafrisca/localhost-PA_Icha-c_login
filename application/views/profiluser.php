@@ -45,10 +45,8 @@
     						<div class="row">
     							<div class="large-12 columns">
     								<br>
-    								<br>
-    								<?php
-    									echo form_open ('edit_profil');
-    									echo'<table border="100px" align="center">
+    									<br>
+    									<table border="100px" align="center">
 	    										<tbody>
 	    											<tr>
 	    												<td width="550">
@@ -61,37 +59,36 @@
 																<tr>
 																	<td width="200">1. Nama</td>
 																	<td>:</td>
-																	<td colspan="5" align="left"><?php echo base_url?></td>
+																	
 																</tr>
 																<tr>
 																	<td>2. Alamat</td>
 																	<td>:</td>
-																	<td>Jl. Anggrek 19 Tulungrejo Pare Kediri Jawa Timur</td>
+																	
 																</tr>
 																<tr>
 																	<td>3. Tempat Tanggal Lahir</td>
 																	<td>:</td>
-																	<td>Kediri, 01-12-1992</td>
+																	
 																</tr>
 																<tr>
 																	<td>4. Nomor Telp</td>
 																	<td>:</td>
-																	<td></td>
+																	
 																</tr>
 																<tr>
 																	<td>5. Username</td>
 																	<td>:</td>
-																	<td></td>
+																	
 																</tr>
 																<tr>
 																	<td>6. Password</td>
 																	<td>:</td>
-																	<td></td>
+																	
 																</tr>
 																<tr>
 																	<td>7. Status Pegawai</td>
-																	<td>:</td>
-																	<td>Tutor</td>
+																	<td>:</td>	
 																</tr>
 																<tr>
 																	<td>
@@ -102,9 +99,7 @@
 														</td>
 													</tr>
 												</tbody>
-											</table>';										
-										form_close();
-									?>
+											</table>
     							</div>
     						</div>
     					</section>

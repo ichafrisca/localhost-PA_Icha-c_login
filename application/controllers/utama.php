@@ -12,8 +12,9 @@ class Utama extends CI_Controller {
 
 	public function profil(){
 		$this -> load -> view('profiluser');
-		$data['query']=$this->m_profil->tampil_satu($ID_MEMBER);
-		$this->load->view('edit_profil',$data);
+		$this->load->model('m_profile');
+		$data['query']=$this->m_profile->ambil_data_member($IDPEG);
+		// $this->load->view('edit_member',$data);
 	}
 }
 ?>
