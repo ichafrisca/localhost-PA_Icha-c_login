@@ -430,27 +430,8 @@
             </thead>
 
             <tbody>
-              <?php
-                $i=1;
-                  if (is_array($query)){
-                    foreach($query->result_array() as $rows){
-              ?>
-                <tr>
-                    <td><?php echo $i; ?></td>
-                    <td><?php echo $rows->IDPEG; ?></td>
-                    <td><?php echo $rows->NAMA; ?></td>
-                    <td><?php echo $rows->ALAMAT; ?></td>
-                    <td><?php echo $rows->TTL; ?></td>
-                    <td><?php echo $rows->NO_TELP; ?></td>
-                    <td><?php echo $rows->STATUS; ?></td>
-                    <td><?php echo $rows->USERNAME; ?></td>
-                    <td><?php echo $rows->PASSWORD; ?></td>
-                </tr>
-              <?php } 
-                    }?>
 
-
-               <!-- echo "<tr>";
+               <?php echo "<tr>";
                 $i=1;
                   foreach($query -> result_array() as $rows) {
                     echo "<td>".$i."</td>";
@@ -466,7 +447,7 @@
                 $i++;
                 echo "</tr>";
                   }
-                 -->
+                ?>
             </tbody>
             <tr>
               <td>
