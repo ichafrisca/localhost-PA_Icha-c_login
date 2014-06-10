@@ -17,13 +17,13 @@ class Admin extends CI_Controller{
 		if ($data1->num_rows()==1) {
 			$data = array(
 				'is_login' => 'ok',
-				'user'=>$this->input->post('admin')
+				'user'=>$this->input->post('user')
 			);
 			$this->session->set_userdata($data1);
 				$this->load->model('m_logadmin');
-				$this->load->view('headeradmin');
 				$this->load->model('m_dtpegawai');
-				$data ['query'] = $this->m_dtpegawai->ambil_data_pegawai(); 
+				$data['query'] = $this->m_dtpegawai->ambil_data_pegawai();
+				$this->load->view('headeradmin', $data);
 		} 
 		else {
 			$this->session->set_flashdata('message','Wrong Username or Password');

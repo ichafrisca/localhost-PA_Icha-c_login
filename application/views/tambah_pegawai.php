@@ -412,52 +412,98 @@
 
   <!-- PEGAWAI -->
   <div class="row">
-    <div class="large-12 medium-9 columns">
-      <h2 id="tables" style="text-align:center;">Data Pegawai</h2>
-      <div class="row">
-        <div class="small-6 columns">
-          <a href="<?php echo base_url();?>c_dtpegawai/form_tambah" class="button radius">Tambah Pegawai</a>
-        </div>
-      </div>
-          <table>
-            <thead>
+  <div class="large-12 panel">
+  <?php
+    foreach ($query->result_array() as $row)
+      echo form_open('c_dtpegawai/tambah');
+        echo '<center><h3>Form Tambah Pegawai</h3></center>
+        
+          <div class="row">
+            <div class="large-12 columns">
               <tr>
-                <th>No</th>
-                <th>ID Pegawai</th>
-                <th>Nama</th>
-                <th>Alamat</th>
-                <th>TTL</th>
-                <th>No. telp</th>
-                <th>Status Pegawai</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Action</th>
+                <td>ID Pegawai</td>
+                <td>:</td>
+                <td>'.form_input('idpeg').'</td>
               </tr>
-            </thead>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+               <tr>
+                <td>Nama</td>
+                <td>:</td>
+                <td>'.form_input('nama').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td>'.form_textarea('alamat').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Tempat Tanggal Lahir</td>
+                <td>:</td>
+                <td>'.form_input('ttl').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>No Telepon</td>
+                <td>:</td>
+                <td>'.form_input('no_telp').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Status</td>
+                <td>:</td>
+                <td>'.form_input('status').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Username</td>
+                <td>:</td>
+                <td>'.form_input('username').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Password</td>
+                <td>:</td>
+                <td>'.form_password('password').'</td>
+              </tr>
+            </div>
+          </div>
 
-            <tbody>
-              <?php echo '<tr>';
-                $i=1;
-                  foreach($query->result_array() as $rows) {
-                    echo "<td>".$i."</td>";
-                    echo "<td>".$rows['idpeg']."</td>";
-                    echo "<td>".$rows['nama']."</td>";
-                    echo "<td>".$rows['alamat']."</td>";
-                    echo "<td>".$rows['ttl']."</td>";
-                    echo "<td>".$rows['no_telp']."</td>";
-                    echo "<td>".$rows['status']."</td>";
-                    echo "<td>".$rows['username']."</td>";
-                    echo "<td>".$rows['password']."</td>";
-                    echo "<td>".anchor('c_dtpegawai/form_update_pegawai/'.$rows['idpeg'],'update', array('class' => 'button'))."</td>";
-                    
-                    $i++;
-                  echo '</tr>';
-                  }
-              ?>
-            </tbody>
-          </table>
-    </div>
-  </div>
+        <label>
+          <input type="submit" value="Save" class="button radius expand">
+        </label>
+        <label>
+          <input type="submit" value="Back" class="button radius expand">
+          <a href="<?php echo base_url()?>c_dtpegawai/disp"></a>
+        </label>';
+        echo form_close();
+      ?>
+      <?php if (isset($validation_errors)) echo $validation_errors;?>
+      </div>
+      </div>
+
 		<!-- javascript foundation -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
