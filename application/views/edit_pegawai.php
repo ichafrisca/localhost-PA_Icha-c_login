@@ -423,7 +423,7 @@
               <tr>
                 <td>ID Pegawai</td>
                 <td>:</td>
-                <td>'.form_input('IDPEG',$row['idpeg'],'readonly').'</td>
+                <td>'.form_input('IDPEG',$row['idpeg'],'readonly','PEG'.mt_rand()).'</td>
               </tr>
             </div>
           </div>
@@ -451,7 +451,7 @@
               <tr>
                 <td>Tempat Tanggal Lahir</td>
                 <td>:</td>
-                <td>'.form_input('TTL',$row['tmpt_lahir']).'</td>
+                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir']).'</td>
               </tr>
             </div>
           </div>
@@ -460,7 +460,7 @@
               <tr>
                 <td>Tempat Tanggal Lahir</td>
                 <td>:</td>
-                <td>'.form_input('TTL',$row['tgl_lahir']).'</td>
+                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir']).'</td>
               </tr>
             </div>
           </div>

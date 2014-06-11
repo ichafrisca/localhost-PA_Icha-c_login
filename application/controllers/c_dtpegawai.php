@@ -23,7 +23,7 @@
 			$this->form_validation->set_rules('password','password','required');
 
 			if ($this -> form_validation -> run() == FALSE){
-				$this -> session -> set_flashdata('errors', validation_errors(''));
+				$this -> session -> set_flashdata('errors', validation_errors('Ada yang salah'));
 				redirect('c_dtpegawai/tambah_pegawai');
 			}else {
 				$data = array('idpeg' => 'PEG'.mt_rand(), 
@@ -52,8 +52,8 @@
 				'idpeg'=>$this->input->post('IDPEG'),
 				'nama'=>$this->input->post('NAMA'),
 				'alamat'=>$this->input->post('ALAMAT'),
-				'tmpt_lahir'=>$this->input->post('tmpt_lahir'),
-				'tgl_lahir'=>$this->input->post('tgl_lahir'),
+				'tmpt_lahir'=>$this->input->post('TMPT_LAHIR'),
+				'tgl_lahir'=>$this->input->post('TGL_LAHIR'),
 				'no_telp'=>$this->input->post('NO_TELP'),
 				'status'=>$this->input->post('STATUS'),
 				'username'=>$this->input->post('USERNAME'),

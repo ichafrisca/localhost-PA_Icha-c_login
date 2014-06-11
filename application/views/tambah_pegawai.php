@@ -422,7 +422,7 @@
               <tr>
                 <td>ID Pegawai</td>
                 <td>:</td>
-                <td>'.form_input('idpeg').'</td>
+                <td>'.form_input('idpeg','PEG'.mt_rand(),'readonly').'</td>
               </tr>
             </div>
           </div>
@@ -446,21 +446,21 @@
           </div>
           <br>
           <div class="row">
-            <div class="large-12 columns">
+            <div class="large-4 columns">
               <tr>
                 <td>Tempat Lahir</td>
                 <td>:</td>
                 <td>'.form_input('tmpt_lahir').'</td>
               </tr>
             </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Tanggal Lahir</td>
-                <td>:</td>
-                <td>'.form_input('tgl_lahir').'</td>
-              </tr>
+            <div class="large-4 columns">
+              <div class="datepicker">
+                <tr>
+                  <td>Tanggal Lahir</td>
+                  <td>:</td>
+                  <td>'.form_input('tgl_lahir').'</td>
+                </tr>
+              </div>
             </div>
           </div>
           <div class="row">
