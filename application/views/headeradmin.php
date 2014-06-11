@@ -426,7 +426,8 @@
                 <th>ID Pegawai</th>
                 <th>Nama</th>
                 <th>Alamat</th>
-                <th>TTL</th>
+                <th>Tempat Lahir</th>
+                <th>Tanggal Lahir</th>
                 <th>No. telp</th>
                 <th>Status Pegawai</th>
                 <th>Username</th>
@@ -443,7 +444,8 @@
                     echo "<td>".$rows['idpeg']."</td>";
                     echo "<td>".$rows['nama']."</td>";
                     echo "<td>".$rows['alamat']."</td>";
-                    echo "<td>".$rows['ttl']."</td>";
+                    echo "<td>".$rows['tmpt_lahir']."</td>";
+                    echo "<td>".$rows['tgl_lahir']."</td>";
                     echo "<td>".$rows['no_telp']."</td>";
                     echo "<td>".$rows['status']."</td>";
                     echo "<td>".$rows['username']."</td>";

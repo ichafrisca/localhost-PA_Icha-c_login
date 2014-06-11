@@ -441,7 +441,17 @@
               <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td>'.form_input('ALAMAT',$row['alamat']).'</td>
+                <td>'.form_textarea('ALAMAT',$row['alamat']).'</td>
+              </tr>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Tempat Tanggal Lahir</td>
+                <td>:</td>
+                <td>'.form_input('TTL',$row['tmpt_lahir']).'</td>
               </tr>
             </div>
           </div>
@@ -450,7 +460,7 @@
               <tr>
                 <td>Tempat Tanggal Lahir</td>
                 <td>:</td>
-                <td>'.form_input('TTL',$row['ttl']).'</td>
+                <td>'.form_input('TTL',$row['tgl_lahir']).'</td>
               </tr>
             </div>
           </div>

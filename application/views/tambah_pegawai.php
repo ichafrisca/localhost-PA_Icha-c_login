@@ -414,7 +414,6 @@
   <div class="row">
   <div class="large-12 panel">
   <?php
-    foreach ($query->result_array() as $row)
       echo form_open('c_dtpegawai/tambah');
         echo '<center><h3>Form Tambah Pegawai</h3></center>
         
@@ -445,12 +444,22 @@
               </tr>
             </div>
           </div>
+          <br>
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Tempat Tanggal Lahir</td>
+                <td>Tempat Lahir</td>
                 <td>:</td>
-                <td>'.form_input('ttl').'</td>
+                <td>'.form_input('tmpt_lahir').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Tanggal Lahir</td>
+                <td>:</td>
+                <td>'.form_input('tgl_lahir').'</td>
               </tr>
             </div>
           </div>
@@ -495,8 +504,7 @@
           <input type="submit" value="Save" class="button radius expand">
         </label>
         <label>
-          <input type="submit" value="Back" class="button radius expand">
-          <a href="<?php echo base_url()?>c_dtpegawai/disp"></a>
+          <a href='. base_url() .'c_dtpegawai/disp class="button radius expand">Back</a>
         </label>';
         echo form_close();
       ?>
