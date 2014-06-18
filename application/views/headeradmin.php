@@ -31,321 +31,108 @@
 
     <!-- MENU JADWAL PEGAWAI -->
         	<li class="has-dropdown">
-          		<a href="#">Jadwal Pegawai</a>
-          	<ul class="dropdown">
-
-            <li class="has-dropdown">
-              <a href="#" class="">Grammar</a>
+              <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
-            <li class="has-dropdown">
-              <a href="#">Fundamental English</a>
-                <ul class="dropdown test">
-                   <li><a href="#">Periode tanggal 10</a></li>
-                   <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Basic Program 1</a>
-                <ul class="dropdown test">
-                   <li><a href="#">Periode tanggal 10</a></li>
-                   <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Basic Program 2</a>
-            	<ul class="dropdown test">
-                   <li><a href="#">Periode tanggal 10</a></li>
-                   <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Translation</a>
-            	<ul class="dropdown test">
-                   <li><a href="#">Periode tanggal 10</a></li>
-            	   <li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Grammar School</a>
-            	<ul class="dropdown test">
-            	   <li><a href="#">Periode tanggal 10</a></li>
-            	   <li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Writing</a>
-            	<ul class="dropdown test">
-            	   <li><a href="#">Periode tanggal 10</a></li>
-            	   <li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-           	</li>
-        	</ul>
-        	</li>
+              <li class="has-dropdown">
+                <a href="#" class="">Grammar</a>
+              <ul class="dropdown">
+                  <li><a href="#">Fundamental English</a></li>
+                  <li><a href="#">Basic Program 1</a></li>
+                  <li><a href="#">Basic Program 2</a></li>
+                  <li><a href="#">Translation</a></li>
+                  <li><a href="#">Grammar School</a></li>
+                  <li><a href="#">Writing</a></li>
+              </ul>
+          </li>
 
-    	<!-- SPEAKING PROGRAM -->
-    		<!-- DURASI 2 MINGGU -->
-            <li class="has-dropdown">
-              <a href="#" class="">Speaking</a>
-            <ul class="dropdown">
-
-            <li class="divider"></li>
-              <li><label>Durasi 2 Minggu</label></li>
-            
-            <li class="has-dropdown">
-              <a href="#">Elementary Stage</a>
-               	<ul class="dropdown test">
-                   <li><a href="#">Periode tanggal 10</a></li>
-                   <li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Talk More</a>
-            	<ul class="dropdown test">
-            	    <li><a href="#">Periode tanggal 10</a></li>
-            	    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">English Corner</a>
-            	<ul class="dropdown test">
-            	    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Confidence</a>
-                <ul class="dropdown test">
-            	    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Grammar for Speaking</a>
-                <ul class="dropdown test">
-            	    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Academic Speaking</a>
-            	<ul class="dropdown test">
-                    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Ear Waves</a>
-                <ul class="dropdown test">
-                    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Ear Waves</a>
-                <ul class="dropdown test">
-                    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
+      <!-- SPEAKING PROGRAM -->
+        <!-- DURASI 2 MINGGU -->
+          <li class="has-dropdown">
+            <a href="#" class="">Speaking</a>
+              <ul class="dropdown">
+                <li class="divider"></li>
+                  <li><label>Durasi 2 Minggu</label></li>
+                    <li><a href="#">Elementary Stage</a></li>
+                    <li><a href="#">Talk More</a></li>
+                    <li><a href="#">English Corner</a></li>
+                    <li><a href="#">Confidence</a></li>
+                    <li><a href="#">Grammar for Speaking</a></li>
+                    <li><a href="#">Academic Speaking</a></li>
+                    <li><a href="#">Ear Waves</a></li>
+                    <li><a href="#">Ear Waves</a></li>
 
             <!-- DURASI 1 MINGGU -->
             <li class="divider"></li>
-            	<li><label>Durasi 1 Minggu</label></li>
-            <li class="has-dropdown">
-              <a href="#">The Workshop - Job Interview</a>
-                <ul class="dropdown test">
-            	    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">The workshop - Psyco-Test</a>
-                <ul class="dropdown test">
-                    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
+              <li><label>Durasi 1 Minggu</label></li>
+                <li><a href="#">The Workshop - Job Interview</a></li>
+                <li><a href="#">The workshop - Psyco-Test</a></li>
 
             <!-- DURASI 1 BULAN -->
             <li class="divider"></li>
-            	<li><label>Durasi 1 Bulan</label></li>
-            <li class="has-dropdown">
-              <a href="#">Dynamic Speaking</a>
-                <ul class="dropdown test">
-                    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Speaking Therapy</a>
-                <ul class="dropdown test">
-                    <li><a href="#">Periode tanggal 10</a></li>
-                    <li><a href="#">Periode tanggal 25</a></li>
-                </ul>
-            </li>
+                <li><label>Durasi 1 Bulan</label></li>
+                  <li><a href="#">Dynamic Speaking</a></li>
+                  <li><a href="#">Speaking Therapy</a></li>
             </ul>
-            </li>
+          </li>
 
         <!-- PRONUNCIATION PROGRAM -->
-            <li class="has-dropdown">
-            	<a href="#" class="">Pronunciation</a>
+          <li class="has-dropdown">
+            <a href="#" class="">Pronunciation</a>
             <ul class="dropdown">
-
-            <li class="divider"></li>
-            <li><label>Durasi 2 Minggu</label></li>
-			
-			<li class="has-dropdown">
-              <a href="#">Pronunciation Stage 1</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-			<li class="has-dropdown">
-           	  <a href="#">Pronunciation Stage 2</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
+              <li class="divider"></li>
+                <li><label>Durasi 2 Minggu</label></li>
+                  <li><a href="#">Pronunciation Stage 1</a></li>
+                  <li><a href="#">Pronunciation Stage 2</a></li>
             </ul>
-            </li>
+          </li>
 
         <!-- VOCABULARY PROGRAM -->
-            <li class="has-dropdown">
-            	<a href="#" class="">Vocabulary</a>
+          <li class="has-dropdown">
+            <a href="#" class="">Vocabulary</a>
             <ul class="dropdown">
+              <li class="divider"></li>
+                <li><label>Durasi 2 Minggu</label></li>
+                  <li><a href="#">Vocabulary 1</a></li>
+                  <li><a href="#">Vocabulary 2</a></li>
+            </ul>
+          </li>
 
-            <li class="divider"></li>
-            <li><label>Durasi 2 Minggu</label></li>
-			
-			<li class="has-dropdown">
-              <a href="#">Vocabulary 1</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-			<li class="has-dropdown">
-              <a href="#">Vocabulary 2</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
+      <!-- TOEFL PROGRAM-->
+          <li class="has-dropdown">
+              <a href="#" class="">TOEFL</a>
+            <ul class="dropdown">
+              <li class="divider"></li>
+                <li><label>Durasi 2 Minggu</label></li>
+                  <li><a href="#">Basic Program 1 Exercise</a></li>
+                  <li><a href="#">Basic Program 2 Exercise</a></li>
+                  <li><a href="#">Pre TOEFL (IBT)</a></li>
+                  <li><a href="#">IELTS</a></li>
+                  <li><a href="#">TOEFL (IBT)</a></li>
+              <li class="divider"></li>
+                <li><label>Durasi 1 Bulan</label></li>
+                  <li><a href="#">Pre TOEFL (ITP)</a></li>
+                  <li><a href="#">TOEFL (ITP)</a></li>
+            </ul>
+          </li>
+
+    <!-- PAKET PROGRAM-->
+            <li class="has-dropdown">
+              <a href="#" class="">E-fast & Scoring TOEFL</a>
+            <ul class="dropdown">
+              <li class="divider"></li>
+                <li><label>Durasi 2 Minggu</label></li>
+                  <li><a href="#">E-fast 3</a></li>
+              <li class="divider"></li>
+                <li><label>Durasi 1 Bulan</label></li>
+                  <li><a href="#">E-fast 1</a></li>
+                  <li><a href="#">E-fast 2</a></li>            
+                  <li><a href="#">E-fast 4</a></li>
             </ul>
             </li>
 
-    	<!-- TOEFL PROGRAM-->
-            <li class="has-dropdown">
-            	<a href="#" class="">TOEFL</a>
-            <ul class="dropdown">
-
-            <li class="divider"></li>
-            	<li><label>Durasi 2 Minggu</label></li>
-			
-			<li class="has-dropdown">
-              <a href="#">Basic Program 1 Exercise</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-			<li class="has-dropdown">
-              <a href="#">Basic Program 2 Exercise</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">Pre TOEFL (IBT)</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">IELTS</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">TOEFL (IBT)</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-
-            <li class="divider"></li>
-            	<li><label>Durasi 1 Bulan</label></li>
-
-            <li class="has-dropdown">
-              <a href="#">Pre TOEFL (ITP)</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">TOEFL (ITP)</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            </ul>
-            </li>
-
-		<!-- PAKET PROGRAM-->
-            <li class="has-dropdown">
-            	<a href="#" class="">E-fast & Scoring TOEFL</a>
-            <ul class="dropdown">
-
-            <li class="divider"></li>
-            	<li><label>Durasi 2 Minggu</label></li>
-			
-			<li class="has-dropdown">
-              <a href="#">E-fast 3</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-
-            <li class="divider"></li>
-            	<li><label>Durasi 1 Bulan</label></li>
-
-			<li class="has-dropdown">
-              <a href="#">E-fast 1</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            <li class="has-dropdown">
-              <a href="#">E-fast 2</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>            
-            <li class="has-dropdown">
-              <a href="#">E-fast 4</a>
-            	<ul class="dropdown test">
-                	<li><a href="#">Periode tanggal 10</a></li>
-                	<li><a href="#">Periode tanggal 25</a></li>
-            	</ul>
-            </li>
-            </ul>
-            </li>
-
-    	<!-- PEGAWAI OFFICE SHIFT PAGI -->
-          	<li><a href="#">Office Shift Pagi</a></li>
-          	<li><a href="#">Office Shift Siang</a></li>
+      <!-- PEGAWAI OFFICE SHIFT PAGI -->
+            <li><a href="#">Office Shift Pagi</a></li>
+            <li><a href="#">Office Shift Siang</a></li>
           </ul>
         </li>
 
@@ -412,7 +199,7 @@
 
   <!-- PEGAWAI -->
   <div class="row">
-    <div class="large-12 medium-9 columns">
+    <div class="large-12 medium-9 columns panel">
       <h2 id="tables" style="text-align:center;">Data Pegawai</h2>
       <div class="row">
         <div class="small-6 columns">

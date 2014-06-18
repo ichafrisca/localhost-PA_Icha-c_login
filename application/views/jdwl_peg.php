@@ -31,8 +31,8 @@
 
     <!-- MENU JADWAL PEGAWAI -->
         	<li class="has-dropdown">
-              <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
-            <ul class="dropdown">
+          		<a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
+          	<ul class="dropdown">
               <li class="has-dropdown">
                 <a href="#" class="">Grammar</a>
               <ul class="dropdown">
@@ -43,10 +43,10 @@
                   <li><a href="#">Grammar School</a></li>
                   <li><a href="#">Writing</a></li>
               </ul>
-          </li>
+        	</li>
 
-      <!-- SPEAKING PROGRAM -->
-        <!-- DURASI 2 MINGGU -->
+    	<!-- SPEAKING PROGRAM -->
+    		<!-- DURASI 2 MINGGU -->
           <li class="has-dropdown">
             <a href="#" class="">Speaking</a>
               <ul class="dropdown">
@@ -63,7 +63,7 @@
 
             <!-- DURASI 1 MINGGU -->
             <li class="divider"></li>
-              <li><label>Durasi 1 Minggu</label></li>
+            	<li><label>Durasi 1 Minggu</label></li>
                 <li><a href="#">The Workshop - Job Interview</a></li>
                 <li><a href="#">The workshop - Psyco-Test</a></li>
 
@@ -77,7 +77,7 @@
 
         <!-- PRONUNCIATION PROGRAM -->
           <li class="has-dropdown">
-            <a href="#" class="">Pronunciation</a>
+           	<a href="#" class="">Pronunciation</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -97,27 +97,27 @@
             </ul>
           </li>
 
-      <!-- TOEFL PROGRAM-->
+    	<!-- TOEFL PROGRAM-->
           <li class="has-dropdown">
-              <a href="#" class="">TOEFL</a>
+            	<a href="#" class="">TOEFL</a>
             <ul class="dropdown">
               <li class="divider"></li>
-                <li><label>Durasi 2 Minggu</label></li>
+              	<li><label>Durasi 2 Minggu</label></li>
                   <li><a href="#">Basic Program 1 Exercise</a></li>
                   <li><a href="#">Basic Program 2 Exercise</a></li>
                   <li><a href="#">Pre TOEFL (IBT)</a></li>
                   <li><a href="#">IELTS</a></li>
                   <li><a href="#">TOEFL (IBT)</a></li>
               <li class="divider"></li>
-                <li><label>Durasi 1 Bulan</label></li>
+              	<li><label>Durasi 1 Bulan</label></li>
                   <li><a href="#">Pre TOEFL (ITP)</a></li>
                   <li><a href="#">TOEFL (ITP)</a></li>
             </ul>
           </li>
 
-    <!-- PAKET PROGRAM-->
+		<!-- PAKET PROGRAM-->
             <li class="has-dropdown">
-              <a href="#" class="">E-fast & Scoring TOEFL</a>
+            	<a href="#" class="">E-fast & Scoring TOEFL</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -130,9 +130,9 @@
             </ul>
             </li>
 
-      <!-- PEGAWAI OFFICE SHIFT PAGI -->
-            <li><a href="#">Office Shift Pagi</a></li>
-            <li><a href="#">Office Shift Siang</a></li>
+    	<!-- PEGAWAI OFFICE SHIFT PAGI -->
+          	<li><a href="#">Office Shift Pagi</a></li>
+          	<li><a href="#">Office Shift Siang</a></li>
           </ul>
         </li>
 
@@ -199,142 +199,60 @@
 
   <!-- PEGAWAI -->
   <div class="row">
-  <div class="large-12 panel">
-  
-  <?php
-    $dropdown_status_pegawai = array(
-        "-" => "- Status -",
-        "Admin" => "Admin",
-        "Tutor" => "Tutor",
-        "Office" => "Office",
-      );
-    $setatus=array('admin','tutor');
-    
-    $dropdown_status = array(
-        "-" => "- Status Kepegawaian -",
-        "Aktif" => "Aktif",
-        "Nonaktif" => "Nonaktif",
-      );
-    $stat_peg = array('aktif','nonaktif');
-
-    foreach ($query->result_array() as $row){
-      echo form_open('c_dtpegawai/edit');
-        echo '<center><h3>Edit Pegawai</h3></center>
-        
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>ID Pegawai</td>
-                <td>:</td>
-                <td>'.form_input('IDPEG',$row['idpeg'],'readonly').'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-               <tr>
-                <td>Nama</td>
-                <td>:</td>
-                <td>'.form_input('NAMA',$row['nama']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td>'.form_textarea('ALAMAT',$row['alamat']).'</td>
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-4 columns">
-              <tr>
-                <td>Tempat Tanggal Lahir</td>
-                <td>:</td>
-                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir']).'</td>
-              </tr>
-            </div>
-            <div class="large-4 columns">
-              <tr>
-                <td>Tempat Tanggal Lahir</td>
-                <td>:</td>
-                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>No Telepon</td>
-                <td>:</td>
-                <td>'.form_input('NO_TELP',$row['no_telp']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Status</td>
-                <td>:</td>
-                
-                '.form_dropdown('STATUS',$row['status'], 'admin',$dropdown_status_pegawai,'office').'
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Status Kepegawaian</td>
-                <td>:</td>
-                '.form_input('STAT_PEG',$row['stat_peg'],$dropdown_status).'
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Username</td>
-                <td>:</td>
-                <td>'.form_input('USERNAME',$row['username']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Password</td>
-                <small>required</small>
-                <td>:</td>
-                <td>'.form_input('PASSWORD',$row['password'],'required pattern="[a-zA-Z 0-9]+"').'</td>
-              </tr>
-            </div>
-          </div>
-
-        <label>
-          <input type="submit" value="Save" class="button radius expand">
-        </label>
-        <label>
-          <input type="submit" value="Back" class="button radius expand">
-          <a href="<?php echo base_url()?>c_dtpegawai/disp"></a>
-        </label>';
-        echo form_close();
-      }
-      ?>
+    <div class="large-12 medium-9 columns panel">
+      <h2 id="tables" style="text-align:center;">Jadwal Pegawai</h2>
+      <div class="row">
+      <br><br>
+        <!-- <div class="small-6 columns">
+          <a href="<?php echo base_url();?>c_jadwal/form_tambah" class="button radius">Buat Jadwal</a>
+        </div> -->
       </div>
-      </div>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>ID Jadwal</th>
+                <th>Tanggal</th>
+                <th>Jam</th>
+                <th>Nama Ruang</th>
+                <th>Kode Program</th>
+                <th>Nama Program</th>
+                <th>Durasi</th>
+                <th>Sub Program</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php echo '<tr>';
+                $i=1;
+                  foreach($queryjadwal->result_array() as $rows) {
+                    echo "<td>".$i."</td>";
+                    echo "<td>".$rows['idjadwal']."</td>";
+                    echo "<td>".$rows['tanggal']."</td>";
+                    echo "<td>".$rows['jam']."</td>";
+                    echo "<td>".$rows['namaruang']."</td>";
+                    echo "<td>".$rows['idprogram']."</td>";
+                    echo "<td>".$rows['nmprogram']."</td>";
+                    echo "<td>".$rows['durasi']."</td>";
+                    echo "<td>".$rows['nmsubprog']."</td>";
+                    echo "<td>".anchor('c_dtpegawai/form_update_pegawai/'.$rows['idjadwal'],'update', array('class' => 'button'))."</td>";
+                    
+                    $i++;
+                  echo '</tr>';
+                  }
+              ?>
+            </tbody>
+          </table>
+    </div>
+  </div>
 
 		<!-- javascript foundation -->
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
-	<script type="text/javascript">
-		$(document).foundation();
-	</script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>    
+  	<script type="text/javascript">
+  		$(document).foundation();
+  	</script>
 	</body>
 </html>
