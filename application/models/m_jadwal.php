@@ -1,9 +1,14 @@
 <?php
 	class M_jadwal extends CI_Model{
 		public function ambil_jadwal(){
-			// $queryjadwal=$this->db->query("select * from jadwal order by idjadwal asc");
-			$queryjadwal=$this->db->query("SELECT a.idjadwal, j.tanggal, j.jam, r.namaruang, p.idprogram, p.nmprogram, s.durasi, s.nmsubprog
-											FROM jadwal j JOIN absensi a ON ( j.idjadwal = a.idjadwal ) JOIN ruang r ON ( a.idruang = r.idruang ) JOIN program p ON (r.idprogram = p.idprogram), subprogram s WHERE p.idprogram=s.idsubprog");
+			// $queryjadwal=$this->db->select('idjadwal, jam, tanggal, namaruang, nmprogram, nmsubprog, durasi');
+			// $queryjadwal=$this->db->from('jadwal');
+			// $queryjadwal=$this->db->join('absensi', 'jadwal.idjadwal=absensi.idjadwal');
+			// $queryjadwal=$this->db->join('ruang', 'absensi.idruang=ruang.idruang');
+			// $queryjadwal=$this->db->join('program', 'ruang.idprogram=program.idprogram');
+			// $queryjadwal=$this->db->join('subprogram', 'absensi.idruang=ruang.idruang');
+			$queryjadwal=$this->db->query("SELECT j.idjadwal, j.jam, j.tanggal, r.namaruang, p.nmprogram, s.nmsubprog, s.durasi
+											FROM jadwal j JOIN absensi a ON ( j.idjadwal = a.idjadwal ) JOIN ruang r ON ( a.idruang = r.idruang ) JOIN program p ON (r.idprogram = p.idprogram) join subprogram s on (p.idprogram=s.idprogram)");
 			return $queryjadwal;
     	}
 

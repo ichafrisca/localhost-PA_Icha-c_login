@@ -1,10 +1,10 @@
 <?php
 	class C_jadwal extends CI_Controller{
 
-		public function __construct() {
-			parent::__construct();
-			$this -> load -> library('cart');
-		}
+		// public function __construct() {
+		// 	parent::__construct();
+		// 	$this -> load -> library('cart');
+		// }
 		
 		public function disp(){
 			$this->load->model('m_jadwal');
