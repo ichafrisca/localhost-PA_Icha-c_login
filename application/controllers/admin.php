@@ -12,18 +12,37 @@ class Admin extends CI_Controller{
 			$this->db->select('USERNAME','PASSWORD');
 			$this->db->where("USERNAME",$this->input->post('user'));
 			$this->db->where("PASSWORD",$this->input->post('pass'));
-			$this->db->where("STATUS",$this->input->post('admin'));
 			$data1 = $this->db->get('PEGAWAI');
+
 		if ($data1->num_rows()==1) {
+			$this->db->select('status');
+			$this->db->where("USERNAME",$this->input->post('user'));
+			$this->db->where("PASSWORD",$this->input->post('pass'));
+			$status = $this->db->get('PEGAWAI')->result();
+			foreach ($status as $key) {
+				if ($key->status == 'admin') {
+					$this->session->set_userdata($data1);
+					$this->load->model('m_logadmin');
+					$this->load->model('m_dtpegawai');
+					$data['query'] = $this->m_dtpegawai->ambil_data_pegawai();
+					$this->load->view('headeradmin', $data);
+				} else if ($key->status == 'tutor'){
+					$this->session->set_userdata($data1);
+					// $this->load->model('m_logadmin');
+					// $data['query'] = $this->m_dtpegawai->ambil_data_pegawai();
+					$this->load->view('homeuser');
+				} else if ($key->status == 'office') {
+					$this->session->set_userdata($data1);
+					//$this->load->model('m_logadmin');
+					// $data['query'] = $this->m_dtpegawai->ambil_data_pegawai();
+					$this->load->view('homeuser');
+				}
+			}
 			$data = array(
 				'is_login' => 'ok',
 				'user'=>$this->input->post('user')
 			);
-			$this->session->set_userdata($data1);
-				$this->load->model('m_logadmin');
-				$this->load->model('m_dtpegawai');
-				$data['query'] = $this->m_dtpegawai->ambil_data_pegawai();
-				$this->load->view('headeradmin', $data);
+			
 		} 
 		else {
 			$this->session->set_flashdata('message','Wrong Username or Password');

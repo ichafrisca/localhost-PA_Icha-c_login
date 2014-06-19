@@ -34,7 +34,7 @@
           		<a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
           	<ul class="dropdown">
               <li class="has-dropdown">
-                <a href="#" class="">Grammar</a>
+                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
               <ul class="dropdown">
                   <li><a href="#">Fundamental English</a></li>
                   <li><a href="#">Basic Program 1</a></li>

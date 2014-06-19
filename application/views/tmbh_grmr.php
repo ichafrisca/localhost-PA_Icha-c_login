@@ -200,89 +200,34 @@
   <!-- PEGAWAI -->
   <div class="row">
   <div class="large-12 panel">
-  
   <?php
-    // $dropdown_status_pegawai = array(
-    //     "-" => "- Status -",
-    //     "Admin" => "Admin",
-    //     "Tutor" => "Tutor",
-    //     "Office" => "Office",
-    //   );
-    // $setatus=array('admin','tutor');
-    
-    // $dropdown_status = array(
-    //     "-" => "- Status Kepegawaian -",
-    //     "Aktif" => "Aktif",
-    //     "Nonaktif" => "Nonaktif",
-    //   );
-    // $stat_peg = array('aktif','nonaktif');
-
-    foreach ($query->result_array() as $row){
-      echo form_open('c_dtpegawai/edit');
-        echo '<center><h3>Edit Pegawai</h3></center>
+      echo form_open('c_dtpegawai/tambah');
+        echo '<center><h3>Form Tambah Jadwal</h3></center>
         
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>ID Pegawai</td>
+                <td>ID Jadwal</td>
                 <td>:</td>
-                <td>'.form_input('IDPEG',$row['idpeg'],'readonly').'</td>
+                <td>'.form_input('idjadwal',$getID,'readonly').'</td>
               </tr>
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
                <tr>
-                <td>Nama</td>
+                <td>Jam</td>
                 <td>:</td>
-                <td>'.form_input('NAMA',$row['nama']).'</td>
+                <td>'.form_input('jam').'</td>
               </tr>
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Alamat</td>
+                <td>Tanggal</td>
                 <td>:</td>
-                <td>'.form_textarea('ALAMAT',$row['alamat']).'</td>
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-4 columns">
-              <tr>
-                <td>Tempat Tanggal Lahir</td>
-                <td>:</td>
-                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir']).'</td>
-              </tr>
-            </div>
-            <div class="large-4 columns">
-              <tr>
-                <td>Tempat Tanggal Lahir</td>
-                <td>:</td>
-                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>No Telepon</td>
-                <td>:</td>
-                <td>'.form_input('NO_TELP',$row['no_telp']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Status</td>
-                <td>:</td>
-                <select name="status">
-                  '.foreach ($list_status->result_array()as $r){
-                  echo "<option value=".$r["status"].">".$r["status"]."</option>";}.'
-                </select>
+                <td>'.form_input('tanggal').'</td>
               </tr>
             </div>
           </div>
@@ -290,29 +235,36 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Status Kepegawaian</td>
+                <td>Nama Ruang</td>
                 <td>:</td>
-                '.form_input('STAT_PEG',$row['stat_peg'],$dropdown_status).'
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Username</td>
-                <td>:</td>
-                <td>'.form_input('USERNAME',$row['username']).'</td>
+                <td>'.form_input('namaruang').'</td>
               </tr>
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Password</td>
-                <small>required</small>
+                <td>Nama Program</td>
                 <td>:</td>
-                <td>'.form_input('PASSWORD',$row['password'],'required pattern="[a-zA-Z 0-9]+"').'</td>
+                <td>'.form_input('nmprogram').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Nama Sub Program</td>
+                <td>:</td>
+                <td>'.form_input('nmsubprog').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Durasi</td>
+                <td>:</td>
+                <td>'.form_input('durasi').'</td>
               </tr>
             </div>
           </div>
@@ -321,21 +273,20 @@
           <input type="submit" value="Save" class="button radius expand">
         </label>
         <label>
-          <input type="submit" value="Back" class="button radius expand">
-          <a href="<?php echo base_url()?>c_dtpegawai/disp"></a>
+          <a href='. base_url() .'c_dtpegawai/disp class="button radius expand">Back</a>
         </label>';
         echo form_close();
-      }
       ?>
+      <?php if (isset($validation_errors)) echo $validation_errors;?>
       </div>
       </div>
 
 		<!-- javascript foundation -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
-	<script type="text/javascript">
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+  <script type="text/javascript">
 		$(document).foundation();
 	</script>
 	</body>

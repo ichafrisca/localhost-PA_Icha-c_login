@@ -25,5 +25,10 @@
 			$maxMe = $this->db->query('SELECT MAX( SUBSTR( idpeg, 4, 4 ) ) AS MAXID FROM pegawai');
 			return $maxMe;
 		}
+
+		public function tampil_status(){
+		   $list_status = $this->db->query("Select status from pegawai");  
+		   return $list_status;
+	}
     }
 ?>

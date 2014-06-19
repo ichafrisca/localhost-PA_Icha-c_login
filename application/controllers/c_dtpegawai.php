@@ -82,6 +82,7 @@
 		public function form_update_pegawai($IDPEG){
 			$this->load->model('m_dtpegawai');
 			$data['query']=$this->m_dtpegawai->tampil_edit($IDPEG);
+			$data['list_status'] = $this -> m_dtpegawai -> tampil_status();
 			$this->load->view('edit_pegawai',$data);
 		}
 

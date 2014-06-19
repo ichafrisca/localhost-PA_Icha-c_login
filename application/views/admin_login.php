@@ -12,7 +12,7 @@
 		<?php
 			echo form_open('admin/adminlogin');
 			echo '<fieldset>
-				<legend style="font-size:20px; text-align:center;">Login Admin</legend>
+				<legend style="font-size:20px; text-align:center;">Form Login</legend>
 				<label>Username
 					<input type="text" name="user" placeholder="Input Username"/>
 				</label>

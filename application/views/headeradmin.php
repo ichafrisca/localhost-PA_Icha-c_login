@@ -34,7 +34,7 @@
               <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
               <li class="has-dropdown">
-                <a href="#" class="">Grammar</a>
+                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
               <ul class="dropdown">
                   <li><a href="#">Fundamental English</a></li>
                   <li><a href="#">Basic Program 1</a></li>
@@ -216,6 +216,7 @@
                 <th>Tempat Lahir</th>
                 <th>Tanggal Lahir</th>
                 <th>No. telp</th>
+                <th>Status</th>
                 <th>Status Pegawai</th>
                 <th>Username</th>
                 <th>Password</th>
@@ -235,6 +236,7 @@
                     echo "<td>".$rows['tgl_lahir']."</td>";
                     echo "<td>".$rows['no_telp']."</td>";
                     echo "<td>".$rows['status']."</td>";
+                    echo "<td>".$rows['stat_peg']."</td>";
                     echo "<td>".$rows['username']."</td>";
                     echo "<td>".$rows['password']."</td>";
                     echo "<td>".anchor('c_dtpegawai/form_update_pegawai/'.$rows['idpeg'],'update', array('class' => 'button'))."</td>";

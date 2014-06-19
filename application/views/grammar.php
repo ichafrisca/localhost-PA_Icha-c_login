@@ -34,14 +34,10 @@
           		<a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
           	<ul class="dropdown">
               <li class="has-dropdown">
-                <a href="#" class="">Grammar</a>
+                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
               <ul class="dropdown">
-                  <li><a href="#">Fundamental English</a></li>
-                  <li><a href="#">Basic Program 1</a></li>
-                  <li><a href="#">Basic Program 2</a></li>
-                  <li><a href="#">Translation</a></li>
-                  <li><a href="#">Grammar School</a></li>
-                  <li><a href="#">Writing</a></li>
+                  <li><a href="#">Jadwal Tetap</a></li>
+                  <li><a href="#">Holiday Program</a></li>
               </ul>
         	</li>
 
@@ -200,14 +196,12 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Jadwal Pegawai</h2>
+      <h2 id="tables" style="text-align:center;">Jadwal Grammar</h2>
       <div class="row">
-      <br><br>
-        <!-- <div class="small-6 columns">
-          <a href="<?php echo base_url();?>c_jadwal/form_tambah" class="button radius">Buat Jadwal</a>
-        </div> -->
+        <div class="small-6 columns">
+          <a href="<?php echo base_url();?>c_grammar/form_tambah" class="button radius">Buat Jadwal</a>
+        </div>
       </div>
-        <center>
           <table>
             <thead>
               <tr>
@@ -219,14 +213,14 @@
                 <th>Nama Program</th>
                 <th>Sub Program</th>
                 <th>Durasi</th>
-                <!-- <th>Action</th> -->
+                <th>Action</th>
               </tr>
             </thead>
 
             <tbody>
               <?php echo '<tr>';
                 $i=1;
-                  foreach($queryjadwal->result_array() as $rows) {
+                  foreach($querygrammar->result_array() as $rows) {
                     echo "<td>".$i."</td>";
                     echo "<td>".$rows['idjadwal']."</td>";
                     echo "<td>".$rows['jam']."</td>";
@@ -235,7 +229,7 @@
                     echo "<td>".$rows['nmprogram']."</td>";
                     echo "<td>".$rows['nmsubprog']."</td>";
                     echo "<td>".$rows['durasi']."</td>";
-                    // echo "<td>".anchor('c_dtpegawai/form_update_pegawai/'.$rows['idjadwal'],'update', array('class' => 'button'))."</td>";
+                    echo "<td>".anchor('c_grammar/form_update_grammar/'.$rows['idjadwal'],'update', array('class' => 'button'))."</td>";
                     
                     $i++;
                   echo '</tr>';
@@ -243,7 +237,6 @@
               ?>
             </tbody>
           </table>
-        </center>
     </div>
   </div>
 
