@@ -278,11 +278,9 @@
             <div class="large-12 columns">
               <tr>
                 <td>Status</td>
-                <td>:</td>
-                <select name="status">
-                  '.foreach ($list_status->result_array()as $r){
-                  echo "<option value=".$r["status"].">".$r["status"]."</option>";}.'
-                </select>
+                  '.form_hidden('STATUS',$row['status']);
+                    $opsi=array("- Status -","admin"=>"Admin", "tutor"=>"Tutor", "office"=>"Office");
+                    echo '<td width="150" height="25">:'.form_dropdown('STATUS',$opsi).'</td>'.'
               </tr>
             </div>
           </div>
@@ -291,8 +289,9 @@
             <div class="large-12 columns">
               <tr>
                 <td>Status Kepegawaian</td>
-                <td>:</td>
-                '.form_input('STAT_PEG',$row['stat_peg'],$dropdown_status).'
+                  '.form_hidden('STAT_PEG',$row['stat_peg']);
+                    $opsi=array("- Status Kepegawaian -","aktif"=>"Aktif", "tidak_aktif"=>"Tidak Aktif");
+                    echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG',$opsi).'</td>'.'
               </tr>
             </div>
           </div>

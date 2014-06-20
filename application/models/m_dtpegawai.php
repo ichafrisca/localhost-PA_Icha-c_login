@@ -21,6 +21,16 @@
 			return;
 		}
 
+		// public function ubah_status($IDPEG,$data){
+		// 	$this->db->where('status',$IDPEG);
+		// 	$this->db->update('pegawai',$data);
+		// }
+
+		// public function ubah_stat_peg($IDPEG,$data){
+		// 	$this->db->where('stat_peg',$IDPEG);
+		// 	$this->db->update('pegawai',$data);
+		// }
+
 		public function tampil_id() {
 			$maxMe = $this->db->query('SELECT MAX( SUBSTR( idpeg, 4, 4 ) ) AS MAXID FROM pegawai');
 			return $maxMe;

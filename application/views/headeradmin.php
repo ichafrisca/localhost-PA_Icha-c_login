@@ -239,7 +239,7 @@
                     echo "<td>".$rows['stat_peg']."</td>";
                     echo "<td>".$rows['username']."</td>";
                     echo "<td>".$rows['password']."</td>";
-                    echo "<td>".anchor('c_dtpegawai/form_update_pegawai/'.$rows['idpeg'],'update', array('class' => 'button'))."</td>";
+                    echo "<td>".anchor('c_dtpegawai/form_update_pegawai/'.$rows['idpeg'],'update')."</td>";
                     
                     $i++;
                   echo '</tr>';
