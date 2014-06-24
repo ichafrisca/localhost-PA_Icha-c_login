@@ -232,7 +232,7 @@
                     echo "<td>".$rows['jam']."</td>";
                     echo "<td>".$rows['tanggal']."</td>";
                     echo "<td>".$rows['nama']."</td>";
-                    <a data-toggle="modal" echo "<td>".anchor_popup('c_grammar/form_update_absen/'.$rows['idabsen'],'update absen')."</td>"></a>;
+                    echo "<td>".anchor_popup('c_grammar/form_update_absen/'.$rows['idabsen'],'update absen')."</td>";
                     
                     $i++;
                   echo '</tr>';
