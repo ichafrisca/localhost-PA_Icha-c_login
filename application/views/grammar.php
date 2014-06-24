@@ -44,7 +44,7 @@
     	<!-- SPEAKING PROGRAM -->
     		<!-- DURASI 2 MINGGU -->
           <li class="has-dropdown">
-            <a href="#" class="">Speaking</a>
+            <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
               <ul class="dropdown">
                 <li class="divider"></li>
                   <li><label>Durasi 2 Minggu</label></li>
@@ -73,7 +73,7 @@
 
         <!-- PRONUNCIATION PROGRAM -->
           <li class="has-dropdown">
-           	<a href="#" class="">Pronunciation</a>
+           	<a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -187,7 +187,7 @@
         <li class="divider"></li>
         <li><a href="#">Main Item 5</a></li>
         <li class="divider"></li>
-        <a href="<?php echo base_url();?>admin/logout" style="color:white; font-size:16px; text-align:center; font-family:Helvetica">Logout</a>
+        <li><a href="<?php echo base_url();?>c_login/logout">Logout</a></li>
       </ul>
     </section>
 </nav>

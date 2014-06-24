@@ -10,7 +10,7 @@
 	<div class="small-2 large-4 columns"></div>
 	<div class="small-4 large-4 large-offset-4 columns">
 		<?php
-			echo form_open('admin/adminlogin');
+			echo form_open('C_login/login');
 			echo '<fieldset>
 				<legend style="font-size:20px; text-align:center;">Form Login</legend>
 				<label>Username
@@ -25,6 +25,14 @@
 			</fieldset>';
 			form_close();
 		?>
+
+		<!-- <?php if($this->session->flashdata('message') != null) { ?> -->
+		<small class="error">
+			<?php echo $this->session->flashdata('message'); ?>
+		</small>
+		<!-- <?php } ?> -->
+		
+
 	</div>
 	<div class="small-6 large-4 columns "></div>
 </div>

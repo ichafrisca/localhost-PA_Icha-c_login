@@ -36,19 +36,15 @@
               <li class="has-dropdown">
                 <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
               <ul class="dropdown">
-                  <li><a href="#">Fundamental English</a></li>
-                  <li><a href="#">Basic Program 1</a></li>
-                  <li><a href="#">Basic Program 2</a></li>
-                  <li><a href="#">Translation</a></li>
-                  <li><a href="#">Grammar School</a></li>
-                  <li><a href="#">Writing</a></li>
+                  <li><a href="#">Jadwal Tetap</a></li>
+                  <li><a href="#">Holiday Program</a></li>
               </ul>
         	</li>
 
     	<!-- SPEAKING PROGRAM -->
     		<!-- DURASI 2 MINGGU -->
           <li class="has-dropdown">
-            <a href="#" class="">Speaking</a>
+            <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
               <ul class="dropdown">
                 <li class="divider"></li>
                   <li><label>Durasi 2 Minggu</label></li>
@@ -77,7 +73,7 @@
 
         <!-- PRONUNCIATION PROGRAM -->
           <li class="has-dropdown">
-           	<a href="#" class="">Pronunciation</a>
+           	<a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -191,7 +187,7 @@
         <li class="divider"></li>
         <li><a href="#">Main Item 5</a></li>
         <li class="divider"></li>
-        <a href="<?php echo base_url();?>admin/logout" style="color:white; font-size:16px; text-align:center; font-family:Helvetica">Logout</a>
+        <li><a href="<?php echo base_url();?>c_login/logout">Logout</a></li>
       </ul>
     </section>
 </nav>
@@ -216,9 +212,9 @@
                 <th>Jam</th>
                 <th>Tanggal</th>
                 <th>Nama Ruang</th>
-                <th>Nama Program</th>
                 <th>Sub Program</th>
                 <th>Durasi</th>
+                <th>Nama Program</th>
                 <!-- <th>Action</th> -->
               </tr>
             </thead>
@@ -232,9 +228,9 @@
                     echo "<td>".$rows['jam']."</td>";
                     echo "<td>".$rows['tanggal']."</td>";
                     echo "<td>".$rows['namaruang']."</td>";
-                    echo "<td>".$rows['nmprogram']."</td>";
                     echo "<td>".$rows['nmsubprog']."</td>";
                     echo "<td>".$rows['durasi']."</td>";
+                    echo "<td>".$rows['nmprogram']."</td>";
                     // echo "<td>".anchor('c_dtpegawai/form_update_pegawai/'.$rows['idjadwal'],'update', array('class' => 'button'))."</td>";
                     
                     $i++;
@@ -243,7 +239,20 @@
               ?>
             </tbody>
           </table>
-        </center>
+          </center>
+          <div class="pagination-centered">
+            <ul class="pagination" >
+              <li class="arrow unavailable"><a href="<?php echo base_url()?>c_jadwal/disp">&laquo;</a></li>
+              <li class="current"><a href="<?php echo base_url()?>c_jadwal/disp">1</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/disp">2</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/disp">3</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/disp">4</a></li>
+              <li class="unavailable"><a href="<?php echo base_url()?>c_jadwal/disp">&hellip;</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/disp">12</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/disp">13</a></li>
+              <li class="arrow"><a href="<?php echo base_url()?>c_jadwal/disp">&raquo;</a></li>
+            </ul>
+          </div>
     </div>
   </div>
 

@@ -29,23 +29,6 @@
 			return $newID;
 		}
 
-		// public function dropdown(){
-		// 	$dropdown_status_pegawai = array(
-  //     			"-" => "- Status -",
-  //     			"Admin" => "Admin",
-		// 	    "Tutor" => "Tutor",
-		// 	   	"Office" => "Office",
-		// 	);
-		// }
-
-		// public function dropdown2(){
-		// 	$dropdown_status = array(
-  //     			"-" => "- Status -",
-  //     			"Aktif" => "Aktif",
-		// 	    "Nonaktif" => "Nonaktif",
-		// 	);
-		// }
-
 		public function tambah(){
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('idpeg','idpeg','required');
@@ -86,27 +69,8 @@
 			$this->load->view('edit_pegawai',$data);
 		}
 
-		// public function ubah_status(){
-		// 	$data = array(
-		// 		'status' => $this->input->post('status')
-		// 	);
-		// 	$this->load->model('m_dtpegawai');
-		// 	$this->m_dtpegawai->edit($IDPEG,$data);
-		// 	$this->disp();
-		// }
-
-		// public function ubah_stat_peg(){
-		// 	$data = array(
-		// 		'stat_peg' => $this->input->post('stat_peg')
-		// 	);
-		// 	$this->load->model('m_dtpegawai');
-		// 	$this->m_dtpegawai->edit($IDPEG,$data);
-		// 	$this->disp();
-		// }
-
-
 		public function edit(){
-			$idpeg = $this->input->post('IDPEG');
+			// $idpeg = $this->input->post('IDPEG');
 			$data=array(
 				'idpeg'=>$this->input->post('IDPEG'),
 				'nama'=>$this->input->post('NAMA'),

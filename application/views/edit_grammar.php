@@ -84,7 +84,7 @@
 
         <!-- VOCABULARY PROGRAM -->
           <li class="has-dropdown">
-            <a href="#" class="">Vocabulary</a>
+            <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -95,7 +95,7 @@
 
       <!-- TOEFL PROGRAM-->
           <li class="has-dropdown">
-              <a href="#" class="">TOEFL</a>
+              <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -113,7 +113,7 @@
 
     <!-- PAKET PROGRAM-->
             <li class="has-dropdown">
-              <a href="#" class="">E-fast & Scoring TOEFL</a>
+              <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -127,8 +127,8 @@
             </li>
 
       <!-- PEGAWAI OFFICE SHIFT PAGI -->
-            <li><a href="#">Office Shift Pagi</a></li>
-            <li><a href="#">Office Shift Siang</a></li>
+            <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
+            <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
           </ul>
         </li>
 
@@ -198,70 +198,34 @@
   <div class="large-12 panel">
   
   <?php
-    foreach ($query->result_array() as $row){
-      echo form_open('c_dtpegawai/edit');
+    foreach ($querygrammar->result_array() as $row){
+      echo form_open('c_grammar/edit');
         echo '<center><h3>Edit Pegawai</h3></center>
         
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>ID Pegawai</td>
+                <td>ID Jadwal</td>
                 <td>:</td>
-                <td>'.form_input('IDPEG',$row['idpeg'],'readonly').'</td>
+                <td>'.form_input('IDJADWAL',$row['idjadwal'],'readonly').'</td>
               </tr>
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
                <tr>
-                <td>Nama</td>
+                <td>Jam</td>
                 <td>:</td>
-                <td>'.form_input('NAMA',$row['nama']).'</td>
+                <td>'.form_input('JAM',$row['jam']).'</td>
               </tr>
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Alamat</td>
+                <td>Tanggal</td>
                 <td>:</td>
-                <td>'.form_textarea('ALAMAT',$row['alamat']).'</td>
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-4 columns">
-              <tr>
-                <td>Tempat Tanggal Lahir</td>
-                <td>:</td>
-                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir']).'</td>
-              </tr>
-            </div>
-            <div class="large-4 columns">
-              <tr>
-                <td>Tempat Tanggal Lahir</td>
-                <td>:</td>
-                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>No Telepon</td>
-                <td>:</td>
-                <td>'.form_input('NO_TELP',$row['no_telp']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Status</td>
-                  '.form_hidden('STATUS',$row['status']);
-                    $opsi=array("- Status -","admin"=>"Admin", "tutor"=>"Tutor", "office"=>"Office");
-                    echo '<td width="150" height="25">:'.form_dropdown('STATUS',$opsi).'</td>'.'
+                <td>'.form_input('TANGGAL',$row['tanggal']).'</td>
               </tr>
             </div>
           </div>
@@ -269,40 +233,18 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Status Kepegawaian</td>
-                  '.form_hidden('STAT_PEG',$row['stat_peg']);
-                    $opsi=array("- Status Kepegawaian -","Aktif"=>"Aktif", "Tidak Aktif"=>"Tidak Aktif");
-                    echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG',$opsi).'</td>'.'
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Username</td>
+                <td>Nama Ruang</td>
                 <td>:</td>
-                <td>'.form_input('USERNAME',$row['username']).'</td>
+                <td>'.form_input('NAMARUANG',$row['namaruang']).'</td>
               </tr>
             </div>
           </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Password</td>
-                <small>required</small>
-                <td>:</td>
-                <td>'.form_input('PASSWORD',$row['password'],'required pattern="[a-zA-Z 0-9]+"').'</td>
-              </tr>
-            </div>
-          </div>
-
         <label>
           <input type="submit" value="Save" class="button radius expand">
         </label>
         <label>
           <input type="submit" value="Back" class="button radius expand">
-          <a href="<?php echo base_url()?>c_dtpegawai/disp"></a>
+          <a href="<?php echo base_url()?>c_grammar/disp"></a>
         </label>';
         echo form_close();
       }
