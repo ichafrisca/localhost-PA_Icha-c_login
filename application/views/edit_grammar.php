@@ -136,7 +136,7 @@
 
         	<li class="divider"></li>
         	<li class="has-dropdown">
-          <a href="#">Presensi Pegawai</a>
+            <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
           <ul class="dropdown">
             <li><a href="#">Dropdown Option</a></li>
             <li><a href="#">Dropdown Option</a></li>

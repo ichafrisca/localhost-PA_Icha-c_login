@@ -1,13 +1,13 @@
 <html>
-	<head>
-		<title>Kepegawaian ELFAST</title>
-		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
-		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
-	</head>
+  <head>
+    <title>Kepegawaian ELFAST</title>
+    <link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
+  </head>
 
-<body>		   
+<body>       
  <!-- Header and Nav -->
-	<nav class="top-bar" data-topbar>
+  <nav class="top-bar" data-topbar>
     <ul class="title-area">
     <!-- TITLE AREA -->
       <li class="name">
@@ -22,27 +22,27 @@
     </ul>
 
     <!-- MENU DATA PEGAWAI -->
-	  <section class="top-bar-section">
+    <section class="top-bar-section">
         <!-- Left Nav Section -->
-    	<ul class="left">
-    		<li class="divider"></li>
-        		<li><a href="<?php echo base_url()?>c_dtpegawai/disp">Data Pegawai</a></li>
-        	<li class="divider"></li>
+      <ul class="left">
+        <li class="divider"></li>
+            <li><a href="<?php echo base_url()?>c_dtpegawai/disp">Data Pegawai</a></li>
+          <li class="divider"></li>
 
     <!-- MENU JADWAL PEGAWAI -->
-        	<li class="has-dropdown">
-          		<a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
-          	<ul class="dropdown">
+          <li class="has-dropdown">
+              <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
+            <ul class="dropdown">
               <li class="has-dropdown">
                 <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
               <ul class="dropdown">
                   <li><a href="#">Jadwal Tetap</a></li>
                   <li><a href="#">Holiday Program</a></li>
               </ul>
-        	</li>
+          </li>
 
-    	<!-- SPEAKING PROGRAM -->
-    		<!-- DURASI 2 MINGGU -->
+      <!-- SPEAKING PROGRAM -->
+        <!-- DURASI 2 MINGGU -->
           <li class="has-dropdown">
             <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
               <ul class="dropdown">
@@ -59,7 +59,7 @@
 
             <!-- DURASI 1 MINGGU -->
             <li class="divider"></li>
-            	<li><label>Durasi 1 Minggu</label></li>
+              <li><label>Durasi 1 Minggu</label></li>
                 <li><a href="#">The Workshop - Job Interview</a></li>
                 <li><a href="#">The workshop - Psyco-Test</a></li>
 
@@ -73,7 +73,7 @@
 
         <!-- PRONUNCIATION PROGRAM -->
           <li class="has-dropdown">
-           	<a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+            <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -93,27 +93,27 @@
             </ul>
           </li>
 
-    	<!-- TOEFL PROGRAM-->
+      <!-- TOEFL PROGRAM-->
           <li class="has-dropdown">
-            	<a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+              <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
             <ul class="dropdown">
               <li class="divider"></li>
-              	<li><label>Durasi 2 Minggu</label></li>
+                <li><label>Durasi 2 Minggu</label></li>
                   <li><a href="#">Basic Program 1 Exercise</a></li>
                   <li><a href="#">Basic Program 2 Exercise</a></li>
                   <li><a href="#">Pre TOEFL (IBT)</a></li>
                   <li><a href="#">IELTS</a></li>
                   <li><a href="#">TOEFL (IBT)</a></li>
               <li class="divider"></li>
-              	<li><label>Durasi 1 Bulan</label></li>
+                <li><label>Durasi 1 Bulan</label></li>
                   <li><a href="#">Pre TOEFL (ITP)</a></li>
                   <li><a href="#">TOEFL (ITP)</a></li>
             </ul>
           </li>
 
-		<!-- PAKET PROGRAM-->
+    <!-- PAKET PROGRAM-->
             <li class="has-dropdown">
-            	<a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+              <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -126,17 +126,17 @@
             </ul>
             </li>
 
-    	<!-- PEGAWAI OFFICE SHIFT PAGI -->
-          	<li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-          	<li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+      <!-- PEGAWAI OFFICE SHIFT PAGI -->
+            <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
+            <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
           </ul>
         </li>
 
-	<!-- MENU PRESENSI-->
+  <!-- MENU PRESENSI-->
 
-        	<li class="divider"></li>
-        	<li class="has-dropdown">
-          <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
+          <li class="divider"></li>
+          <li class="has-dropdown">
+            <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
           <ul class="dropdown">
             <li><a href="#">Dropdown Option</a></li>
             <li><a href="#">Dropdown Option</a></li>
@@ -196,10 +196,10 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Jadwal Speaking</h2>
+      <h2 id="tables" style="text-align:center;">Jadwal Grammar</h2>
       <div class="row">
         <div class="small-6 columns">
-          <a href="<?php echo base_url();?>c_speaking/form_tambah" class="button radius">Buat Jadwal</a>
+          <a href="<?php echo base_url();?>c_grammar/form_tambah" class="button radius">Buat Jadwal</a>
         </div>
       </div>
           <table>
@@ -220,7 +220,7 @@
             <tbody>
               <?php echo '<tr>';
                 $i=1;
-                  foreach($queryspeaking->result_array() as $rows) {
+                  foreach($queryvocab->result_array() as $rows) {
                     echo "<td>".$i."</td>";
                     echo "<td>".$rows['idjadwal']."</td>";
                     echo "<td>".$rows['jam']."</td>";
@@ -229,7 +229,7 @@
                     echo "<td>".$rows['nmprogram']."</td>";
                     echo "<td>".$rows['nmsubprog']."</td>";
                     echo "<td>".$rows['durasi']."</td>";
-                    echo "<td>".anchor('c_speaking/form_update_speaking/'.$rows['idjadwal'],'update', array('class' => 'button'))."</td>";
+                    echo "<td>".anchor('c_grammar/form_update_voca/'.$rows['idjadwal'],'update', array('class' => 'button'))."</td>";
                     
                     $i++;
                   echo '</tr>';
@@ -240,12 +240,12 @@
     </div>
   </div>
 
-		<!-- javascript foundation -->
+    <!-- javascript foundation -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>    
-  	<script type="text/javascript">
-  		$(document).foundation();
-  	</script>
-	</body>
+    <script type="text/javascript">
+      $(document).foundation();
+    </script>
+  </body>
 </html>

@@ -136,7 +136,7 @@
 
         	<li class="divider"></li>
         	<li class="has-dropdown">
-          <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
+            <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
           <ul class="dropdown">
             <li><a href="#">Dropdown Option</a></li>
             <li><a href="#">Dropdown Option</a></li>
@@ -196,23 +196,25 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Jadwal Speaking</h2>
+      <h2 id="tables" style="text-align:center;">Absensi Pegawai</h2>
       <div class="row">
-        <div class="small-6 columns">
-          <a href="<?php echo base_url();?>c_speaking/form_tambah" class="button radius">Buat Jadwal</a>
-        </div>
+        <!-- <div class="small-6 columns">
+          <a href="<?php echo base_url();?>c_absen/form_tambah" class="button radius"></a>
+        </div> -->
+        <br><br>
       </div>
           <table>
             <thead>
               <tr>
                 <th>No</th>
-                <th>ID Jadwal</th>
+                <th>ID Absen</th>
+                <th>Status Absen</th>
+                <th>Tanggal Absen</th>
+                <th>Pegawai Pengganti</th>
+                <th>Ruang</th>
                 <th>Jam</th>
                 <th>Tanggal</th>
-                <th>Nama Ruang</th>
-                <th>Nama Program</th>
-                <th>Sub Program</th>
-                <th>Durasi</th>
+                <th>Nama Pegawai</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -220,16 +222,17 @@
             <tbody>
               <?php echo '<tr>';
                 $i=1;
-                  foreach($queryspeaking->result_array() as $rows) {
+                  foreach($queryabsen->result_array() as $rows) {
                     echo "<td>".$i."</td>";
-                    echo "<td>".$rows['idjadwal']."</td>";
+                    echo "<td>".$rows['idabsen']."</td>";
+                    echo "<td>".$rows['status_absen']."</td>";
+                    echo "<td>".$rows['tgl_absen']."</td>";
+                    echo "<td>".$rows['idpeg_pengganti']."</td>";
+                    echo "<td>".$rows['namaruang']."</td>";
                     echo "<td>".$rows['jam']."</td>";
                     echo "<td>".$rows['tanggal']."</td>";
-                    echo "<td>".$rows['namaruang']."</td>";
-                    echo "<td>".$rows['nmprogram']."</td>";
-                    echo "<td>".$rows['nmsubprog']."</td>";
-                    echo "<td>".$rows['durasi']."</td>";
-                    echo "<td>".anchor('c_speaking/form_update_speaking/'.$rows['idjadwal'],'update', array('class' => 'button'))."</td>";
+                    echo "<td>".$rows['nama']."</td>";
+                    <a data-toggle="modal" echo "<td>".anchor_popup('c_grammar/form_update_absen/'.$rows['idabsen'],'update absen')."</td>"></a>;
                     
                     $i++;
                   echo '</tr>';

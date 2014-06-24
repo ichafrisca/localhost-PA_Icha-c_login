@@ -84,7 +84,7 @@
 
         <!-- VOCABULARY PROGRAM -->
           <li class="has-dropdown">
-            <a href="#" class="">Vocabulary</a>
+            <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -95,7 +95,7 @@
 
     	<!-- TOEFL PROGRAM-->
           <li class="has-dropdown">
-            	<a href="#" class="">TOEFL</a>
+            	<a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
             <ul class="dropdown">
               <li class="divider"></li>
               	<li><label>Durasi 2 Minggu</label></li>
@@ -113,7 +113,7 @@
 
 		<!-- PAKET PROGRAM-->
             <li class="has-dropdown">
-            	<a href="#" class="">E-fast & Scoring TOEFL</a>
+            	<a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
             <ul class="dropdown">
               <li class="divider"></li>
                 <li><label>Durasi 2 Minggu</label></li>
@@ -127,8 +127,8 @@
             </li>
 
     	<!-- PEGAWAI OFFICE SHIFT PAGI -->
-          	<li><a href="#">Office Shift Pagi</a></li>
-          	<li><a href="#">Office Shift Siang</a></li>
+          	<li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
+          	<li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
           </ul>
         </li>
 
@@ -136,7 +136,7 @@
 
         	<li class="divider"></li>
         	<li class="has-dropdown">
-          <a href="#">Presensi Pegawai</a>
+            <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
           <ul class="dropdown">
             <li><a href="#">Dropdown Option</a></li>
             <li><a href="#">Dropdown Option</a></li>
