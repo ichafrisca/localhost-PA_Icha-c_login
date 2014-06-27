@@ -230,7 +230,8 @@
             </tbody>
           </table>
           </center>
-          <div class="pagination-centered">
+          <?php echo $pagination; ?>
+          <!-- <div class="pagination-centered">
             <ul class="pagination" >
               <li class="arrow unavailable"><a href="<?php echo base_url()?>c_jadwal/disp">&laquo;</a></li>
               <li class="current"><a href="<?php echo base_url()?>c_jadwal/disp">1</a></li>
@@ -242,7 +243,7 @@
               <li><a href="<?php echo base_url()?>c_jadwal/disp">13</a></li>
               <li class="arrow"><a href="<?php echo base_url()?>c_jadwal/disp">&raquo;</a></li>
             </ul>
-          </div>
+          </div> -->
     </div>
   </div>
 

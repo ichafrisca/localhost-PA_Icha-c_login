@@ -1,11 +1,6 @@
 <?php
 	class C_dtpegawai extends CI_Controller{
 
-		public function __construct() {
-			parent::__construct();
-			$this -> load -> library('cart');
-		}
-
 		public function form_tambah(){
 			$data['newID'] = $this -> next_pegawai();
 			$data['validation_errors'] = $this -> session -> flashdata('errors');
