@@ -9,5 +9,7 @@
 			$maxjdw = $this->db->query("SELECT max(substr(idjadwal, 4, 4) ) as maxID FROM jadwal");
 			return $maxjdw;
 		}
+
+		
 	}
 ?>

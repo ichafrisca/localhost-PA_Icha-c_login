@@ -7,8 +7,8 @@
 
 <body>		   
  <!-- Header and Nav -->
-	<nav class="top-bar" data-topbar>
-    <ul class="title-area">
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
     <!-- TITLE AREA -->
       <li class="name">
         <h1>
@@ -17,135 +17,125 @@
           </a>
         </h1>
       </li>
-
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
+  </ul>
 
     <!-- MENU DATA PEGAWAI -->
-	  <section class="top-bar-section">
+    <section class="top-bar-section">
         <!-- Left Nav Section -->
-    	<ul class="left">
-    		<li class="divider"></li>
-        		<li><a href="<?php echo base_url()?>c_dtpegawai/disp">Data Pegawai</a></li>
-        	<li class="divider"></li>
+      
+      <ul class="left">
+          <li class="divider"></li>
+              <li><a href="<?php echo base_url()?>c_dtpegawai/page">Data Pegawai</a></li>
+          <li class="divider"></li>
 
-    <!-- MENU JADWAL PEGAWAI -->
-        	<li class="has-dropdown">
-          		<a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
-          	<ul class="dropdown">
+          <!-- MENU JADWAL PEGAWAI -->
+          <li class="has-dropdown">
+            <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
+            <ul class="dropdown">
               <li class="has-dropdown">
                 <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
-              <ul class="dropdown">
-                  <li><a href="#">Jadwal Tetap</a></li>
-                  <li><a href="#">Holiday Program</a></li>
-              </ul>
-        	</li>
+                  <ul class="dropdown">
+                    <li><a href="#">Jadwal Tetap</a></li>
+                    <li><a href="#">Holiday Program</a></li>
+                  </ul>
+              </li>
 
-    	<!-- SPEAKING PROGRAM -->
-    		<!-- DURASI 2 MINGGU -->
-          <li class="has-dropdown">
-            <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
-              <ul class="dropdown">
-                <li class="divider"></li>
-                  <li><label>Durasi 2 Minggu</label></li>
-                    <li><a href="#">Elementary Stage</a></li>
-                    <li><a href="#">Talk More</a></li>
-                    <li><a href="#">English Corner</a></li>
-                    <li><a href="#">Confidence</a></li>
-                    <li><a href="#">Grammar for Speaking</a></li>
-                    <li><a href="#">Academic Speaking</a></li>
-                    <li><a href="#">Ear Waves</a></li>
-                    <li><a href="#">Ear Waves</a></li>
+              <!-- SPEAKING PROGRAM -->
+              <li class="has-dropdown">
+                <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
+                  <ul class="dropdown">
+                    <li class="divider"></li>
+                      <li><label>Durasi 2 Minggu</label></li>
+                        <li><a href="#">Elementary Stage</a></li>
+                        <li><a href="#">Talk More</a></li>
+                        <li><a href="#">English Corner</a></li>
+                        <li><a href="#">Confidence</a></li>
+                        <li><a href="#">Grammar for Speaking</a></li>
+                        <li><a href="#">Academic Speaking</a></li>
+                        <li><a href="#">Ear Waves</a></li>
+                        <li><a href="#">Ear Waves</a></li>
 
-            <!-- DURASI 1 MINGGU -->
-            <li class="divider"></li>
-            	<li><label>Durasi 1 Minggu</label></li>
-                <li><a href="#">The Workshop - Job Interview</a></li>
-                <li><a href="#">The workshop - Psyco-Test</a></li>
+                    <!-- DURASI 1 MINGGU -->
+                    <li class="divider"></li>
+                      <li><label>Durasi 1 Minggu</label></li>
+                        <li><a href="#">The Workshop - Job Interview</a></li>
+                        <li><a href="#">The workshop - Psyco-Test</a></li>
 
-            <!-- DURASI 1 BULAN -->
-            <li class="divider"></li>
-                <li><label>Durasi 1 Bulan</label></li>
-                  <li><a href="#">Dynamic Speaking</a></li>
-                  <li><a href="#">Speaking Therapy</a></li>
+                    <!-- DURASI 1 BULAN -->
+                    <li class="divider"></li>
+                        <li><label>Durasi 1 Bulan</label></li>
+                          <li><a href="#">Dynamic Speaking</a></li>
+                          <li><a href="#">Speaking Therapy</a></li>
+                  </ul>
+              </li>
+
+              <!-- PRONUNCIATION PROGRAM -->
+              <li class="has-dropdown">
+                <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                  <ul class="dropdown">
+                    <li class="divider"></li>
+                      <li><label>Durasi 2 Minggu</label></li>
+                        <li><a href="#">Pronunciation Stage 1</a></li>
+                        <li><a href="#">Pronunciation Stage 2</a></li>
+                  </ul>
+              </li>
+
+              <!-- VOCABULARY PROGRAM -->
+              <li class="has-dropdown">
+                <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
+                  <ul class="dropdown">
+                    <li class="divider"></li>
+                      <li><label>Durasi 2 Minggu</label></li>
+                        <li><a href="#">Vocabulary 1</a></li>
+                        <li><a href="#">Vocabulary 2</a></li>
+                  </ul>
+              </li>
+
+              <!-- TOEFL PROGRAM-->
+              <li class="has-dropdown">
+                <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                  <ul class="dropdown">
+                    <li class="divider"></li>
+                      <li><label>Durasi 2 Minggu</label></li>
+                        <li><a href="#">Basic Program 1 Exercise</a></li>
+                        <li><a href="#">Basic Program 2 Exercise</a></li>
+                        <li><a href="#">Pre TOEFL (IBT)</a></li>
+                        <li><a href="#">IELTS</a></li>
+                        <li><a href="#">TOEFL (IBT)</a></li>
+                    <li class="divider"></li>
+                      <li><label>Durasi 1 Bulan</label></li>
+                        <li><a href="#">Pre TOEFL (ITP)</a></li>
+                        <li><a href="#">TOEFL (ITP)</a></li>
+                  </ul>
+              </li>
+
+              <!-- PAKET PROGRAM-->
+              <li class="has-dropdown">
+                <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                  <ul class="dropdown">
+                    <li class="divider"></li>
+                      <li><label>Durasi 2 Minggu</label></li>
+                        <li><a href="#">E-fast 3</a></li>
+                    <li class="divider"></li>
+                      <li><label>Durasi 1 Bulan</label></li>
+                        <li><a href="#">E-fast 1</a></li>
+                        <li><a href="#">E-fast 2</a></li>            
+                        <li><a href="#">E-fast 4</a></li>
+                  </ul>
+              </li>
+
+              <!-- PEGAWAI OFFICE SHIFT PAGI -->
+              <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
             </ul>
           </li>
 
-        <!-- PRONUNCIATION PROGRAM -->
-          <li class="has-dropdown">
-           	<a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
-            <ul class="dropdown">
-              <li class="divider"></li>
-                <li><label>Durasi 2 Minggu</label></li>
-                  <li><a href="#">Pronunciation Stage 1</a></li>
-                  <li><a href="#">Pronunciation Stage 2</a></li>
-            </ul>
-          </li>
-
-        <!-- VOCABULARY PROGRAM -->
-          <li class="has-dropdown">
-            <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
-            <ul class="dropdown">
-              <li class="divider"></li>
-                <li><label>Durasi 2 Minggu</label></li>
-                  <li><a href="#">Vocabulary 1</a></li>
-                  <li><a href="#">Vocabulary 2</a></li>
-            </ul>
-          </li>
-
-    	<!-- TOEFL PROGRAM-->
-          <li class="has-dropdown">
-            	<a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
-            <ul class="dropdown">
-              <li class="divider"></li>
-              	<li><label>Durasi 2 Minggu</label></li>
-                  <li><a href="#">Basic Program 1 Exercise</a></li>
-                  <li><a href="#">Basic Program 2 Exercise</a></li>
-                  <li><a href="#">Pre TOEFL (IBT)</a></li>
-                  <li><a href="#">IELTS</a></li>
-                  <li><a href="#">TOEFL (IBT)</a></li>
-              <li class="divider"></li>
-              	<li><label>Durasi 1 Bulan</label></li>
-                  <li><a href="#">Pre TOEFL (ITP)</a></li>
-                  <li><a href="#">TOEFL (ITP)</a></li>
-            </ul>
-          </li>
-
-		<!-- PAKET PROGRAM-->
+          <!-- MENU PRESENSI-->
+          <li class="divider"></li>
             <li class="has-dropdown">
-            	<a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
-            <ul class="dropdown">
-              <li class="divider"></li>
-                <li><label>Durasi 2 Minggu</label></li>
-                  <li><a href="#">E-fast 3</a></li>
-              <li class="divider"></li>
-                <li><label>Durasi 1 Bulan</label></li>
-                  <li><a href="#">E-fast 1</a></li>
-                  <li><a href="#">E-fast 2</a></li>            
-                  <li><a href="#">E-fast 4</a></li>
-            </ul>
+              <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
             </li>
-
-    	<!-- PEGAWAI OFFICE SHIFT PAGI -->
-          	<li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-          	<li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
-          </ul>
-        </li>
-
-	<!-- MENU PRESENSI-->
-
-        	<li class="divider"></li>
-        	<li class="has-dropdown">
-          <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
-          <ul class="dropdown">
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><a href="#">See all →</a></li>
-          </ul>
-        </li>
-       
       </ul>
  
       <!-- Right Nav Section -->

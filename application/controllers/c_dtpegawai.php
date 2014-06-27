@@ -6,12 +6,6 @@
 			$this -> load -> library('cart');
 		}
 
-		public function disp(){
-			$this->load->model('m_dtpegawai');
-			$data['query']=$this->m_dtpegawai->ambil_data_pegawai();
-			$this->load->view('headeradmin', $data);
-		}
-
 		public function form_tambah(){
 			$data['newID'] = $this -> next_pegawai();
 			$data['validation_errors'] = $this -> session -> flashdata('errors');
@@ -58,7 +52,7 @@
 					'password' => $this -> input -> post('password'), );
 				$this -> load -> model('m_dtpegawai');
 				$this -> m_dtpegawai -> tambah($data);
-				redirect('c_dtpegawai/disp');
+				redirect('c_dtpegawai/page');
 			}
 		}
 
@@ -85,7 +79,27 @@
 			);
 			$this->load->model('m_dtpegawai');
 			$this->m_dtpegawai->edit($data,$this->input->post('IDPEG'));
-			$this->disp();
+			$this->page();
 		}
+
+		public function page($p=0){
+			$jumlah_per_page = 5;
+			$this->load->library('pagination');
+			$this->load->model('m_dtpegawai');
+			$config['base_url'] = site_url().'/c_dtpegawai/page/';
+			$config['total_rows'] = $this->m_dtpegawai->total_pegawai();
+			$config['per_page'] = $jumlah_per_page;
+			$this->pagination->initialize($config);
+
+			$data["pagination"] = $this->pagination->create_links();
+			$data["query"] = $this->m_dtpegawai->get_pegawai_page($p, $jumlah_per_page);
+			$this->load->view('headeradmin', $data);
+		}
+
+		// public function disp(){
+		// 	$this->load->model('m_dtpegawai');
+		// 	$data['query']=$this->m_dtpegawai->ambil_data_pegawai();
+		// 	$this->load->view('headeradmin', $data);
+		// }
 	}
 ?>

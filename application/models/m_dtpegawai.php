@@ -1,9 +1,16 @@
 <?php
     class M_dtpegawai extends CI_Model{
-    	public function ambil_data_pegawai(){
-    		$query=$this->db->query("select * from pegawai order by idpeg asc");
+
+    	public function total_pegawai() {
+			return $this->db->count_all('pegawai');
+		}
+
+		public function get_pegawai_page($p = 0, $jumlah = 5) {
+			$sql = "select * from pegawai";
+			$sql.=" limit $p, $jumlah";
+			$query=$this->db->query($sql);
 			return $query;
-    	}
+		}
     	
     	public function tampil_edit($IDPEG){
     		$this->db->where('idpeg',$IDPEG);
