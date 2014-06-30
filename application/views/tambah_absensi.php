@@ -6,7 +6,7 @@
 	</head>
 
 <body>		   
-<!-- Header and Nav -->
+ <!-- Header and Nav -->
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <!-- TITLE AREA -->
@@ -21,12 +21,12 @@
   </ul>
 
     <!-- MENU DATA PEGAWAI -->
-	  <section class="top-bar-section">
+    <section class="top-bar-section">
         <!-- Left Nav Section -->
-    	
+      
       <ul class="left">
-      		<li class="divider"></li>
-          		<li><a href="<?php echo base_url()?>c_dtpegawai/page">Data Pegawai</a></li>
+          <li class="divider"></li>
+              <li><a href="<?php echo base_url()?>c_dtpegawai/page">Data Pegawai</a></li>
           <li class="divider"></li>
 
           <!-- MENU JADWAL PEGAWAI -->
@@ -58,7 +58,7 @@
 
                     <!-- DURASI 1 MINGGU -->
                     <li class="divider"></li>
-                    	<li><label>Durasi 1 Minggu</label></li>
+                      <li><label>Durasi 1 Minggu</label></li>
                         <li><a href="#">The Workshop - Job Interview</a></li>
                         <li><a href="#">The workshop - Psyco-Test</a></li>
 
@@ -72,7 +72,7 @@
 
               <!-- PRONUNCIATION PROGRAM -->
               <li class="has-dropdown">
-             	  <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
                   <ul class="dropdown">
                     <li class="divider"></li>
                       <li><label>Durasi 2 Minggu</label></li>
@@ -94,7 +94,7 @@
 
               <!-- TOEFL PROGRAM-->
               <li class="has-dropdown">
-              	<a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
                   <ul class="dropdown">
                     <li class="divider"></li>
                       <li><label>Durasi 2 Minggu</label></li>
@@ -104,15 +104,15 @@
                         <li><a href="#">IELTS</a></li>
                         <li><a href="#">TOEFL (IBT)</a></li>
                     <li class="divider"></li>
-                    	<li><label>Durasi 1 Bulan</label></li>
+                      <li><label>Durasi 1 Bulan</label></li>
                         <li><a href="#">Pre TOEFL (ITP)</a></li>
                         <li><a href="#">TOEFL (ITP)</a></li>
                   </ul>
               </li>
 
-  		        <!-- PAKET PROGRAM-->
+              <!-- PAKET PROGRAM-->
               <li class="has-dropdown">
-              	<a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
                   <ul class="dropdown">
                     <li class="divider"></li>
                       <li><label>Durasi 2 Minggu</label></li>
@@ -126,14 +126,14 @@
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
-            	<li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-            	<li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+              <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
             </ul>
           </li>
 
           <!-- MENU PRESENSI-->
           <li class="divider"></li>
-          	<li class="has-dropdown">
+            <li class="has-dropdown">
               <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
             </li>
       </ul>
@@ -185,69 +185,128 @@
 
   <!-- PEGAWAI -->
   <div class="row">
-    <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Absensi Pegawai</h2>
-      <div class="row">
-        <div class="small-6 columns">
-          <a href="<?php echo base_url();?>c_absen/form_tambah" class="button radius">Buat Absensi</a>
-        </div>
+  <div class="large-12 panel">
+  <?php
+      echo form_open('c_absen/tambah');
+        echo '<center><h3>Form Tambah Absensi</h3></center>
         
-      </div>
-          <table>
-            <thead>
+          <div class="row">
+            <div class="large-12 columns">
               <tr>
-                <th>No</th>
-                <th>ID Absen</th>
-                <th>Status Absen</th>
-                <th>Tanggal Absen</th>
-                <th>Pegawai Pengganti</th>
-                <th>Ruang</th>
-                <th>Jam</th>
-                <th>Periode Tanggal</th>
-                <th>Nama Pegawai</th>
-                <th>Action</th>
+                <td>ID Absen</td>
+                <td>:</td>
+                <td>'.form_input('idabsen',$newID,'readonly').'</td>
               </tr>
-            </thead>
-
-            <tbody>
-              <?php echo '<tr>';
-                $i=1;
-                  foreach($queryabsen->result_array() as $rows) {
-                    echo "<td>".$i."</td>";
-                    echo "<td>".$rows['idabsen']."</td>";
-                    echo "<td>".$rows['status_absen']."</td>";
-                    echo "<td>".$rows['tgl_absen']."</td>";
-                    echo "<td>".$rows['idpeg_pengganti']."</td>";
-                    echo "<td>".$rows['namaruang']."</td>";
-                    echo "<td>".$rows['jam']."</td>";
-                    echo "<td>".$rows['periode_tgl']."</td>";
-                    echo "<td>".$rows['nama']."</td>";
-                    $modal = array(
-                      'width'       => '800',
-                      'height'      => '600',
-                      'scrollbars'  => 'yes',
-                      'status'      => 'yes',
-                      'resizable'   => 'yes',
-                      'screenx'     => '0',
-                      'screeny'     => '0'
-                      );
-                    echo "<td>".anchor_popup('c_grammar/form_update_absen/'.$rows['idabsen'],'update absen', $modal)."</td>";
-                    
-                    $i++;
-                  echo '</tr>';
-                  }
-              ?>
-            </tbody>
-          </table>
-    </div>
-  </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+               <tr>
+                <td>Status Absen</td>
+                <td>:</td>
+                <td>';
+                $dropdown_absensi = array(
+                    "Tidak Hadir" => "Tidak Hadir",
+                    "Hadir"       => "Hadir");
+                echo form_dropdown('status_absen', $dropdown_absensi);
+                echo '</td>
+              </tr>
+            </div>
+          </div><br/>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Tanggal Absen</td>
+                <td>:</td>
+                <td>'.form_input('tgl_absen').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Pegawai Pengganti</td>
+                <td>:</td>  
+                <td>'.form_input('idpeg_pengganti').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Nama Ruang</td>
+                <td>:</td>
+                <td>
+                  <select name="namaruang">
+                    <option value="kosong">- Pilih nama ruang -</option>
+                    ';
+                    foreach ($dropdown_ruang->result_array() as $row) {
+                      echo "<option value='". $row['idruang'] ."'>Ruang ".$row['namaruang'] ."</option>";
+                    }
+                    echo '
+                  </select>
+                </td>
+              </tr>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Jadwal</td>
+                <td>:</td>
+                <td>
+                  <select name="jadwal">
+                  <option value="kosong">- Pilih Jadwal -</option>
+                    ';
+                    foreach ($dropdown_jadwal->result_array() as $row) {
+                      echo "<option value='". $row['idjadwal'] ."'>Jam: ".$row['jam']." : Periode tanggal: ".$row['periode_tgl']."</option>";
+                    }
+                    echo '
+                  </select>
+                </td>
+              </tr>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Nama Pegawai</td>
+                <td>:</td>
+                <td> 
+                  <select name="namapeg">
+                  <option value="kosong">- Pilih nama pegawai -</option>
+                    ';
+                    foreach ($dropdown_nmpegawai->result_array() as $row) {
+                      echo "<option value='". $row['idpeg'] ."'>".$row['nama'] ."</option>";
+                    }
+                    echo '
+                  </select>
+                </td>
+              </tr>
+            </div>
+          </div>
+          <br>
+        <label>
+          <input type="submit" value="Save" class="button radius expand">
+        </label>
+        <label>
+          <a href='. base_url() .'c_absen/disp class="button radius expand">Back</a>
+        </label>';
+        echo form_close();
+      ?>
+      <?php if (isset($validation_errors)) echo $validation_errors;?>
+      </div>
+      </div>
 
 		<!-- javascript foundation -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>    
-  	<script type="text/javascript">
-  		$(document).foundation();
-  	</script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+  <script type="text/javascript">
+		$(document).foundation();
+	</script>
 	</body>
 </html>
