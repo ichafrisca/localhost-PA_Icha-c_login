@@ -43,11 +43,11 @@ class C_login extends CI_Controller {
 					$data['query'] = $this->m_dtpegawai->get_pegawai_page();
 					$this->load->view('headeradmin', $data);
 				} else if ($key->STATUS == 'Tutor'){
-					$this->session->set_userdata($data1);
-					$this->load->view('homeuser');
+					$data['sesi_tutor'] = $this->session->set_userdata($data1);
+					$this->load->view('homeuser', $data);
 				} else if ($key->STATUS == 'Office') {
-					$this->session->set_userdata($data1);
-					$this->load->view('homeuser');
+					$data['sesi_office'] = $this->session->set_userdata($data1);
+					$this->load->view('homeuser', $data);
 				}
 			}
 
