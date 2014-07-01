@@ -46,8 +46,8 @@ class C_login extends CI_Controller {
 					$this->session->set_userdata("pengguna", $key->IDPEG);
 					$this->load->view('homeuser');
 				} else if ($key->STATUS == 'Office') {
-					$data['sesi_office'] = $this->session->set_userdata($data1);
-					$this->load->view('homeuser', $data);
+					$this->session->set_userdata("pengguna", $key->IDPEG);
+					$this->load->view('homeuser');
 				}
 			}
 
