@@ -44,62 +44,110 @@
     					<section class="main-section">
     						<div class="row">
     							<div class="large-12 columns">
-    								<br>
-    									<br>
-    									<table border="100px" align="center">
-	    										<tbody>
-	    											<tr>
-	    												<td width="550">
-				    										<table>
-				    											<tr>
-				    												<th colspan="8">
-				    													<font>Data Pegawai</font>
-				    												</th>
-				    											</tr>
-																<tr>
-																	<td width="200">1. Nama</td>
-																	<td>:</td>
-																	
-																</tr>
-																<tr>
-																	<td>2. Alamat</td>
-																	<td>:</td>
-																	
-																</tr>
-																<tr>
-																	<td>3. Tempat Tanggal Lahir</td>
-																	<td>:</td>
-																	
-																</tr>
-																<tr>
-																	<td>4. Nomor Telp</td>
-																	<td>:</td>
-																	
-																</tr>
-																<tr>
-																	<td>5. Username</td>
-																	<td>:</td>
-																	
-																</tr>
-																<tr>
-																	<td>6. Password</td>
-																	<td>:</td>
-																	
-																</tr>
-																<tr>
-																	<td>7. Status Pegawai</td>
-																	<td>:</td>	
-																</tr>
-																<tr>
-																	<td>
-																		<input type="submit" value="Edit Profil" class="button radius" style="position:center;">
-																	</td>
-																</tr>
-															</table>
-														</td>
-													</tr>
-												</tbody>
-											</table>
+    								<?php
+    									foreach ($queryuser->result_array() as $row){
+										    echo form_open('utama/profil');
+										        echo '<center><h3>Data Pegawai</h3></center>
+										        
+										          <div class="row">
+										            <div class="large-12 columns">
+										              <tr>
+										                <td>ID Pegawai</td>
+										                <td>:</td>
+										                <td>'.form_input('IDPEG',$row['idpeg'],'readonly').'</td>
+										              </tr>
+										            </div>
+										          </div>
+										          <div class="row">
+										            <div class="large-12 columns">
+										               <tr>
+										                <td>Nama</td>
+										                <td>:</td>
+										                <td>'.form_input('NAMA',$row['nama']).'</td>
+										              </tr>
+										            </div>
+										          </div>
+										          <div class="row">
+										            <div class="large-12 columns">
+										              <tr>
+										                <td>Alamat</td>
+										                <td>:</td>
+										                <td>'.form_textarea('ALAMAT',$row['alamat']).'</td>
+										              </tr>
+										            </div>
+										          </div>
+										          <br>
+										          <div class="row">
+										            <div class="large-4 columns">
+										              <tr>
+										                <td>Tempat Tanggal Lahir</td>
+										                <td>:</td>
+										                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir']).'</td>
+										              </tr>
+										            </div>
+										            <div class="large-4 columns">
+										              <tr>
+										                <td>Tempat Tanggal Lahir</td>
+										                <td>:</td>
+										                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir']).'</td>
+										              </tr>
+										            </div>
+										          </div>
+										          <div class="row">
+										            <div class="large-12 columns">
+										              <tr>
+										                <td>No Telepon</td>
+										                <td>:</td>
+										                <td>'.form_input('NO_TELP',$row['no_telp']).'</td>
+										              </tr>
+										            </div>
+										          </div>
+										          <div class="row">
+										            <div class="large-12 columns">
+										              <tr>
+										                <td>Status</td>
+										                  '.form_input('STATUS', $row['status'], 'readonly').'</td>'.'
+										              </tr>
+										            </div>
+										          </div>
+										          <div class="row">
+										            <div class="large-12 columns">
+										              <tr>
+										                <td>Status Kepegawaian</td>
+										                  '.form_input('STAT_PEG', $row['stat_peg'], 'readonly').'</td>'.'
+										              </tr>
+										            </div>
+										          </div>
+										          <div class="row">
+										            <div class="large-12 columns">
+										              <tr>
+										                <td>Username</td>
+										                <td>:</td>
+										                <td>'.form_input('USERNAME',$row['username']).'</td>
+										              </tr>
+										            </div>
+										          </div>
+										          <div class="row">
+										            <div class="large-12 columns">
+										              <tr>
+										                <td>Password</td>
+										                <small>required</small>
+										                <td>:</td>
+										                <td>'.form_input('PASSWORD',$row['password'],'required pattern="[a-zA-Z 0-9]+"').'</td>
+										              </tr>
+										            </div>
+										          </div>
+
+										        <label>
+										          <input type="submit" value="Save" class="button radius expand">
+										        </label>
+										        <label>
+										          <input type="submit" value="Back" class="button radius expand">
+										          <a href="<?php echo base_url()?>utama"></a>
+										        </label>';
+										        echo form_close();
+										      }
+    								?>
     							</div>
     						</div>
     					</section>

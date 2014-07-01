@@ -18,7 +18,7 @@ class C_login extends CI_Controller {
 		$data1 = $this->db->get('PEGAWAI');
 
 		if ($data1->num_rows()==1) {
-			$this->db->select('STATUS');
+			$this->db->select('STATUS, IDPEG');
 			$this->db->where("USERNAME",$this->input->post('user'));
 			$this->db->where("PASSWORD",$this->input->post('pass'));
 			$status = $this->db->get('PEGAWAI')->result();
@@ -43,8 +43,8 @@ class C_login extends CI_Controller {
 					$data['query'] = $this->m_dtpegawai->get_pegawai_page();
 					$this->load->view('headeradmin', $data);
 				} else if ($key->STATUS == 'Tutor'){
-					$data['sesi_tutor'] = $this->session->set_userdata($data1);
-					$this->load->view('homeuser', $data);
+					$this->session->set_userdata("pengguna", $key->IDPEG);
+					$this->load->view('homeuser');
 				} else if ($key->STATUS == 'Office') {
 					$data['sesi_office'] = $this->session->set_userdata($data1);
 					$this->load->view('homeuser', $data);
