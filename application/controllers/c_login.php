@@ -51,10 +51,10 @@ class C_login extends CI_Controller {
 				}
 			}
 
-			$data = array(
-				'is_login' => 'ok',
-				'user' => $this->input->post('user')
-			);
+			// $data = array(
+			// 	'is_login' => 'ok',
+			// 	'user' => $this->input->post('user')
+			// );
 			
 		} else {
 			$this->session->set_flashdata('message', "Kombinasi username & password salah atau status pegawai tidak aktif");

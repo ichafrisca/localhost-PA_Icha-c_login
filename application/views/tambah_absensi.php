@@ -5,7 +5,8 @@
 		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
 
-<body>		   
+<body>		
+
  <!-- Header and Nav -->
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
@@ -33,96 +34,33 @@
           <li class="has-dropdown">
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Jadwal Tetap</a></li>
-                    <li><a href="#">Holiday Program</a></li>
-                  </ul>
               </li>
 
               <!-- SPEAKING PROGRAM -->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">Elementary Stage</a></li>
-                        <li><a href="#">Talk More</a></li>
-                        <li><a href="#">English Corner</a></li>
-                        <li><a href="#">Confidence</a></li>
-                        <li><a href="#">Grammar for Speaking</a></li>
-                        <li><a href="#">Academic Speaking</a></li>
-                        <li><a href="#">Ear Waves</a></li>
-                        <li><a href="#">Ear Waves</a></li>
-
-                    <!-- DURASI 1 MINGGU -->
-                    <li class="divider"></li>
-                      <li><label>Durasi 1 Minggu</label></li>
-                        <li><a href="#">The Workshop - Job Interview</a></li>
-                        <li><a href="#">The workshop - Psyco-Test</a></li>
-
-                    <!-- DURASI 1 BULAN -->
-                    <li class="divider"></li>
-                        <li><label>Durasi 1 Bulan</label></li>
-                          <li><a href="#">Dynamic Speaking</a></li>
-                          <li><a href="#">Speaking Therapy</a></li>
-                  </ul>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">Pronunciation Stage 1</a></li>
-                        <li><a href="#">Pronunciation Stage 2</a></li>
-                  </ul>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">Vocabulary 1</a></li>
-                        <li><a href="#">Vocabulary 2</a></li>
-                  </ul>
               </li>
 
               <!-- TOEFL PROGRAM-->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">Basic Program 1 Exercise</a></li>
-                        <li><a href="#">Basic Program 2 Exercise</a></li>
-                        <li><a href="#">Pre TOEFL (IBT)</a></li>
-                        <li><a href="#">IELTS</a></li>
-                        <li><a href="#">TOEFL (IBT)</a></li>
-                    <li class="divider"></li>
-                      <li><label>Durasi 1 Bulan</label></li>
-                        <li><a href="#">Pre TOEFL (ITP)</a></li>
-                        <li><a href="#">TOEFL (ITP)</a></li>
-                  </ul>
               </li>
 
               <!-- PAKET PROGRAM-->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">E-fast 3</a></li>
-                    <li class="divider"></li>
-                      <li><label>Durasi 1 Bulan</label></li>
-                        <li><a href="#">E-fast 1</a></li>
-                        <li><a href="#">E-fast 2</a></li>            
-                        <li><a href="#">E-fast 4</a></li>
-                  </ul>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
@@ -133,49 +71,21 @@
 
           <!-- MENU PRESENSI-->
           <li class="divider"></li>
-            <li class="has-dropdown">
+            <li>
               <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
             </li>
-      </ul>
- 
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="divider"></li>
-        <li class="has-dropdown">
-          <a href="#">Main Item 4</a>
-          <ul class="dropdown">
-            <li><label>Section Name</label></li>
-            <li class="has-dropdown">
-              <a href="#" class="">Has Dropdown, Level 1</a>
-              <ul class="dropdown">
-                <li><a href="#">Dropdown Options</a></li>
-                <li><a href="#">Dropdown Options</a></li>
-                <li class="has-dropdown">
-                  <a href="#">Has Dropdown, Level 2</a>
-                  <ul class="dropdown test">
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-              </ul>
+      
+          <!-- GAJI PEGAWAI -->
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
             </li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><label>Section Name</label></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><a href="#">See all →</a></li>
-          </ul>
-        </li>
-        <li class="divider"></li>
-        <li><a href="#">Main Item 5</a></li>
+          <li class="divider"></li>
+           <!--  <li><a href="#">Detail Gaji</a></li> -->
+      </ul>
+
+      <!-- RIGHT POSITION -->
+      <ul class="right">
         <li class="divider"></li>
         <li><a href="<?php echo base_url();?>c_login/logout">Logout</a></li>
       </ul>
@@ -206,9 +116,10 @@
                 <td>:</td>
                 <td>';
                 $dropdown_absensi = array(
+                    "-" => "- Pilih Status Kehadiran -",
                     "Tidak Hadir" => "Tidak Hadir",
                     "Hadir"       => "Hadir");
-                echo form_dropdown('status_absen', $dropdown_absensi);
+                echo form_dropdown('status_absen', $dropdown_absensi, '-');
                 echo '</td>
               </tr>
             </div>
@@ -218,7 +129,7 @@
               <tr>
                 <td>Tanggal Absen</td>
                 <td>:</td>
-                <td>'.form_input('tgl_absen').'</td>
+                <td><input type="text" name="tgl_absen" id="datepicker"></td>
               </tr>
             </div>
           </div>
@@ -234,37 +145,16 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Nama Ruang</td>
-                <td>:</td>
-                <td>
-                  <select name="namaruang">
-                    <option value="kosong">- Pilih nama ruang -</option>
-                    ';
-                    foreach ($dropdown_ruang->result_array() as $row) {
-                      echo "<option value='". $row['idruang'] ."'>Ruang ".$row['namaruang'] ."</option>";
-                    }
-                    echo '
-                  </select>
-                </td>
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
                 <td>Jadwal</td>
                 <td>:</td>
-                <td>
-                  <select name="jadwal">
-                  <option value="kosong">- Pilih Jadwal -</option>
-                    ';
-                    foreach ($dropdown_jadwal->result_array() as $row) {
-                      echo "<option value='". $row['idjadwal'] ."'>Jam: ".$row['jam']." : Periode tanggal: ".$row['periode_tgl']."</option>";
-                    }
-                    echo '
-                  </select>
-                </td>
+                <td>';
+                  $dropdon = array('-' => '- Pilih Jadwal - ');
+                  foreach ($dropdown_jadwal as $row) {
+                    $dropdon[$row['idjadwal']] = $row['jam'];
+                  }
+                  echo form_dropdown('idjadwal', $dropdon, '-');
+                  echo
+                '</td>
               </tr>
             </div>
           </div>
@@ -274,16 +164,14 @@
               <tr>
                 <td>Nama Pegawai</td>
                 <td>:</td>
-                <td> 
-                  <select name="namapeg">
-                  <option value="kosong">- Pilih nama pegawai -</option>
-                    ';
-                    foreach ($dropdown_nmpegawai->result_array() as $row) {
-                      echo "<option value='". $row['idpeg'] ."'>".$row['nama'] ."</option>";
-                    }
-                    echo '
-                  </select>
-                </td>
+                <td>';
+                  $dropdown = array('-' => '- Pilih Nama Pegawai - ');
+                  foreach ($dropdown_nmpegawai as $row) {
+                    $dropdown[$row['idpeg']] = $row['nama'];
+                  }
+                  echo form_dropdown('idpeg', $dropdown, '-');
+                  echo
+                '</td>
               </tr>
             </div>
           </div>
@@ -305,8 +193,17 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
   <script type="text/javascript">
 		$(document).foundation();
 	</script>
+  <script>
+    $(function() {
+      $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
+    });
+  </script>
 	</body>
 </html>

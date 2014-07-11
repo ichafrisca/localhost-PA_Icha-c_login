@@ -76,24 +76,5 @@
 				redirect('C_grammar/disp');
 			}
 		}
-
-		public function form_update_grammar($IDJADWAL){
-			$this->load->model('m_grammar');
-			$data['querygrammar']=$this->m_grammar->tampil_edit($IDJADWA);
-
-			$this->load->view('edit_grammar',$data);
-		}
-
-		public function edit(){
-			$data=array(
-				'idpeg'=>$this->input->post('IDJADWAL'),
-				'jam'=>$this->input->post('JAM'),
-				'tanggal'=>$this->input->post('TANGGAL'),
-				'namaruang'=>$this->input->post('NAMARUANG'),
-			);
-			$this->load->model('m_grammar');
-			$this->m_grammar->edit($data,$this->input->post('IDJADWAL'));
-			$this->disp();
-		}
 	}
 ?>

@@ -33,96 +33,33 @@
           <li class="has-dropdown">
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Jadwal Tetap</a></li>
-                    <li><a href="#">Holiday Program</a></li>
-                  </ul>
               </li>
 
               <!-- SPEAKING PROGRAM -->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">Elementary Stage</a></li>
-                        <li><a href="#">Talk More</a></li>
-                        <li><a href="#">English Corner</a></li>
-                        <li><a href="#">Confidence</a></li>
-                        <li><a href="#">Grammar for Speaking</a></li>
-                        <li><a href="#">Academic Speaking</a></li>
-                        <li><a href="#">Ear Waves</a></li>
-                        <li><a href="#">Ear Waves</a></li>
-
-                    <!-- DURASI 1 MINGGU -->
-                    <li class="divider"></li>
-                      <li><label>Durasi 1 Minggu</label></li>
-                        <li><a href="#">The Workshop - Job Interview</a></li>
-                        <li><a href="#">The workshop - Psyco-Test</a></li>
-
-                    <!-- DURASI 1 BULAN -->
-                    <li class="divider"></li>
-                        <li><label>Durasi 1 Bulan</label></li>
-                          <li><a href="#">Dynamic Speaking</a></li>
-                          <li><a href="#">Speaking Therapy</a></li>
-                  </ul>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">Pronunciation Stage 1</a></li>
-                        <li><a href="#">Pronunciation Stage 2</a></li>
-                  </ul>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">Vocabulary 1</a></li>
-                        <li><a href="#">Vocabulary 2</a></li>
-                  </ul>
               </li>
 
               <!-- TOEFL PROGRAM-->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">Basic Program 1 Exercise</a></li>
-                        <li><a href="#">Basic Program 2 Exercise</a></li>
-                        <li><a href="#">Pre TOEFL (IBT)</a></li>
-                        <li><a href="#">IELTS</a></li>
-                        <li><a href="#">TOEFL (IBT)</a></li>
-                    <li class="divider"></li>
-                      <li><label>Durasi 1 Bulan</label></li>
-                        <li><a href="#">Pre TOEFL (ITP)</a></li>
-                        <li><a href="#">TOEFL (ITP)</a></li>
-                  </ul>
               </li>
 
               <!-- PAKET PROGRAM-->
-              <li class="has-dropdown">
+              <li>
                 <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
-                  <ul class="dropdown">
-                    <li class="divider"></li>
-                      <li><label>Durasi 2 Minggu</label></li>
-                        <li><a href="#">E-fast 3</a></li>
-                    <li class="divider"></li>
-                      <li><label>Durasi 1 Bulan</label></li>
-                        <li><a href="#">E-fast 1</a></li>
-                        <li><a href="#">E-fast 2</a></li>            
-                        <li><a href="#">E-fast 4</a></li>
-                  </ul>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
@@ -133,49 +70,21 @@
 
           <!-- MENU PRESENSI-->
           <li class="divider"></li>
-            <li class="has-dropdown">
+            <li>
               <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
             </li>
-      </ul>
- 
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="divider"></li>
-        <li class="has-dropdown">
-          <a href="#">Main Item 4</a>
-          <ul class="dropdown">
-            <li><label>Section Name</label></li>
-            <li class="has-dropdown">
-              <a href="#" class="">Has Dropdown, Level 1</a>
-              <ul class="dropdown">
-                <li><a href="#">Dropdown Options</a></li>
-                <li><a href="#">Dropdown Options</a></li>
-                <li class="has-dropdown">
-                  <a href="#">Has Dropdown, Level 2</a>
-                  <ul class="dropdown test">
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                    <li><a href="#">Subdropdown Option</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-                <li><a href="#">Subdropdown Option</a></li>
-              </ul>
+      
+          <!-- GAJI PEGAWAI -->
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
             </li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><label>Section Name</label></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li><a href="#">Dropdown Option</a></li>
-            <li class="divider"></li>
-            <li><a href="#">See all →</a></li>
-          </ul>
-        </li>
-        <li class="divider"></li>
-        <li><a href="#">Main Item 5</a></li>
+          <li class="divider"></li>
+           <!--  <li><a href="#">Detail Gaji</a></li> -->
+      </ul>
+
+      <!-- RIGHT POSITION -->
+      <ul class="right">
         <li class="divider"></li>
         <li><a href="<?php echo base_url();?>c_login/logout">Logout</a></li>
       </ul>
@@ -251,7 +160,7 @@
                 <td>Status</td>
                   '.form_hidden('STATUS',$row['status']);
                     $opsi=array("- Status -","Admin"=>"Admin", "Tutor"=>"Tutor", "Office"=>"Office");
-                    echo '<td width="150" height="25">:'.form_dropdown('STATUS',$opsi).'</td>'.'
+                    echo '<td width="150" height="25">:'.form_dropdown('STATUS', $opsi, $row['status']).'</td>'.'
               </tr>
             </div>
           </div>
@@ -262,7 +171,7 @@
                 <td>Status Kepegawaian</td>
                   '.form_hidden('STAT_PEG',$row['stat_peg']);
                     $opsi=array("- Status Kepegawaian -","Aktif"=>"Aktif", "Tidak Aktif"=>"Tidak Aktif");
-                    echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG',$opsi).'</td>'.'
+                    echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG', $opsi, $row['stat_peg']).'</td>'.'
               </tr>
             </div>
           </div>
