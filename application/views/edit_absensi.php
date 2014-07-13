@@ -133,8 +133,7 @@
           <input type="submit" value="Save" class="button radius expand">
         </label>
         <label>
-          <input type="submit" value="Back" class="button radius expand">
-          <a href="<?php echo base_url()?>c_absen/disp"></a>
+          <a href='.base_url().'c_absen/disp class="button radius expand">Back</a>
         </label>';
         echo form_close();
       }
