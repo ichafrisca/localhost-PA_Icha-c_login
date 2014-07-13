@@ -141,7 +141,7 @@
               <tr>
                 <td>Tempat Tanggal Lahir</td>
                 <td>:</td>
-                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir']).'</td>
+                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir'], 'id="datepicker"').'</td>
               </tr>
             </div>
           </div>
@@ -181,7 +181,7 @@
               <tr>
                 <td>Username</td>
                 <td>:</td>
-                <td>'.form_input('USERNAME',$row['username']).'</td>
+                <td>'.form_input('USERNAME',$row['username'],'required|min_length[4]|max_length[12]|is_unique[pegawai.username]','callback_username_check').'</td>
               </tr>
             </div>
           </div>
@@ -191,7 +191,7 @@
                 <td>Password</td>
                 <small>required</small>
                 <td>:</td>
-                <td>'.form_input('PASSWORD',$row['password'],'required pattern="[a-zA-Z 0-9]+"').'</td>
+                <td>'.form_password('PASSWORD',$row['password'],'required pattern="[a-zA-Z 0-9]+"').'</td>
               </tr>
             </div>
           </div>
@@ -213,9 +213,19 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">  
 	<script type="text/javascript">
 		$(document).foundation();
 	</script>
+
+  <script>
+    $(function() {
+      $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
+    });
+  </script>
 	</body>
 </html>

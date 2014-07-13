@@ -104,11 +104,10 @@
                 <th>ID Jadwal</th>
                 <th>Jam</th>
                 <th>Periode Tanggal</th>
+                <th>Slot</th>
                 <th>Nama Ruang</th>
-                <th>Nama Program</th>
                 <th>Sub Program</th>
-                <th>Durasi</th>
-                <th>Action</th>
+                <th>Program</th>
               </tr>
             </thead>
 
@@ -120,11 +119,10 @@
                     echo "<td>".$rows['idjadwal']."</td>";
                     echo "<td>".$rows['jam']."</td>";
                     echo "<td>".$rows['periode_tgl']."</td>";
+                    echo "<td>".$rows['slot']."</td>";
                     echo "<td>".$rows['namaruang']."</td>";
-                    echo "<td>".$rows['nmprogram']."</td>";
                     echo "<td>".$rows['nmsubprog']."</td>";
-                    echo "<td>".$rows['durasi']."</td>";
-                    echo "<td>".anchor('c_speaking/form_update_speaking/'.$rows['idjadwal'],'update', array('class' => 'button'))."</td>";
+                    echo "<td>".$rows['nmprogram']."</td>";
                     
                     $i++;
                   echo '</tr>';

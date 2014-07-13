@@ -152,7 +152,8 @@
               <tr>
                 <td>Tanggal Lahir</td>
                 <td>:</td>
-                <td><input type="text" name="tgl_lahir" id="datepicker"></td>
+                <td>'; $tanggal = array('name'=>'tgl_lahir','id'=>'datepicker');
+                      echo form_input($tanggal ) .'</td>
               </tr>
             </div>
           </div>
@@ -216,19 +217,27 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
   <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
   <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
- <!-- //  <script type="text/javascript" src="<?php echo base_url(); ?>assets/jsdatepick-calendar/jsDatePick.jquery.min.1.3.js"></script>
- //  <script type="text/javascript" src="<?php echo base_url(); ?>assets/jsdatepick-calendar/jquery.1.4.2.js"></script>--> 
+  <script src="<?php echo base_url(); ?>assets/jquery.ui.datepicker.validation.min.js"></script>
+
+  <link rel="stylesheet" href="/resources/demos/style.css"> 
+  
   <script type="text/javascript">
 		$(document).foundation();
 	</script>
 
   <script>
     $(function() {
-      $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
+      $( "#datepicker" ).datepicker(
+        {
+          dateFormat:'yy-mm-dd', 
+          showAnim: 'slideDown',
+          maxDate: 0
+        }
+      );
     });
   </script>
 	</body>
