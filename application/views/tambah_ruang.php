@@ -34,37 +34,37 @@
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
               <li>
-                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
+                <a href="<?php echo base_url()?>c_jadwal/grammar">Grammar</a>
               </li>
 
               <!-- SPEAKING PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
+                <a href="<?php echo base_url()?>c_jadwal/speaking">Speaking</a>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                <a href="<?php echo base_url()?>c_jadwal/pronun">Pronunciation</a>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
+                <a href="<?php echo base_url()?>c_jadwal/vocab">Vocabulary</a>
               </li>
 
               <!-- TOEFL PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/toefl">TOEFL</a>
               </li>
 
               <!-- PAKET PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/efast">E-fast & Scoring TOEFL</a>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
-              <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-              <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofpagi">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofsiang">Office Shift Siang</a></li>
             </ul>
           </li>
 
@@ -73,11 +73,15 @@
             <li>
               <a href="<?php echo base_url()?>c_absen/disp">Presensi Pegawai</a>
             </li>
-
+     
           <!-- GAJI PEGAWAI -->
           <li class="divider"></li>
             <li>
               <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
+            </li>
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_sms/disp">SMS</a>
             </li>
           <li class="divider"></li>
            <!--  <li><a href="#">Detail Gaji</a></li> -->
@@ -95,68 +99,46 @@
   <!-- PEGAWAI -->
   <div class="row">
   <div class="large-12 panel">
-  
   <?php
-    foreach ($querygrammar->result_array() as $row){
-      echo form_open('c_grammar/edit');
-        echo '<center><h3>Edit Pegawai</h3></center>
+      echo form_open('c_jadwal/tambah_ruang');
+        echo '<center><h3>Form Tambah Program</h3></center>
         
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>ID Jadwal</td>
+                <td>ID Ruang</td>
                 <td>:</td>
-                <td>'.form_input('IDJADWAL',$row['idjadwal'],'readonly').'</td>
+                <td>'.form_input('idruang',$newID,'readonly').'</td>
               </tr>
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
                <tr>
-                <td>Jam</td>
-                <td>:</td>
-                <td>'.form_input('JAM',$row['jam']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Tanggal</td>
-                <td>:</td>
-                <td>'.form_input('TANGGAL',$row['tanggal']).'</td>
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
                 <td>Nama Ruang</td>
                 <td>:</td>
-                <td>'.form_input('NAMARUANG',$row['namaruang']).'</td>
+                <td>'.form_input('namaruang').'</td>
               </tr>
             </div>
-          </div>
+          </div><br/>
         <label>
           <input type="submit" value="Save" class="button radius expand">
         </label>
         <label>
-          <input type="submit" value="Back" class="button radius expand">
-          <a href="<?php echo base_url()?>c_grammar/disp"></a>
+          <a href='. base_url() .'c_jadwal/disp class="button radius expand">Back</a>
         </label>';
         echo form_close();
-      }
       ?>
+      <?php if (isset($validation_errors)) echo $validation_errors;?>
       </div>
       </div>
 
 		<!-- javascript foundation -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
-	<script type="text/javascript">
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+  <script type="text/javascript">
 		$(document).foundation();
 	</script>
 	</body>
