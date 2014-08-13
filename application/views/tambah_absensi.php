@@ -116,18 +116,10 @@
           <div class="row">
             <div class="large-12 columns">
                <tr>
-                <td>Status Absen</td>
-                <td>:</td>
-                <td>';
-                $dropdown_absensi = array(
-                    "-" => "- Pilih Status Kehadiran -",
-                    "Tidak Hadir" => "Tidak Hadir",
-                    "Hadir"       => "Hadir");
-                echo form_dropdown('status_absen', $dropdown_absensi, '-');
-                echo '</td>
+                <td>'.form_hidden('status_absen','Tidak Hadir').'</td>
               </tr>
             </div>
-          </div><br/>
+          </div>
           <div class="row">
             <div class="large-12 columns">
               <tr>
@@ -140,12 +132,27 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Pegawai Pengganti</td>
-                <td>:</td>  
-                <td>'.form_input('idpeg_pengganti').'</td>
+                <td>Nama Pegawai</td>
+                <td>:</td>
+                <td>';
+                  $dropdown = array('-' => '- Pilih Nama Pegawai - ');
+                  foreach ($dropdown_nmpegawai as $row) {
+                    $dropdown[$row['idpeg']] = $row['nama'];
+                  }
+                  echo form_dropdown('idpeg', $dropdown, '-');
+                  echo
+                '</td>
               </tr>
             </div>
           </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>'.form_hidden('idpeg_pengganti',0).'</td>
+              </tr>
+            </div>
+          </div>
+          <br>
           <div class="row">
             <div class="large-12 columns">
               <tr>
@@ -181,23 +188,6 @@
               </tr>
             </div>
           </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Nama Pegawai</td>
-                <td>:</td>
-                <td>';
-                  $dropdown = array('-' => '- Pilih Nama Pegawai - ');
-                  foreach ($dropdown_nmpegawai as $row) {
-                    $dropdown[$row['idpeg']] = $row['nama'];
-                  }
-                  echo form_dropdown('idpeg', $dropdown, '-');
-                  echo
-                '</td>
-              </tr>
-            </div>
-          </div>
-          <br>
         <label>
           <input type="submit" value="Save" class="button radius expand">
         </label>
