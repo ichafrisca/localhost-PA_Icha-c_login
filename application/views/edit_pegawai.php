@@ -34,37 +34,37 @@
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
               <li>
-                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
+                <a href="<?php echo base_url()?>c_jadwal/grammar">Grammar</a>
               </li>
 
               <!-- SPEAKING PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
+                <a href="<?php echo base_url()?>c_jadwal/speaking">Speaking</a>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                <a href="<?php echo base_url()?>c_jadwal/pronun">Pronunciation</a>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
+                <a href="<?php echo base_url()?>c_jadwal/vocab">Vocabulary</a>
               </li>
 
               <!-- TOEFL PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/toefl">TOEFL</a>
               </li>
 
               <!-- PAKET PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/efast">E-fast & Scoring TOEFL</a>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
-              <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-              <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofpagi">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofsiang">Office Shift Siang</a></li>
             </ul>
           </li>
 
@@ -78,6 +78,10 @@
           <li class="divider"></li>
             <li>
               <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
+            </li>
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_gaji/disp">SMS</a>
             </li>
           <li class="divider"></li>
            <!--  <li><a href="#">Detail Gaji</a></li> -->
@@ -115,7 +119,7 @@
                <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td>'.form_input('NAMA',$row['nama']).'</td>
+                <td>'.form_input('NAMA',$row['nama'],'required').'</td>
               </tr>
             </div>
           </div>
@@ -124,22 +128,24 @@
               <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td>'.form_textarea('ALAMAT',$row['alamat']).'</td>
+                <td>'.form_textarea('ALAMAT',$row['alamat'],'required').'</td>
               </tr>
             </div>
           </div>
           <br>
           <div class="row">
-            <div class="large-4 columns">
+            <div class="large-12 columns">
               <tr>
-                <td>Tempat Tanggal Lahir</td>
+                <td>Tempat Lahir</td>
                 <td>:</td>
-                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir']).'</td>
+                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir'],'required').'</td>
               </tr>
             </div>
-            <div class="large-4 columns">
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
               <tr>
-                <td>Tempat Tanggal Lahir</td>
+                <td>Tanggal Lahir</td>
                 <td>:</td>
                 <td>'.form_input('TGL_LAHIR',$row['tgl_lahir'], 'id="datepicker"').'</td>
               </tr>
@@ -150,7 +156,7 @@
               <tr>
                 <td>No Telepon</td>
                 <td>:</td>
-                <td>'.form_input('NO_TELP',$row['no_telp']).'</td>
+                <td>'.form_input('NO_TELP',$row['no_telp'],'required').'</td>
               </tr>
             </div>
           </div>
@@ -160,7 +166,7 @@
                 <td>Status</td>
                   '.form_hidden('STATUS',$row['status']);
                     $opsi=array("- Status -","Admin"=>"Admin", "Tutor"=>"Tutor", "Office"=>"Office");
-                    echo '<td width="150" height="25">:'.form_dropdown('STATUS', $opsi, $row['status']).'</td>'.'
+                    echo '<td width="150" height="25">:'.form_dropdown('STATUS', $opsi, $row['status'],'required').'</td>'.'
               </tr>
             </div>
           </div>
@@ -171,7 +177,7 @@
                 <td>Status Kepegawaian</td>
                   '.form_hidden('STAT_PEG',$row['stat_peg']);
                     $opsi=array("- Status Kepegawaian -","Aktif"=>"Aktif", "Tidak Aktif"=>"Tidak Aktif");
-                    echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG', $opsi, $row['stat_peg']).'</td>'.'
+                    echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG', $opsi, $row['stat_peg'],'required').'</td>'.'
               </tr>
             </div>
           </div>
@@ -191,7 +197,7 @@
                 <td>Password</td>
                 <small>required</small>
                 <td>:</td>
-                <td>'.form_password('PASSWORD',$row['password'],'required pattern="[a-zA-Z 0-9]+"').'</td>
+                <td>'.form_password('PASSWORD',$row['password'],'required').'</td>
               </tr>
             </div>
           </div>
@@ -226,6 +232,8 @@
     $(function() {
       $( "#datepicker" ).datepicker(
         {
+          changeMonth: 'true',
+          changeYear: 'true',
           dateFormat:'yy-mm-dd', 
           showAnim: 'slideDown',
           maxDate: 0

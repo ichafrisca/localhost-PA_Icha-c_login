@@ -101,7 +101,7 @@
   <div class="large-12 panel">
   <?php
       echo form_open('c_jadwal/tambah_ruang');
-        echo '<center><h3>Form Tambah Program</h3></center>
+        echo '<center><h3>Form Tambah Ruang</h3></center>
         
           <div class="row">
             <div class="large-12 columns">

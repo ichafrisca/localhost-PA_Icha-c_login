@@ -34,37 +34,37 @@
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
               <li>
-                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
+                <a href="<?php echo base_url()?>c_jadwal/grammar">Grammar</a>
               </li>
 
               <!-- SPEAKING PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
+                <a href="<?php echo base_url()?>c_jadwal/speaking">Speaking</a>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                <a href="<?php echo base_url()?>c_jadwal/pronun">Pronunciation</a>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
+                <a href="<?php echo base_url()?>c_jadwal/vocab">Vocabulary</a>
               </li>
 
               <!-- TOEFL PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/toefl">TOEFL</a>
               </li>
 
               <!-- PAKET PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/efast">E-fast & Scoring TOEFL</a>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
-              <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-              <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofpagi">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofsiang">Office Shift Siang</a></li>
             </ul>
           </li>
 
@@ -78,6 +78,10 @@
           <li class="divider"></li>
             <li>
               <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
+            </li>
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_sms/disp">SMS</a>
             </li>
           <li class="divider"></li>
            <!--  <li><a href="#">Detail Gaji</a></li> -->
@@ -95,7 +99,7 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Gaji Seluruh Pegawai</h2>
+      <h2 id="tables" style="text-align:center;">Gaji Pegawai</h2>
       <div class="row">
       <div class="small-6 columns">
           <a href="<?php echo base_url();?>c_gaji/form_tambah" class="button radius">Input Gaji</a>
@@ -129,7 +133,7 @@
                     echo "<td>".$rows['bonus']."</td>";
                     echo "<td>".$rows['totalgaji']."</td>";
                     echo "<td>".$rows['nama']."</td>";
-                    echo "<td>".anchor('c_gaji/form_update_gaji/'.$rows['idgaji'],'Edit')." | ".anchor('c_jadwal/hapus/'.$rows['idgaji'],'Hapus')."</td>";
+                    echo "<td>".anchor('c_gaji/form_update_gaji/'.$rows['idgaji'],'Ubah Gaji')." | ".anchor('c_jadwal/hapus/'.$rows['idgaji'],'Hapus')."</td>";
 
                     $i++;
                   echo '</tr>';

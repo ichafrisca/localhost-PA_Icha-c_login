@@ -10,6 +10,16 @@
 			return $querysms->result_array();
 		}
 
+		public function check_sms_hari_ini() {
+			$where = array('tanggal_hari_ini' => date('Y-m-d'), 'status_kirim' => '1');
+			$hasil = $this->db->get_where('sms_helper', $where)->result_array();
+			return count($hasil);
+		}
+
+		public function insert_hari_ini($sms) {
+			$this->db->insert('sms_helper', $sms);
+		}
+
 		public function dispinboxajax($page = 1, $total) {
 			if ($page < 1) {
 				$page = 0;

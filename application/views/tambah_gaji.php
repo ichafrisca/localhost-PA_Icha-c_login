@@ -34,37 +34,37 @@
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
               <li>
-                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
+                <a href="<?php echo base_url()?>c_jadwal/grammar">Grammar</a>
               </li>
 
               <!-- SPEAKING PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
+                <a href="<?php echo base_url()?>c_jadwal/speaking">Speaking</a>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                <a href="<?php echo base_url()?>c_jadwal/pronun">Pronunciation</a>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
+                <a href="<?php echo base_url()?>c_jadwal/vocab">Vocabulary</a>
               </li>
 
               <!-- TOEFL PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/toefl">TOEFL</a>
               </li>
 
               <!-- PAKET PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/efast">E-fast & Scoring TOEFL</a>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
-              <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-              <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofpagi">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofsiang">Office Shift Siang</a></li>
             </ul>
           </li>
 
@@ -79,7 +79,11 @@
             <li>
               <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
             </li>
-          <li class -->="divider"></li>
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_sms/disp">SMS</a>
+            </li>
+          <li class="divider"></li>
            <!--  <li><a href="#">Detail Gaji</a></li> -->
       </ul>
 
@@ -99,21 +103,11 @@
   <?php
     echo form_open('c_gaji/tambah');
       echo '
+      <br>
         <div class="row">
           <div class="large-12 columns">
             <tr>
-              <td>ID Gaji</td>
-              <td>:</td>
-              <td>'.form_input('idgaji',$newID,'readonly').'</td>
-            </tr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <tr>
-              <td>Tanggal</td>
-              <td>:</td>
-              <td><input type="text" name="tanggal" id="datepicker"></td>
+              <td>'.form_hidden('idgaji',$newID,'readonly').'</td>
             </tr>
           </div>
         </div>
@@ -122,40 +116,50 @@
             <tr>
               <td>Nama Pegawai</td>
               <td>:</td>
-              <td> 
-                <select name="namapeg">
-                  <option value="kosong">- Pilih nama pegawai -</option>
-                    ';
-                    foreach ($dropdown_nmpegawai->result_array() as $row) {
-                      echo "<option value='". $row['idpeg'] ."'>".$row['nama'] ."</option>";
-                    }
-                    echo '
-                </select>
+              <td>';
+                  $droppeg = array('-' => '- Pilih Pegawai - ');
+                  foreach ($dropdown_nmpegawai as $row) {
+                    $droppeg[$row['idpeg']] = $row['nama'];
+                  }
+                  echo form_dropdown('idpeg', $droppeg, '-', "id='drop_peg'");
+                  echo
+                '
               </td>
             </tr>
           </div>
         </div>
         <br>
         <div class="row">
+          <div class="large-6 columns">
+            <label for="from">Dari Tanggal</label>
+            <input type="text" id="from" name="from">
+          </div>
+          <div class="large-6 columns">
+            <label for="to">Sampai Tanggal</label>
+            <input type="text" id="to" name="to">
+          </div>
+        </div>
+        <div class="row">
           <div class="large-12 columns">
             <tr>
               <td>Jumlah Pertemuan</td>
               <td>:</td>
-              <td>'.form_input('jml_prtemuan').'</td>
+              <td>';
+              $property = array('name' => 'jml_prtemuan', 'id' => 'jml_pertemuan', 'readonly' => 'true');
+              echo form_input($property);
+              echo '</td>
             </tr>
           </div>
         </div>
         <div class="row">
-          <div class="large-4 columns">
+          <div class="large-6 columns">
             <tr>
               <td>Honor</td>
               <td>:</td>
               <td>'.form_input('honor').'</td>
             </tr>
           </div>
-        </div>
-        <div class="row">
-          <div class="large-4 columns">
+          <div class="large-6 columns">
             <tr>
               <td>Bonus</td>
               <td>:</td>
@@ -193,17 +197,61 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery-1.11.1.min.js"></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
   <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
   <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <script type="text/javascript">
-		$(document).foundation();
-	</script>
 
+  <!-- javascript jQueryUI datepicker -->
   <script>
     $(function() {
-      $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
+      $( "#from" ).datepicker({
+        dateFormat:'yy-mm-dd', 
+        showAnim: 'slideDown',
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+          $( "#to" ).datepicker( "option", "minDate", selectedDate );
+        }
+      });
+      $( "#to" ).datepicker({
+        dateFormat:'yy-mm-dd', 
+        showAnim: 'slideDown',
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 2,
+        onClose: function( selectedDate ) {
+          $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+        }
+      });
+    });
+  </script>
+
+  <!-- javascript jQuery -->
+  <script>
+    $(document).ready(function() {
+      // $("#from").change(function(),
+      $("#to").change(function() {
+        var hasil = $(this).val();
+        $.ajax({
+          type        : 'GET',
+          url         : 'jml_hadir/' + hasil,
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data) {
+            var totalHadir = 0;
+            for (var i = 0; i < data.length; i++) {
+              totalHadir += parseInt(data[i].total_hadir);
+            };
+            $("#jml_pertemuan").val(totalHadir);
+          },
+          error       : function(data) {
+            alert('kesalahan: ' + data);
+          }
+        });
+      });
     });
   </script>
 	</body>

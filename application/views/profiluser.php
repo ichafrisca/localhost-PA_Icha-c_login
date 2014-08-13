@@ -28,7 +28,7 @@
 								</a>
 							</section>
 							<section class="right tab-bar-section">
-								<h1 class="title">Profil Pegawai</h1>
+								<h1 class="title">Profil</h1>
 							</section>
 						</nav>
 						<aside class="left-off-canvas-menu">
@@ -36,8 +36,8 @@
 						        <li><label>Menu</label></li>
 						        <li><a href="<?php echo base_url().'utama'?>">Home</a></li>
 						        <li><a href="<?php echo base_url().'utama/profil'?>">Profil</a></li>
-						        <li><a href="#">Jadwal</a></li>
-						        <li><a href="#">Presensi</a></li>
+						        <li><a href="<?php echo base_url().'utama/jadwal'?>">Jadwal</a></li>
+						        <li><a href="<?php echo base_url().'utama/presensi'?>">Presensi</a></li>
 						    </ul>
     					</aside>
 
@@ -46,7 +46,7 @@
     							<div class="large-12 columns">
     								<?php
     									foreach ($queryuser->result_array() as $row){
-										    echo form_open('utama/profil');
+										    echo form_open('utama/edit');
 										        echo '<center><h3>Data Pegawai</h3></center>
 										        
 										          <div class="row">
@@ -80,16 +80,16 @@
 										          <div class="row">
 										            <div class="large-4 columns">
 										              <tr>
-										                <td>Tempat Tanggal Lahir</td>
+										                <td>Tempat Lahir</td>
 										                <td>:</td>
 										                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir']).'</td>
 										              </tr>
 										            </div>
 										            <div class="large-4 columns">
 										              <tr>
-										                <td>Tempat Tanggal Lahir</td>
+										                <td>Tanggal Lahir</td>
 										                <td>:</td>
-										                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir']).'</td>
+										                <td>'.form_input('TGL_LAHIR',$row['tgl_lahir'], 'id="datepicker"').'</td>
 										              </tr>
 										            </div>
 										          </div>
@@ -139,14 +139,14 @@
 										          </div>
 
 										        <label>
-										          <input type="submit" value="Save" class="button radius expand">
+										          	<input type="submit" value="Save" class="button radius expand">
 										        </label>
 										        <label>
-										          <input type="submit" value="Back" class="button radius expand">
-										          <a href="<?php echo base_url()?>utama"></a>
+											        <input type="submit" value="Back" class="button radius expand">
+											        <a href="<?php echo base_url()?>utama"></a>
 										        </label>';
-										        echo form_close();
-										      }
+										    echo form_close();
+										}
     								?>
     							</div>
     						</div>
@@ -174,6 +174,20 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.js"></script>  
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.offcanvas.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+  	<script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+  	<link rel="stylesheet" href="/resources/demos/style.css"> 
+	<script>
+    $(function() {
+      $( "#datepicker" ).datepicker(
+        {
+          dateFormat:'yy-mm-dd', 
+          showAnim: 'slideDown',
+          maxDate: 0
+        }
+      );
+    });
+  </script>
 	<script>
 		$(document).foundation()
 	</script>

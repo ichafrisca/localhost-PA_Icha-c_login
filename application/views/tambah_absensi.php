@@ -35,37 +35,37 @@
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
               <li>
-                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
+                <a href="<?php echo base_url()?>c_jadwal/grammar">Grammar</a>
               </li>
 
               <!-- SPEAKING PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
+                <a href="<?php echo base_url()?>c_jadwal/speaking">Speaking</a>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                <a href="<?php echo base_url()?>c_jadwal/pronun">Pronunciation</a>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
+                <a href="<?php echo base_url()?>c_jadwal/vocab">Vocabulary</a>
               </li>
 
               <!-- TOEFL PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/toefl">TOEFL</a>
               </li>
 
               <!-- PAKET PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/efast">E-fast & Scoring TOEFL</a>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
-              <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-              <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofpagi">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofsiang">Office Shift Siang</a></li>
             </ul>
           </li>
 
@@ -79,6 +79,10 @@
           <li class="divider"></li>
             <li>
               <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
+            </li>
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_sms/disp">SMS</a>
             </li>
           <li class="divider"></li>
            <!--  <li><a href="#">Detail Gaji</a></li> -->
@@ -145,12 +149,12 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Jadwal</td>
+                <td>Jam</td>
                 <td>:</td>
                 <td>';
-                  $dropdon = array('-' => '- Pilih Jadwal - ');
+                  $dropdon = array('-' => '- Pilih - ');
                   foreach ($dropdown_jadwal as $row) {
-                    $dropdon[$row['idjadwal']] = $row['jam'];
+                    $dropdon[$row['idjadwal']] = $row['jam']. " - " .$row['nmsubprog'];
                   }
                   echo form_dropdown('idjadwal', $dropdon, '-');
                   echo
@@ -159,6 +163,24 @@
             </div>
           </div>
           <br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Tanggal Kelas</td>
+                <td>:</td>
+                <td><input type="text" name="tgl_kelas" readonly></td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Nama Subprogram</td>
+                <td>:</td>
+                <td><input type="text" name="nmsubprog" readonly></td>
+              </tr>
+            </div>
+          </div>
           <div class="row">
             <div class="large-12 columns">
               <tr>
@@ -198,20 +220,52 @@
   <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
   <script src="<?php echo base_url(); ?>assets/jquery.ui.datepicker.validation.min.js"></script> 
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <script type="text/javascript">
-		$(document).foundation();
-	</script>
 
   <script>
     $(function() {
       $( "#datepicker" ).datepicker(
         {
+          changeMonth: 'true',
+          changeYear: 'true',
           dateFormat:'yy-mm-dd', 
           showAnim: 'slideDown',
           minDate: 0
         }
       );
     });
+  </script>
+
+  <!-- ajax jQuery -->
+  <script>
+    $(document).ready(function(){
+      $("input[value='Save']").prop("disabled", true);
+      $("select[name='idjadwal']").change(function(){
+        var idjadwal=$(this).val();
+        
+        $.ajax({
+          type        : 'GET',
+          url         : 'tgl_subprog/' + idjadwal,
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data){
+            console.log(data[0].tanggal + " - " + data[0].nmsubprog);
+            $("input[name='tgl_kelas']").val(data[0].tanggal);
+            $("input[name='nmsubprog']").val(data[0].nmsubprog);
+            var tanggal_absen=$("input[name='tgl_absen']").val();
+            var tanggal_kelas=$("input[name='tgl_kelas']").val();
+            if(tanggal_absen === tanggal_kelas){
+              $("input[value='Save']").prop("disabled", false);
+            }else{
+              alert("tanggal kurang atau lebih dari tanggal absen");
+              $("input[value='Save']").prop("disabled", true);
+            }
+          },
+          error       : function(data){
+            alert("Salah :" + data);
+          }
+        })
+      });
+    })
   </script>
 	</body>
 </html>

@@ -34,37 +34,37 @@
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
               <li>
-                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
+                <a href="<?php echo base_url()?>c_jadwal/grammar">Grammar</a>
               </li>
 
               <!-- SPEAKING PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
+                <a href="<?php echo base_url()?>c_jadwal/speaking">Speaking</a>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
               <li>
-             	  <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                <a href="<?php echo base_url()?>c_jadwal/pronun">Pronunciation</a>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
+                <a href="<?php echo base_url()?>c_jadwal/vocab">Vocabulary</a>
               </li>
 
               <!-- TOEFL PROGRAM-->
               <li>
-              	<a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/toefl">TOEFL</a>
               </li>
 
-  		        <!-- PAKET PROGRAM-->
+              <!-- PAKET PROGRAM-->
               <li>
-              	<a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/efast">E-fast & Scoring TOEFL</a>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
-            	<li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-            	<li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofpagi">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofsiang">Office Shift Siang</a></li>
             </ul>
           </li>
 
@@ -78,6 +78,11 @@
           <li class="divider"></li>
             <li>
               <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
+            </li>
+          <li class="divider"></li>
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_sms/disp">SMS</a>
             </li>
           <li class="divider"></li>
            <!--  <li><a href="#">Detail Gaji</a></li> -->
@@ -95,14 +100,16 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Absensi Pegawai</h2>
+      <h2 id="tables" style="text-align:center;">Absensi Pegawai</h2><br/>
       <div class="row">
-        <div class="small-6 columns">
-          <a href="<?php echo base_url();?>c_absen/form_tambah" data-dropdown="drop1" class="button dropdown">Tambah</a><br>
-            <ul id="drop1" data-dropdown-content class="f-dropdown">
-              <li><a href="<?php echo base_url();?>c_absen/form_tambah">Tambah Absensi</a></li>
-              <li><a href="<?php echo base_url();?>c_absen/form_pengganti">Form Buat Pengganti</a></li>
-            </ul>
+        <div class="small-10 columns">
+          <a href="<?php echo base_url();?>c_absen/form_tambah" class="button radius" >Tambah Absen</a>
+          <a href="#" class="button radius" id="button_sms">Kirim Pemberitahuan</a><br/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-2 columns">
+          <input id="check_all" type="checkbox"><label for="checkbox"><b>Check all</b></label>
         </div>
       </div>
         <center>
@@ -110,11 +117,13 @@
             <thead>
               <tr>
                 <th>No</th>
+                <th>Pilih</th>
                 <th>ID Absen</th>
                 <th>Status Absen</th>
                 <th>Tanggal Absen</th>
                 <th>Pegawai Pengganti</th>
                 <th>Jam Masuk</th>
+                <th>Nama Subprogram</th>
                 <th>Nama Pegawai</th>
                 <th>Action</th>
               </tr>
@@ -125,14 +134,16 @@
                 $i=1;
                   foreach($queryabsen->result_array() as $rows) {
                     echo "<td>".$i."</td>";
+                    echo "<td><input type='checkbox' value='".$rows['idabsen']."'></td>";
                     echo "<td>".$rows['idabsen']."</td>";
                     echo "<td>".$rows['status_absen']."</td>";
                     echo "<td>".$rows['tgl_absen']."</td>";
                     echo "<td>".$rows['idpeg_pengganti']."</td>";
                     echo "<td>".$rows['jam']."</td>";
+                    echo "<td>".$rows['nmsubprog']."</td>";
                     echo "<td>".$rows['nama']."</td>";
-                    echo "<td>".
-                    anchor('c_absen/form_update_absen/'.$rows['idabsen'],'Edit Absen')."</td>";
+                    echo "<td>".anchor('c_absen/form_update_absen/'.$rows['idabsen'],'Ubah Kehadiran')." | 
+                    ".anchor('c_absen/form_update_absen/'.$rows['idabsen'],'Penggganti ')."</td>";
                     $i++;
                   echo '</tr>';
                   }
@@ -152,5 +163,21 @@
   	<script type="text/javascript">
   		$(document).foundation();
   	</script>
+
+    <!-- jQuery -->
+    <script>
+      $(document).ready(function(){
+        $("#check_all").click(function() {
+          var cek = $("#check_all").is(':checked');
+          if(cek){
+            $("input[type='checkbox']").prop('checked',true);
+            console.log($("input[type='checkbox']").val());
+          }
+          else{
+            $("input[type='checkbox']").prop('checked',false);
+          }
+        });
+      });
+    </script>
 	</body>
 </html>

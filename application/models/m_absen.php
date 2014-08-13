@@ -1,7 +1,9 @@
 <?php
 	class M_absen extends CI_Model{
     	public function ambil_data_absen(){
-    		$queryabsen=$this->db->query("SELECT a.idabsen, a.status_absen, a.tgl_absen, a.idpeg_pengganti, j.jam, p.nama FROM absensi a join jadwal j on (a.idjadwal=j.idjadwal) join pegawai p on (a.idpeg=p.idpeg)");
+    		$queryabsen=$this->db->query("SELECT a.idabsen, a.status_absen, a.tgl_absen, a.idpeg_pengganti, j.jam, 
+                        sp.nmsubprog, p.nama FROM absensi a join jadwal j on (a.idjadwal=j.idjadwal) join pegawai p 
+                        on (a.idpeg=p.idpeg) join subprogram sp on (j.idsubprog=sp.idsubprog) order by idabsen asc");
 			return $queryabsen;
     	}
 
@@ -10,8 +12,12 @@
 		}
 
         public function tampil_data_jadwal(){
-        	return $this->db->query('SELECT * FROM jadwal');	
+        	return $this->db->query('SELECT j.idjadwal, j.jam, sp.nmsubprog FROM jadwal j join subprogram sp on(j.idsubprog=sp.idsubprog)');
         }
+
+        public function view_tgl($idjadwal){
+            return $this->db->query("SELECT j.tanggal, sp.nmsubprog from jadwal j join subprogram sp on(j.idsubprog=sp.idsubprog) where idjadwal='".$idjadwal."'")->result_array();
+        }        
 
         public function tampil_data_nmpegawai(){
         	return $this->db->query('SELECT * FROM pegawai');	
@@ -36,6 +42,15 @@
         public function edit($data, $IDABSEN){
             $this->db->where('idabsen',$IDABSEN);
             $this->db->update('ABSENSI',$data);
+        }
+
+        public function data_ganti_absen(){
+            $gantiabsen=$this->db->query("SELECT * from kesediaan");
+            return $gantiabsen;
+        }
+
+        public function ganti_absen($ganti){
+            $this->db->insert('KESEDIAAN', $ganti);
         }
     }
 ?>

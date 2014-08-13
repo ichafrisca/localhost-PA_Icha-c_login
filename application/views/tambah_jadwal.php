@@ -34,37 +34,37 @@
             <a href="<?php echo base_url()?>c_jadwal/disp">Jadwal Pegawai</a>
             <ul class="dropdown">
               <li>
-                <a href="<?php echo base_url()?>c_grammar/disp">Grammar</a>
+                <a href="<?php echo base_url()?>c_jadwal/grammar">Grammar</a>
               </li>
 
               <!-- SPEAKING PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_speaking/disp">Speaking</a>
+                <a href="<?php echo base_url()?>c_jadwal/speaking">Speaking</a>
               </li>
 
               <!-- PRONUNCIATION PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_pronun/disp">Pronunciation</a>
+                <a href="<?php echo base_url()?>c_jadwal/pronun">Pronunciation</a>
               </li>
 
               <!-- VOCABULARY PROGRAM -->
               <li>
-                <a href="<?php echo base_url()?>c_vocab/disp">Vocabulary</a>
+                <a href="<?php echo base_url()?>c_jadwal/vocab">Vocabulary</a>
               </li>
 
               <!-- TOEFL PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_toefl/disp">TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/toefl">TOEFL</a>
               </li>
 
               <!-- PAKET PROGRAM-->
               <li>
-                <a href="<?php echo base_url()?>c_efast/disp">E-fast & Scoring TOEFL</a>
+                <a href="<?php echo base_url()?>c_jadwal/efast">E-fast & Scoring TOEFL</a>
               </li>
 
               <!-- PEGAWAI OFFICE SHIFT PAGI -->
-              <li><a href="<?php echo base_url()?>c_ofpagi/disp">Office Shift Pagi</a></li>
-              <li><a href="<?php echo base_url()?>c_ofsiang/disp">Office Shift Siang</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofpagi">Office Shift Pagi</a></li>
+              <li><a href="<?php echo base_url()?>c_jadwal/ofsiang">Office Shift Siang</a></li>
             </ul>
           </li>
 
@@ -78,6 +78,10 @@
           <li class="divider"></li>
             <li>
               <a href="<?php echo base_url()?>c_gaji/disp">Gaji Pegawai</a>
+            </li>
+          <li class="divider"></li>
+            <li>
+              <a href="<?php echo base_url()?>c_sms/disp">SMS</a>
             </li>
           <li class="divider"></li>
            <!--  <li><a href="#">Detail Gaji</a></li> -->
@@ -111,9 +115,20 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td>'; $tanggal = array('name'=>'tanggal','id'=>'datepicker');
+                      echo form_input($tanggal ) .'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
                 <td>Jam</td>
                 <td>:</td>
-                <td>'. form_input('jam') .'</td>
+                <td> <input type="text" data-field="time" name="jam"></td>
+                <div id="dtBox"></div>
               </tr>
             </div>
           </div>
@@ -131,19 +146,18 @@
               <tr>
                 <td>Sisa Kelas</td>
                 <td>:</td>
-                <td>
-                  <select name="slot">
-                  <option value="kosong">- Pilih Slot -</option>
+                <td><select name="slot">
+                    <option value="kosong">- Pilih slot -</option>
                     ';
                     foreach ($dropdown_slot->result_array() as $row) {
-                      echo "<option value='". $row['idslot'] ."'>".$row['slot']."</option>";
+                      echo "<option value='". $row['idslot'] ."'> ".$row['slot'] ."</option>";
                     }
                     echo '
-                  </select>
-                </td>
+                  </select></td>
               </tr>
             </div>
-          </div><br/>
+          </div>
+          <br/>
           <div class="row">
             <div class="large-12 columns">
               <tr>
@@ -172,7 +186,7 @@
                     <option value="kosong">- Pilih nama subprogram -</option>
                     ';
                     foreach ($dropdown_subprog->result_array() as $row) {
-                      echo "<option value='". $row['idsubprog'] ."'>Sub Program : ".$row['nmsubprog']."</option>";
+                      echo "<option value='". $row['idsubprog'] ."'>".$row['nmsubprog']."</option>";
                     }
                     echo '
                   </select>
@@ -181,6 +195,7 @@
             </div>
           </div>
           <br/>
+
         <label>
           <input type="submit" value="Save" class="button radius expand">
         </label>
@@ -198,8 +213,29 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery.ui.datepicker.validation.min.js"></script>
+
+  <link rel="stylesheet" href="/resources/demos/style.css">  
+
   <script type="text/javascript">
 		$(document).foundation();
 	</script>
+  <script>
+    $(function() {
+      $( "#datepicker" ).datepicker(
+        {
+          changeMonth: 'true',
+          changeYear: 'true',
+          dateFormat:'yy-mm-dd', 
+          showAnim: 'slideDown',
+          minDate: 0
+        }
+      );
+    });
+  </script>
 	</body>
 </html>

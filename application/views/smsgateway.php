@@ -99,7 +99,7 @@
   <!-- PEGAWAI -->
   <div class="row">
   	<div class="large-12 panel">
-  		<center><h2>Data SMS Pegawai</h2></center><br/>
+  		<h2 id="tables" style="text-align:center;">Data SMS Pegawai</h2>
 		    <div class="row">
 	        <div class="small-10 columns">
 	          <a href="#" class="button radius" id="button_sms">Buat SMS</a>

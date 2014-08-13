@@ -45,6 +45,7 @@
 		public function tambah(){
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('idjadwal','idjadwal','required');
+			$this->form_validation->set_rules('tanggal','tanggal','required');
 			$this->form_validation->set_rules('jam','jam','required');
 			$this->form_validation->set_rules('periode_tgl','periode_tgl','required');
 			$this->form_validation->set_rules('idslot','idslot','required');
@@ -57,6 +58,7 @@
 			// }else {
 				$data_jadwal = array(
 						'idjadwal'		  => $this->input->post('idjadwal'),
+						'tanggal' 		  => $this->input->post('tanggal'),
 						'jam'	 		  => $this->input->post('jam'),
 						'periode_tgl'	  => $this->input->post('periode_tgl'),
 						'idslot' 		  => $this->input->post('slot'),
@@ -87,7 +89,6 @@
 		public function form_tambah_subprog(){
 			$data['newID'] = $this -> next_subprog();
 			$data['dropdown_program'] = $this -> m_jadwal -> tampil_data_program();
-			$data['dropdown_ruang'] = $this -> m_jadwal -> tampil_data_ruang();
 			$this -> load -> view('tmbh_subprog', $data);
 		}
 
@@ -109,12 +110,40 @@
 			$this->form_validation->set_rules('durasi','durasi','required');
 			$this->form_validation->set_rules('idprogram','idprogram','required');
 
-				$data = array('idsubprog' => $this -> input -> post('idsubprog'), 
-					'nmsubprog' => $this -> input -> post('nmsubprog'),
-					'durasi' => $this -> input -> post('durasi'),
-					'idprogram' => $this -> input -> post('nmprogram'));
+				$data = array('idsubprog' 	=> $this -> input -> post('idsubprog'), 
+							'nmsubprog' 	=> $this -> input -> post('nmsubprog'),
+							'durasi' 		=> $this -> input -> post('durasi'),
+							'idprogram' 	=> $this -> input -> post('namaprogram'));
 				$this -> load -> model('m_jadwal');
 				$this -> m_jadwal -> tambah_subprog($data);
+				redirect('c_jadwal/disp');
+		}
+
+		public function form_tambah_ruang(){
+			$data['newID'] = $this -> next_ruang();
+			$this -> load -> view('tambah_ruang', $data);
+		}
+
+		public function next_ruang() {
+			$newID ="";
+			$this -> load -> model('m_jadwal');
+			$maxra = $this -> m_jadwal -> max_ruang();
+			foreach ($maxra->result_array() as $row) {
+				$nextId = $row['maxID'] + 1;
+				$newID = "RA" . str_pad($nextId, 4, "0", STR_PAD_LEFT);
+			}
+			return $newID;
+		}
+
+		public function tambah_ruang(){
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('idruang','ID Ruang','required');
+			$this->form_validation->set_rules('namaruang','Nama Ruang','required');
+
+				$data = array('idruang' 	=> $this -> input -> post('idruang'), 
+							'namaruang' 	=> $this -> input -> post('namaruang'));
+				$this -> load -> model('m_jadwal');
+				$this -> m_jadwal -> tambah_ruang($data);
 				redirect('c_jadwal/disp');
 		}
 
@@ -131,6 +160,54 @@
 			$this->load->model('m_jadwal');
 			$this->m_jadwal->edit($data,$this->input->post('idjadwal'));
 			$this->disp();
+		}
+
+		public function vocab(){
+			$this->load->model('m_jadwal');
+			$data['queryvocab']=$this->m_jadwal->ambil_vocab();
+			$this->load->view('vocab', $data);
+		}
+
+		public function toefl(){
+			$this->load->model('m_jadwal');
+			$data['querytoefl']=$this->m_jadwal->ambil_toefl();
+			$this->load->view('toefl', $data);
+		}
+
+		public function speaking(){
+			$this->load->model('m_jadwal');
+			$data['queryspeaking']=$this->m_jadwal->ambil_speaking();
+			$this->load->view('speaking', $data);
+		}
+
+		public function pronun(){
+			$this->load->model('m_jadwal');
+			$data['querypronun']=$this->m_jadwal->ambil_pronun();
+			$this->load->view('pronunciation', $data);
+		}
+
+		public function efast(){
+			$this->load->model('m_jadwal');
+			$data['queryefast']=$this->m_jadwal->ambil_efast();
+			$this->load->view('efast', $data);
+		}
+
+		public function grammar(){
+			$this->load->model('m_jadwal');
+			$data['querygrammar']=$this->m_jadwal->ambil_grammar();
+			$this->load->view('grammar', $data);
+		}
+
+		public function ofpagi(){
+			$this->load->model('m_jadwal');
+			$data['queryofpagi']=$this->m_jadwal->ambil_ofpagi();
+			$this->load->view('ofpagi', $data);
+		}
+		
+		public function ofsiang(){
+			$this->load->model('m_jadwal');
+			$data['queryofsiang']=$this->m_jadwal->ambil_ofsiang();
+			$this->load->view('ofsiang', $data);
 		}
 	}
 ?>

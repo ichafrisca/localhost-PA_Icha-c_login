@@ -20,7 +20,7 @@
 
 		public function form_tambah(){
 			$data['newID'] = $this -> next_gaji();
-			$data['dropdown_nmpegawai'] = $this -> m_gaji -> tampil_data_nmpegawai();
+			$data['dropdown_nmpegawai'] = $this -> m_gaji -> tampil_data_nmpegawai()->result_array();
 			$data['validation_errors'] = $this -> session -> flashdata('errors');
 			$this -> load -> view('tambah_gaji', $data);
 		}
@@ -38,23 +38,26 @@
 			// if ($this -> form_validation -> run() == FALSE){
 			// 	$this -> session -> set_flashdata('errors', validation_errors('Ada yang salah'));
 			// }else {
-				$data_gaji = array(
+
+				$gaji = array(
 						'idgaji' 		  => $this->input->post('idgaji'),
-						'tanggal'	  	  => $this->input->post('tanggal'),
+						'tanggal'		  => $this->input->post('from'),
+						'tanggal'		  => $this->input->post('to'),
 						'idpeg'		  	  => $this->input->post('namapeg'),
 						'jml_pertemuan'	  => $this->input->post('jml_pertemuan'),
 						'honor'		  	  => $this->input->post('honor'),
 						'bonus'			  => $this->input->post('bonus')
 					);
 				$this -> load -> model('m_gaji');
-				$this -> m_gaji -> tambah_gaji($data_gaji);
+				$this -> m_gaji -> tambah_gaji($gaji);
 				redirect('C_gaji/disp');
+
 			// }
 		}
 
-		public function jml_hadir(){
+		public function jml_hadir($id){
 			$this->load->model('m_gaji');
-			$data['data_json'] = json_encode($this->m_gaji->jmlh_pertemuan()->result_array());
+			$data['data_json'] = json_encode($this->m_gaji->jmlh_pertemuan($id, $tgl)->result_array());
 			$this->load->view('json',$data);
 		}
 	}

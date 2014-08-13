@@ -19,12 +19,17 @@
         	return $this->db->query('SELECT * FROM pegawai');	
         }
 
-        public function jmlh_pertemuan($id){
+        public function jmlh_pertemuan($id,$tgl){
         	return $this->db->query("SELECT count(idpeg) as total_hadir from absensi where idpeg='$id' 
-					and idpeg_pengganti = '$id' and tgl_absen between '2014-07-10' and '2014-08-10'
+					and idpeg_pengganti = '0' and tgl_absen between '$tgl' and '$tgl'
 					union
 					select count(idpeg) from absensi where idpeg_pengganti='$id' and tgl_absen
-					between '2014-07-10' and '2014-08-10'");
+					between '$tgl' and '$tgl'");
         }
 	}
 ?>
+				<!-- SELECT count(idpeg) as total_hadir from absensi where idpeg='PEG0005' 
+					and idpeg_pengganti = '0' and tgl_absen between '2014-07-11' and '2014-08-09'
+					union
+					select count(idpeg) from absensi where idpeg_pengganti='PEG0005' and tgl_absen
+					between '2014-07-11' and '2014-08-09' -->
