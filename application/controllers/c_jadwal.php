@@ -1,6 +1,8 @@
 <?php
 	class C_jadwal extends CI_Controller{
 		
+	// DISP JADWAL 
+
 		public function disp($p=0){
 			$jumlah_per_page = 10;
 			$this->load->library('pagination');
@@ -20,6 +22,8 @@
 			$this->m_jadwal->hapus($idjadwal);
 			$this->disp();
 		}
+
+	// TAMBAH PEGAWAI
 
 		public function form_tambah(){
 			$data['newID'] = $this -> next_jadwal();
@@ -52,22 +56,21 @@
 			$this->form_validation->set_rules('idruang','idruang','required');
 			$this->form_validation->set_rules('idsubprog','idsubprog','required');
 
-			//PENGECEKAN VALIDATION MASIH ERROR
-			// if ($this -> form_validation -> run() == FALSE){
-			// 	$this -> session -> set_flashdata('errors', validation_errors('Ada yang salah'));
-			// }else {
+			if ($this -> form_validation -> run() == FALSE){
+				$this -> session -> set_flashdata('errors', validation_errors('Ada yang salah'));
+			}else {
 				$data_jadwal = array(
-						'idjadwal'		  => $this->input->post('idjadwal'),
-						'tanggal' 		  => $this->input->post('tanggal'),
-						'jam'	 		  => $this->input->post('jam'),
-						'periode_tgl'	  => $this->input->post('periode_tgl'),
-						'idslot' 		  => $this->input->post('slot'),
-						'idruang' 		  => $this->input->post('namaruang'),
-						'idsubprog'	 	  => $this->input->post('subprogram'));
+					'idjadwal'		  => $this->input->post('idjadwal'),
+					'tanggal' 		  => $this->input->post('tanggal'),
+					'jam'	 		  => $this->input->post('jam'),
+					'periode_tgl'	  => $this->input->post('periode_tgl'),
+					'idslot' 		  => $this->input->post('slot'),
+					'idruang' 		  => $this->input->post('namaruang'),
+					'idsubprog'	 	  => $this->input->post('subprogram'));
 				$this -> load -> model('m_jadwal');
 				$this -> m_jadwal -> tambah_jadwal($data_jadwal);
 				redirect('c_jadwal/disp');
-			// }
+			}
 		}
 
 		public function form_tambah_program(){
@@ -147,20 +150,29 @@
 				redirect('c_jadwal/disp');
 		}
 
+	// EDIT JADWAL
+
 		public function form_update_jadwal($idjadwal){
 			$this->load->model('m_jadwal');
 			$data['queryjadwal']=$this->m_jadwal->tampil_edit($idjadwal);
+			$data['dropdown_ruang'] = $this -> m_jadwal -> tampil_data_ruang();
+			$data['dropdown_subprog'] = $this -> m_jadwal -> tampil_data_subprog();
 			$this->load->view('edit_jadwal',$data);
 		}
 
 		public function edit(){
 			$data=array(
-				'jam'	=>$this->input->post('jam')
-				);
+					'tanggal' 		  => $this->input->post('tanggal'),
+					'jam'	 		  => $this->input->post('jam'),
+					'idruang' 		  => $this->input->post('namaruang'),
+					'idsubprog'	 	  => $this->input->post('nmsubprog'));
 			$this->load->model('m_jadwal');
 			$this->m_jadwal->edit($data,$this->input->post('idjadwal'));
 			$this->disp();
 		}
+
+
+	// DATA JADWAL KELAS
 
 		public function vocab(){
 			$this->load->model('m_jadwal');

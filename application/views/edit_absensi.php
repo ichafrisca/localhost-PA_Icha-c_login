@@ -110,7 +110,7 @@
               <tr>
                 <td>Tanggal</td>
                 <td>:</td>
-                <td>'.form_input('tgl_absen',$row['tgl_absen']).'</td>
+                <td>'.form_input('tgl_absen',$row['tgl_absen'], 'readonly').'</td>
               </tr>
             </div>
           </div>
@@ -132,23 +132,6 @@
             </div>
           </div>
           <br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Pegawai Pengganti</td>
-                <td>:</td>
-                <td>';
-                  $dropdown = array('0' => '- Pilih Nama Pegawai - ');
-                  foreach ($dropdown_nmpegawai as $row) {
-                    $dropdown[$row['idpeg']] = $row['nama'];
-                  }
-                  echo form_dropdown('idpeg_pengganti', $dropdown, '0');
-                  echo
-                '</td>
-              </tr>
-            </div>
-          </div>
-          <br>          
 
         <label>
           <input type="submit" value="Save" class="button radius expand">

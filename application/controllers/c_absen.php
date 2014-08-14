@@ -1,5 +1,7 @@
 <?php
 	class C_absen extends CI_Controller{
+
+	// TAMBAH ABSEN
 		
 		public function disp(){
 			$this->load->model('m_absen');
@@ -89,22 +91,28 @@
 			return $newID;
 		}
 
+	// EDIT ABSEN
+
 		public function form_update_absen($IDABSEN){
 			$this->load->model('m_absen');
 			$data['queryabsen']=$this->m_absen->tampil_edit($IDABSEN);
 			$data['list_status'] = $this -> m_absen -> tampil_status();
+			$data['dropdown_nmpegawai'] = $this -> m_absen -> tampil_data_nmpegawai()->result_array();
 			$this->load->view('edit_absensi',$data);
 		}
 
 		public function edit(){
 			$data=array(
 				'status_absen'	=>$this->input->post('status_absen'),
+
 				// 'tgl_absen'		=>$this->input->post('tgl_absen')
 				);
 			$this->load->model('m_absen');
 			$this->m_absen->edit($data,$this->input->post('idabsen'));
 			$this->disp();
 		}
+
+	// PEGAWAI PENGGANTI
 
 		public function ganti_absen(){
 			$this->load->model('m_absen');
@@ -124,7 +132,7 @@
 			$this->form_validation->set_rules('idjadwal','Jam Mengganti','required');
 
 			if ($this -> form_validation -> run() == FALSE){
-				$this -> session -> set_flashdata('errors', validation_errors(''));
+				$this -> session -> set_flashdata('errors', validation_errors());
 				redirect('c_absen/ganti_absen');
 			}else {
 				$ganti = array(

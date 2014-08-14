@@ -100,7 +100,7 @@
   <div class="row">
   <div class="large-12 panel">
   <?php
-      echo form_open('c_absen/ganti_absen');
+      echo form_open('c_absen/func_ganti_absen');
         echo '<center><h3>Form Tambah Absensi</h3></center>
         
           <div class="row">
@@ -156,7 +156,7 @@
               <tr>
                 <td>Tanggal Kesediaan</td>
                 <td>:</td>
-                <td><input type="text" name="tgl_absen" id="datepicker"></td>
+                <td><input type="text" name="tgl_sedia" id="datepicker"></td>
               </tr>
             </div>
           </div>

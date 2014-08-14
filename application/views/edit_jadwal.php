@@ -1,3 +1,7 @@
+<?php 
+  // echo "<pre>";
+  // print_r($queryjadwal->result_array());exit; 
+?>
 <html>
 	<head>
 		<title>Kepegawaian ELFAST</title>
@@ -115,14 +119,57 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td>'.form_input('tanggal',$row['tanggal'], 'id="datepicker"').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
                 <td>Jam</td>
                 <td>:</td>
                 <td>'.form_input('jam',$row['jam']).'</td>
               </tr>
             </div>
           </div>
-
-
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Nama Ruang</td>
+                <td>:</td>
+                <td>';
+                $pilihan = array();
+                $pilihan['-'] = "- Pilih nama ruang -";
+                foreach ($dropdown_ruang->result_array() as $isi) {
+                  $pilihan[$isi['idruang']] = $isi['namaruang'];
+                }
+                echo form_dropdown('namaruang', $pilihan, $row['idruang']);
+                echo '
+                </td>
+              </tr>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Sub Program</td>
+                <td>:</td>  
+                <td>';
+                $pilihsub = array();
+                $pilihsub['-'] = "- Pilih Subprogram -";
+                foreach ($dropdown_subprog->result_array() as $isisub) {
+                  $pilihsub[$isisub['idsubprog']] = $isisub['nmsubprog'];
+                }
+                echo form_dropdown('nmsubprog', $pilihsub, $row['idsubprog']);
+                echo '
+                </td>
+              </tr>
+            </div>
+          </div>
+          <br/>
         <label>
           <input type="submit" value="Save" class="button radius expand">
         </label>
@@ -130,7 +177,7 @@
           <a href='.base_url().'c_jadwal/disp class="button radius expand">Back</a>
         </label>';
         echo form_close();
-      }
+        }
       ?>
       </div>
       </div>
@@ -140,8 +187,26 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery.ui.datepicker.validation.min.js"></script> 
+  <link rel="stylesheet" href="/resources/demos/style.css"> 
 	<script type="text/javascript">
 		$(document).foundation();
 	</script>
+
+  <script>
+    $(function() {
+      $( "#datepicker" ).datepicker(
+        {
+          changeMonth: 'true',
+          changeYear: 'true',
+          dateFormat:'yy-mm-dd', 
+          showAnim: 'slideDown',
+        }
+      );
+    });
+  </script>
 	</body>
 </html>

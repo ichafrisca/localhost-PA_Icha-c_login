@@ -2,7 +2,8 @@
 	class M_gaji extends CI_Model{
 
 		public function ambil_gaji() {
-			$querygaji=$this->db->query("SELECT g.idgaji, g.tanggal, g.jml_pertemuan, g.honor, g.bonus, g.totalgaji, p.nama from gaji g join pegawai p on (g.idpeg=p.idpeg)");
+			$querygaji=$this->db->query("SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.honor, g.bonus, 
+						g.totalgaji, p.nama from gaji g join pegawai p on (g.idpeg=p.idpeg)");
 			return $querygaji;
 		}
 
