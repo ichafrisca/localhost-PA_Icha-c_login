@@ -99,10 +99,17 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Gaji Pegawai</h2>
+      <h2 id="tables" style="text-align:center;">Gaji Pegawai</h2><br><br>
       <div class="row">
-      <div class="small-6 columns">
-          <a href="<?php echo base_url();?>c_gaji/form_tambah" class="button radius">Input Gaji</a>
+        <div class="small-8 columns">
+            <a href="<?php echo base_url();?>c_gaji/memiliki" class="button radius">Masukkan Nominal</a>
+            <a href="<?php echo base_url();?>c_gaji/form_tambah" class="button radius">Tambah Gaji</a>
+            <a href="#" class="button radius" id="button_sms">Kirim Pemberitahuan</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-2 columns">
+          <input id="check_all" type="checkbox"><label for="checkbox"><b>Check all</b></label>
         </div>
       </div>
         <center>
@@ -110,14 +117,15 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>ID Gaji</th>
-                <th>Tanggal</th>
+                <th>Pilih</th>
+                <th>Nama Pegawai</th>
+                <th>Dari Tanggal</th>
+                <th>Ke Tanggal</th>
                 <th>jumlah Pertemuan</th>
                 <th>Honor</th>
                 <th>Bonus</th>
                 <th>Total Gaji</th>
-                <th>Nama Pegawai</th>
-                <th>Action</th>
+                <th>Aksi</th>
               </tr>
             </thead>
 
@@ -126,14 +134,15 @@
                 $i=1;
                   foreach($querygaji->result_array() as $rows) {
                     echo "<td>".$i."</td>";
-                    echo "<td>".$rows['idgaji']."</td>";
-                    echo "<td>".$rows['tanggal']."</td>";
+                    echo "<td><input type='checkbox' value='".$rows['idgaji']."'></td>";
+                    echo "<td>".$rows['nama']."</td>";
+                    echo "<td>".$rows['dr_tgl']."</td>";
+                    echo "<td>".$rows['ke_tgl']."</td>";
                     echo "<td>".$rows['jml_pertemuan']."</td>";
                     echo "<td>".$rows['honor']."</td>";
                     echo "<td>".$rows['bonus']."</td>";
                     echo "<td>".$rows['totalgaji']."</td>";
-                    echo "<td>".$rows['nama']."</td>";
-                    echo "<td>".anchor('c_gaji/form_update_gaji/'.$rows['idgaji'],'Ubah Gaji')." | ".anchor('c_jadwal/hapus/'.$rows['idgaji'],'Hapus')."</td>";
+                    echo "<td>".anchor('c_jadwal/hapus/'.$rows['idgaji'],'Hapus')."</td>";
 
                     $i++;
                   echo '</tr>';
@@ -152,5 +161,20 @@
   	<script type="text/javascript">
   		$(document).foundation();
   	</script>
+
+    <script>
+      $(document).ready(function(){
+        $("#check_all").click(function() {
+          var cek = $("#check_all").is(':checked');
+          if(cek){
+            $("input[type='checkbox']").prop('checked',true);
+            console.log($("input[type='checkbox']").val());
+          }
+          else{
+            $("input[type='checkbox']").prop('checked',false);
+          }
+        });
+      });
+    </script>
 	</body>
 </html>

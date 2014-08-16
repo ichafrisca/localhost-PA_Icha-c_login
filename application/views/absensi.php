@@ -129,7 +129,7 @@
                 <th>Jam Masuk</th>
                 <th>Nama Subprogram</th>
                 <th>Nama Pegawai</th>
-                <th>Action</th>
+                <th>Aksi</th>
               </tr>
             </thead>
 

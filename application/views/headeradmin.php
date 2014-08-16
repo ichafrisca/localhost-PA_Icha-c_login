@@ -119,7 +119,7 @@
                 <th>Status Pegawai</th>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Action</th>
+                <th>Aksi</th>
               </tr>
             </thead>
 

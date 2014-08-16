@@ -123,7 +123,7 @@
                 <th>Jumlah Slot</th>
                 <th>Nama Ruang</th>
                 <th>Nama Subprogram</th>
-                <th>Action</th>
+                <th>Aksi</th>
               </tr>
             </thead>
 

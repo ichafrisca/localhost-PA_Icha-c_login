@@ -12,13 +12,26 @@
 			return $maxGJ;
 		}
 
+		public function tampil_NM() {
+			$maxNM = $this->db->query('SELECT MAX( SUBSTR( idlistnominal, 4, 4 ) ) AS MAXID FROM list_nominal');
+			return $maxNM;
+		}
+
 		public function tambah_gaji($gaji){
 			$this->db->insert('GAJI', $gaji);
+		}
+
+		public function listnominal($lnominal){
+			$this->db->insert('LIST_NOMINAL', $lnominal);
 		}
 
 		public function tampil_data_nmpegawai(){
         	return $this->db->query('SELECT * FROM pegawai');	
         }
+
+		public function tampil_nominal(){
+        	return $this->db->query('SELECT * FROM subprogram');	
+        }        
 
         public function jmlh_pertemuan($id,$tgl){
         	return $this->db->query("SELECT count(idpeg) as total_hadir from absensi where idpeg='$id' 

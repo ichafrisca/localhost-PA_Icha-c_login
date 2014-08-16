@@ -1,11 +1,11 @@
 <html>
-	<head>
-		<title>Kepegawaian ELFAST</title>
-		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
-		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
-	</head>
+  <head>
+    <title>Kepegawaian ELFAST</title>
+    <link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
+  </head>
 
-<body>		   
+<body>       
  <!-- Header and Nav -->
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
@@ -99,92 +99,41 @@
   <!-- PEGAWAI -->
   <div class="row">
   <div class="large-12 panel">
-  <center><h2>Input Gaji</h2></center>
+  <center><h2>List Gaji Pegawai</h2></center>
   <?php
-    echo form_open('c_gaji/tambah');
+    echo form_open('c_gaji/tambah_nominal');
       echo '
       <br>
         <div class="row">
           <div class="large-12 columns">
             <tr>
-              <td>'.form_hidden('idgaji',$newID,'readonly').'</td>
+              <td>'.form_hidden('idlistnominal',$newID,'readonly').'</td>
             </tr>
           </div>
         </div>
         <div class="row">
           <div class="large-12 columns">
             <tr>
-              <td>Nama Pegawai</td>
+              <td>Nominal</td>
+              <td>:</td>
+              <td>'.form_input('lisnominal').'</td>
+            </tr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <tr>
+              <td>Nama Subprogram</td>
               <td>:</td>
               <td>';
-                  $droppeg = array('-' => '- Pilih Pegawai - ');
-                  foreach ($dropdown_nmpegawai as $row) {
-                    $droppeg[$row['idpeg']] = $row['nama'];
+                  $dropsubprog = array('-' => '- Pilih Subprogram - ');
+                  foreach ($dropdown_subprog as $row) {
+                    $dropsubprog[$row['idsubprog']] = $row['nmsubprog'];
                   }
-                  echo form_dropdown('idpeg', $droppeg, '-');
+                  echo form_dropdown('idsubprog', $dropsubprog, '-');
                   echo
                 '
               </td>
-            </tr>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="large-6 columns">
-            <label for="from">Dari Tanggal</label>
-            <input type="text" id="from" name="from">
-          </div>
-          <div class="large-6 columns">
-            <label for="to">Sampai Tanggal</label>
-            <input type="text" id="to" name="to">
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <tr>
-              <td>Jumlah Pertemuan</td>
-              <td>:</td>
-              <td>';
-              $property = array('name' => 'jml_prtemuan', 'id' => 'jml_pertemuan', 'readonly' => 'true');
-              echo form_input($property);
-              echo '</td>
-            </tr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <tr>
-              <td>Kelas</td>
-              <td>:</td>
-              <td>';
-              $property = array('name' => 'jml_prtemuan', 'id' => 'jml_pertemuan', 'readonly' => 'true');
-              echo form_input($property);
-              echo '</td>
-            </tr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-6 columns">
-            <tr>
-              <td>Honor</td>
-              <td>:</td>
-              <td>'.form_input('honor').'</td>
-            </tr>
-          </div>
-          <div class="large-6 columns">
-            <tr>
-              <td>Bonus</td>
-              <td>:</td>
-              <td>'.form_input('bonus').'</td>
-              </tr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <tr>
-              <td>Total Gaji</td>
-              <td>:</td>
-              <td>'.form_input('totalgaji').'</td>
             </tr>
           </div>
         </div>
@@ -204,10 +153,10 @@
   </div>
 </div>
 
-		<!-- javascript foundation -->
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
+    <!-- javascript foundation -->
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery-1.11.1.min.js"></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
@@ -217,54 +166,54 @@
 
   <!-- javascript jQueryUI datepicker -->
   <script>
-    $(function() {
-      $( "#from" ).datepicker({
-        dateFormat:'yy-mm-dd', 
-        showAnim: 'slideDown',
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 2,
-        onClose: function( selectedDate ) {
-          $( "#to" ).datepicker( "option", "minDate", selectedDate );
-        }
-      });
-      $( "#to" ).datepicker({
-        dateFormat:'yy-mm-dd', 
-        showAnim: 'slideDown',
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 2,
-        onClose: function( selectedDate ) {
-          $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-        }
-      });
-    });
+  //   $(function() {
+  //     $( "#from" ).datepicker({
+  //       dateFormat:'yy-mm-dd', 
+  //       showAnim: 'slideDown',
+  //       defaultDate: "+1w",
+  //       changeMonth: true,
+  //       numberOfMonths: 2,
+  //       onClose: function( selectedDate ) {
+  //         $( "#to" ).datepicker( "option", "minDate", selectedDate );
+  //       }
+  //     });
+  //     $( "#to" ).datepicker({
+  //       dateFormat:'yy-mm-dd', 
+  //       showAnim: 'slideDown',
+  //       defaultDate: "+1w",
+  //       changeMonth: true,
+  //       numberOfMonths: 2,
+  //       onClose: function( selectedDate ) {
+  //         $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+  //       }
+  //     });
+  //   });
   </script>
 
-  <!-- javascript jQuery -->
-  <script>
-    $(document).ready(function() {
-      // $("#from").change(function(),
-      $("#to").change(function() {
-        var hasil = $(this).val();
-        $.ajax({
-          type        : 'GET',
-          url         : 'jml_hadir/' + hasil,
-          dataType    : 'json',
-          contentType : 'application/json; charset=utf-8',
-          success     : function(data) {
-            var totalHadir = 0;
-            for (var i = 0; i < data.length; i++) {
-              totalHadir += parseInt(data[i].total_hadir);
-            };
-            $("#jml_pertemuan").val(totalHadir);
-          },
-          error       : function(data) {
-            alert('kesalahan: ' + data);
-          }
-        });
-      });
-    });
-  </script>
-	</body>
+  // <!-- javascript jQuery -->
+   <script>
+  //   $(document).ready(function() {
+  //     // $("#from").change(function(),
+  //     $("#to").change(function() {
+  //       var hasil = $(this).val();
+  //       $.ajax({
+  //         type        : 'GET',
+  //         url         : 'jml_hadir/' + hasil,
+  //         dataType    : 'json',
+  //         contentType : 'application/json; charset=utf-8',
+  //         success     : function(data) {
+  //           var totalHadir = 0;
+  //           for (var i = 0; i < data.length; i++) {
+  //             totalHadir += parseInt(data[i].total_hadir);
+  //           };
+  //           $("#jml_pertemuan").val(totalHadir);
+  //         },
+  //         error       : function(data) {
+  //           alert('kesalahan: ' + data);
+  //         }
+  //       });
+  //     });
+  //   });
+   </script>
+  </body>
 </html>
