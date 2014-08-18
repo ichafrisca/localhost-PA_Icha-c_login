@@ -102,5 +102,11 @@
 			}
 			return $newID;
 		}
+
+		public function json_total_gaji($id, $tgl_aw, $tgl_ak) {
+			$this->load->model('m_gaji');
+			$data['data_json'] = json_encode($this->m_gaji->total_gaji_karyawan($id, $tgl_aw, $tgl_ak));
+			$this->load->view('json',$data);
+		}
 	}
 ?>

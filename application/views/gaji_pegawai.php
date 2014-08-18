@@ -122,7 +122,6 @@
                 <th>Dari Tanggal</th>
                 <th>Ke Tanggal</th>
                 <th>jumlah Pertemuan</th>
-                <th>Honor</th>
                 <th>Bonus</th>
                 <th>Total Gaji</th>
                 <th>Aksi</th>
@@ -139,7 +138,6 @@
                     echo "<td>".$rows['dr_tgl']."</td>";
                     echo "<td>".$rows['ke_tgl']."</td>";
                     echo "<td>".$rows['jml_pertemuan']."</td>";
-                    echo "<td>".$rows['honor']."</td>";
                     echo "<td>".$rows['bonus']."</td>";
                     echo "<td>".$rows['totalgaji']."</td>";
                     echo "<td>".anchor('c_jadwal/hapus/'.$rows['idgaji'],'Hapus')."</td>";

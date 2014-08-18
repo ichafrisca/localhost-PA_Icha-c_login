@@ -97,7 +97,7 @@
 <br><br><br>
 
   <!-- PEGAWAI -->
-  <div class="row">
+  <div class="row" id="container_input_gaji">
   <div class="large-12 panel">
   <center><h2>Input Gaji</h2></center>
   <?php
@@ -142,36 +142,17 @@
         <div class="row">
           <div class="large-12 columns">
             <tr>
-              <td>Jumlah Pertemuan</td>
+              <td>Total Honor</td>
               <td>:</td>
-              <td>';
-              $property = array('name' => 'jml_prtemuan', 'id' => 'jml_pertemuan', 'readonly' => 'true');
-              echo form_input($property);
-              echo '</td>
+              <td>'.form_input('Total').'
+                  <a href="#" class="small-offset-11 label" id="detil">Detail Gaji</a>
+              </td>
             </tr>
           </div>
         </div>
+        <br>
         <div class="row">
           <div class="large-12 columns">
-            <tr>
-              <td>Kelas</td>
-              <td>:</td>
-              <td>';
-              $property = array('name' => 'jml_prtemuan', 'id' => 'jml_pertemuan', 'readonly' => 'true');
-              echo form_input($property);
-              echo '</td>
-            </tr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-6 columns">
-            <tr>
-              <td>Honor</td>
-              <td>:</td>
-              <td>'.form_input('honor').'</td>
-            </tr>
-          </div>
-          <div class="large-6 columns">
             <tr>
               <td>Bonus</td>
               <td>:</td>
@@ -200,6 +181,22 @@
       echo form_close();
       ?>
       <?php if (isset($validation_errors)) echo $validation_errors;?>
+    </div>
+  </div>
+
+  <!-- DETAIL GAJI PEGAWAI -->
+  <div class="row" id="container_detail_gaji">
+    <div class="large-12 panel">
+        <table border=1>
+          <thead>
+              <tr>
+                <th>Tanggal Hadir</th>
+                <th>Kelas</th>
+                <th>Honor</th>
+              </tr>
+            </thead>
+        </table>
+      <h1><a href="#" id="kembali">Back</a></h1>
     </div>
   </div>
 </div>
@@ -241,26 +238,66 @@
     });
   </script>
 
-  <!-- javascript jQuery -->
+  <!-- javascript jQuery Hitung Total Gaji -->
   <script>
     $(document).ready(function() {
-      // $("#from").change(function(),
-      $("#to").change(function() {
-        var hasil = $(this).val();
+      $("#to, #from").prop("disabled", true); // disable form tanggal saat awal load
+      $("#container_detail_gaji").hide(); // hide container detail gaji saat awal load
+      
+      // saat link detail di klik maka tampilkan
+      // container detail gaji & hide container form
+      $("#detil").click(function() {
+        $("#container_detail_gaji").show('slow');
+        $("#container_input_gaji").hide('slow');
+      });
+
+      // saat link kembali di klik maka tampilkan
+      // container form dan hide container detail
+      $("#kembali").click(function() {
+        $("#container_detail_gaji").hide('slow');
+        $("#container_input_gaji").show('slow');
+      });
+
+      $("select[name='idpeg']").change(function() {
+        // cek saat dropdown karyawan bernilai - maka
+        // disable form tanggal dan kosongkan
+        if ($(this).val() === "-") {
+          $("#to").val("");
+          $("#from").val("");
+          $("#to, #from").prop("disabled", true);
+        } else { // jika tidak enable form tangal
+          $("#to, #from").prop("disabled", false);
+        }
+      });
+
+      // saat form tanggal #to, #form dan dropdown pegawai dipilih
+      // maka eksekusi kode ajax
+      $("#to, #from, select[name='idpeg']").change(function() {
+        var id    = $("select[name='idpeg']").val();
+        var start = $("#from").val();
+        var end   = $("#to").val();
+        var urlApi   = 'json_total_gaji/' + id + '/' + start + '/' + end;
         $.ajax({
           type        : 'GET',
-          url         : 'jml_hadir/' + hasil,
+          url         : urlApi,
           dataType    : 'json',
           contentType : 'application/json; charset=utf-8',
           success     : function(data) {
-            var totalHadir = 0;
-            for (var i = 0; i < data.length; i++) {
-              totalHadir += parseInt(data[i].total_hadir);
-            };
-            $("#jml_pertemuan").val(totalHadir);
+            $.each(data, function(index, element) {
+              // jika response data ada 2 maka hitung gaji
+              if (data.length === 2) {
+                var gaji_ajar = data[0].total_honor === null ? 0 : parseInt(data[0].total_honor);
+                var gaji_pengganti = data[1].total_honor === null ? 0 : parseInt(data[1].total_honor);
+                var gajiku = gaji_ajar + gaji_pengganti;
+                $("input[name='Total']").val(gajiku);
+                console.log(urlApi);
+              } else { // jika tidak maka beri nilai 0
+                $("input[name='Total']").val(0);
+              }
+            });
           },
           error       : function(data) {
-            alert('kesalahan: ' + data);
+            console.log(urlApi);
           }
         });
       });
