@@ -31,7 +31,15 @@
 
 		public function tampil_nominal(){
         	return $this->db->query('SELECT * FROM subprogram');	
-        }        
+        }
+
+        public function jml_pertemuan($idpeg,$tglawal,$tglakhir){
+        	return $this->db->query("SELECT count(idpeg) as total_hadir from absensi where idpeg='$idpeg' 
+					and idpeg_pengganti = '0' and tgl_absen between '$tglawal' and '$tglakhir'
+					union
+					select count(idpeg) from absensi where idpeg_pengganti='$idpeg' and tgl_absen
+					between '$tglawal' and '$tglakhir'");
+        }
 
         public function total_gaji_karyawan($id,$tgl_awal, $tgl_akhir){
         	return $this->db->query("SELECT sum((select l.lisnominal from list_nominal l join subprogram k on

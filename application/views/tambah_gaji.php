@@ -142,9 +142,18 @@
         <div class="row">
           <div class="large-12 columns">
             <tr>
-              <td>Total Honor</td>
+              <td>Jumlah Pertemuan</td>
               <td>:</td>
-              <td>'.form_input('Total').'
+              <td>'.form_input('jml_pertemuan','','readonly').'</td>
+              </tr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <tr>
+              <td>Honor</td>
+              <td>:</td>
+              <td>'.form_input('totalhonor', '', 'readonly').'
                   <a href="#" class="small-offset-11 label" id="detil">Detail Gaji</a>
               </td>
             </tr>
@@ -156,7 +165,7 @@
             <tr>
               <td>Bonus</td>
               <td>:</td>
-              <td>'.form_input('bonus').'</td>
+              <td>'.form_input('bonus',0).'</td>
               </tr>
           </div>
         </div>
@@ -165,7 +174,7 @@
             <tr>
               <td>Total Gaji</td>
               <td>:</td>
-              <td>'.form_input('totalgaji').'</td>
+              <td>'.form_input('totalgaji','','readonly').'</td>
             </tr>
           </div>
         </div>
@@ -194,7 +203,7 @@
                 <th>Kelas</th>
                 <th>Honor</th>
               </tr>
-            </thead>
+            </thead> 
         </table>
       <h1><a href="#" id="kembali">Back</a></h1>
     </div>
@@ -277,6 +286,8 @@
         var start = $("#from").val();
         var end   = $("#to").val();
         var urlApi   = 'json_total_gaji/' + id + '/' + start + '/' + end;
+        
+        // TOTAL HONOR
         $.ajax({
           type        : 'GET',
           url         : urlApi,
@@ -289,10 +300,10 @@
                 var gaji_ajar = data[0].total_honor === null ? 0 : parseInt(data[0].total_honor);
                 var gaji_pengganti = data[1].total_honor === null ? 0 : parseInt(data[1].total_honor);
                 var gajiku = gaji_ajar + gaji_pengganti;
-                $("input[name='Total']").val(gajiku);
+                $("input[name='totalhonor']").val(gajiku);
                 console.log(urlApi);
               } else { // jika tidak maka beri nilai 0
-                $("input[name='Total']").val(0);
+                $("input[name='totalhonor']").val(0);
               }
             });
           },
@@ -300,8 +311,43 @@
             console.log(urlApi);
           }
         });
+
+        //TOTAL HADIR
+        $.ajax({
+          type        : 'GET',
+          url         : 'json_jml_hadir/' + id + '/' + start + '/' + end,
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data) {
+            $.each(data, function(index,element){
+              if (data.length ===2){
+                var totalhadir = parseInt(data[0].total_hadir) + parseInt(data[1].total_hadir);
+                $("input[name='jml_pertemuan']").val(totalhadir);
+              }else{
+                $("input[name='jml_pertemuan']").val(0);
+              }
+            });
+
+            //hitung total gaji saat honor sudah ada
+            var gaji   = $("input[name='totalhonor']").val();
+            var gaji2  = $("input[name='bonus']").val();
+            var total_gaji = parseInt(gaji) + parseInt(gaji2);
+            $("input[name='totalgaji']").val(total_gaji);
+          },
+          error       : function(data) {
+          }
+        });  
+
+        //hitung total gaji saat bonus diisi
+        $("input[name='bonus']").keyup(function() {
+          var gaji  = $("input[name='totalhonor']").val();
+          var gaji2 = $("input[name='bonus']").val();
+          var total_gaji = parseInt(gaji) + parseInt(gaji2);
+          $("input[name='totalgaji']").val(total_gaji);
+        });
       });
     });
   </script>
+
 	</body>
 </html>

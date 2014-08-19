@@ -32,23 +32,27 @@
 		public function tambah(){
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('idgaji','idgaji','required');
-			$this->form_validation->set_rules('tanggal','tanggal','required');
+			$this->form_validation->set_rules('to','Dari Tanggal','required');
+			$this->form_validation->set_rules('from','Ke Tanggal','required');
+			$this->form_validation->set_rules('jml_pertemuan','Jumlah Pertemuan');
+			$this->form_validation->set_rules('totalhonor','Total Honor');
+			$this->form_validation->set_rules('bonus','Bonus','required');
+			$this->form_validation->set_rules('totalgaji','Total Gaji','required');
 			$this->form_validation->set_rules('idpeg','idpeg','required');
-			$this->form_validation->set_rules('jml_pertemuan','jml_pertemuan','required');
-			$this->form_validation->set_rules('honor','honor','required');
-			$this->form_validation->set_rules('bonus','bonus','required');
 
 			if ($this -> form_validation -> run() == FALSE){
 				$this -> session -> set_flashdata('errors', validation_errors('Ada yang salah'));
+				redirect('c_gaji/form_tambah');
 			}else {
 
 				$gaji = array(
 						'idgaji' 		  => $this->input->post('idgaji'),
-						'tanggal'		  => $this->input->post('from'),
-						'tanggal'		  => $this->input->post('to'),
-						'idpeg'		  	  => $this->input->post('namapeg'),
+						'dr_tgl'		  => $this->input->post('from'),
+						'ke_tgl'		  => $this->input->post('to'),
+						'idpeg'		  	  => $this->input->post('idpeg'),
 						'jml_pertemuan'	  => $this->input->post('jml_pertemuan'),
-						'honor'		  	  => $this->input->post('honor'),
+						'totalhonor'  	  => $this->input->post('totalhonor'),
+						'totalgaji'	  	  => $this->input->post('totalgaji'),
 						'bonus'			  => $this->input->post('bonus')
 					);
 				$this -> load -> model('m_gaji');
@@ -57,11 +61,18 @@
 			}
 		}
 
-		public function jml_hadir($id){
+		public function json_jml_hadir($idpeg, $tglawal, $tglakhir){
 			$this->load->model('m_gaji');
-			$data['data_json'] = json_encode($this->m_gaji->jmlh_pertemuan($id, $tgl)->result_array());
+			$data['data_json'] = json_encode($this->m_gaji->jml_pertemuan($idpeg, $tglawal, $tglakhir)->result_array());
 			$this->load->view('json',$data);
 		}
+
+		public function json_total_gaji($id, $tgl_aw, $tgl_ak) {
+			$this->load->model('m_gaji');
+			$data['data_json'] = json_encode($this->m_gaji->total_gaji_karyawan($id, $tgl_aw, $tgl_ak));
+			$this->load->view('json',$data);
+		}
+
 
 	// FORM TAMBAH NOMINAL
 
@@ -101,12 +112,6 @@
 				$newID = "LS" . str_pad($nextNM, 3, "0", STR_PAD_LEFT);
 			}
 			return $newID;
-		}
-
-		public function json_total_gaji($id, $tgl_aw, $tgl_ak) {
-			$this->load->model('m_gaji');
-			$data['data_json'] = json_encode($this->m_gaji->total_gaji_karyawan($id, $tgl_aw, $tgl_ak));
-			$this->load->view('json',$data);
 		}
 	}
 ?>
