@@ -99,57 +99,38 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Gaji Pegawai</h2><br><br>
-      <div class="row">
-        <div class="small-8 columns">
-            <a href="<?php echo base_url();?>c_gaji/memiliki" class="button radius">Masukkan Nominal</a>
-            <a href="<?php echo base_url();?>c_gaji/form_tambah" class="button radius">Tambah Gaji</a>
-            <a href="#" class="button radius" id="button_sms">Kirim Pemberitahuan</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-2 columns">
-          <input id="check_all" type="checkbox"><label for="checkbox"><b>Check all</b></label>
-        </div>
-      </div>
+      <h2 id="tables" style="text-align:center;">Detail Gaji</h2><br><br>
         <center>
           <table>
             <thead>
               <tr>
                 <th>No</th>
-                <th>Pilih</th>
-                <th>idpeg</th>
-                <th>Nama Pegawai</th>
-                <th>Dari Tanggal</th>
-                <th>Ke Tanggal</th>
-                <th>jumlah Pertemuan</th>
-                <th>Bonus</th>
-                <th>Total Gaji</th>
-                <th>Aksi</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Honor Tiap Pertemuan</th>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
               </tr>
             </thead>
 
             <tbody>
               <?php echo '<tr>';
                 $i=1;
-                  foreach($querygaji->result_array() as $rows) {
+                  foreach($detailgaji as $rows) {
                     echo "<td>".$i."</td>";
-                    echo "<td><input type='checkbox' value='".$rows['idgaji']."'></td>";
-                    echo "<td>".$rows['idpeg']."</td>";
                     echo "<td>".$rows['nama']."</td>";
-                    echo "<td>".$rows['dr_tgl']."</td>";
-                    echo "<td>".$rows['ke_tgl']."</td>";
-                    echo "<td>".$rows['jml_pertemuan']."</td>";
-                    echo "<td>".$rows['bonus']."</td>";
-                    echo "<td>".$rows['totalgaji']."</td>";
-                    echo "<td>".anchor('c_gaji/detail_gaji/'.$rows['idpeg'].'/'.$rows['dr_tgl'].'/'.$rows['ke_tgl'],'Detail')."</td>";
-
+                    echo "<td>".$rows['nmsubprog']."</td>";
+                    echo "<td>".$rows['honor']."</td>";
+                    echo "<td>".$rows['tanggal']."</td>";
+                    $keterangan = $rows['nama'] == $detailgaji[0]['nama'] ? "Hadir" : "Pengganti";
+                    echo "<td>". $keterangan ."</td>";
                     $i++;
                   echo '</tr>';
                   }
               ?>
             </tbody>
           </table>
+          <h1><a href="<?php echo base_url()?>c_gaji/disp" id="kembali">Back</a></h1>
         </center>
     </div>
   </div>

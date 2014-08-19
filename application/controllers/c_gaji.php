@@ -113,5 +113,12 @@
 			}
 			return $newID;
 		}
+
+	// DETAIL GAJI
+		public function detail_gaji($idpegawai, $tgl_Awal, $tgl_Akhir){
+			$this->load->model('m_gaji');
+			$data['detailgaji']=$this->m_gaji->detailgaji($idpegawai, $tgl_Awal, $tgl_Akhir);
+			$this->load->view('detail_gaji',$data);
+		}
 	}
 ?>

@@ -3,7 +3,7 @@
 
 		public function ambil_gaji() {
 			$querygaji=$this->db->query("SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.bonus, 
-						g.totalgaji, p.nama from gaji g join pegawai p on (g.idpeg=p.idpeg)");
+						g.totalgaji, p.nama, p.idpeg from gaji g join pegawai p on (g.idpeg=p.idpeg)");
 			return $querygaji;
 		}
 
@@ -31,6 +31,26 @@
 
 		public function tampil_nominal(){
         	return $this->db->query('SELECT * FROM subprogram');	
+        }
+
+        public function detailgaji($idpegawai, $tgl_Awal, $tgl_Akhir){
+        	$detailgaji = $this->db->query("SELECT p.nama, s.nmsubprog, 
+					(select l.lisnominal from list_nominal l join subprogram k on (l.idsubprog=k.idsubprog) 
+					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal
+        			from absensi a join pegawai p on (a.idpeg=p.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
+					join subprogram s on (j.idsubprog=s.idsubprog) join memiliki m on(p.idpeg=m.idpeg) 
+					join list_nominal l on (m.idlistnominal=l.idlistnominal) join gaji g on (p.idpeg=g.idpeg)
+					where a.idpeg='$idpegawai' and a.idpeg_pengganti='0' and a.tgl_absen between '$tgl_Awal' 
+					and '$tgl_Akhir'
+					union 
+					select p.nama as nama, s.nmsubprog as kelas, 
+					(select l.lisnominal from list_nominal l join subprogram k on (l.idsubprog=k.idsubprog) 
+					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal
+					from absensi a join pegawai p on (a.idpeg=p.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
+					join subprogram s on (j.idsubprog=s.idsubprog) join memiliki m on(p.idpeg=m.idpeg) 
+					join list_nominal l on (m.idlistnominal=l.idlistnominal) join gaji g on (p.idpeg=g.idpeg)
+					where a.idpeg_pengganti='$idpegawai' and a.tgl_absen between '$tgl_Awal' and '$tgl_Akhir'")->result_array();
+			return $detailgaji;
         }
 
         public function jml_pertemuan($idpeg,$tglawal,$tglakhir){
