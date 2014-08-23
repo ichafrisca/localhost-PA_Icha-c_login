@@ -132,6 +132,7 @@
                 <td>:</td>
                 <td>'.form_input('nama').'</td>
               </tr>
+              </tr>
             </div>
           </div>
           <div class="row">

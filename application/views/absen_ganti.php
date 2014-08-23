@@ -2,7 +2,7 @@
 	<head>
 		<title>Kepegawaian ELFAST</title>
 		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
-		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
 
 <body>		   
@@ -97,60 +97,10 @@
 <br><br><br>
 
   <!-- PEGAWAI -->
-  <div class="row">
+<div class="row">
   <div class="large-12 panel">
-  <?php
-      echo form_open('c_absen/func_ganti_absen');
-        echo '<center><h3>Form Tambah Absensi</h3></center>
-        
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Status Sedia</td>
-                <td>:</td>
-                <td>';
-                $dropdown_stsedia = array(
-                    "-"           => "- Pilih Status Kesediaan -",
-                    "Sedia"       => "Sedia",
-                    "Tidak Sedia" => "Tidak Sedia");
-                echo form_dropdown('status_sedia', $dropdown_stsedia, '-');
-                echo '</td>
-              </tr>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="large-12 columns">
-               <tr>
-                <td>Status Kesediaan Admin</td>
-                <td>:</td>
-                <td>';
-                $dropdown_stadmin = array(
-                    "-" => "- Pilih Status Kesediaan Admin -",
-                    "Sedia"       => "Sedia",
-                    "Tidak Sedia" => "Tidak Sedia");
-                echo form_dropdown('status_admin', $dropdown_stadmin, '-');
-                echo '</td>
-              </tr>
-            </div>
-          </div><br/>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Pegawai Pengganti</td>
-                <td>:</td>  
-                <td>';
-                  $dropdown = array('-' => '- Pilih Nama Pegawai - ');
-                  foreach ($dropdown_nmpegawai as $row) {
-                    $dropdown[$row['idpeg']] = $row['nama'];
-                  }
-                  echo form_dropdown('idpeg', $dropdown, '-');
-                  echo
-                '</td>
-              </tr>
-            </div>
-          </div>
-          <br>
+      <center><h3>Form Pengganti</h3></center>
+        <br><br>
           <div class="row">
             <div class="large-12 columns">
               <tr>
@@ -161,34 +111,73 @@
             </div>
           </div>
           <div class="row">
-            <div class="large-12 columns">
+            <div class="large-6 columns">
               <tr>
-                <td>Jam Mengganti</td>
+                <td>Jam Masuk</td>
                 <td>:</td>
-                <td>';
-                  $dropdon = array('-' => '- Pilih Jadwal - ');
-                  foreach ($dropdown_jadwal as $row) {
-                    $dropdon[$row['idjadwal']] = $row['jam'];
-                  }
-                  echo form_dropdown('idjadwal', $dropdon, '-');
-                  echo
-                '</td>
+                <td>
+                  <select id="jam_awal">
+                    <option value="-"> - Pilih Jam Awal - </option>
+                    <option value="06.00">Pukul 06:00</option>
+                    <option value="07.00">Pukul 07:00</option>
+                    <option value="08.00">Pukul 08:00</option>
+                    <option value="09.00">Pukul 09:00</option>
+                    <option value="10.00">Pukul 10:00</option>
+                    <option value="11.00">Pukul 11:00</option>
+                    <option value="12.00">Pukul 13:00</option>
+                    <option value="13.00">Pukul 14:00</option>
+                    <option value="14.00">Pukul 15:00</option>
+                    <option value="15.00">Pukul 16:00</option>
+                  </select>
+                </td>
+              </tr>
+            </div>
+            <div class="large-6 columns">
+              <tr>
+                <td>Jam Selesai</td>
+                <td>:</td>
+                <td>
+                  <select id="jam_akhir">
+                    <option value="-"> - Pilih Jam Akhir - </option>
+                    <option value="07.30">Pukul 07:30</option>
+                    <option value="08.30">Pukul 08:30</option>
+                    <option value="09.30">Pukul 09:30</option>
+                    <option value="10.30">Pukul 10:30</option>
+                    <option value="11.30">Pukul 11:30</option>
+                    <option value="13.30">Pukul 13:30</option>
+                    <option value="14.30">Pukul 14:30</option>
+                    <option value="15.30">Pukul 15:30</option>
+                    <option value="16.30">Pukul 16:30</option>
+                    <option value="17.30">Pukul 17:30</option>
+                  </select>
+                </td>
               </tr>
             </div>
           </div>
-          <br>
-        <label>
-          <input type="submit" value="Save" class="button radius expand">
-        </label>
-        <label>
-          <a href='. base_url() .'c_absen/disp class="button radius expand">Back</a>
-        </label>';
-        echo form_close();
-      ?>
-      <?php if (isset($validation_errors)) echo $validation_errors;?>
+          <div class="panel">
+            <table id="detailnya" style="width : 100%">
+              <thead>
+                <tr>
+                  <th>ID Pegawai</th>
+                  <th>Nama Pegawai</th>
+                  <th>Tanggal Absen</th>
+                  <th>Jam</th>
+                  <th>Nama Subprogram</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+            <label>
+              <input type="submit" value="Kirim" class="button radius expand">
+              <?php ?>
+            </label>            
+          </div>
+        </div>
       </div>
-      </div>
-
+  </div>
 		<!-- javascript foundation -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
@@ -203,18 +192,51 @@
   	<script type="text/javascript">
   		$(document).foundation();
   	</script>
+
     <script>
-    $(function() {
+      $(document).ready(function() {
+        $("#jam_akhir").change(function(){
+          $("#detailnya").hide();
+          var alamat = 'json_ganti_absen/' + $("#datepicker").val() + '/' + $("#jam_awal").val() + '/' + $("#jam_akhir").val();
+          $.ajax({
+            type        : 'GET',
+            url         : alamat, 
+            dataType    : 'json',
+            contentType : 'application/json; charset=utf-8',
+            success     : function(data){
+              if(data != null){
+                $("#detailnya").show();
+                $("tr").next().remove();
+                $.each(data, function(index,element){
+                  $("#detailnya").last().append($("<tr>")
+                    .append("<td>"+ element.idpeg +"</td>")
+                    .append("<td>"+ element.nama +"</td>")
+                    .append("<td>"+ element.tgl_absen +"</td>")
+                    .append("<td>"+ element.jam +"</td>")
+                    .append("<td>"+ element.nmsubprog +"</td>")
+                  );
+                });
+              }else{
+                $("#detailnya").hide();
+              }
+            },
+            error       : function(data){
+              alert("Pilih tanggal terlebih dulu ");
+            }
+          });
+        });
+      });
+    </script>
+
+    <script>
       $( "#datepicker" ).datepicker(
         {
           changeMonth: 'true',
           changeYear: 'true',
           dateFormat:'yy-mm-dd', 
           showAnim: 'slideDown',
-          minDate: 0
-        }
-      );
-    });
-  </script>
+          minDate: +1
+      });
+    </script>
 	</body>
 </html>

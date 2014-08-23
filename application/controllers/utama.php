@@ -59,5 +59,16 @@
 			$data['data_json'] = json_encode($presensi);
 			$this->load->view("json", $data);
 		}
+
+		public function gajipegawai(){
+			$data['id'] = $this->session->userdata("pengguna");
+			$this->load->view("gajipegawai", $data);	
+		}
+
+		public function json_gaji($id, $tgl_aw, $tgl_ak) {
+			$this->load->model('m_user');
+			$data['data_json'] = json_encode($this->m_user->detailgaji($id, $tgl_aw, $tgl_ak));
+			$this->load->view('json',$data);
+		}
 	}
 ?>

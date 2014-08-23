@@ -17,11 +17,11 @@
 
         public function view_tgl($idjadwal){
             return $this->db->query("SELECT j.tanggal, sp.nmsubprog from jadwal j join subprogram sp on(j.idsubprog=sp.idsubprog) where idjadwal='".$idjadwal."'")->result_array();
-        }        
+        } 
 
         public function tampil_data_nmpegawai(){
-        	return $this->db->query('SELECT * FROM pegawai');	
-        }       
+            return $this->db->query('SELECT * from pegawai');
+        }
 
 		public function tampil_id() {
 			$maxMe = $this->db->query('SELECT MAX( SUBSTR( idabsen, 4, 4 ) ) AS MAXID FROM absensi');
@@ -51,6 +51,21 @@
 
         public function ganti_absen($ganti){
             $this->db->insert('KESEDIAAN', $ganti);
+        }
+
+        // GANTI ABSEN
+
+        public function pegawai_pengganti($tgl, $jam_awal, $jam_akhir){
+            return $this->db->query("SELECT distinct peg.idpeg, peg.nama, ab.tgl_absen, jdw.jam, sp.nmsubprog, 
+                                    sp.idsubprog from pegawai peg join absensi ab on(peg.idpeg=ab.idpeg) 
+                                    join jadwal jdw on(ab.idjadwal=jdw.idjadwal)
+                                    join subprogram sp on(sp.idsubprog=jdw.idsubprog)
+                                    where ab.tgl_absen = '$tgl'
+                                    and jdw.jam not between '$jam_awal' and '$jam_akhir'"); 
+        }      
+
+        public function sms($id){
+            return $this->db->query("SELECT no_telp from pegawai where idpeg='$id'")
         }
     }
 ?>

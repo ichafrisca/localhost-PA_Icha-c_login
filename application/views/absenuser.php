@@ -34,10 +34,11 @@
 						<aside class="left-off-canvas-menu">
       						<ul class="off-canvas-list">
 						        <li><label>Menu</label></li>
-						        <li><a href="<?php echo base_url().'utama'?>">Home</a></li>
+						        <li><a href="<?php echo base_url().'utama'?>">Beranda</a></li>
 						        <li><a href="<?php echo base_url().'utama/profil'?>">Profil</a></li>
 						        <li><a href="<?php echo base_url().'utama/jadwal'?>">Jadwal</a></li>
 						        <li><a href="<?php echo base_url().'utama/presensi'?>">Presensi</a></li>
+						        <li><a href="<?php echo base_url().'utama/gajipegawai'?>">Gaji Pegawai</a></li>
 						    </ul>
     					</aside>
 
@@ -73,6 +74,7 @@
 								          	</table>
 								      	<div>    	
 							          <!-- </center> -->
+							          </div>
 							        </div>
     							</div>
     						</div>

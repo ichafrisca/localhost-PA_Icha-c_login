@@ -28,27 +28,25 @@
 								</a>
 							</section>
 							<section class="right tab-bar-section">
-								<h1 class="title">Home</h1>
+								<h1 class="title">Beranda</h1>
 							</section>
 						</nav>
 						<aside class="left-off-canvas-menu">
       						<ul class="off-canvas-list">
 						        <li><label>Menu</label></li>
-						        <li><a href="<?php echo base_url().'utama'?>">Home</a></li>
+						        <li><a href="<?php echo base_url().'utama'?>">Beranda</a></li>
 						        <li><a href="<?php echo base_url().'utama/profil'?>">Profil</a></li>
 						        <li><a href="<?php echo base_url().'utama/jadwal'?>">Jadwal</a></li>
 						        <li><a href="<?php echo base_url().'utama/presensi'?>">Presensi</a></li>
+						        <li><a href="<?php echo base_url().'utama/gajipegawai'?>">Gaji Pegawai</a></li>
 						    </ul>
     					</aside>
 
     					<section class="main-section">
     						<div class="row">
     							<div class="large-12 columns">
-    								<br>
-    								<h4>Albert Einstein</h4>
-    								<p>Insanity is doing the same thing, over and over again, but expecting different results -
-										Albert Einstein
-										the principal founder of modern theoretical physics</p>
+    								<p><h1>Portal Khusus Pegawai</h1></p>
+    								<img src="<?php echo base_url();?>assets/slider home/elfast-profile.jpg" style="width:700px; height:250; margin-top:40px; margin-bottom:40px;"/>
     							</div>
     						</div>
     					</section>

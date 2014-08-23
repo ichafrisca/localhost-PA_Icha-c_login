@@ -106,7 +106,7 @@
           <a href="<?php echo base_url();?>c_absen/form_tambah" data-dropdown="drop1" class="button dropdown">Tambah</a>
             <ul id="drop1" data-dropdown-content class="f-dropdown">
               <li><a href="<?php echo base_url();?>c_absen/form_tambah">Tambah Absensi</a></li>
-              <li><a href="<?php echo base_url();?>c_absen/ganti_absen">Pengganti Pegawai</a></li>
+              <li><a href="<?php echo base_url();?>c_absen/form_ganti_absen">Pengganti Pegawai</a></li>
             </ul>
           <a href="#" class="button radius" id="button_sms">Kirim Pemberitahuan</a><br/>
         </div>

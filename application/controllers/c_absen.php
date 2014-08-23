@@ -101,6 +101,7 @@
 			$this->load->view('edit_absensi',$data);
 		}
 
+
 		public function edit(){
 			$data=array(
 				'status_absen'	=>$this->input->post('status_absen'),
@@ -114,13 +115,14 @@
 
 	// PEGAWAI PENGGANTI
 
-		public function ganti_absen(){
+		public function form_ganti_absen(){
+			$this->load->view('absen_ganti');
+		}
+
+		public function json_ganti_absen($tgl, $jam_awal, $jam_akhir){
 			$this->load->model('m_absen');
-			$data['ganti_absen']=$this->m_absen->data_ganti_absen();
-			$data['dropdown_jadwal'] = $this -> m_absen -> tampil_data_jadwal()->result_array();
-			$data['dropdown_nmpegawai'] = $this -> m_absen -> tampil_data_nmpegawai()->result_array();
-			$data['validation_errors'] = $this -> session -> flashdata('errors');
-			$this->load->view('absen_ganti', $data);	
+			$data['data_json'] = json_encode($this->m_absen->pegawai_pengganti($tgl, $jam_awal, $jam_akhir)->result_array());
+			$this->load->view('json',$data);
 		}
 
 		public function func_ganti_absen(){
