@@ -56,7 +56,7 @@
         // GANTI ABSEN
 
         public function pegawai_pengganti($tgl, $jam_awal, $jam_akhir){
-            return $this->db->query("SELECT distinct peg.idpeg, peg.nama, ab.tgl_absen, jdw.jam, sp.nmsubprog, 
+            return $this->db->query("SELECT distinct peg.idpeg, peg.nama, peg.no_telp, ab.tgl_absen, jdw.jam, sp.nmsubprog, 
                                     sp.idsubprog from pegawai peg join absensi ab on(peg.idpeg=ab.idpeg) 
                                     join jadwal jdw on(ab.idjadwal=jdw.idjadwal)
                                     join subprogram sp on(sp.idsubprog=jdw.idsubprog)
@@ -64,8 +64,9 @@
                                     and jdw.jam not between '$jam_awal' and '$jam_akhir'"); 
         }      
 
-        public function sms($id){
-            return $this->db->query("SELECT no_telp from pegawai where idpeg='$id'")
+        public function sms_pengganti($nomor, $tanggal, $jam, $kelas, $idsub){
+            $this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
+                VALUES ('$nomor', 'Besok tanggal $tanggal pukul $jam, anda ditunjuk sebagai pengganti di kelas $kelas, balas dengan format GANTI-ID_ANDA-$idsub jika menyetujui.')");
         }
     }
 ?>

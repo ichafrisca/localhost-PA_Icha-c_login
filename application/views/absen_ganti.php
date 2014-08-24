@@ -155,25 +155,26 @@
             </div>
           </div>
           <div class="panel">
-            <table id="detailnya" style="width : 100%">
-              <thead>
-                <tr>
-                  <th>ID Pegawai</th>
-                  <th>Nama Pegawai</th>
-                  <th>Tanggal Absen</th>
-                  <th>Jam</th>
-                  <th>Nama Subprogram</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                </tr>
-              </tbody>
-            </table>
-            <label>
-              <input type="submit" value="Kirim" class="button radius expand">
-              <?php ?>
-            </label>            
+            <?php echo form_open('c_absen/sms_pengganti'); ?>
+              <table id="detailnya" style="width : 100%">
+                <thead>
+                  <tr>
+                    <th>ID Pegawai</th>
+                    <th>Nama Pegawai</th>
+                    <th>Tanggal Absen</th>
+                    <th>Jam</th>
+                    <th>Nama Subprogram</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  </tr>
+                </tbody>
+              </table>
+              <label>
+                <input type="submit" value="Kirim" class="button radius expand">
+              </label>            
+            <?php echo form_close(); ?>
           </div>
         </div>
       </div>
@@ -197,7 +198,10 @@
       $(document).ready(function() {
         $("#jam_akhir").change(function(){
           $("#detailnya").hide();
-          var alamat = 'json_ganti_absen/' + $("#datepicker").val() + '/' + $("#jam_awal").val() + '/' + $("#jam_akhir").val();
+          var pilihtgl = $("#datepicker").val();
+          var jammasuk = $("#jam_awal").val();
+          var jamselesai = $("#jam_akhir").val();
+          var alamat = 'json_ganti_absen/' + pilihtgl + '/' + jammasuk + '/' + jamselesai;
           $.ajax({
             type        : 'GET',
             url         : alamat, 
@@ -205,17 +209,25 @@
             contentType : 'application/json; charset=utf-8',
             success     : function(data){
               if(data != null){
-                $("#detailnya").show();
-                $("tr").next().remove();
-                $.each(data, function(index,element){
-                  $("#detailnya").last().append($("<tr>")
-                    .append("<td>"+ element.idpeg +"</td>")
-                    .append("<td>"+ element.nama +"</td>")
-                    .append("<td>"+ element.tgl_absen +"</td>")
-                    .append("<td>"+ element.jam +"</td>")
-                    .append("<td>"+ element.nmsubprog +"</td>")
-                  );
-                });
+                if (jammasuk != "-" || jamselesai != "-") {
+                  $("#detailnya").show();
+                  $("tr").next().remove();
+                  $.each(data, function(index,element){
+                    $("#detailnya").last().append($("<tr>")
+                      .append("<input type='hidden' name='telp"+ index +"' value='" +  element.no_telp + "'>")
+                      .append("<input type='hidden' name='tanggal' value='" +  element.tgl_absen + "'>")
+                      .append("<input type='hidden' name='idsubprog' value='" +  element.idsubprog + "'>")
+                      .append("<input type='hidden' name='jumlahdata' value='" +  data.length + "'>")
+                      .append("<input type='hidden' name='jam_pgt' value='" +  jammasuk + "'>")
+                      .append("<input type='hidden' name='kelas_pgt' value='" +  element.nmsubprog + "'>")
+                      .append("<td>"+ element.idpeg +"</td>")
+                      .append("<td>"+ element.nama +"</td>")
+                      .append("<td>"+ element.tgl_absen +"</td>")
+                      .append("<td>"+ element.jam +"</td>")
+                      .append("<td>"+ element.nmsubprog +"</td>")
+                    );
+                  });
+                }
               }else{
                 $("#detailnya").hide();
               }
@@ -237,6 +249,13 @@
           showAnim: 'slideDown',
           minDate: +1
       });
+    </script>
+    <script>
+      <?php 
+        if ($notif != null) {
+          echo $notif;
+        }
+       ?>
     </script>
 	</body>
 </html>

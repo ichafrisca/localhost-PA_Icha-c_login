@@ -169,5 +169,21 @@
 	            return TRUE;
 	        }
 	    }
+
+	    public function sms_pengganti(){
+	    	$this->load->model("m_absen");
+	    	$jumlah_data = $this->input->post('jumlahdata');
+	    	for ($i=0; $i < $jumlah_data; $i++) { 
+	    		$this->m_absen->sms_pengganti(
+	    			$this->input->post("telp".$i), 
+	    			$this->input->post("tanggal"), 
+	    			$this->input->post("jam_pgt"), 
+	    			$this->input->post("kelas_pgt"), 
+	    			$this->input->post("idsubprog")
+	    			);
+	    	}
+	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
+	    	$this->load->view("absen_ganti", $data);
+	    }
 	}
 ?>
