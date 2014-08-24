@@ -2,7 +2,7 @@
 	class M_absen extends CI_Model{
     	public function ambil_data_absen(){
     		$queryabsen=$this->db->query("SELECT a.idabsen, a.status_absen, a.tgl_absen, a.idpeg_pengganti, j.jam, 
-                        sp.nmsubprog, p.nama FROM absensi a join jadwal j on (a.idjadwal=j.idjadwal) join pegawai p 
+                        sp.nmsubprog, p.nama, p.no_telp FROM absensi a join jadwal j on (a.idjadwal=j.idjadwal) join pegawai p 
                         on (a.idpeg=p.idpeg) join subprogram sp on (j.idsubprog=sp.idsubprog) order by idabsen asc");
 			return $queryabsen;
     	}
@@ -67,6 +67,15 @@
         public function sms_pengganti($nomor, $tanggal, $jam, $kelas, $idsub){
             $this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
                 VALUES ('$nomor', 'Besok tanggal $tanggal pukul $jam, anda ditunjuk sebagai pengganti di kelas $kelas, balas dengan format GANTI-ID_ANDA-$idsub jika menyetujui.')");
+        }
+
+        public function sms_pemberitahuan_jadwal($nomor){
+            $this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
+                VALUES ('$nomor', 'Jadwal anda telah tersedia. Silahkan cek melalui portal.')");
+        }
+
+        public function nomor_pegawai(){
+            return $this->db->query("SELECT no_telp from pegawai where stat_peg='Aktif'")->result_array();
         }
     }
 ?>

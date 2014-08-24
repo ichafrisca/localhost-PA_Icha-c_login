@@ -108,12 +108,9 @@
               <li><a href="<?php echo base_url();?>c_absen/form_tambah">Tambah Absensi</a></li>
               <li><a href="<?php echo base_url();?>c_absen/form_ganti_absen">Pengganti Pegawai</a></li>
             </ul>
-          <a href="#" class="button radius" id="button_sms">Kirim Pemberitahuan</a><br/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-2 columns">
-          <input id="check_all" type="checkbox"><label for="checkbox"><b>Check all</b></label>
+        <?php echo form_open("c_absen/sms_pemberitahuan_jadwal"); ?>
+          <input type="submit" class="button radius" value="Kirim Pemberitahuan" />
+        <?php echo form_close(); ?>
         </div>
       </div>
         <center>
@@ -121,7 +118,6 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>Pilih</th>
                 <th>ID Absen</th>
                 <th>Status Absen</th>
                 <th>Tanggal Absen</th>
@@ -132,13 +128,12 @@
                 <th>Aksi</th>
               </tr>
             </thead>
-
+            
             <tbody>
               <?php echo '<tr>';
                 $i=1;
                   foreach($queryabsen->result_array() as $rows) {
                     echo "<td>".$i."</td>";
-                    echo "<td><input type='checkbox' value='".$rows['idabsen']."'></td>";
                     echo "<td>".$rows['idabsen']."</td>";
                     echo "<td>".$rows['status_absen']."</td>";
                     echo "<td>".$rows['tgl_absen']."</td>";
@@ -181,6 +176,12 @@
           }
         });
       });
+    </script>
+
+    <script>
+    <?php if ($notif != null){
+      echo $notif;
+    } ?>
     </script>
 	</body>
 </html>

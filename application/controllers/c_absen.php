@@ -185,5 +185,16 @@
 	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
 	    	$this->load->view("absen_ganti", $data);
 	    }
+
+	    public function sms_pemberitahuan_jadwal(){
+	    	$this->load->model("m_absen");
+	    	$sms = $this->m_absen->nomor_pegawai();
+	    	foreach ($sms as $data) {
+	    		$this->m_absen->sms_pemberitahuan_jadwal($data['no_telp']);
+	    	}
+	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
+	    	$data['queryabsen'] = $this->m_absen->ambil_data_absen();
+	    	$this->load->view("absensi", $data);
+	    }
 	}
 ?>
