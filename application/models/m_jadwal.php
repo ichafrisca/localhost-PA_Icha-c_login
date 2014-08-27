@@ -6,8 +6,8 @@
 		}
 
 		public function ambil_jadwal($p = 0, $jumlah = 10) {
-			$sql = "SELECT j.idjadwal, j.tanggal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog 
-				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
+			$sql = "SELECT j.idjadwal, j.tanggal, j.jam, j.periode_tgl,r.namaruang, sp.nmsubprog 
+				from jadwal j join ruang r on (j.idruang=r.idruang) join subprogram sp 
 				on (j.idsubprog=sp.idsubprog) order by idjadwal asc";
 			$sql.=" limit $p, $jumlah";
 			$queryjadwal=$this->db->query($sql);
@@ -16,11 +16,6 @@
 
 		public function tambah_jadwal($jadwal){
 			$this->db->insert('jadwal', $jadwal);
-		}
-
-		public function hapus($idjadwal){
-			$this->db->where('idjadwal',$idjadwal);
-			$this->db->delete('jadwal');
 		}
 
 		public function tampil_edit($IDJADWAL){
@@ -49,7 +44,11 @@
 			return $maxra;
 		}
 
-		public function tampil_data_ruang() {
+		public function tampil_ruang_office() {
+            return $this->db->query('SELECT * from ruang where namaruang="Office"');
+        }
+
+        public function tampil_data_ruang() {
             return $this->db->query('SELECT * FROM ruang');
         }
 

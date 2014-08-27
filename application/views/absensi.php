@@ -100,17 +100,19 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Absensi Pegawai</h2>
+      <h2 id="tables" style="text-align:center;">Absensi Pegawai</h2><br>
       <div class="row">
-        <div class="small-10 columns">
+        <div class="small-2 columns">
           <a href="<?php echo base_url();?>c_absen/form_tambah" data-dropdown="drop1" class="button dropdown">Tambah</a>
             <ul id="drop1" data-dropdown-content class="f-dropdown">
               <li><a href="<?php echo base_url();?>c_absen/form_tambah">Tambah Absensi</a></li>
               <li><a href="<?php echo base_url();?>c_absen/form_ganti_absen">Pengganti Pegawai</a></li>
             </ul>
-        <?php echo form_open("c_absen/sms_pemberitahuan_jadwal"); ?>
-          <input type="submit" class="button radius" value="Kirim Pemberitahuan" />
-        <?php echo form_close(); ?>
+        </div>
+        <div class="small-10 columns" style="float:top;">
+          <?php echo form_open("c_absen/sms_pemberitahuan_jadwal"); ?>
+              <a><input type="submit" class="button radius" value="Kirim Pemberitahuan" /></a>
+          <?php echo form_close(); ?>
         </div>
       </div>
         <center>

@@ -5,6 +5,8 @@
 			$this -> load -> view('homeuser');
 		}
 
+	// PROFIL
+
 		public function profil(){
 			$this->load->model('m_user');
 			$current = $this->session->userdata("pengguna");
@@ -30,6 +32,8 @@
 			$this->profil();
 		}
 
+	// JADWAL
+
 		public function jadwal(){
 			$this->load->model('m_user');
 			$jadwal = $this->session->userdata("pengguna");
@@ -38,6 +42,8 @@
 			$data["queryjadwal"]=$this->m_user->ambil_jadwal($jadwal);
 			$this->load->view('jdwl_user',$data);
 		}
+
+	// PRESENSI
 
 		public function presensi(){
 			$this->load->model('m_user');
@@ -59,6 +65,8 @@
 			$data['data_json'] = json_encode($presensi);
 			$this->load->view("json", $data);
 		}
+
+	// GAJI PEGAWAI
 
 		public function gajipegawai(){
 			$data['id'] = $this->session->userdata("pengguna");

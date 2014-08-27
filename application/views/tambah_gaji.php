@@ -153,9 +153,7 @@
             <tr>
               <td>Honor</td>
               <td>:</td>
-              <td>'.form_input('totalhonor', '', 'readonly').'
-                  <a href="#" class="small-offset-11 label" id="detil">Detail Gaji</a>
-              </td>
+              <td>'.form_input('totalhonor', '', 'readonly').'</td>
             </tr>
           </div>
         </div>
@@ -190,22 +188,6 @@
       echo form_close();
       ?>
       <?php if (isset($validation_errors)) echo $validation_errors;?>
-    </div>
-  </div>
-
-  <!-- DETAIL GAJI PEGAWAI -->
-  <div class="row" id="container_detail_gaji">
-    <div class="large-12 panel">
-        <table border=1>
-          <thead>
-              <tr>
-                <th>Tanggal Hadir</th>
-                <th>Kelas</th>
-                <th>Honor</th>
-              </tr>
-            </thead> 
-        </table>
-      <h1><a href="#" id="kembali">Back</a></h1>
     </div>
   </div>
 </div>

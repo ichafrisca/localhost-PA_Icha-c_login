@@ -99,7 +99,7 @@
   <!-- PEGAWAI -->
   <div class="row">
   <div class="large-12 panel">
-  <center><h2>List Gaji Pegawai</h2></center>
+  <center><h2>Form Tambah Nominal Gaji</h2></center>
   <?php
     echo form_open('c_gaji/tambah_nominal');
       echo '
