@@ -106,6 +106,8 @@
           <a href="<?php echo base_url();?>c_grammar/form_tambah" class="button radius">Buat Jadwal</a>
         </div>
       </div> -->
+      <br>
+      <center>
           <table>
             <thead>
               <tr>
@@ -139,6 +141,7 @@
               ?>
             </tbody>
           </table>
+        </center>
     </div>
   </div>
 

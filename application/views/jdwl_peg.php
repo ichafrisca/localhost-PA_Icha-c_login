@@ -139,7 +139,6 @@
                     echo "<td>".$rows['namaruang']."</td>";
                     echo "<td>".$rows['nmsubprog']."</td>";
                     echo "<td>".anchor('c_jadwal/form_update_jadwal/'.$rows['idjadwal'],'Ubah Jadwal')."</td>";
-                    // | ".anchor('c_jadwal/form_update_jadwal/'.$rows['idjadwal'],'Detail')."
                     $i++;
                   echo '</tr>';
                   }

@@ -101,10 +101,14 @@
     <div class="large-12 medium-9 columns panel">
       <h2 id="tables" style="text-align:center;">Gaji Pegawai</h2><br><br>
       <div class="row">
-        <div class="small-8 columns">
+        <div class="large-5 columns">
             <a href="<?php echo base_url();?>c_gaji/memiliki" class="button radius">Masukkan Nominal</a>
             <a href="<?php echo base_url();?>c_gaji/form_tambah" class="button radius">Tambah Gaji</a>
-            <a href="#" class="button radius" id="button_sms">Kirim Pemberitahuan</a>
+        </div>
+        <div class="small-7 columns">
+          <?php echo form_open("c_gaji/sms_gaji"); ?>
+            <input type="submit" class="button radius" value="Kirim Pemberitahuan" />
+          <?php echo form_close(); ?>
         </div>
       </div>
       <div class="row">
@@ -132,7 +136,7 @@
             <tbody>
               <?php echo '<tr>';
                 $i=1;
-                  foreach($querygaji->result_array() as $rows) {
+                  foreach($querygaji as $rows) {
                     echo "<td>".$i."</td>";
                     echo "<td><input type='checkbox' value='".$rows['idgaji']."'></td>";
                     echo "<td>".$rows['idpeg']."</td>";
@@ -158,9 +162,16 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>    
-  	<script type="text/javascript">
+  	
+    <script type="text/javascript">
   		$(document).foundation();
   	</script>
+
+    <script>
+      <?php if ($notif != null){
+        echo $notif;
+      } ?>
+    </script>
 
     <script>
       $(document).ready(function(){

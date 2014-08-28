@@ -5,7 +5,8 @@
 
 		public function disp(){
 			$this->load->model('m_gaji');
-			$data['querygaji']=$this->m_gaji->ambil_gaji();
+			$data['querygaji'] = $this->m_gaji->ambil_gaji()->result_array();
+			$data['notif'] = null;
 			$this->load->view('gaji_pegawai',$data);
 		}
 
@@ -120,5 +121,26 @@
 			$data['detailgaji']=$this->m_gaji->detailgaji($idpegawai, $tgl_Awal, $tgl_Akhir);
 			$this->load->view('detail_gaji',$data);
 		}
+
+	// PEMBERITAHUAN
+
+		public function sms_gaji(){
+	    	$this->load->model("m_gaji");
+	    	$sms = $this->m_gaji->nomor_pegawai();
+	    	$querygaji = $this -> m_gaji ->ambil_gaji()->result_array();
+	    	foreach ($querygaji as $data) {
+	    		$this->m_gaji->sms_pemberitahuan_gaji(
+	    			$data['no_telp'],
+	    			$data['nama'],
+	    			$data['dr_tgl'],
+	    			$data['ke_tgl'],
+	    			$data['jml_pertemuan'],
+	    			$data['totalgaji']
+	    			);
+	    	}
+	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
+	    	$data['querygaji'] = $querygaji;
+	    	$this->load->view("gaji_pegawai", $data);
+	    }
 	}
 ?>

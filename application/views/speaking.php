@@ -101,6 +101,7 @@
     <div class="large-12 medium-9 columns panel">
       <h2 id="tables" style="text-align:center;">Jadwal Speaking</h2>
         <br><br>
+        <center>
           <table>
             <thead>
               <tr>
@@ -134,6 +135,7 @@
               ?>
             </tbody>
           </table>
+        </center>
     </div>
   </div>
 

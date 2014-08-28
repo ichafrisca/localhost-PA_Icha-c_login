@@ -170,6 +170,8 @@
 	        }
 	    }
 
+	// PEMBERITAHUAN
+
 	    public function sms_pengganti(){
 	    	$this->load->model("m_absen");
 	    	$jumlah_data = $this->input->post('jumlahdata');
@@ -180,7 +182,7 @@
 	    			$this->input->post("jam_pgt"), 
 	    			$this->input->post("kelas_pgt"), 
 	    			$this->input->post("idsubprog")
-	    			);
+	    		);
 	    	}
 	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
 	    	$this->load->view("absen_ganti", $data);
@@ -192,7 +194,7 @@
 	    	foreach ($sms as $data) {
 	    		$this->m_absen->sms_pemberitahuan_jadwal($data['no_telp']);
 	    	}
-	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
+	    	$data['notif'] = "alert('Sms pemberitahuan gaji telah terkirim.');";
 	    	$data['queryabsen'] = $this->m_absen->ambil_data_absen();
 	    	$this->load->view("absensi", $data);
 	    }

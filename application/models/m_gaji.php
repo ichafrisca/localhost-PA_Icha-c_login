@@ -3,7 +3,7 @@
 
 		public function ambil_gaji() {
 			$querygaji=$this->db->query("SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.bonus, 
-						g.totalgaji, p.nama, p.idpeg from gaji g join pegawai p on (g.idpeg=p.idpeg)");
+						g.totalgaji, p.nama, p.no_telp, p.idpeg from gaji g join pegawai p on (g.idpeg=p.idpeg)");
 			return $querygaji;
 		}
 
@@ -76,6 +76,18 @@
 					join list_nominal l on (m.idlistnominal=l.idlistnominal) where a.idpeg_pengganti='$id' 
 					and a.tgl_absen between '$tgl_awal' and '$tgl_akhir'")->result_array();
 		}
-	}
 
+		public function sms_gaji($idpeg){
+			$this->db->query("SELECT g.dr_tgl, g.ke_tgl, g.totalgaji from gaji g join pegawai p on(g.idpeg=p.idpeg) where p.idpeg='$idpeg'");
+		}
+
+		public function sms_pemberitahuan_gaji($nomor, $nama, $tanggalawal, $tanggalakhir, $jml_pertemuan, $totalgaji){
+            $this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
+                VALUES ('$nomor', 'Saudara $nama, total gaji anda dari $tanggalawal sampai tanggal $tanggalakhir dengan jumlah pertemuan $jml_pertemuan, adalah sebesar $totalgaji')");
+        }
+
+        public function nomor_pegawai(){
+            return $this->db->query("SELECT no_telp from pegawai where stat_peg='Aktif'")->result_array();
+        }
+	}
 ?>
