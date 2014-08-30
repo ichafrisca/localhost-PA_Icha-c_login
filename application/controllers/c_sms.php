@@ -4,28 +4,7 @@
 		public function disp(){
 			$this->load->model('m_sms');
 			$data['inbox'] = $this->m_sms->dispinbox();
-			
-			$total_tiap_halaman = 5;
-			$paging = count($this->m_sms->dispinbox()) / $total_tiap_halaman;
-
-			$data['inbox_pagination'] = ceil($paging);
 			$this->load->view('smsgateway', $data);	
-		}
-		
-		public function sms(){
-			$this->load->library('form_validation');
-			$this->form_validation->set_rules('DestinationNumber','Nomor','required');
-			$this->form_validation->set_rules('TextDecoded','Isi Pesan','required');
-
-			// if ($this -> form_validation -> run() == FALSE){
-			// 	$this -> session -> set_flashdata('errors', validation_errors(''));
-			// 	redirect('c_sms/sms');
-			// }else {
-				$tujuan = $this -> input -> post('no_tujuan');
-				$pesan  = $this -> input -> post('isi_pesan');
-				$this->load->model('m_sms');
-				$this -> m_sms -> insertsms($tujuan, $pesan);
-			// }
 		}
 
 		public function inbox(){
@@ -33,13 +12,22 @@
 			$this->load->view('smsgateway', $data);	
 		}
 
-		public function inboxjson($p) {
+		public function jsoninbox(){
 			$this->load->model('m_sms');
+			$data['data_json'] = json_encode($this->m_sms->jika_sms_salah());
+			$this->load->view('json',$data);
+		}
 
-			$total = 5;
-			$inbox = $this->m_sms->dispinboxajax($p, $total);
-			$data['data_json'] = json_encode($inbox);
-			$this->load->view("json", $data);
+		public function c_sms_salah(){
+			$this->load->model('m_sms');
+			$nomor_tujuan = $this->input->post('nomor');
+			$this->m_sms->insert_sms_salah($nomor_tujuan);
+		}
+
+		public function c_update_sms_salah(){
+			$this->load->model('m_sms');
+			$id_pesan = $this->input->post('id');
+			$this->m_sms->update_inbox($id_pesan);
 		}
 	}
 ?>

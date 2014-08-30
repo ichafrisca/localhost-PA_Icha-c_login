@@ -8,16 +8,16 @@ class C_login extends CI_Controller {
 
 	public function login($p = 0 ){
 		//untuk melakukan sms otomatis
-		$this->load->model('m_sms');
+		// $this->load->model('m_sms');
 
-		//select data hari ini
-		$today_sms = $this->m_sms->check_sms_hari_ini();
-		if ($today_sms == 0) { //cek apakah hari ini sudah sms??
-			$hari_ini = array('tanggal_hari_ini' => date('Y-m-d'),'status_kirim'	=> '1');
-			$this->m_sms->insert_hari_ini($hari_ini); //insert ke database tanggal hari ini
+		// //select data hari ini
+		// $today_sms = $this->m_sms->check_sms_hari_ini();
+		// if ($today_sms == 0) { //cek apakah hari ini sudah sms??
+		// 	$hari_ini = array('tanggal_hari_ini' => date('Y-m-d'),'status_kirim'=> '1');
+		// 	$this->m_sms->insert_hari_ini($hari_ini); //insert ke database tanggal hari ini
 
-			//query insert sms gateway
-		}
+		// 	//query insert sms gateway
+		// }
 
 		$this->db->select('USERNAME','PASSWORD', 'STAT_PEG');
 		$this->db->where("USERNAME",$this->input->post('user'));
