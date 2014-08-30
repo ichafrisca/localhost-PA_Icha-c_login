@@ -58,9 +58,9 @@
 					'tanggal' 		  => $this->input->post('tanggal'),
 					'jam'	 		  => $this->input->post('jam'),
 					'periode_tgl'	  => $this->input->post('periode_tgl'),
-					'idslot' 		  => $this->input->post('kosong'),
-					'idruang' 		  => $this->input->post('kosong'),
-					'idsubprog'	 	  => $this->input->post('kosong'));
+					'idslot' 		  => $this->input->post('slot'),
+					'idruang' 		  => $this->input->post('namaruang'),
+					'idsubprog'	 	  => $this->input->post('subprogram'));
 				$this -> load -> model('m_jadwal');
 				$this -> m_jadwal -> tambah_jadwal($data_jadwal);
 				redirect('c_jadwal/disp');
