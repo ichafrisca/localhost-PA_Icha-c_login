@@ -3,7 +3,8 @@
 
 		public function dispinbox(){
 			return $this->db->query("SELECT SenderNumber, TextDecoded FROM inbox 
-						WHERE TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' and Processed='false'")->result_array();
+						WHERE TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' or TextDecoded LIKE '%UBAH-JADWAL%' 
+						and Processed='false'")->result_array();
 			}
 
 		// public function check_sms_hari_ini() {
@@ -14,7 +15,8 @@
 
 		public function jika_sms_salah(){
 			$smssalah = $this->db->query("SELECT SenderNumber, TextDecoded, ID FROM inbox
-					WHERE TextDecoded NOT LIKE '%IZIN%' and TextDecoded NOT LIKE '%GANTI%' and Processed='false'")->result_array();
+					WHERE TextDecoded NOT LIKE '%IZIN%' and TextDecoded NOT LIKE '%GANTI%' and TextDecoded NOT LIKE '%UBAH-JADWAL%'
+					and Processed='false'")->result_array();
 			return $smssalah;
 		}
 
@@ -30,6 +32,9 @@
 		public function update_inbox($id){
 			$this->db->query("UPDATE inbox SET Processed='true' WHERE ID='$id';");
 		}
+
+
+
 
 		public function dispinboxajax($page = 1, $total) {
 			if ($page < 1) {
