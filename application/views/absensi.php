@@ -143,7 +143,7 @@
                     echo "<td>".$rows['jam']."</td>";
                     echo "<td>".$rows['nmsubprog']."</td>";
                     echo "<td>".$rows['nama']."</td>";
-                    echo "<td>".anchor('c_absen/form_update_absen/'.$rows['idabsen'],'Ubah Kehadiran')."</td>";
+                    echo "<td>".anchor('c_absen/form_update_absen/'.$rows['idabsen'],'Ubah')."</td>";
                     $i++;
                   echo '</tr>';
                   }

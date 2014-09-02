@@ -104,8 +104,8 @@
 
 		public function edit(){
 			$data=array(
-				'status_absen'	=>$this->input->post('status_absen'),
-
+				'status_absen'		=> $this->input->post('status_absen'),
+				'idpeg_pengganti'	=> $this->input->post('idpeg'),
 				// 'tgl_absen'		=>$this->input->post('tgl_absen')
 				);
 			$this->load->model('m_absen');
