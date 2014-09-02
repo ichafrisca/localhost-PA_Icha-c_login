@@ -41,32 +41,62 @@
 						        <li><a href="<?php echo base_url();?>c_login/logout">Logout</a></li>
 						    </ul>
     					</aside>
-						<input type="hidden" id="idpegawai" value="<?php echo $id; ?>">
+						
     					<section class="main-section">
-    						<div class="row" id="container_input_gaji">
-    							<?php
-    							echo form_open('utama/detail_gaji_pegawai');
-    							echo '
-    							<div class="large-12 columns">
-    								<br><br><br>
-									    <div class="row">
-									       	<div class="large-6 columns">
-									           	<label for="from">Dari Tanggal</label>
-									          	<input type="text" id="from" name="from">
-									     	</div>
-									      	<div class="large-6 columns">
-										        <label for="to">Sampai Tanggal</label>
-										        <input type="text" id="to" name="to">
-									     	</div>
-									    </div>
-									<label>
-								        <input type="submit" value="Cari" class="button">
-								    </label>
-    							</div>
-    						</div>
-    					</section>';
-    					echo form_close();
-    					?>
+    						<div class="row">
+							    <div class="large-12 medium-9 columns panel">
+							      <h2 id="tables" style="text-align:center;">Detail Gaji</h2><br><br>
+							        <table id="gajipeg" style="width:100%;">
+								        <thead>
+								            <tr>
+								                <th>Nama</th>
+								                <th>Kelas</th>
+								                <th>Keterangan</th>
+								                <th>Tanggal Hadir</th>
+								                <th>Honor Tiap Pertemuan</th>
+								            </tr>
+								        </thead>
+
+								        <?php 
+								        	$totalGaji = 0;
+								        	foreach ($detailgaji as $row) { 
+								        ?>
+								        	<tr>
+								        		<td><?php echo $row['nama']; ?></td>
+								        		<td><?php echo $row['kelas']; ?></td>
+								        		<td><?php echo $row['pengganti'] == "0" ? "Hadir" : "Pengganti"; ?></td>
+								        		<td><?php echo $row['tanggal']; ?></td>
+								        		<td><?php echo $row['honor']; ?></td>
+								        	</tr>
+								        <?php 
+								        	$totalGaji += $row['honor'];
+								        	} 
+								        ?>
+								        <tr>
+								        	<td><b>Total Honor</b></td>
+								        	<td></td>
+								        	<td></td>
+								        	<td></td>
+								        	<td><b><?php echo $totalGaji; ?></b></td>
+								        </tr>
+								        <tr>
+								        	<td><b>Bonus</b></td>
+								        	<td></td>
+								        	<td></td>
+								        	<td></td>
+								        	<td><b><?php echo $data_bonus[0]['bonus']; ?></b></td>
+								        </tr>
+								        <tr>
+								        	<td><b>Total Gaji</b></td>
+								        	<td></td>
+								        	<td></td>
+								        	<td></td>
+								        	<td><b><?php echo $data_bonus[0]['bonus'] + $totalGaji; ?></b></td>
+								        </tr>
+							        </table>
+							    </div>
+							</div>
+    					</section>
     					<a class="exit-off-canvas"></a>
 					</div>
 			  	</div>

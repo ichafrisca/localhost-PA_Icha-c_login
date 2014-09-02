@@ -34,23 +34,27 @@
 		}
 
 		public function detailgaji($idpegawai, $tgl_Awal, $tgl_Akhir){
-        	$detailgaji = $this->db->query("SELECT p.nama, s.nmsubprog, 
+        	$detailgaji = $this->db->query("SELECT p.nama as nama, s.nmsubprog as kelas, 
 					(select l.lisnominal from list_nominal l join subprogram k on (l.idsubprog=k.idsubprog) 
-					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal
+					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal, a.idpeg_pengganti as pengganti
         			from absensi a join pegawai p on (a.idpeg=p.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
-					join subprogram s on (j.idsubprog=s.idsubprog) join memiliki m on(p.idpeg=m.idpeg) 
-					join list_nominal l on (m.idlistnominal=l.idlistnominal) join gaji g on (p.idpeg=g.idpeg)
+					join subprogram s on (j.idsubprog=s.idsubprog)
 					where a.idpeg='$idpegawai' and a.idpeg_pengganti='0' and a.tgl_absen between '$tgl_Awal' 
 					and '$tgl_Akhir'
-					union 
+					union
 					select p.nama as nama, s.nmsubprog as kelas, 
 					(select l.lisnominal from list_nominal l join subprogram k on (l.idsubprog=k.idsubprog) 
-					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal
+					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal, a.idpeg_pengganti as pengganti
 					from absensi a join pegawai p on (a.idpeg=p.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
-					join subprogram s on (j.idsubprog=s.idsubprog) join memiliki m on(p.idpeg=m.idpeg) 
-					join list_nominal l on (m.idlistnominal=l.idlistnominal) join gaji g on (p.idpeg=g.idpeg)
-					where a.idpeg_pengganti='$idpegawai' and a.tgl_absen between '$tgl_Awal' and '$tgl_Akhir'")->result_array();
+					join subprogram s on (j.idsubprog=s.idsubprog) 
+					where  a.idpeg_pengganti='$idpegawai' and a.tgl_absen between '$tgl_Awal' 
+					and '$tgl_Akhir'")->result_array();
 			return $detailgaji;
+        }
+
+        public function bonus_pegawai($id, $tgl1, $tgl2){
+        	return $this->db->query("SELECT g.bonus from gaji g join pegawai p on(p.idpeg=g.idpeg) where p.idpeg='$id' 
+								and g.dr_tgl='$tgl1' and g.ke_tgl='$tgl2'")->result_array();
         }
 	}
 ?>

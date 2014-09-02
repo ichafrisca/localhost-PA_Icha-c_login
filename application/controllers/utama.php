@@ -76,7 +76,20 @@
 		public function json_gaji($id, $tgl_aw, $tgl_ak) {
 			$this->load->model('m_user');
 			$data['data_json'] = json_encode($this->m_user->detailgaji($id, $tgl_aw, $tgl_ak));
+			// $data['data_json'] = json_encode($this->m_user->bonus_pegawai($id, $tgl_aw, $tgl_ak));
 			$this->load->view('json',$data);
+		}
+
+		public function detail_gaji_pegawai(){
+			$this->load->model('m_user');
+			$id 		= $this->session->userdata("pengguna");
+			$tglawal 	= $this->input->post('from');
+			$tglakhir 	= $this->input->post('to');
+			$data['detailgaji'] = $this->m_user->detailgaji($id, $tglawal, $tglakhir);
+			$data['data_bonus'] = $this->m_user->bonus_pegawai($id, $tglawal, $tglakhir);
+			// echo("<pre>");
+			// print_r($data);exit;
+			$this->load->view("detail_gaji_pegawai",$data);
 		}
 	}
 ?>
