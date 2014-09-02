@@ -267,12 +267,12 @@
         var id    = $("select[name='idpeg']").val();
         var start = $("#from").val();
         var end   = $("#to").val();
-        var urlApi   = 'json_total_gaji/' + id + '/' + start + '/' + end;
+        var urlApiGaji   = 'json_total_gaji/' + id + '/' + start + '/' + end;
         
         // TOTAL HONOR
         $.ajax({
           type        : 'GET',
-          url         : urlApi,
+          url         : urlApiGaji,
           dataType    : 'json',
           contentType : 'application/json; charset=utf-8',
           success     : function(data) {
@@ -283,14 +283,14 @@
                 var gaji_pengganti = data[1].total_honor === null ? 0 : parseInt(data[1].total_honor);
                 var gajiku = gaji_ajar + gaji_pengganti;
                 $("input[name='totalhonor']").val(gajiku);
-                console.log(urlApi);
+                console.log(urlApiGaji);
               } else { // jika tidak maka beri nilai 0
                 $("input[name='totalhonor']").val(0);
               }
             });
           },
           error       : function(data) {
-            console.log(urlApi);
+            console.log(urlApiGaji);
           }
         });
 

@@ -133,6 +133,15 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
+                <td>Gelombang</td>
+                <td>:</td>
+                <td>'.form_input('gelombang').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
                 <td>Nama Program</td>
                 <td>:</td>  
                 <td>
@@ -169,5 +178,8 @@
   <script type="text/javascript">
     $(document).foundation();
   </script>
+  <script>
+    
+  </script>>
   </body>
 </html>

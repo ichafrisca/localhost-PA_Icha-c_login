@@ -111,17 +111,11 @@
           <?php echo form_close(); ?>
         </div>
       </div>
-      <div class="row">
-        <div class="large-2 columns">
-          <input id="check_all" type="checkbox"><label for="checkbox"><b>Check all</b></label>
-        </div>
-      </div>
         <center>
-          <table>
+          <table style="width:100%;">
             <thead>
               <tr>
                 <th>No</th>
-                <th>Pilih</th>
                 <th>idpeg</th>
                 <th>Nama Pegawai</th>
                 <th>Dari Tanggal</th>
@@ -138,7 +132,6 @@
                 $i=1;
                   foreach($querygaji as $rows) {
                     echo "<td>".$i."</td>";
-                    echo "<td><input type='checkbox' value='".$rows['idgaji']."'></td>";
                     echo "<td>".$rows['idpeg']."</td>";
                     echo "<td>".$rows['nama']."</td>";
                     echo "<td>".$rows['dr_tgl']."</td>";
@@ -171,21 +164,6 @@
       <?php if ($notif != null){
         echo $notif;
       } ?>
-    </script>
-
-    <script>
-      $(document).ready(function(){
-        $("#check_all").click(function() {
-          var cek = $("#check_all").is(':checked');
-          if(cek){
-            $("input[type='checkbox']").prop('checked',true);
-            console.log($("input[type='checkbox']").val());
-          }
-          else{
-            $("input[type='checkbox']").prop('checked',false);
-          }
-        });
-      });
     </script>
 	</body>
 </html>

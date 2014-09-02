@@ -25,6 +25,10 @@
 			$this->db->insert('LIST_NOMINAL', $lnominal);
 		}
 
+		public function memiliki($memiliki){
+			$this->db->insert('MEMILIKI', $memiliki);
+		}
+
 		public function tampil_data_nmpegawai(){
         	return $this->db->query('SELECT * FROM pegawai');	
         }
@@ -33,6 +37,7 @@
         	return $this->db->query('SELECT * FROM subprogram');	
         }
 
+        
         public function detailgaji($idpegawai, $tgl_Awal, $tgl_Akhir){
         	$detailgaji = $this->db->query("SELECT p.nama, s.nmsubprog, 
 					(select l.lisnominal from list_nominal l join subprogram k on (l.idsubprog=k.idsubprog) 
@@ -42,7 +47,7 @@
 					join list_nominal l on (m.idlistnominal=l.idlistnominal) join gaji g on (p.idpeg=g.idpeg)
 					where a.idpeg='$idpegawai' and a.idpeg_pengganti='0' and a.tgl_absen between '$tgl_Awal' 
 					and '$tgl_Akhir'
-					union 
+					union all
 					select p.nama as nama, s.nmsubprog as kelas, 
 					(select l.lisnominal from list_nominal l join subprogram k on (l.idsubprog=k.idsubprog) 
 					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal
@@ -56,7 +61,7 @@
         public function jml_pertemuan($idpeg,$tglawal,$tglakhir){
         	return $this->db->query("SELECT count(idpeg) as total_hadir from absensi where idpeg='$idpeg' 
 					and idpeg_pengganti = '0' and tgl_absen between '$tglawal' and '$tglakhir'
-					union
+					union all
 					select count(idpeg) from absensi where idpeg_pengganti='$idpeg' and tgl_absen
 					between '$tglawal' and '$tglakhir'");
         }
@@ -68,7 +73,7 @@
 	        		join subprogram s on (j.idsubprog=s.idsubprog) join memiliki m on(p.idpeg=m.idpeg)
 	        		join list_nominal l on (m.idlistnominal=l.idlistnominal) where a.idpeg='$id' 
 	        		and a.idpeg_pengganti='0' and a.tgl_absen between '$tgl_awal' and '$tgl_akhir'
-	        		union
+	        		union all
 	        		select sum((select l.lisnominal from list_nominal l join subprogram k on (l.idsubprog=k.idsubprog) 
 					where k.nmsubprog = s.nmsubprog)) as honor 
         			from absensi a join pegawai p on (a.idpeg=p.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
