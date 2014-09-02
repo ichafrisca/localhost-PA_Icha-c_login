@@ -18,6 +18,11 @@
 			$this->db->insert('jadwal', $jadwal);
 		}
 
+		// public function ruang_tersedia($jam){
+		// 	return $this->db->query("SELECT r.namaruang from jadwal j join ruang r on (j.idruang=r.idruang) where j.jam NOT IN 
+		// 					(select j.jam from jadwal where j.jam='$jam')");
+		// }
+
 		public function tampil_edit($IDJADWAL){
             $this->db->where('idjadwal',$IDJADWAL);
             $queryjadwal=$this->db->get('JADWAL');
@@ -49,7 +54,7 @@
         }
 
         public function tampil_data_ruang() {
-            return $this->db->query('SELECT * FROM ruang');
+            return $this->db->query('SELECT idruang, namaruang from ruang where namaruang not in("Office")');
         }
 
         public function tampil_data_slot() {
@@ -61,7 +66,7 @@
         }
 
         public function tampil_data_subprog(){
-        	return $this->db->query('SELECT * FROM subprogram');	
+        	return $this->db->query('SELECT idsubprog, nmsubprog, gelombang from subprogram where nmsubprog not in("Office")');	
         }
 
         public function tampil_data_program(){

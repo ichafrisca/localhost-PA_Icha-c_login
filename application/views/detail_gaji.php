@@ -1,6 +1,10 @@
+<?php 
+// echo("<pre>");
+// print_r($detailgaji);exit;
+ ?>
 <html>
 	<head>
-		<title>Kepegawaian ELFAST</title>
+		<title>Detail Gaji Pegawai</title>
 		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
@@ -101,7 +105,7 @@
     <div class="large-12 medium-9 columns panel">
       <h2 id="tables" style="text-align:center;">Detail Gaji</h2><br><br>
         <center>
-          <table>
+          <table style="width:100%;">
             <thead>
               <tr>
                 <th>No</th>
@@ -119,10 +123,10 @@
                   foreach($detailgaji as $rows) {
                     echo "<td>".$i."</td>";
                     echo "<td>".$rows['nama']."</td>";
-                    echo "<td>".$rows['nmsubprog']."</td>";
+                    echo "<td>".$rows['kelas']."</td>";
                     echo "<td>".$rows['honor']."</td>";
                     echo "<td>".$rows['tanggal']."</td>";
-                    $keterangan = $rows['nama'] == $detailgaji[0]['nama'] ? "Hadir" : "Pengganti";
+                    $keterangan = $rows['pengganti'] == "0" ? "Hadir" : "Pengganti";
                     echo "<td>". $keterangan ."</td>";
                     $i++;
                   echo '</tr>';

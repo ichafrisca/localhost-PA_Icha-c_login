@@ -113,7 +113,7 @@
         </div>
       </div>
         <center>
-          <table>
+          <table style="width:100%;">
             <thead>
               <tr>
                 <th>No</th>

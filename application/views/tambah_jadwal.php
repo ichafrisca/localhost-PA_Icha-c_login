@@ -100,6 +100,11 @@
   <div class="row">
   <div class="large-12 panel">
   <?php
+    $dropdown_periode = array(
+      "-" => "- Pilih Periode -",
+      "10" => "Tanggal 10",
+      "25" => "Tanggal 25",
+    );
       echo form_open('c_jadwal/tambah');
         echo '<center><h3>Form Tambah Jadwal</h3></center>
         
@@ -127,37 +132,10 @@
               <tr>
                 <td>Jam</td>
                 <td>:</td>
-                <td> <input type="text" data-field="time" name="jam"></td>
-                <div id="dtBox"></div>
+                <td>'.form_input('jam').'</td>
               </tr>
             </div>
           </div>
-          <div class="row">
-            <div class="large-12 columns">
-               <tr>
-                <td>Periode Tanggal</td>
-                <td>:</td>
-                <td>'. form_input('periode_tgl') .'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Sisa Kelas</td>
-                <td>:</td>
-                <td><select name="slot">
-                    <option value="kosong">- Pilih slot -</option>
-                    ';
-                    foreach ($dropdown_slot->result_array() as $row) {
-                      echo "<option value='". $row['idslot'] ."'> ".$row['slot'] ."</option>";
-                    }
-                    echo '
-                  </select></td>
-              </tr>
-            </div>
-          </div>
-          <br/>
           <div class="row">
             <div class="large-12 columns">
               <tr>
@@ -186,11 +164,37 @@
                     <option value="kosong">- Pilih nama subprogram -</option>
                     ';
                     foreach ($dropdown_subprog->result_array() as $row) {
-                      echo "<option value='". $row['idsubprog'] ."'>".$row['nmsubprog']."</option>";
+                      echo "<option value='". $row['idsubprog'] ."'>".$row['nmsubprog']." - ".$row['gelombang']."</option>";
                     }
                     echo '
                   </select>
                 </td>
+              </tr>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="large-12 columns">
+               <tr>
+                <td>Periode Tanggal</td>
+                <td>:</td>
+                <td>'. form_dropdown('periode_tgl',$dropdown_periode,'-') .'</td>
+              </tr>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Sisa Kelas</td>
+                <td>:</td>
+                <td><select name="slot">
+                    <option value="kosong">- Pilih slot -</option>
+                    ';
+                    foreach ($dropdown_slot->result_array() as $row) {
+                      echo "<option value='". $row['idslot'] ."'> ".$row['slot'] ."</option>";
+                    }
+                    echo '
+                  </select></td>
               </tr>
             </div>
           </div>
@@ -221,9 +225,7 @@
 
   <link rel="stylesheet" href="/resources/demos/style.css">  
 
-  <script type="text/javascript">
-		$(document).foundation();
-	</script>
+
   <script>
     $(function() {
       $( "#datepicker" ).datepicker(
@@ -235,6 +237,26 @@
           minDate: 0
         }
       );
+    });
+  </script>
+
+  <script>
+    $(document).ready(function(){
+      $.ajax({
+            type        : 'GET',
+            url         : 'json_ruang_tersedia/' + $("select[name='jam']").val(), 
+            dataType    : 'json',
+            contentType : 'application/json; charset=utf-8',
+            success     : function(data){
+              $.each(data, function(index, element) {
+                $("select[name='namaruang']").val();
+              });
+            },
+            error       : function(data){
+
+            }
+      });
+
     });
   </script>
 	</body>
