@@ -18,6 +18,12 @@
 			$this->load->view('json',$data);
 		}
 
+		public function jsoninboxbenar(){
+			$this->load->model('m_sms');
+			$data['data_json'] = json_encode($this->m_sms->dispinbox());
+			$this->load->view('json',$data);
+		}
+
 		public function c_sms_salah(){
 			$this->load->model('m_sms');
 			$nomor_tujuan = $this->input->post('nomor');
@@ -28,6 +34,12 @@
 			$this->load->model('m_sms');
 			$id_pesan = $this->input->post('id');
 			$this->m_sms->update_inbox($id_pesan);
+		}
+
+		public function c_sms_benar(){
+			$this->load->model('m_sms');
+			$nomor_pegawai = $this->input->post('nomor');
+			$this->m_sms->insert_sms_benar($nomor_pegawai);
 		}
 	}
 ?>

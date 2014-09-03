@@ -161,7 +161,7 @@
       });
     };
 
-    var kirimPesan = function(nomorTujuan) {
+    var kirimPesanSalah = function(nomorTujuan) {
       $.ajax({
         type        : 'POST',
         url         : 'c_sms_salah',
@@ -175,12 +175,32 @@
       });
     };
 
+     var kirimPesanBenar = function(nomorTujuan) {
+      $.ajax({
+        type        : 'POST',
+        url         : 'c_sms_benar',
+        data        : {nomor: nomorTujuan},
+        success     : function(data) {
+          console.log('Kirim sms peringatan ke nomor: ' + nomorTujuan);
+        },
+        error       : function(data) {
+          alert('Gagal mengirim pesan peringatan kesalahan format sms.');
+        }
+      });
+    };
+
     var prosesSmsSalah = function(idInbox, nomor) {
       updateProses(idInbox);
-      kirimPesan(nomor);
+      kirimPesanSalah(nomor);
+    };
+
+    var prosesSmsBenar = function(idInbox, nomor) {
+      updateProses(idInbox);
+      kirimPesanBenar(nomor);
     };
 
     $(document).ready(function(){
+      // AJAX SMS SALAH
       $.ajax({
         type        : 'GET',
         url         : 'jsoninbox',
@@ -196,7 +216,28 @@
             console.log("Tidak ada sms di inbox yang belum di proses.");
           }
         },
-         error       : function(data){
+        error       : function(data){
+          alert("Salah :" + data);
+        }
+      });
+
+      // AJAX SMS BENAR
+      $.ajax({
+        type        : 'GET',
+        url         : 'jsoninboxbenar',
+        dataType    : 'json',
+        contentType : 'application/json; charset=utf-8',
+        success     : function(data){
+          //jika ada sms yang belum di proses
+          if (data.length >= 1) {
+            $.each(data, function(index, element) {
+              prosesSmsBenar(element.ID, element.SenderNumber);
+            });
+          } else {
+            console.log("Tidak ada sms di inbox yang belum di proses.");
+          }
+        },
+        error       : function(data){
           alert("Salah :" + data);
         }
       });

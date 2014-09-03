@@ -3,7 +3,7 @@
 
 		public function dispinbox(){
 			return $this->db->query("SELECT SenderNumber, TextDecoded FROM inbox 
-						WHERE TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' or TextDecoded LIKE '%UBAH-JADWAL%' 
+						WHERE TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' or TextDecoded LIKE '%UBAH_JADWAL%' 
 						and Processed='false'")->result_array();
 			}
 
@@ -15,9 +15,14 @@
 
 		public function jika_sms_salah(){
 			$smssalah = $this->db->query("SELECT SenderNumber, TextDecoded, ID FROM inbox
-					WHERE TextDecoded NOT LIKE '%IZIN%' and TextDecoded NOT LIKE '%GANTI%' and TextDecoded NOT LIKE '%UBAH-JADWAL%'
+					WHERE TextDecoded NOT LIKE '%IZIN%' and TextDecoded NOT LIKE '%GANTI%' and TextDecoded NOT LIKE '%UBAH_JADWAL%'
 					and Processed='false'")->result_array();
 			return $smssalah;
+		}
+
+		public function insert_sms_benar($nomor){
+			$this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
+                VALUES ('$nomor', 'Terima Kasih akan segera kami proses')");
 		}
 
 		// public function insert_hari_ini($sms) {
