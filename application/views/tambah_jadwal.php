@@ -105,6 +105,29 @@
       "10" => "Tanggal 10",
       "25" => "Tanggal 25",
     );
+    $dropdown_jam = array(
+      "-" => "- Pilih Jam -",
+      "06.00" => "Jam 06.00",
+      "06.30" => "Jam 06.30",
+      "07.00" => "Jam 07.00",
+      "07.30" => "Jam 07.30",
+      "08.00" => "Jam 08.00",
+      "08.30" => "Jam 08.30",
+      "09.00" => "Jam 09.00",
+      "09.30" => "Jam 09.30",
+      "10.00" => "Jam 10.00",
+      "10.30" => "Jam 10.30",
+      "11.00" => "Jam 11.00",
+      "11.30" => "Jam 11.30",
+      "13.00" => "Jam 13.00",
+      "13.30" => "Jam 13.30",
+      "14.00" => "Jam 14.00",
+      "14.30" => "Jam 14.30",
+      "15.00" => "Jam 15.00",
+      "15.30" => "Jam 15.30",
+      "16.00" => "Jam 16.00",
+      "16.30" => "Jam 16.30",
+    );
       echo form_open('c_jadwal/tambah');
         echo '<center><h3>Form Tambah Jadwal</h3></center>
         
@@ -132,10 +155,10 @@
               <tr>
                 <td>Jam</td>
                 <td>:</td>
-                <td>'.form_input('jam').'</td>
+                <td>'. form_dropdown('jam',$dropdown_jam,'-') .'</td>
               </tr>
             </div>
-          </div>
+          </div><br>
           <div class="row">
             <div class="large-12 columns">
               <tr>
@@ -144,11 +167,6 @@
                 <td>
                   <select name="namaruang">
                     <option value="kosong">- Pilih nama ruang -</option>
-                    ';
-                    foreach ($dropdown_ruang->result_array() as $row) {
-                      echo "<option value='". $row['idruang'] ."'>Ruang : ".$row['namaruang'] ."</option>";
-                    }
-                    echo '
                   </select>
                 </td>
               </tr>
@@ -223,9 +241,6 @@
   <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
   <script src="<?php echo base_url(); ?>assets/jquery.ui.datepicker.validation.min.js"></script>
 
-  <link rel="stylesheet" href="/resources/demos/style.css">  
-
-
   <script>
     $(function() {
       $( "#datepicker" ).datepicker(
@@ -242,21 +257,23 @@
 
   <script>
     $(document).ready(function(){
-      $.ajax({
-            type        : 'GET',
-            url         : 'json_ruang_tersedia/' + $("select[name='jam']").val(), 
-            dataType    : 'json',
-            contentType : 'application/json; charset=utf-8',
-            success     : function(data){
-              $.each(data, function(index, element) {
-                $("select[name='namaruang']").val();
-              });
-            },
-            error       : function(data){
+      $('select[name="jam"]').change(function() {
+        $.ajax({
+          type        : 'GET',
+          url         : 'json_ruang_tersedia/' + $('select[name="jam"]').val(), 
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data){
+            $("select[name='namaruang'] option").next().remove();
+            $.each(data, function(index, element) {
+              $('select[name="namaruang"]').append("<option value='"+ element.idruang +"'>"+ element.namaruang +"</option>");
+            });
+          },
+          error       : function(data){
 
-            }
+          }
+        });
       });
-
     });
   </script>
 	</body>

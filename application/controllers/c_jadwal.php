@@ -22,8 +22,9 @@
 		public function form_tambah(){
 			$data['newID'] = $this -> next_jadwal();
 			$data['dropdown_slot'] = $this -> m_jadwal -> tampil_data_slot();
-			$data['dropdown_ruang'] = $this -> m_jadwal -> tampil_data_ruang();
-			// $data['ruang_tersedia'] = $this -> m_jadwal -> ruang_tersedia($jam);
+			// $data['dropdown_ruang'] = $this -> m_jadwal -> tampil_data_ruang();
+			$jam 	= $this->input->post('idruang');
+			$data['ruang_tersedia'] = $this -> m_jadwal -> ruang_tersedia($jam);
 			$data['dropdown_subprog'] = $this -> m_jadwal -> tampil_data_subprog();
 			$data['validation_errors'] = $this -> session -> flashdata('errors');
 			$this -> load -> view('tambah_jadwal', $data);

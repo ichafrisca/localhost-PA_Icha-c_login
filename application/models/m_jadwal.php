@@ -18,10 +18,10 @@
 			$this->db->insert('jadwal', $jadwal);
 		}
 
-		// public function ruang_tersedia($jam){
-		// 	return $this->db->query("SELECT r.namaruang from jadwal j join ruang r on (j.idruang=r.idruang) where j.jam NOT IN 
-		// 					(select j.jam from jadwal where j.jam='$jam')");
-		// }
+		public function ruang_tersedia($jam){
+		 	return $this->db->query("SELECT r.idruang, r.namaruang from jadwal j join ruang r on (j.idruang=r.idruang) 
+									where j.jam NOT IN ('$jam') and r.namaruang NOT IN ('Office')group by r.namaruang");
+		}
 
 		public function tampil_edit($IDJADWAL){
             $this->db->where('idjadwal',$IDJADWAL);
@@ -53,9 +53,9 @@
             return $this->db->query('SELECT * from ruang where namaruang="Office"');
         }
 
-        public function tampil_data_ruang() {
-            return $this->db->query('SELECT idruang, namaruang from ruang where namaruang not in("Office")');
-        }
+        // public function tampil_data_ruang() {
+        //     return $this->db->query('SELECT idruang, namaruang from ruang where namaruang not in("Office")');
+        // }
 
         public function tampil_data_slot() {
             return $this->db->query('SELECT * FROM slot');
