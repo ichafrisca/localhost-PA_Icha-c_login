@@ -24,7 +24,8 @@
 			$data['dropdown_slot'] = $this -> m_jadwal -> tampil_data_slot();
 			// $data['dropdown_ruang'] = $this -> m_jadwal -> tampil_data_ruang();
 			$jam 	= $this->input->post('idruang');
-			$data['ruang_tersedia'] = $this -> m_jadwal -> ruang_tersedia($jam);
+			$tgl 	= $this->input->post('idruang');
+			$data['ruang_tersedia'] = $this -> m_jadwal -> ruang_tersedia($jam, $tgl);
 			$data['dropdown_subprog'] = $this -> m_jadwal -> tampil_data_subprog();
 			$data['validation_errors'] = $this -> session -> flashdata('errors');
 			$this -> load -> view('tambah_jadwal', $data);
@@ -178,9 +179,9 @@
 				redirect('c_jadwal/disp');
 		}
 
-		public function json_ruang_tersedia($jam){
+		public function json_ruang_tersedia($jam,$tgl){
 			$this->load->model('m_jadwal');
-			$data['data_json'] = json_encode($this->m_jadwal->ruang_tersedia($jam)->result_array());
+			$data['data_json'] = json_encode($this->m_jadwal->ruang_tersedia($jam, $tgl)->result_array());
 			$this->load->view('json',$data);
 		}
 
@@ -189,7 +190,9 @@
 		public function form_update_jadwal($idjadwal){
 			$this->load->model('m_jadwal');
 			$data['queryjadwal']=$this->m_jadwal->tampil_edit($idjadwal);
-			$data['dropdown_ruang'] = $this -> m_jadwal -> tampil_data_ruang();
+			$jam 	= $this->input->post('idruang');
+			$tgl 	= $this->input->post('idruang');
+			$data['ruang_tersedia'] = $this -> m_jadwal -> ruang_tersedia($jam, $tgl);
 			$data['dropdown_subprog'] = $this -> m_jadwal -> tampil_data_subprog();
 			$this->load->view('edit_jadwal',$data);
 		}

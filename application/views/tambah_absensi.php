@@ -158,14 +158,10 @@
               <tr>
                 <td>Jam</td>
                 <td>:</td>
-                <td>';
-                  $dropdon = array('-' => '- Pilih - ');
-                  foreach ($dropdown_jadwal as $row) {
-                    $dropdon[$row['idjadwal']] = $row['jam']. " - " .$row['nmsubprog'];
-                  }
-                  echo form_dropdown('idjadwal', $dropdon, '-');
-                  echo
-                '</td>
+                <td>
+                  <select name="idjadwal">
+                    <option value="kosong">- Pilih Jam -</option>
+                  </select>
               </tr>
             </div>
           </div>
@@ -246,7 +242,7 @@
             if(tanggal_absen === tanggal_kelas){
               $("input[value='Save']").prop("disabled", false);
             }else{
-              alert("tanggal kurang atau lebih dari tanggal absen");
+              alert("tanggal yang di pilih kurang atau lebih dari tanggal jadwal");
               $("input[value='Save']").prop("disabled", true);
             }
           },
@@ -256,6 +252,28 @@
         })
       });
     })
+  </script>
+
+  <script>
+    $(document).ready(function(){
+      $('input[name="tgl_absen"]').change(function() {
+        $.ajax({
+          type        : 'GET',
+          url         : 'json_tambah_absen/' + $('input[name="tgl_absen"]').val(), 
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data){
+            $("select[name='idjadwal'] option").next().remove();
+            $.each(data, function(index, element) {
+              $('select[name="idjadwal"]').append("<option value='"+ element.idjadwal +"'>"+ element.jam +"</option>");
+            });
+          },
+          error       : function(data){
+
+          }
+        });
+      });
+    });
   </script>
 	</body>
 </html>

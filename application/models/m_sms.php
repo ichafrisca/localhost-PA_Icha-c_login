@@ -2,9 +2,8 @@
     class M_sms extends CI_Model{
 
 		public function dispinbox(){
-			return $this->db->query("SELECT SenderNumber, TextDecoded FROM inbox 
-						WHERE TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' or TextDecoded LIKE '%UBAH_JADWAL%' 
-						and Processed='false'")->result_array();
+			return $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime FROM inbox 
+						WHERE (TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' or TextDecoded LIKE '%UBAH_JADWAL%')")->result_array();
 			}
 
 		// public function check_sms_hari_ini() {

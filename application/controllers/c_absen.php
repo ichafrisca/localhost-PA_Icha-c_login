@@ -11,10 +11,17 @@
 
 		public function form_tambah(){
 			$data['newID'] = $this -> next_absensi();
-			$data['dropdown_jadwal'] = $this -> m_absen -> tampil_data_jadwal()->result_array();
+			$tgl 	= $this->input->post('idjadwal');
+			$data['dropdown_jadwal'] = $this -> m_absen -> tampil_data_jadwal($tgl)->result_array();
 			$data['dropdown_nmpegawai'] = $this -> m_absen -> tampil_data_nmpegawai()->result_array();
 			$data['validation_errors'] = $this -> session -> flashdata('errors');
 			$this -> load -> view('tambah_absensi', $data);
+		}
+
+		public function json_tambah_absen($tgl){
+			$this->load->model('m_absen');
+			$data['data_json'] = json_encode($this->m_absen->tampil_data_jadwal($tgl)->result_array());
+			$this->load->view('json',$data);
 		}
 
 		public function tgl_subprog($idjadwal){

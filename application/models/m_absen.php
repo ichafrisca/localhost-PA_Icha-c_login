@@ -11,8 +11,9 @@
 			$this->db->insert('ABSENSI', $absensi);
 		}
 
-        public function tampil_data_jadwal(){
-        	return $this->db->query('SELECT j.idjadwal, j.jam, sp.nmsubprog FROM jadwal j join subprogram sp on(j.idsubprog=sp.idsubprog)');
+        public function tampil_data_jadwal($tgl){
+        	return $this->db->query("SELECT j.idjadwal, j.jam, sp.nmsubprog 
+                FROM jadwal j join subprogram sp on(j.idsubprog=sp.idsubprog) where j.tanggal in('$tgl')");
         }
 
         public function view_tgl($idjadwal){

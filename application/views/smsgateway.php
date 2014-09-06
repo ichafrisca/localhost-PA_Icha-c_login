@@ -110,18 +110,24 @@
                   <th>No</th>
                   <th>No Telepon</th>
                   <th>Isi Pesan</th>
+                  <th>Tanggal</th>
+                  <th>Keterangan</th>
                 </tr>
               </thead>
               <tbody>
-                <?php echo '<tr>';
+                <?php
                   $i=1;
-                    foreach ($inbox as $rows) {
-                      echo "<td>".$i."</td>";
-                      echo "<td>".$rows['SenderNumber']."</td>";
-                      echo "<td>".$rows['TextDecoded']."</td>";
-                      $i++;
-                      echo '</tr>';
-                    }
+                  foreach ($inbox as $rows) {
+                    $keterangan = $rows['Processed'] == "true" ? "Sudah di proses" : "Belum di proses";
+                    echo '<tr>';
+                    echo "<td>".$i."</td>";
+                    echo "<td>".$rows['SenderNumber']."</td>";
+                    echo "<td>".$rows['TextDecoded']."</td>";
+                    echo "<td>".$rows['ReceivingDateTime']."</td>";
+                    echo "<td>". $keterangan ."</td>";
+                    echo '</tr>';
+                    $i++;
+                  }
                 ?>
               </tbody>
             </table>
@@ -229,13 +235,13 @@
         contentType : 'application/json; charset=utf-8',
         success     : function(data){
           //jika ada sms yang belum di proses
-          if (data.length >= 1) {
-            $.each(data, function(index, element) {
-              prosesSmsBenar(element.ID, element.SenderNumber);
-            });
-          } else {
-            console.log("Tidak ada sms di inbox yang belum di proses.");
-          }
+          $.each(data, function(index, element) {
+            if (element.Processed == "false") {
+              prosesSmsBenar(element.ID, element.SenderNumber);  
+            } else {
+              console.log("Tidak ada sms di inbox yang belum di proses.");    
+            }  
+          });
         },
         error       : function(data){
           alert("Salah :" + data);

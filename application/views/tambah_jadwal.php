@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Kepegawaian ELFAST</title>
+		<title>Tambah Jadwal Pegawai</title>
 		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
@@ -257,10 +257,10 @@
 
   <script>
     $(document).ready(function(){
-      $('select[name="jam"]').change(function() {
+      $('select[name="jam"], input[name="tanggal"]').change(function() {
         $.ajax({
           type        : 'GET',
-          url         : 'json_ruang_tersedia/' + $('select[name="jam"]').val(), 
+          url         : 'json_ruang_tersedia/' + $('select[name="jam"]').val() + '/' + $('input[name="tanggal"]').val(), 
           dataType    : 'json',
           contentType : 'application/json; charset=utf-8',
           success     : function(data){

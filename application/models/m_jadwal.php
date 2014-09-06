@@ -18,9 +18,13 @@
 			$this->db->insert('jadwal', $jadwal);
 		}
 
-		public function ruang_tersedia($jam){
-		 	return $this->db->query("SELECT r.idruang, r.namaruang from jadwal j join ruang r on (j.idruang=r.idruang) 
-									where j.jam NOT IN ('$jam') and r.namaruang NOT IN ('Office')group by r.namaruang");
+		public function ruang_tersedia($jam, $tgl){
+		 	return $this->db->query("SELECT  r.idruang, r.namaruang, j.jam 
+										from jadwal j join ruang r on (j.idruang=r.idruang) 
+										where j.jam NOT IN ('$jam') and j.tanggal in ('$tgl') 
+										and r.namaruang NOT IN ('Office') group by namaruang
+									union all
+									select idruang, namaruang, null from ruang where namaruang not in('Office') order by idruang");
 		}
 
 		public function tampil_edit($IDJADWAL){
