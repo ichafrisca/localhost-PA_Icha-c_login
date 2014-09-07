@@ -5,7 +5,9 @@
 		
 		public function disp(){
 			$this->load->model('m_absen');
+			$data['kesediaan']=$this->m_absen->kesediaan();
 			$data['queryabsen']=$this->m_absen->ambil_data_absen();
+			$data['inbox']=$this->m_absen->sms();
 			$this->load->view('absensi', $data);	
 		}
 
@@ -188,7 +190,7 @@
 	    			$this->input->post("tanggal"), 
 	    			$this->input->post("jam_pgt"), 
 	    			$this->input->post("kelas_pgt"), 
-	    			$this->input->post("idsubprog")
+	    			$this->input->post("idjadwal")
 	    		);
 	    	}
 	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
@@ -205,5 +207,19 @@
 	    	$data['queryabsen'] = $this->m_absen->ambil_data_absen();
 	    	$this->load->view("absensi", $data);
 	    }
+
+	// KESEDIAAN
+
+	 	public function update_kesediaan($idsedia, $notlp, $data, $nama, $jam, $ruang){
+			$this->load->model('m_absen');
+			//sms orangnya
+			$sms_sedia = $this->m_absen->nomor_pegawai();
+	    	$queryambilnomor = $this -> m_absen -> nomor_untuk_kesediaan();
+
+	    	// $data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
+
+			$this->m_absen->update_kesediaan($data, $idsedia);
+			$this->disp();
+	 	}
 	}
 ?>

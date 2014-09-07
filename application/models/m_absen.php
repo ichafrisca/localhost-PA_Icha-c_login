@@ -45,20 +45,11 @@
             $this->db->update('ABSENSI',$data);
         }
 
-        public function data_ganti_absen(){
-            $gantiabsen=$this->db->query("SELECT * from kesediaan");
-            return $gantiabsen;
-        }
-
-        public function ganti_absen($ganti){
-            $this->db->insert('KESEDIAAN', $ganti);
-        }
-
         // GANTI ABSEN
 
         public function pegawai_pengganti($tgl, $jam_awal, $jam_akhir){
             return $this->db->query("SELECT distinct peg.idpeg, peg.nama, peg.no_telp, ab.tgl_absen, jdw.jam, sp.nmsubprog, 
-                                    sp.idsubprog from pegawai peg join absensi ab on(peg.idpeg=ab.idpeg) 
+                                    jdw.idjadwal from pegawai peg join absensi ab on(peg.idpeg=ab.idpeg) 
                                     join jadwal jdw on(ab.idjadwal=jdw.idjadwal)
                                     join subprogram sp on(sp.idsubprog=jdw.idsubprog)
                                     where ab.tgl_absen = '$tgl'
@@ -67,7 +58,7 @@
 
         public function sms_pengganti($nomor, $tanggal, $jam, $kelas, $idsub){
             $this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
-                VALUES ('$nomor', 'Besok tanggal $tanggal pukul $jam, anda ditunjuk sebagai pengganti di kelas $kelas, balas dengan format GANTI-ID_ANDA-$idsub jika menyetujui.')");
+                VALUES ('$nomor', 'Besok tanggal $tanggal pukul $jam, anda ditunjuk sebagai pengganti di kelas $kelas, balas dengan format GANTI#YA#ID_PEGAWAI_ANDA#$idsub jika menyetujui.')");
         }
 
         public function sms_pemberitahuan_jadwal($nomor){
@@ -77,6 +68,29 @@
 
         public function nomor_pegawai(){
             return $this->db->query("SELECT no_telp from pegawai where stat_peg='Aktif'")->result_array();
+        }
+
+        public function kesediaan(){
+            return $this->db->query("SELECT k.idsedia, k.status_sedia, p.no_telp, k.status_admin, p.nama, k.tgl_sedia, j.jam, r.namaruang from kesediaan k join pegawai p
+                                    on(k.idpeg=p.idpeg) join jadwal j on(k.idjadwal=j.idjadwal) join ruang r on(j.idruang=r.idruang)")->result_array();
+        }
+
+        public function sms(){
+            return $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime FROM inbox 
+                        WHERE TextDecoded LIKE '%GANTI%'")->result_array();
+        }
+
+        public function update_kesediaan($data,$IDSEDIA){
+            $this->db->query("UPDATE kesediaan SET status_admin='$data' WHERE idsedia='$IDSEDIA'");
+        }
+
+        public function smspegawai($nomor, $nama, $jam, $ruang){
+            $this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
+                                VALUES ('$nomor', 'Saudara $nama, anda tepilih untuk menggantikan pada jam $jam ruang $ruang')");
+        }
+
+        public function nomor_untuk_kesediaan(){
+             return $this->db->query("SELECT p.nama, p.no_telp FROM pegawai p join kesediaan k ON (p.idpeg=k.idpeg) WHERE k.status_admin='ya'");
         }
     }
 ?>

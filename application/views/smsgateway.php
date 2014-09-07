@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Kepegawaian ELFAST</title>
-    <meta http-equiv="refresh" content="10" > 
+    <!-- <meta http-equiv="refresh" content="10" >  -->
 		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
@@ -205,6 +205,20 @@
       kirimPesanBenar(nomor);
     };
 
+    var insertToKesediaan = function(statusSedia, idPeg, idJadwal) {
+      $.ajax({
+        type        : 'POST',
+        url         : 'insert_kesediaan',
+        data        : {'status': statusSedia, 'idpegawai': idPeg, 'idjadwal': idJadwal},
+        success     : function(data) {
+          console.log('Berhasil insert ke kesediaan');
+        },
+        error       : function(data) {
+          alert('Gagal insert ke kesediaan.');
+        }
+      });
+    };
+
     $(document).ready(function(){
       // AJAX SMS SALAH
       $.ajax({
@@ -237,6 +251,14 @@
           //jika ada sms yang belum di proses
           $.each(data, function(index, element) {
             if (element.Processed == "false") {
+              //cek jika sms diawali dengan kata GANTI
+              var sms = element.TextDecoded.split('#'); // pecah sms berdasar delimiter #
+              console.log(sms[0]);
+              if (sms[0] == 'GANTI') {
+                insertToKesediaan(sms[1], sms[2], sms[3]);
+              }
+
+              //kirim respon dari sistem ke pengguna
               prosesSmsBenar(element.ID, element.SenderNumber);  
             } else {
               console.log("Tidak ada sms di inbox yang belum di proses.");    

@@ -41,5 +41,20 @@
 			$nomor_pegawai = $this->input->post('nomor');
 			$this->m_sms->insert_sms_benar($nomor_pegawai);
 		}
+		
+		public function insert_kesediaan(){
+			$this->load->model('m_sms');
+			
+			// ambil nilai dari ajax POST
+			$status = $this->input->post('status');
+			$idpegawai = $this->input->post('idpegawai');
+			$idjadwal = $this->input->post('idjadwal');
+
+			// ambil tanggal besok dari DateTime
+			$besok = new DateTime('tomorrow');
+			$tglsedia = $besok->format('Y-m-d');
+
+			$this->m_sms->insert_kesediaan($status, $idpegawai, $tglsedia, $idjadwal);
+		}
 	}
 ?>

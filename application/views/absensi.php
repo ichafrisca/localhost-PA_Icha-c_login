@@ -100,57 +100,114 @@
   <!-- PEGAWAI -->
   <div class="row">
     <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Absensi Pegawai</h2><br>
-      <div class="row">
-        <div class="small-2 columns">
-          <a href="<?php echo base_url();?>c_absen/form_tambah" data-dropdown="drop1" class="button dropdown">Tambah</a>
-            <ul id="drop1" data-dropdown-content class="f-dropdown">
-              <li><a href="<?php echo base_url();?>c_absen/form_tambah">Tambah Absensi</a></li>
-              <li><a href="<?php echo base_url();?>c_absen/form_ganti_absen">Pengganti Pegawai</a></li>
-            </ul>
+      <dl class="tabs" data-tab>
+        <dd class="active"><a href="#panel1">Absen</a></dd>
+        <dd><a href="#panel2">Kesediaan</a></dd>
+      </dl>
+      <div class="tabs-content">
+        <div class="content active" id="panel1">
+          <div class="row">
+            <div class="large-12 medium-9 columns panel">
+              <h2 id="tables" style="text-align:center;">Absensi Pegawai</h2><br>
+              <div class="row">
+                <div class="small-2 columns">
+                  <a href="<?php echo base_url();?>c_absen/form_tambah" data-dropdown="drop1" class="button dropdown">Tambah</a>
+                    <ul id="drop1" data-dropdown-content class="f-dropdown">
+                      <li><a href="<?php echo base_url();?>c_absen/form_tambah">Tambah Absensi</a></li>
+                      <li><a href="<?php echo base_url();?>c_absen/form_ganti_absen">Pengganti Pegawai</a></li>
+                    </ul>
+                </div>
+                <div class="small-10 columns" style="float:top;">
+                  <?php echo form_open("c_absen/sms_pemberitahuan_jadwal"); ?>
+                      <a><input type="submit" class="button radius" value="Kirim Pemberitahuan" /></a>
+                  <?php echo form_close(); ?>
+                </div>
+              </div>
+                <center>
+                  <table style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>ID Absen</th>
+                        <th>Status Absen</th>
+                        <th>Tanggal Absen</th>
+                        <th>Pegawai Pengganti</th>
+                        <th>Jam Masuk</th>
+                        <th>Nama Subprogram</th>
+                        <th>Nama Pegawai</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                      <?php echo '<tr>';
+                        $i=1;
+                          foreach($queryabsen->result_array() as $rows) {
+                            echo "<td>".$i."</td>";
+                            echo "<td>".$rows['idabsen']."</td>";
+                            echo "<td>".$rows['status_absen']."</td>";
+                            echo "<td>".$rows['tgl_absen']."</td>";
+                            echo "<td>".$rows['idpeg_pengganti']."</td>";
+                            echo "<td>".$rows['jam']."</td>";
+                            echo "<td>".$rows['nmsubprog']."</td>";
+                            echo "<td>".$rows['nama']."</td>";
+                            echo "<td>".anchor('c_absen/form_update_absen/'.$rows['idabsen'],'Ubah')."</td>";
+                            $i++;
+                          echo '</tr>';
+                          }
+                      ?>
+                    </tbody>
+                  </table>
+                </center>
+            </div>
+          </div>
         </div>
-        <div class="small-10 columns" style="float:top;">
-          <?php echo form_open("c_absen/sms_pemberitahuan_jadwal"); ?>
-              <a><input type="submit" class="button radius" value="Kirim Pemberitahuan" /></a>
-          <?php echo form_close(); ?>
+
+        <div class="content" id="panel2">
+          <div class="row">
+            <div class="large-12 medium-9 columns panel">
+              <h2 id="tables" style="text-align:center;">Kesediaan Admin</h2><br>
+                <center>
+                  <table style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Nama Pegawai</th>
+                        <th>Nomor Telepon</th>
+                        <th>Tanggal Pengganti</th>
+                        <th>Jam Masuk</th>
+                        <th>Nama Ruang</th>
+                        <th>Status Sedia Pegawai</th>
+                        <th>Status Sedia Admin</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                    <?php echo '<tr>';
+                      $i=1;
+                        foreach($kesediaan as $rows) {
+                          echo "<td>".$i."</td>";
+                          echo "<td>".$rows['nama']."</td>";
+                          echo "<td>".$rows['no_telp']."</td>";
+                          echo "<td>".$rows['tgl_sedia']."</td>";
+                          echo "<td>".$rows['jam']."</td>";
+                          echo "<td>".$rows['namaruang']."</td>";
+                          echo "<td>".$rows['status_sedia']."</td>";
+                          echo "<td>".$rows['status_admin']."</td>";
+                          echo "<td>".anchor('c_absen/update_kesediaan/'.$rows['idsedia'].'/'.$rows['no_telp'].'/Ya/'.$rows['nama'].'/'.$rows['jam'].'/'.$rows['namaruang'].'/','Ubah')."</td>";
+                          $i++;
+                        echo '</tr>';
+                        }
+                    ?>
+                  </tbody>
+                  </table>
+                </center>
+            </div>
+          </div>
         </div>
-      </div>
-        <center>
-          <table>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>ID Absen</th>
-                <th>Status Absen</th>
-                <th>Tanggal Absen</th>
-                <th>Pegawai Pengganti</th>
-                <th>Jam Masuk</th>
-                <th>Nama Subprogram</th>
-                <th>Nama Pegawai</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            
-            <tbody>
-              <?php echo '<tr>';
-                $i=1;
-                  foreach($queryabsen->result_array() as $rows) {
-                    echo "<td>".$i."</td>";
-                    echo "<td>".$rows['idabsen']."</td>";
-                    echo "<td>".$rows['status_absen']."</td>";
-                    echo "<td>".$rows['tgl_absen']."</td>";
-                    echo "<td>".$rows['idpeg_pengganti']."</td>";
-                    echo "<td>".$rows['jam']."</td>";
-                    echo "<td>".$rows['nmsubprog']."</td>";
-                    echo "<td>".$rows['nama']."</td>";
-                    echo "<td>".anchor('c_absen/form_update_absen/'.$rows['idabsen'],'Ubah')."</td>";
-                    $i++;
-                  echo '</tr>';
-                  }
-              ?>
-            </tbody>
-          </table>
-        </center>
+
+      </div>  
     </div>
   </div>
 

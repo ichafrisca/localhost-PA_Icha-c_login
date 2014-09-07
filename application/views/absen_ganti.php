@@ -219,12 +219,12 @@
                       .append("<input type='hidden' name='idsubprog' value='" +  element.idsubprog + "'>")
                       .append("<input type='hidden' name='jumlahdata' value='" +  data.length + "'>")
                       .append("<input type='hidden' name='jam_pgt' value='" +  jammasuk + "'>")
-                      .append("<input type='hidden' name='kelas_pgt' value='" +  element.nmsubprog + "'>")
+                      .append("<input type='hidden' name='idjadwal' value='" +  element.idjadwal + "'>")
                       .append("<td>"+ element.idpeg +"</td>")
                       .append("<td>"+ element.nama +"</td>")
                       .append("<td>"+ element.tgl_absen +"</td>")
                       .append("<td>"+ element.jam +"</td>")
-                      .append("<td>"+ element.nmsubprog +"</td>")
+                      .append("<td>"+ element.idjadwal +"</td>")
                     );
                   });
                 }

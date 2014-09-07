@@ -37,8 +37,9 @@
 			$this->db->query("UPDATE inbox SET Processed='true' WHERE ID='$id';");
 		}
 
-
-
+		public function insert_kesediaan($statussedia,$idpeg,$tglsedia,$idjadwal){
+			$this->db->query("INSERT into kesediaan VALUES ('$statussedia', 'Tidak', '$idpeg', '$tglsedia', '$idjadwal', null)");
+		}
 
 		public function dispinboxajax($page = 1, $total) {
 			if ($page < 1) {
