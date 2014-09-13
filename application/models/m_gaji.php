@@ -30,7 +30,7 @@
 		}
 
 		public function tampil_data_nmpegawai(){
-        	return $this->db->query('SELECT * FROM pegawai');	
+        	return $this->db->query("SELECT * from pegawai where stat_peg='Aktif'");
         }
 
 		public function tampil_nominal(){

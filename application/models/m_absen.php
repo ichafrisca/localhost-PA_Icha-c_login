@@ -21,11 +21,11 @@
         } 
 
         public function tampil_data_nmpegawai(){
-            return $this->db->query('SELECT * from pegawai');
+            return $this->db->query("SELECT * from pegawai where stat_peg='Aktif'");
         }
 
 		public function tampil_id() {
-			$maxMe = $this->db->query('SELECT MAX( SUBSTR( idabsen, 4, 4 ) ) AS MAXID FROM absensi');
+			$maxMe = $this->db->query("SELECT MAX( SUBSTR( idabsen, 4, 4 ) ) AS MAXID FROM absensi");
 			return $maxMe;
 		}
 

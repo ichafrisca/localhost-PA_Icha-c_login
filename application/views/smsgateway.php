@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Kepegawaian ELFAST</title>
-    <!-- <meta http-equiv="refresh" content="10" >  -->
+    <meta http-equiv="refresh" content="10" > 
 		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
