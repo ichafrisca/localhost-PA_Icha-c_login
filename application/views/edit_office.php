@@ -100,52 +100,53 @@
   <div class="row">
   <div class="large-12 panel">
   <?php
-    $shift_pegawai = array(
-      "-" => "- Shift -",
-      "Pagi" => "Pagi",
-      "Siang" => "Siang"
-    );
-      echo form_open('c_jadwal/edit_office');
-        echo '<center><h3>Form Tambah Office</h3></center>
-        
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>ID Jadwal</td>
-                <td>:</td>
-                <td>'.form_hidden('idjadwal',$newID,'readonly').'</td>
-              </tr>
-            </div>
+  foreach ($queryjadwal->result_array() as $row){
+    echo form_open('c_jadwal/edit_office');
+      echo '<center><h3>Form Tambah Office</h3></center>
+        <div class="row">
+          <div class="large-12 columns">
+            <tr>
+              <td>'.form_hidden('idjadwal',$row['idjadwal']).'</td>
+            </tr>
           </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Tanggal</td>
-                <td>:</td>
-                <td>'.form_input('tanggal',$row['tanggal'], 'id="datepicker"').'</td>
-              </tr>
-            </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <tr>
+              <td>Tanggal</td>
+              <td>:</td>
+              <td>'.form_input('tanggal',$row['tanggal'], 'id="datepicker"').'</td>
+            </tr>
           </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Shift</td>
-                '.form_dropdown('jam', $shift_pegawai, '-', $row['jam']).'
-              </tr>
-            </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <tr>
+              <td>Shift</td>
+              '.form_hidden('jam',$row['jam']);
+                    $dropdown_shift = array(
+                      "-"     => "- Pilih Shift -",
+                      "Pagi"  => "Pagi",
+                      "Siang" => "Siang"
+                    );
+                    echo '<td width="150" height="25">:'.form_dropdown('jam', $dropdown_shift, $row['jam']).'
+                  </td>'.'
+            </tr>
           </div>
-
-        <label>
-          <input type="submit" value="Save" class="button radius expand">
-        </label>
-        <label>
-          <a href='. base_url() .'c_jadwal/disp class="button radius expand">Back</a>
-        </label>';
-        echo form_close();
-      ?>
-      <?php if (isset($validation_errors)) echo $validation_errors;?>
-      </div>
-      </div>
+        </div>
+        <br>
+      <label>
+        <input type="submit" value="Save" class="button radius expand">
+      </label>
+      <label>
+        <a href='. base_url() .'c_jadwal/disp class="button radius expand">Back</a>
+      </label>';
+      echo form_close();
+    }
+    ?>
+    <?php if (isset($validation_errors)) echo $validation_errors;?>
+    </div>
+  </div>
 
 		<!-- javascript foundation -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>

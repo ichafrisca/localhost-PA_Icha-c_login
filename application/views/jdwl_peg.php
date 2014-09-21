@@ -138,8 +138,11 @@
                     echo "<td>".$rows['periode_tgl']."</td>";
                     echo "<td>".$rows['namaruang']."</td>";
                     echo "<td>".$rows['nmsubprog']."</td>";
-                    
-                    echo "<td>".anchor('c_jadwal/form_update_jadwal/'.$rows['idjadwal'],'Ubah Jadwal')."</td>";
+                    if ($rows['namaruang']=='Office'){
+                      echo "<td>".anchor('c_jadwal/form_update_office/'.$rows['idjadwal'],'Ubah Jadwal')."</td>";
+                    }else{
+                      echo "<td>".anchor('c_jadwal/form_update_jadwal/'.$rows['idjadwal'],'Ubah Jadwal')."</td>";
+                    }
                     $i++;
                   echo '</tr>';
                   }
