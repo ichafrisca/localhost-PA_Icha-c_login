@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<title>Kepegawaian ELFAST</title>
-    <meta http-equiv="refresh" content="10" > 
 		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
@@ -220,55 +219,70 @@
     };
 
     $(document).ready(function(){
-      // AJAX SMS SALAH
-      $.ajax({
-        type        : 'GET',
-        url         : 'jsoninbox',
-        dataType    : 'json',
-        contentType : 'application/json; charset=utf-8',
-        success     : function(data){
-          //jika ada sms yang belum di proses
-          if (data.length >= 1) {
-            $.each(data, function(index, element) {
-              prosesSmsSalah(element.ID, element.SenderNumber);
-            });
-          } else {
-            console.log("Tidak ada sms di inbox yang belum di proses.");
-          }
-        },
-        error       : function(data){
-          alert("Salah :" + data);
-        }
-      });
 
-      // AJAX SMS BENAR
-      $.ajax({
-        type        : 'GET',
-        url         : 'jsoninboxbenar',
-        dataType    : 'json',
-        contentType : 'application/json; charset=utf-8',
-        success     : function(data){
-          //jika ada sms yang belum di proses
-          $.each(data, function(index, element) {
-            if (element.Processed == "false") {
-              //cek jika sms diawali dengan kata GANTI
-              var sms = element.TextDecoded.split('#'); // pecah sms berdasar delimiter #
-              console.log(sms[0]);
-              if (sms[0] == 'GANTI') {
-                insertToKesediaan(sms[1], sms[2], sms[3]);
-              }
-
-              //kirim respon dari sistem ke pengguna
-              prosesSmsBenar(element.ID, element.SenderNumber);  
+      // jalankan ajax pada interval sekian detik
+      setInterval(function() {
+        // AJAX SMS SALAH
+        $.ajax({
+          type        : 'GET',
+          url         : 'jsoninbox',
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data){
+            //jika ada sms yang belum di proses
+            if (data.length >= 1) {
+              $.each(data, function(index, element) {
+                prosesSmsSalah(element.ID, element.SenderNumber);
+              });
             } else {
-              console.log("Tidak ada sms di inbox yang belum di proses.");    
-            }  
-          });
-        },
-        error       : function(data){
-          alert("Salah :" + data);
-        }
-      });
+              console.log("Tidak ada sms di inbox yang belum di proses.");
+            }
+          },
+          error       : function(data){
+            alert("Salah :" + data);
+          }
+        });
+
+        // AJAX SMS BENAR
+        $.ajax({
+          type        : 'GET',
+          url         : 'jsoninboxbenar',
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data){
+            var totalSmsMasuk = 0;
+
+            //jika ada sms yang belum di proses
+            $.each(data, function(index, element) {
+              if (element.Processed == "false") {
+                // tambah 1 setiap ada sms yang bernilai false
+                totalSmsMasuk++;
+
+                //cek jika sms diawali dengan kata GANTI
+                var sms = element.TextDecoded.split('#'); // pecah sms berdasar delimiter #
+                console.log(sms[0]);
+                if (sms[0] == 'GANTI') {
+                  insertToKesediaan(sms[1], sms[2], sms[3]);
+                }
+
+                //kirim respon dari sistem ke pengguna
+                prosesSmsBenar(element.ID, element.SenderNumber);  
+              } else {
+                console.log("Tidak ada sms di inbox yang belum di proses.");    
+              }  
+            });
+
+            if (totalSmsMasuk > 0) {
+              alert(totalSmsMasuk + " sms diterima.");
+            }
+          },
+          error       : function(data){
+            alert("Salah :" + data);
+          }
+        });
+
+      }, 1000 * 10); // 1000 = 1 detik
+      
     });
   </script>
   

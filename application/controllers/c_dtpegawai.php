@@ -25,7 +25,7 @@
 			$this->form_validation->set_rules('alamat','Alamat','required');
 			$this->form_validation->set_rules('tmpt_lahir','Tempat Lahir','required');
 			$this->form_validation->set_rules('tgl_lahir','Tanggal Lahir','required');
-			$this->form_validation->set_rules('no_telp','No Telepon','required');
+			$this->form_validation->set_rules('no_telp','No Telepon','required|regex_match[/^[0-9]+$/]');
 			$this->form_validation->set_rules('status','Status','required|callback_status_check');
 			$this->form_validation->set_rules('stat_peg','Status Pegawai','required|callback_stat_peg_check');
 			$this->form_validation->set_rules('username','Username','required|min_length[4]|max_length[12]|is_unique[pegawai.username]','callback_username_check');
@@ -91,21 +91,37 @@
 		}
 
 		public function edit(){
-			$data=array(
-				'idpeg'			=>$this->input->post('IDPEG'),
-				'nama'			=>$this->input->post('NAMA'),
-				'alamat'		=>$this->input->post('ALAMAT'),
-				'tmpt_lahir'	=>$this->input->post('TMPT_LAHIR'),
-				'tgl_lahir'		=>$this->input->post('TGL_LAHIR'),
-				'no_telp'		=>$this->input->post('NO_TELP'),
-				'status'		=>$this->input->post('STATUS'),
-				'stat_peg'		=>$this->input->post('STAT_PEG'),
-				'username'		=>$this->input->post('USERNAME'),
-				'password'		=>$this->input->post('PASSWORD'),
-			);
-			$this->load->model('m_dtpegawai');
-			$this->m_dtpegawai->edit($data,$this->input->post('IDPEG'));
-			$this->page();
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('IDPEG','ID Pegawai','required');
+			$this->form_validation->set_rules('NAMA','Nama','required');
+			$this->form_validation->set_rules('ALAMAT','Alamat','required');
+			$this->form_validation->set_rules('TMPT_LAHIR','Tempat Lahir','required');
+			$this->form_validation->set_rules('TGL_LAHIR','Tanggal Lahir','required');
+			$this->form_validation->set_rules('NO_TELP','No Telepon','required|regex_match[/^[0-9]+$/]');
+			$this->form_validation->set_rules('STATUS','Status','required|callback_status_check');
+			$this->form_validation->set_rules('STAT_PEG','Status Pegawai','required|callback_stat_peg_check');
+			$this->form_validation->set_rules('USERNAME','Username','required');
+			$this->form_validation->set_rules('PASSWORD','Password','required');
+
+			if ($this -> form_validation -> run() == FALSE){
+				$this -> session -> set_flashdata('errors', validation_errors(''));
+				redirect('c_dtpegawai/form_update_pegawai/'.$this->input->post('IDPEG'));
+			}else {
+				$data=array(
+					'idpeg'			=>$this->input->post('IDPEG'),
+					'nama'			=>$this->input->post('NAMA'),
+					'alamat'		=>$this->input->post('ALAMAT'),
+					'tmpt_lahir'	=>$this->input->post('TMPT_LAHIR'),
+					'tgl_lahir'		=>$this->input->post('TGL_LAHIR'),
+					'no_telp'		=>$this->input->post('NO_TELP'),
+					'status'		=>$this->input->post('STATUS'),
+					'stat_peg'		=>$this->input->post('STAT_PEG'),
+					'username'		=>$this->input->post('USERNAME'),
+					'password'		=>$this->input->post('PASSWORD'));
+				$this->load->model('m_dtpegawai');
+				$this->m_dtpegawai->edit($data,$this->input->post('IDPEG'));
+				$this->page();
+			}
 		}
 
 		public function page($p=0){

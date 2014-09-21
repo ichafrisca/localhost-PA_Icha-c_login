@@ -208,6 +208,23 @@
 			$this->disp();
 		}
 
+	// EDIT OFFICE
+
+		public function form_update_office($idjadwal){
+			$this->load->model('m_jadwal');
+			$data['queryjadwal']=$this->m_jadwal->tampil_edit($idjadwal);
+			$this->load->view('edit_office',$data);
+		}
+
+		public function edit_office(){
+			$data=array(
+					'tanggal' 		  => $this->input->post('tanggal'),
+					'jam'	 		  => $this->input->post('jam'));
+			$this->load->model('m_jadwal');
+			$this->m_jadwal->edit($data,$this->input->post('idjadwal'));
+			$this->disp();
+		}
+
 
 	// DATA JADWAL KELAS
 

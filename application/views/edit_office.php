@@ -98,65 +98,83 @@
 
   <!-- PEGAWAI -->
   <div class="row">
-    <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Jadwal Kelas</h2>
-      <div class="row">
-        <div class="small-6 columns">
-          <a href="<?php echo base_url();?>c_jadwal/form_tambah" data-dropdown="drop1" class="button dropdown">Tambah</a><br>
-            <ul id="drop1" data-dropdown-content class="f-dropdown">
-              <li><a href="<?php echo base_url();?>c_jadwal/form_tambah">Tambah Jadwal</a></li>
-              <li><a href="<?php echo base_url();?>c_jadwal/form_tambah_office">Tambah Jadwal Office</a></li>
-              <li><a href="<?php echo base_url();?>c_jadwal/form_tambah_program">Tambah Program</a></li>
-              <li><a href="<?php echo base_url();?>c_jadwal/form_tambah_subprog">Tambah Subprogram</a></li>
-              <li><a href="<?php echo base_url();?>c_jadwal/form_tambah_ruang">Tambah Ruangan</a></li>
-            </ul>
-        </div>
-      </div>
-        <center>
-          <table style="width:100%;">
-            <thead>
+  <div class="large-12 panel">
+  <?php
+    $shift_pegawai = array(
+      "-" => "- Shift -",
+      "Pagi" => "Pagi",
+      "Siang" => "Siang"
+    );
+      echo form_open('c_jadwal/edit_office');
+        echo '<center><h3>Form Tambah Office</h3></center>
+        
+          <div class="row">
+            <div class="large-12 columns">
               <tr>
-                <th>No</th>
-                <th>ID Jadwal</th>
-                <th>Tanggal</th>
-                <th>Jam</th>
-                <th>Periode Tanggal</th>
-                <th>Nama Ruang</th>
-                <th>Nama Subprogram</th>
-                <th>Aksi</th>
+                <td>ID Jadwal</td>
+                <td>:</td>
+                <td>'.form_hidden('idjadwal',$newID,'readonly').'</td>
               </tr>
-            </thead>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td>'.form_input('tanggal',$row['tanggal'], 'id="datepicker"').'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Shift</td>
+                '.form_dropdown('jam', $shift_pegawai, '-', $row['jam']).'
+              </tr>
+            </div>
+          </div>
 
-            <tbody>
-              <?php echo '<tr>';
-                $i=1;
-                  foreach($queryjadwal->result_array() as $rows) {
-                    echo "<td>".$i."</td>";
-                    echo "<td>".$rows['idjadwal']."</td>";
-                    echo "<td>".$rows['tanggal']."</td>";
-                    echo "<td>".$rows['jam']."</td>";
-                    echo "<td>".$rows['periode_tgl']."</td>";
-                    echo "<td>".$rows['namaruang']."</td>";
-                    echo "<td>".$rows['nmsubprog']."</td>";
-                    
-                    echo "<td>".anchor('c_jadwal/form_update_jadwal/'.$rows['idjadwal'],'Ubah Jadwal')."</td>";
-                    $i++;
-                  echo '</tr>';
-                  }
-              ?>
-            </tbody>
-          </table>
-          </center>
-          <?php echo $pagination; ?>
-    </div>
-  </div>
+        <label>
+          <input type="submit" value="Save" class="button radius expand">
+        </label>
+        <label>
+          <a href='. base_url() .'c_jadwal/disp class="button radius expand">Back</a>
+        </label>';
+        echo form_close();
+      ?>
+      <?php if (isset($validation_errors)) echo $validation_errors;?>
+      </div>
+      </div>
 
 		<!-- javascript foundation -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script> 
-  	<script type="text/javascript">
-  		$(document).foundation();
-  	</script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery.ui.datepicker.validation.min.js"></script>
+
+  <link rel="stylesheet" href="/resources/demos/style.css">  
+
+  <script type="text/javascript">
+		$(document).foundation();
+	</script>
+  <script>
+    $(function() {
+      $( "#datepicker" ).datepicker(
+        {
+          changeMonth: 'true',
+          changeYear: 'true',
+          dateFormat:'yy-mm-dd', 
+          showAnim: 'slideDown',
+          minDate: 0
+        }
+      );
+    });
+  </script>
 	</body>
 </html>

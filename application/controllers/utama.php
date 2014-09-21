@@ -15,6 +15,22 @@
 		}
 
 		public function edit(){
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('IDPEG','ID Pegawai','required');
+			$this->form_validation->set_rules('NAMA','Nama','required');
+			$this->form_validation->set_rules('ALAMAT','Alamat','required');
+			$this->form_validation->set_rules('TMPT_LAHIR','Tempat Lahir','required');
+			$this->form_validation->set_rules('TGL_LAHIR','Tanggal Lahir','required');
+			$this->form_validation->set_rules('NO_TELP','No Telepon','required|regex_match[/^[0-9]+$/]');
+			$this->form_validation->set_rules('STATUS','Status','required|callback_status_check');
+			$this->form_validation->set_rules('STAT_PEG','Status Pegawai','required|callback_stat_peg_check');
+			$this->form_validation->set_rules('USERNAME','Username','required');
+			$this->form_validation->set_rules('PASSWORD','Password','required');
+
+			if ($this -> form_validation -> run() == FALSE){
+				$this -> session -> set_flashdata('errors', validation_errors(''));
+				redirect('utama/profil');
+			}else {
 			$data=array(
 				'idpeg'			=>$this->input->post('IDPEG'),
 				'nama'			=>$this->input->post('NAMA'),
@@ -25,11 +41,11 @@
 				'status'		=>$this->input->post('STATUS'),
 				'stat_peg'		=>$this->input->post('STAT_PEG'),
 				'username'		=>$this->input->post('USERNAME'),
-				'password'		=>$this->input->post('PASSWORD'),
-			);
+				'password'		=>$this->input->post('PASSWORD'));
 			$this->load->model('m_user');
 			$this->m_user->edit($data,$this->input->post('IDPEG'));
 			$this->profil();
+			}
 		}
 
 	// JADWAL
