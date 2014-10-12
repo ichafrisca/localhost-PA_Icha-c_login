@@ -48,14 +48,14 @@
 			$this->form_validation->set_rules('tanggal','Tanggal','required');
 			$this->form_validation->set_rules('jam','Jam','required');
 			$this->form_validation->set_rules('periode_tgl','Periode Tanggal','required');
-			$this->form_validation->set_rules('idslot','Slot','required|callback_slot_check');
-			$this->form_validation->set_rules('idruang','Nama Ruang','required|callback_ruang_check');
-			$this->form_validation->set_rules('idsubprog','Nama Subprogram','required|callback_subprog_check');
+			$this->form_validation->set_rules('namaruang','Nama Ruang','required|callback_ruang_check');
+			$this->form_validation->set_rules('subprogram','Nama Subprogram','required|callback_subprog_check');
+			$this->form_validation->set_rules('slot','Slot','required|callback_slot_check');
 
-			// if ($this -> form_validation -> run() == FALSE){
-			// 	$this -> session -> set_flashdata('errors', validation_errors(''));
-			// 	redirect('c_jadwal/form_tambah');
-			// }else {
+			if ($this -> form_validation -> run() == FALSE){
+				$this -> session -> set_flashdata('errors', validation_errors(''));
+				redirect('c_jadwal/form_tambah');
+			}else {
 				$data_jadwal = array(
 					'idjadwal'		  => $this->input->post('idjadwal'),
 					'tanggal' 		  => $this->input->post('tanggal'),
@@ -67,7 +67,7 @@
 				$this -> load -> model('m_jadwal');
 				$this -> m_jadwal -> tambah_jadwal($data_jadwal);
 				redirect('c_jadwal/disp');
-			// }
+			}
 		}
 
 		public function slot_check(){

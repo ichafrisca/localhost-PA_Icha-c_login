@@ -10,7 +10,12 @@
 	<div class="column">
   		<div class="small-9 small-centered columns" style="background-color:#C9A798; border-radius: 30px 30px 30px 30px; margin-top:20px; margin-bottom:20px;">
   			<a href="<?php echo base_url().'utama'?>"><img src="<?php echo base_url();?>assets/slider home/logo elfast.png" style="width:380px; height:120; margin-top:40px; margin-bottom:40px;"/></a>
-  			<center><h3>Selamat Datang di Portal Anda</h3></left></center>
+  			<center><h3>
+  				<?php 
+	 			   	$session_id = $this->session->userdata('pengguna');
+				   	echo "Selamat Datang ".$session_id;
+				?>
+			</h3></center>
   			</a>
 		</div>
 
