@@ -12,7 +12,7 @@
   			<a href="<?php echo base_url().'utama'?>"><img src="<?php echo base_url();?>assets/slider home/logo elfast.png" style="width:380px; height:120; margin-top:40px; margin-bottom:40px;"/></a>
   			<center><h3>
   				<?php 
-	 			   	$session_id = $this->session->userdata('pengguna');
+	 			   	$session_id = $this->session->userdata('nama_pengguna');
 				   	echo "Selamat Datang ".$session_id;
 				?>
 			</h3></center>
@@ -56,12 +56,32 @@
     								<br><br><br>
 									    <div class="row">
 									       	<div class="large-6 columns">
-									           	<label for="from">Dari Tanggal</label>
-									          	<input type="text" id="from" name="from">
+									       		<label for="to">Pilih Bulan</label>
+												<select name="bulan_gaji">
+													<option value="-">- Pilih Bulan -</option>
+													<option value="12-11|01-09">Januari</option>
+													<option value="01-11|02-09">Februari</option>
+													<option value="02-11|03-09">Maret</option>
+													<option value="03-11|04-09">April</option>
+													<option value="04-11|05-09">Mei</option>
+													<option value="05-11|06-09">Juni</option>
+													<option value="06-11|07-09">Juli</option>
+													<option value="07-11|08-09">Agustus</option>
+													<option value="08-11|09-09">September</option>
+													<option value="09-11|10-09">Oktober</option>
+													<option value="10-11|11-09">Nopember</option>
+													<option value="11-11|12-09">Desember</option>
+												</select>
 									     	</div>
 									      	<div class="large-6 columns">
-										        <label for="to">Sampai Tanggal</label>
-										        <input type="text" id="to" name="to">
+										        <label for="to">Pilih Tahun</label>';
+								                    $opsi_tahun = array("-" => "- Pilih Tahun-");
+								                    $tahun_awal = 1980;
+								                    for ($i = 0; $i < 500; $i++) {
+								                    	$opsi_tahun[$tahun_awal + $i] = $tahun_awal + $i;
+								                    }
+
+								                    echo '<td width="150" height="25">'.form_dropdown('TAHUN_GAJI', $opsi_tahun,'required').'</td>
 									     	</div>
 									    </div>
 									<label>

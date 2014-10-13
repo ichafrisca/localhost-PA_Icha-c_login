@@ -12,7 +12,7 @@
   			<a href="<?php echo base_url().'utama'?>"><img src="<?php echo base_url();?>assets/slider home/logo elfast.png" style="width:380px; height:120; margin-top:40px; margin-bottom:40px;"/></a>
   			<center><h3>
   				<?php 
-	 			   	$session_id = $this->session->userdata('pengguna');
+	 			   	$session_id = $this->session->userdata('nama_pengguna');
 				   	echo "Selamat Datang ".$session_id;
 				?>
 			</h3></center>

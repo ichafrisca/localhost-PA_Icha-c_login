@@ -98,13 +98,36 @@
 
 		public function detail_gaji_pegawai(){
 			$this->load->model('m_user');
-			$id 		= $this->session->userdata("pengguna");
-			$tglawal 	= $this->input->post('from');
-			$tglakhir 	= $this->input->post('to');
+			$id 			= $this->session->userdata("pengguna");
+
+			// ambil bulan gaji dari form
+			$bulan_mentah 	= $this->input->post('bulan_gaji'); // 12-11 01-09
+
+			// pecah bulan_mentah sesuai delimiter |
+			$bulan 			= explode("|", $bulan_mentah);
+
+			// ambil tahun gaji dari form
+			$tahun 			= $this->input->post('TAHUN_GAJI'); // 2015
+
+			// gabungkan tahun dengan bulan yang telah di pecah sesuai delimiter
+			// tanggal awal ada pengecekan bulan, jika desember maka kurangi -1 tahunnya
+			$tglawal 		= $bulan[0] == "12-11" ? $tahun - 1 ."-". $bulan[0] : $tahun."-".$bulan[0];
+			$tglakhir 		= $tahun."-".$bulan[1];
+
+			// ambil data gaji karyawan
 			$data['detailgaji'] = $this->m_user->detailgaji($id, $tglawal, $tglakhir);
+
+			// ambil data bonus karyawan
 			$data['data_bonus'] = $this->m_user->bonus_pegawai($id, $tglawal, $tglakhir);
-			// echo("<pre>");
-			// print_r($data);exit;
+
+			// cek jika gaji dan bonus tidak ada isinya
+			if (count($data['detailgaji']) == 0 && count($data['data_bonus']) == 0) {
+				$data['kesediaan'] = "DATA GAJI TIDAK DITEMUKAN";
+			} else {
+				$data['kesediaan']	= "ADA";
+			}
+
+			// print_r(count($data['detailgaji']));exit;
 			$this->load->view("detail_gaji_pegawai",$data);
 		}
 	}

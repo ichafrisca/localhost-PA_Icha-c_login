@@ -45,22 +45,23 @@
     					<section class="main-section">
     						<div class="row">
 							    <div class="large-12 medium-9 columns panel">
-							      <h2 id="tables" style="text-align:center;">Detail Gaji</h2><br><br>
-							        <table id="gajipeg" style="width:100%;">
-								        <thead>
-								            <tr>
-								                <th>Nama</th>
-								                <th>Kelas</th>
-								                <th>Keterangan</th>
-								                <th>Tanggal Hadir</th>
-								                <th>Honor Tiap Pertemuan</th>
-								            </tr>
-								        </thead>
 
-								        <?php 
-								        	$totalGaji = 0;
-								        	foreach ($detailgaji as $row) { 
-								        ?>
+									<?php if ($kesediaan == "ADA") { ?>
+										<h2 id="tables" style="text-align:center;">Detail Gaji</h2><br><br>
+							        		<table id="gajipeg" style="width:100%;">
+								        		<thead>
+								            		<tr>
+								                		<th>Nama</th>
+								                		<th>Kelas</th>
+								                		<th>Keterangan</th>
+								                		<th>Tanggal Hadir</th>
+								                		<th>Honor Tiap Pertemuan</th>
+								            		</tr>
+								        		</thead>
+								        	<?php
+								        		$totalGaji = 0;
+								        			foreach ($detailgaji as $row) { 
+								        	?>
 								        	<tr>
 								        		<td><?php echo $row['nama']; ?></td>
 								        		<td><?php echo $row['kelas']; ?></td>
@@ -94,6 +95,11 @@
 								        	<td><b><?php echo $data_bonus[0]['bonus'] + $totalGaji; ?></b></td>
 								        </tr>
 							        </table>
+
+									<?php } else {?>
+										<center><h4><?php echo $kesediaan; ?></h4></center>
+									<?php } ?>
+
 							    </div>
 							</div>
     					</section>
