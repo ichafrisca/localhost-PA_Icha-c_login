@@ -25,7 +25,7 @@
 		}
 
 		public function ambil_absen($idabsen, $nmsubprog) {
-			$queryabsen=$this->db->query("SELECT a.tgl_absen, j.jam, a.status_absen, sp.nmsubprog, r.namaruang 
+			$queryabsen=$this->db->query("SELECT a.tgl_absen, j.jam, a.status_absen, sp.nmsubprog, r.namaruang, a.idpeg_pengganti
 											from pegawai p join absensi a on(p.idpeg=a.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
 											join ruang r on (j.idruang=r.idruang) 	
 											join subprogram sp on (j.idsubprog=sp.idsubprog) 

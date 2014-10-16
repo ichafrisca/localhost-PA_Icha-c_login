@@ -71,6 +71,7 @@
 										            	<th>Status Absen</th>
 										            	<th>Nama Subprogram</th>
 										            	<th>Nama Ruang</th>
+										            	<th>Keterangan</th>
 										            </tr>
 									            </thead>
 									            <tbody>
@@ -130,12 +131,22 @@
 	      				$("#detailnya").show();
 				      	$("tr").next().remove();
 				      	$.each(data, function(index, element) {
+
+				      		// keterangan kehadiran berdasar id pengganti
+				      		var keterangan = "";
+				      		if (element.idpeg_pengganti === "0") {
+				      			keterangan = "Tidak Digantikan";
+				      		} else {
+				      			keterangan = "Digantikan";
+				      		}
+
 				      		$("#detailnya").last().append($("<tr>")
 				      			.append("<td>"+ element.tgl_absen +"</td>")
 				      			.append("<td>"+ element.jam +"</td>")
 				      			.append("<td>"+ element.status_absen +"</td>")
 				   				.append("<td>"+ element.nmsubprog +"</td>")
 				   				.append("<td>"+ element.namaruang +"</td>")
+				   				.append("<td>"+ keterangan +"</td>")
 				      		);
 				      	});	
 				    } else {

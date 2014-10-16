@@ -98,7 +98,7 @@
 
 		public function detail_gaji_pegawai(){
 			$this->load->model('m_user');
-			$id 			= $this->session->userdata("pengguna");
+			$id 			= $this->session->userdata("pengguna"); //manggil session yg isinya id
 
 			// ambil bulan gaji dari form
 			$bulan_mentah 	= $this->input->post('bulan_gaji'); // 12-11 01-09
@@ -111,8 +111,8 @@
 
 			// gabungkan tahun dengan bulan yang telah di pecah sesuai delimiter
 			// tanggal awal ada pengecekan bulan, jika desember maka kurangi -1 tahunnya
-			$tglawal 		= $bulan[0] == "12-11" ? $tahun - 1 ."-". $bulan[0] : $tahun."-".$bulan[0];
-			$tglakhir 		= $tahun."-".$bulan[1];
+			$tglawal 		= $bulan[0] == "12-11" ? $tahun - 1 ."-". $bulan[0] : $tahun."-".$bulan[0]; //2014-12-11 2015-
+			$tglakhir 		= $tahun."-".$bulan[1]; //2015-02-09
 
 			// ambil data gaji karyawan
 			$data['detailgaji'] = $this->m_user->detailgaji($id, $tglawal, $tglakhir);
