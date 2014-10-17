@@ -106,7 +106,7 @@
 			$this->load->model('m_absen');
 			$data['queryabsen']=$this->m_absen->tampil_edit($IDABSEN);
 			$data['list_status'] = $this -> m_absen -> tampil_status();
-			$data['dropdown_nmpegawai'] = $this -> m_absen -> tampil_data_nmpegawai()->result_array();
+			// $data['dropdown_nmpegawai'] = $this -> m_absen -> tampil_data_nmpegawai()->result_array();
 			$this->load->view('edit_absensi',$data);
 		}
 
@@ -114,7 +114,7 @@
 		public function edit(){
 			$data=array(
 				'status_absen'		=> $this->input->post('status_absen'),
-				'idpeg_pengganti'	=> $this->input->post('idpeg'),
+				// 'idpeg_pengganti'	=> $this->input->post('idpeg'),
 				// 'tgl_absen'		=>$this->input->post('tgl_absen')
 				);
 			$this->load->model('m_absen');

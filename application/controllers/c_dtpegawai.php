@@ -100,7 +100,7 @@
 			$this->form_validation->set_rules('NO_TELP','No Telepon','required|regex_match[/^[0-9]+$/]');
 			$this->form_validation->set_rules('STATUS','Status','required|callback_status_check');
 			$this->form_validation->set_rules('STAT_PEG','Status Pegawai','required|callback_stat_peg_check');
-			$this->form_validation->set_rules('USERNAME','Username','required');
+			$this->form_validation->set_rules('USERNAME','Username','required|min_length[4]|max_length[12]|is_unique[pegawai.username]','callback_username_check');
 			$this->form_validation->set_rules('PASSWORD','Password','required');
 
 			if ($this -> form_validation -> run() == FALSE){

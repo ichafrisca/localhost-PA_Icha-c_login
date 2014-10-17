@@ -1,4 +1,4 @@
-<?php
+	<?php
 	class C_jadwal extends CI_Controller{
 		
 	// DISP JADWAL 
@@ -43,35 +43,58 @@
 		}
 
 		public function tambah(){
+			$this -> load -> model('m_jadwal');
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('idjadwal','idjadwal','required');
 			$this->form_validation->set_rules('tanggal','Tanggal','required');
-			$this->form_validation->set_rules('jam','Jam','required');
+			$this->form_validation->set_rules('jam','Jam','required|callback_jam_check');
 			$this->form_validation->set_rules('periode_tgl','Periode Tanggal','required');
+			$this->form_validation->set_rules('slot','Slot','required|callback_slot_check');
 			$this->form_validation->set_rules('namaruang','Nama Ruang','required|callback_ruang_check');
 			$this->form_validation->set_rules('subprogram','Nama Subprogram','required|callback_subprog_check');
-			$this->form_validation->set_rules('slot','Slot','required|callback_slot_check');
+			
 
 			if ($this -> form_validation -> run() == FALSE){
 				$this -> session -> set_flashdata('errors', validation_errors(''));
 				redirect('c_jadwal/form_tambah');
 			}else {
-				$data_jadwal = array(
-					'idjadwal'		  => $this->input->post('idjadwal'),
-					'tanggal' 		  => $this->input->post('tanggal'),
-					'jam'	 		  => $this->input->post('jam'),
-					'periode_tgl'	  => $this->input->post('periode_tgl'),
-					'idslot' 		  => $this->input->post('slot'),
-					'idruang' 		  => $this->input->post('namaruang'),
-					'idsubprog'	 	  => $this->input->post('subprogram'));
-				$this -> load -> model('m_jadwal');
-				$this -> m_jadwal -> tambah_jadwal($data_jadwal);
-				redirect('c_jadwal/disp');
+				$tanggal = $this->input->post('tanggal');
+				$jam 	 = $this->input->post('jam');
+				$namaruang = $this->input->post('namaruang');
+
+				// print_r($this->m_jadwal->cek_ketersediaan_jadwal($tanggal, $jam, $namaruang))
+				// if ($this->m_jadwal->cek_ketersediaan_jadwal($tanggal, $jam, $namaruang)) {
+					$data_jadwal = array(
+						'idjadwal'		  => $this->input->post('idjadwal'),
+						'tanggal' 		  => $this->input->post('tanggal'),
+						'jam'	 		  => $this->input->post('jam'),
+						'periode_tgl'	  => $this->input->post('periode_tgl'),
+						'idslot' 		  => $this->input->post('slot'),
+						'idruang' 		  => $this->input->post('namaruang'),
+						'idsubprog'	 	  => $this->input->post('subprogram')
+					);
+
+					$this -> m_jadwal -> tambah_jadwal($data_jadwal);
+					redirect('c_jadwal/disp');
+				// } else {
+				// 	$this -> session -> set_flashdata('errors', validation_errors('Ruangan telah dipakai.'));
+				// 	redirect('c_jadwal/form_tambah');
+				// }
 			}
 		}
 
+		public function jam_check(){
+            if ($this->input->post('jam') == '-'){
+	            $this->form_validation->set_message('jam_check', 'Please choose jam.');
+	            return FALSE;
+	        }
+	        else {
+	            return TRUE;
+	        }
+	    }
+
 		public function slot_check(){
-            if ($this->input->post('idslot') == 'slot'){
+            if ($this->input->post('idslot') == 'kosong'){
 	            $this->form_validation->set_message('slot_check', 'Please choose slot.');
 	            return FALSE;
 	        }
@@ -81,7 +104,7 @@
 	    }
 
 	    public function ruang_check(){
-            if ($this->input->post('idruang') == 'namaruang'){
+            if ($this->input->post('idruang') == 'kosong'){
 	            $this->form_validation->set_message('ruang_check', 'Please choose Nama Ruang.');
 	            return FALSE;
 	        }
@@ -100,6 +123,8 @@
 	        }
 	    }
 
+	// TAMBAH PROGRAM
+
 		public function form_tambah_program(){
 			$this -> load -> view('tmbh_program');
 		}
@@ -109,12 +134,19 @@
 			$this->form_validation->set_rules('idprogram','idprogram','required');
 			$this->form_validation->set_rules('nmprogram','nmprogram','required');
 
+			if ($this -> form_validation -> run() == FALSE){
+				$this -> session -> set_flashdata('errors', validation_errors(''));
+				redirect('c_jadwal/form_tambah_program');
+			}else{
 				$data = array('idprogram' => $this -> input -> post('idprogram'), 
-							  'nmprogram' => $this -> input -> post('nmprogram') );
+							  'nmprogram' => $this -> input -> post('nmprogram'));
 				$this -> load -> model('m_jadwal');
 				$this -> m_jadwal -> tambah_program($data);
 				redirect('c_jadwal/disp');
+			}
 		}
+
+	// TAMBAH SUBPROGRAM
 
 		public function form_tambah_subprog(){
 			$data['newID'] = $this -> next_subprog();
@@ -141,6 +173,10 @@
 			$this->form_validation->set_rules('gelombang','gelombang','required');
 			$this->form_validation->set_rules('idprogram','idprogram','required');
 
+			if ($this -> form_validation -> run() == FALSE){
+				$this -> session -> set_flashdata('errors', validation_errors(''));
+				redirect('c_jadwal/form_tambah_subprog');
+			}else{
 				$data = array('idsubprog' 	=> $this -> input -> post('idsubprog'), 
 							'nmsubprog' 	=> $this -> input -> post('nmsubprog'),
 							'durasi' 		=> $this -> input -> post('durasi'),
@@ -149,6 +185,7 @@
 				$this -> load -> model('m_jadwal');
 				$this -> m_jadwal -> tambah_subprog($data);
 				redirect('c_jadwal/disp');
+			}
 		}
 
 		public function form_tambah_ruang(){
@@ -181,7 +218,8 @@
 
 		public function json_ruang_tersedia($jam,$tgl){
 			$this->load->model('m_jadwal');
-			$data['data_json'] = json_encode($this->m_jadwal->ruang_tersedia($jam, $tgl)->result_array());
+			$data_ruang = $this->m_jadwal->ruang_tersedia($jam, $tgl)->result_array();
+			$data['data_json'] = json_encode($data_ruang);
 			$this->load->view('json',$data);
 		}
 

@@ -161,6 +161,32 @@
           </div><br>
           <div class="row">
             <div class="large-12 columns">
+               <tr>
+                <td>Periode Tanggal</td>
+                <td>:</td>
+                <td>'. form_dropdown('periode_tgl',$dropdown_periode,'-') .'</td>
+              </tr>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Sisa Kelas</td>
+                <td>:</td>
+                <td><select name="slot">
+                    <option value="kosong">- Pilih slot -</option>
+                    ';
+                    foreach ($dropdown_slot->result_array() as $row) {
+                      echo "<option value='". $row['idslot'] ."'> ".$row['slot'] ."</option>";
+                    }
+                    echo '
+                  </select></td>
+              </tr>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="large-12 columns">
               <tr>
                 <td>Nama Ruang</td>
                 <td>:</td>
@@ -191,32 +217,7 @@
             </div>
           </div>
           <br/>
-          <div class="row">
-            <div class="large-12 columns">
-               <tr>
-                <td>Periode Tanggal</td>
-                <td>:</td>
-                <td>'. form_dropdown('periode_tgl',$dropdown_periode,'-') .'</td>
-              </tr>
-            </div>
-          </div><br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-                <td>Sisa Kelas</td>
-                <td>:</td>
-                <td><select name="slot">
-                    <option value="kosong">- Pilih slot -</option>
-                    ';
-                    foreach ($dropdown_slot->result_array() as $row) {
-                      echo "<option value='". $row['idslot'] ."'> ".$row['slot'] ."</option>";
-                    }
-                    echo '
-                  </select></td>
-              </tr>
-            </div>
-          </div>
-          <br/>
+          
 
         <label>
           <input type="submit" value="Save" class="button radius expand">
@@ -266,6 +267,7 @@
           success     : function(data){
             $("select[name='namaruang'] option").next().remove();
             $.each(data, function(index, element) {
+              console.log(data);
               $('select[name="namaruang"]').append("<option value='"+ element.idruang +"'>"+ element.namaruang +"</option>");
             });
           },

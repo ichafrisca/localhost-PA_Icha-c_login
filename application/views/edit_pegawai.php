@@ -119,7 +119,7 @@
                <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td>'.form_input('NAMA',$row['nama'],'required').'</td>
+                <td>'.form_input('NAMA',$row['nama']).'</td>
               </tr>
             </div>
           </div>
@@ -128,7 +128,7 @@
               <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td>'.form_textarea('ALAMAT',$row['alamat'],'required').'</td>
+                <td>'.form_textarea('ALAMAT',$row['alamat']).'</td>
               </tr>
             </div>
           </div>
@@ -138,7 +138,7 @@
               <tr>
                 <td>Tempat Lahir</td>
                 <td>:</td>
-                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir'],'required').'</td>
+                <td>'.form_input('TMPT_LAHIR',$row['tmpt_lahir']).'</td>
               </tr>
             </div>
           </div>
@@ -156,7 +156,7 @@
               <tr>
                 <td>No Telepon</td>
                 <td>:</td>
-                <td>'.form_input('NO_TELP',$row['no_telp'],'required').'</td>
+                <td>'.form_input('NO_TELP',$row['no_telp']).'</td>
               </tr>
             </div>
           </div>
@@ -166,7 +166,7 @@
                 <td>Status</td>
                   '.form_hidden('STATUS',$row['status']);
                     $opsi=array("- Status -","Admin"=>"Admin", "Tutor"=>"Tutor", "Office"=>"Office");
-                    echo '<td width="150" height="25">:'.form_dropdown('STATUS', $opsi, $row['status'],'required').'</td>'.'
+                    echo '<td width="150" height="25">:'.form_dropdown('STATUS', $opsi, $row['status']).'</td>'.'
               </tr>
             </div>
           </div>
@@ -177,7 +177,7 @@
                 <td>Status Kepegawaian</td>
                   '.form_hidden('STAT_PEG',$row['stat_peg']);
                     $opsi=array("- Status Kepegawaian -","Aktif"=>"Aktif", "Tidak Aktif"=>"Tidak Aktif");
-                    echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG', $opsi, $row['stat_peg'],'required').'</td>'.'
+                    echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG', $opsi, $row['stat_peg']).'</td>'.'
               </tr>
             </div>
           </div>
@@ -187,7 +187,7 @@
               <tr>
                 <td>Username</td>
                 <td>:</td>
-                <td>'.form_input('USERNAME',$row['username'],'required|min_length[4]|max_length[12]|is_unique[pegawai.username]','callback_username_check').'</td>
+                <td>'.form_input('USERNAME',$row['username']).'</td>
               </tr>
             </div>
           </div>
@@ -197,7 +197,7 @@
                 <td>Password</td>
                 <small>required</small>
                 <td>:</td>
-                <td>'.form_password('PASSWORD',$row['password'],'required').'</td>
+                <td>'.form_password('PASSWORD',$row['password']).'</td>
               </tr>
             </div>
           </div>

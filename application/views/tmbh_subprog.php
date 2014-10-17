@@ -178,8 +178,5 @@
   <script type="text/javascript">
     $(document).foundation();
   </script>
-  <script>
-    
-  </script>>
   </body>
 </html>

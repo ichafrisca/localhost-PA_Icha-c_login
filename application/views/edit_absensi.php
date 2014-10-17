@@ -132,23 +132,6 @@
             </div>
           </div>
           <br>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
-               <td>Nama Pegawai</td>
-                <td>:</td>
-                <td>';
-                  $dropdown = array('0' => '0');
-                  foreach ($dropdown_nmpegawai as $row) {
-                    $dropdown[$row['idpeg']] = $row['nama'];
-                  }
-                  echo form_dropdown('idpeg', $dropdown, '0');
-                  echo
-                '</td>
-              </tr>
-            </div>
-          </div>
-          <br>
 
         <label>
           <input type="submit" value="Save" class="button radius expand">

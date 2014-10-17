@@ -115,7 +115,7 @@
           <div class="row">
             <div class="large-12 columns">
                <tr>
-                <td>Jadwal</td>
+                <td>Nama Program</td>
                 <td>:</td>
                 <td>'.form_input('nmprogram').'</td>
               </tr>
@@ -132,6 +132,7 @@
       <?php if (isset($validation_errors)) echo $validation_errors;?>
       </div>
       </div>
+    
 
 		<!-- javascript foundation -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
