@@ -128,17 +128,7 @@
 										          <div class="row">
 										            <div class="large-12 columns">
 										              <tr>
-										                <td>Username</td>
-										                <td>:</td>
-										                <td>'.form_input('USERNAME',$row['username']).'</td>
-										              </tr>
-										            </div>
-										          </div>
-										          <div class="row">
-										            <div class="large-12 columns">
-										              <tr>
 										                <td>Password</td>
-										                <small>required</small>
 										                <td>:</td>
 										                <td>'.form_input('PASSWORD',$row['password'],'required pattern="[a-zA-Z 0-9]+"').'</td>
 										              </tr>
@@ -155,6 +145,7 @@
 										    echo form_close();
 										}
     								?>
+    								<?php if (isset($validation_errors)) echo $validation_errors;?>
     							</div>
     						</div>
     					</section>

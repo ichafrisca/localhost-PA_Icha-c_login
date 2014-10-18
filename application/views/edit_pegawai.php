@@ -185,17 +185,7 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Username</td>
-                <td>:</td>
-                <td>'.form_input('USERNAME',$row['username']).'</td>
-              </tr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <tr>
                 <td>Password</td>
-                <small>required</small>
                 <td>:</td>
                 <td>'.form_password('PASSWORD',$row['password']).'</td>
               </tr>
@@ -209,10 +199,10 @@
           <a href='.base_url() .'c_dtpegawai/page class="button radius expand">Back</a>
         </label>';
         echo form_close();
-      }
-      ?>
-      </div>
-      </div>
+      }?>
+      <?php if (isset($validation_errors)) echo $validation_errors;?>
+    </div>
+  </div>
 
 		<!-- javascript foundation -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>

@@ -250,12 +250,5 @@
           minDate: +1
       });
     </script>
-    <script>
-      <?php 
-        if ($notif != null) {
-          echo $notif;
-        }
-       ?>
-    </script>
 	</body>
 </html>

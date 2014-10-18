@@ -136,8 +136,8 @@
 
 		public function func_ganti_absen(){
 			$this->load->library('form_validation');
-			$this->form_validation->set_rules('status_sedia','Status Sedia','required|callback_statussedia_check');
-			$this->form_validation->set_rules('status_admin','Status Kesediaan Admin','required|callback_statusadmin_check');
+			$this->form_validation->set_rules('status_sedia','Status Sedia','required|callback_status_sedia_check');
+			$this->form_validation->set_rules('status_admin','Status Kesediaan Admin','required|callback_status_admin_check');
 			$this->form_validation->set_rules('idpeg','Pegawai Pengganti','required');
 			$this->form_validation->set_rules('tgl_sedia','Tanggal Kesediaan ','required');
 			$this->form_validation->set_rules('idjadwal','Jam Mengganti','required');
@@ -184,17 +184,26 @@
 	    public function sms_pengganti(){
 	    	$this->load->model("m_absen");
 	    	$jumlah_data = $this->input->post('jumlahdata');
-	    	for ($i=0; $i < $jumlah_data; $i++) { 
-	    		$this->m_absen->sms_pengganti(
-	    			$this->input->post("telp".$i), 
-	    			$this->input->post("tanggal"), 
-	    			$this->input->post("jam_pgt"), 
-	    			$this->input->post("kelas_pgt"), 
-	    			$this->input->post("idjadwal")
-	    		);
+	    	if ($jumlah_data == NULL) {
+	    		echo "<script>";
+	    		echo "alert('Tidak ada data untuk pengganti.');";
+	    		echo "</script>";
+	    		$this->load->view("absen_ganti");
+	    	} else {
+	    		for ($i=0; $i < $jumlah_data; $i++) { 
+		    		$this->m_absen->sms_pengganti(
+		    			$this->input->post("telp".$i), 
+		    			$this->input->post("tanggal"), 
+		    			$this->input->post("jam_pgt"), 
+		    			$this->input->post("kelas_pgt"), 
+		    			$this->input->post("idjadwal")
+		    		);
+		    	}
+		    	echo "<script>";
+	    		echo "alert('Sms pemberitahuan telah terkirim.');";
+	    		echo "</script>";
+		    	$this->load->view("absen_ganti");
 	    	}
-	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
-	    	$this->load->view("absen_ganti", $data);
 	    }
 
 	    public function sms_pemberitahuan_jadwal(){
@@ -203,7 +212,7 @@
 	    	foreach ($sms as $data) {
 	    		$this->m_absen->sms_pemberitahuan_jadwal($data['no_telp']);
 	    	}
-	    	$data['notif'] = "alert('Sms pemberitahuan gaji telah terkirim.');";
+	    	$data['notif'] = "alert('Sms pemberitahuan jadwal telah terkirim.');";
 	    	$data['queryabsen'] = $this->m_absen->ambil_data_absen();
 	    	$this->load->view("absensi", $data);
 	    }

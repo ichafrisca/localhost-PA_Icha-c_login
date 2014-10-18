@@ -46,10 +46,12 @@ class C_login extends CI_Controller {
 				} else if ($key->STATUS == 'Tutor'){
 					$this->session->set_userdata("pengguna", $key->IDPEG);
 					$this->session->set_userdata("nama_pengguna", $key->NAMA);
+					$this->session->set_userdata("username_pengguna", $key->USERNAME);
 					$this->load->view('homeuser');
 				} else if ($key->STATUS == 'Office') {
 					$this->session->set_userdata("pengguna", $key->IDPEG);
 					$this->session->set_userdata("nama_pengguna", $key->NAMA);
+					$this->session->set_userdata("username_pengguna", $key->USERNAME);
 					$this->load->view('homeuser');
 				}
 			}

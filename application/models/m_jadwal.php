@@ -18,6 +18,17 @@
 			$this->db->insert('jadwal', $jadwal);
 		}
 
+		public function is_ruang_available($tanggal, $jam, $namaruang){
+			$jadwal = $this->db->query("SELECT COUNT(r.idruang) as jumlah_ruang from jadwal j join ruang r on(j.idruang=r.idruang) 
+									where j.tanggal='$tanggal' and j.jam='$jam' and r.idruang='$namaruang'")->row();
+			
+			if ($jadwal->jumlah_ruang > 0) {
+				return FALSE;
+			} else {
+				return TRUE;
+			}
+		}
+
 		public function ruang_tersedia($jam, $tgl){
 		 	return $this->db->query("SELECT  r.idruang, r.namaruang, j.jam 
 									from jadwal j join ruang r on (j.idruang=r.idruang) 

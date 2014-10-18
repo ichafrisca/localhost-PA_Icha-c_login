@@ -25,9 +25,9 @@
 
 		public function form_tambah(){
 			$data['newID'] = $this -> next_gaji();
-			$data['dropdown_nmpegawai'] = $this -> m_gaji -> tampil_data_nmpegawai()->result_array();
-			$data['validation_errors'] = $this -> session -> flashdata('errors');
-			$this -> load -> view('tambah_gaji', $data);
+			$data['dropdown_nmpegawai'] = $this->m_gaji-> tampil_data_nmpegawai()->result_array();
+			$data['validation_errors'] = $this->session-> flashdata('errors');
+			$this->load->view('tambah_gaji', $data);
 		}
 
 		public function tambah(){
@@ -41,8 +41,8 @@
 			$this->form_validation->set_rules('totalgaji','Total Gaji','required');
 			$this->form_validation->set_rules('idpeg','idpeg','required');
 
-			if ($this -> form_validation -> run() == FALSE){
-				$this -> session -> set_flashdata('errors', validation_errors('Ada yang salah'));
+			if ($this->form_validation->run() == FALSE){
+				$this->session->set_flashdata('errors', validation_errors('Ada yang salah'));
 				redirect('c_gaji/form_tambah');
 			}else {
 
@@ -79,30 +79,41 @@
 
 		public function memiliki(){
 			$data['newID'] = $this -> next_nominal();
-			$data['dropdown_subprog'] = $this -> m_gaji -> tampil_nominal()->result_array();
-			$data['validation_errors'] = $this -> session -> flashdata('errors');
-			$this -> load -> view('masukan_nominal', $data);
+			$data['dropdown_subprog'] = $this->m_gaji->tampil_nominal()->result_array();
+			$data['validation_errors'] = $this->session->flashdata('errors');
+			$this->load->view('masukan_nominal', $data);
 		}
 
 		public function tambah_nominal(){
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('idlistnominal','idlistnominal','required');
 			$this->form_validation->set_rules('lisnominal','list nominal','required');
-			$this->form_validation->set_rules('idsubprog','nama subprogram','required');
+			$this->form_validation->set_rules('idsubprog','nama subprogram','required|callback_namasubprog_check');
 
-			if ($this -> form_validation -> run() == FALSE){
-				$this -> session -> set_flashdata('errors', validation_errors('Ada yang salah'));
+			if ($this->form_validation->run() == FALSE){
+				$this->session->set_flashdata('errors', validation_errors(''));
+				redirect('c_gaji/memiliki');
 			}else {
 
 				$gaji = array(
 						'idlistnominal'   => $this->input->post('idlistnominal'),
 						'lisnominal'	  => $this->input->post('lisnominal'),
 						'idsubprog'		  => $this->input->post('idsubprog'));
-				$this -> load -> model('m_gaji');
-				$this -> m_gaji -> listnominal($gaji);
+				$this->load->model('m_gaji');
+				$this->m_gaji->listnominal($gaji);
 				redirect('C_gaji/disp');
 			}
 		}
+
+		public function namasubprog_check(){
+            if ($this->input->post('idsubprog') == '-'){
+	            $this->form_validation->set_message('namasubprog_check', 'Please choose nama subprogram.');
+	            return FALSE;
+	        }
+	        else {
+	            return TRUE;
+	        }
+	    }
 
 		public function next_nominal() {
 			$newID ="";

@@ -52,13 +52,11 @@
 		}
 
 		public function username_check($str){
-			if ($str == 'test')
-			{
+			$username = $this->db->query("SELECT username FROM pegawai WHERE username='$str'")->row();
+			if ($username > 0) {
 				$this->form_validation->set_message('username_check', 'The %s field can not be the word "test"');
 				return FALSE;
-			}
-			else
-			{
+			} else {
 				return TRUE;
 			}
 		}
@@ -83,10 +81,13 @@
 	        }
 	    }
 
+	    //EDIT DATA PEGAWAI
+	    
 		public function form_update_pegawai($IDPEG){
 			$this->load->model('m_dtpegawai');
 			$data['query']=$this->m_dtpegawai->tampil_edit($IDPEG);
 			$data['list_status'] = $this -> m_dtpegawai -> tampil_status();
+			$data['validation_errors'] = $this->session->flashdata('errors');
 			$this->load->view('edit_pegawai',$data);
 		}
 
@@ -100,7 +101,6 @@
 			$this->form_validation->set_rules('NO_TELP','No Telepon','required|regex_match[/^[0-9]+$/]');
 			$this->form_validation->set_rules('STATUS','Status','required|callback_status_check');
 			$this->form_validation->set_rules('STAT_PEG','Status Pegawai','required|callback_stat_peg_check');
-			$this->form_validation->set_rules('USERNAME','Username','required|min_length[4]|max_length[12]|is_unique[pegawai.username]','callback_username_check');
 			$this->form_validation->set_rules('PASSWORD','Password','required');
 
 			if ($this -> form_validation -> run() == FALSE){
@@ -116,7 +116,6 @@
 					'no_telp'		=>$this->input->post('NO_TELP'),
 					'status'		=>$this->input->post('STATUS'),
 					'stat_peg'		=>$this->input->post('STAT_PEG'),
-					'username'		=>$this->input->post('USERNAME'),
 					'password'		=>$this->input->post('PASSWORD'));
 				$this->load->model('m_dtpegawai');
 				$this->m_dtpegawai->edit($data,$this->input->post('IDPEG'));
