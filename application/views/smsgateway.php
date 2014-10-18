@@ -254,6 +254,8 @@
 
             //jika ada sms yang belum di proses
             $.each(data, function(index, element) {
+              
+              // cek jika sms belum di proses/balas
               if (element.Processed == "false") {
                 // tambah 1 setiap ada sms yang bernilai false
                 totalSmsMasuk++;
@@ -272,6 +274,8 @@
               }  
             });
 
+
+            // alert waktu ada sms masuk
             if (totalSmsMasuk > 0) {
               alert(totalSmsMasuk + " sms diterima.");
             }

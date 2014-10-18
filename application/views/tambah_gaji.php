@@ -276,8 +276,8 @@
           success     : function(data) {
             $.each(data, function(index, element) {
               // jika response data ada 2 maka hitung gaji
-              if (data.length === 2) {
-                var gaji_ajar = data[0].total_honor === null ? 0 : parseInt(data[0].total_honor);
+              if (data.length === 2) { //untuk ngitung gaji sendiri sam pengganti
+                var gaji_ajar = data[0].total_honor === null ? 0 : parseInt(data[0].total_honor); //
                 var gaji_pengganti = data[1].total_honor === null ? 0 : parseInt(data[1].total_honor);
                 var gajiku = gaji_ajar + gaji_pengganti;
                 $("input[name='totalhonor']").val(gajiku);
@@ -320,10 +320,10 @@
 
         //hitung total gaji saat bonus diisi
         $("input[name='bonus']").keyup(function() {
-          var gaji  = $("input[name='totalhonor']").val();
+          var gaji  = $("input[name='totalhonor']").val(); // val = ngmbil nilai
           var gaji2 = $("input[name='bonus']").val();
           var total_gaji = parseInt(gaji) + parseInt(gaji2);
-          $("input[name='totalgaji']").val(total_gaji);
+          $("input[name='totalgaji']").val(total_gaji); //klo val ada isinya = ngeset nilai
         });
       });
     });

@@ -132,7 +132,7 @@
                         <th>Status Absen</th>
                         <th>Tanggal Absen</th>
                         <th>Pegawai Pengganti</th>
-                        <th>Keterangan</th>
+                        <!-- <th>Keterangan</th> -->
                         <th>Jam Masuk</th>
                         <th>Nama Subprogram</th>
                         <th>Nama Pegawai</th>
@@ -149,8 +149,8 @@
                             echo "<td>".$rows['status_absen']."</td>";
                             echo "<td>".$rows['tgl_absen']."</td>";
                             echo "<td>".$rows['idpeg_pengganti']."</td>";
-                            $keterangan = $rows['idpeg_pengganti'] == "0" ? "Hadir" : "Pengganti";
-                            echo "<td>". $keterangan ."</td>";
+                            // $keterangan = $rows['idpeg_pengganti'] == "0" ? "Hadir" : "Pengganti";
+                            // echo "<td>". $keterangan ."</td>";
                             echo "<td>".$rows['jam']."</td>";
                             echo "<td>".$rows['nmsubprog']."</td>";
                             echo "<td>".$rows['nama']."</td>";
