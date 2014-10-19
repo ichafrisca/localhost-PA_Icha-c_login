@@ -59,6 +59,11 @@
 			return $maxsp;
 		}
 
+		public function max_program(){
+			$maxpr = $this->db->query("SELECT max(substr(idprogram, 4, 4) ) as maxID FROM program");
+			return $maxpr;
+		}
+
 		public function max_ruang(){
 			$maxra = $this->db->query("SELECT max(substr(idruang, 4, 4) ) as maxID FROM ruang");
 			return $maxra;

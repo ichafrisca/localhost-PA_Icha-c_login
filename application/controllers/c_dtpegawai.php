@@ -21,7 +21,7 @@
 		public function tambah(){
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('idpeg','ID Pegawai','required');
-			$this->form_validation->set_rules('nama','Nama','required');
+			$this->form_validation->set_rules('nama','Nama','required|regex_match[/^[A-Z][-a-zA-Z]+$/]');
 			$this->form_validation->set_rules('alamat','Alamat','required');
 			$this->form_validation->set_rules('tmpt_lahir','Tempat Lahir','required');
 			$this->form_validation->set_rules('tgl_lahir','Tanggal Lahir','required');

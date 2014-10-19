@@ -108,7 +108,7 @@
               <tr>
                 <td>ID Program</td>
                 <td>:</td>
-                <td>'.form_input('idprogram').'</td>
+                <td>'.form_input('idprogram', $newID, 'readonly').'</td>
               </tr>
             </div>
           </div>

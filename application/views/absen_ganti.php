@@ -174,6 +174,7 @@
               <label>
                 <input type="submit" value="Kirim" class="button radius expand">
               </label>            
+              <h1><a href="<?php echo base_url()?>c_absen/disp" id="kembali">Back</a></h1>
             <?php echo form_close(); ?>
           </div>
         </div>

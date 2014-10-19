@@ -145,8 +145,20 @@
 	// TAMBAH PROGRAM
 
 		public function form_tambah_program(){
+			$data['newID'] = $this -> next_program();
 			$data['validation_errors'] = $this->session->flashdata('errors');
 			$this -> load -> view('tmbh_program',$data);
+		}
+
+		public function next_program() {
+			$newID ="";
+			$this->load->model('m_jadwal');
+			$maxpr = $this->m_jadwal->max_program();
+			foreach ($maxpr->result_array() as $row) {
+				$nextId = $row['maxID'] + 1;
+				$newID = "PR" . str_pad($nextId, 3, "0", STR_PAD_LEFT);
+			}
+			return $newID;
 		}
 
 		public function tambah_program(){
@@ -388,7 +400,7 @@
 			$this->form_validation->set_rules('idjadwal','idjadwal','required');
 			$this->form_validation->set_rules('tanggal','Tanggal','required');
 			$this->form_validation->set_rules('jam','Shift','required|callback_shift_check');
-			$this->form_validation->set_rules('periode_tgl','Periode Tanggal','required');
+			$this->form_validation->set_rules('periode_tgl','Periode Tanggal','required|callback_periode_check');
 			$this->form_validation->set_rules('idruang');
 			$this->form_validation->set_rules('idsubprog');
 

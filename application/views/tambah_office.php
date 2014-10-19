@@ -105,6 +105,11 @@
       "Pagi" => "Pagi",
       "Siang" => "Siang"
     );
+    $dropdown_periode = array(
+      "-" => "- Pilih Periode -",
+      "10" => "Tanggal 10",
+      "25" => "Tanggal 25",
+    );
       echo form_open('c_jadwal/tambah_office');
         echo '<center><h3>Form Tambah Office</h3></center>
         
@@ -140,10 +145,11 @@
                <tr>
                 <td>Periode Tanggal</td>
                 <td>:</td>
-                <td>'. form_input('periode_tgl') .'</td>
+                <td>'. form_dropdown('periode_tgl', $dropdown_periode, '-') .'</td>
               </tr>
             </div>
           </div>
+          </br>
 
         <label>
           <input type="submit" value="Save" class="button radius expand">

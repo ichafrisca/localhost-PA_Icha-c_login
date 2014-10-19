@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Kepegawaian ELFAST</title>
+		<title>Tambah Pegawai</title>
 		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
