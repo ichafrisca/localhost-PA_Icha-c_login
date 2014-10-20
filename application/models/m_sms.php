@@ -3,7 +3,8 @@
 
 		public function dispinbox(){
 			return $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime FROM inbox 
-						WHERE (TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' or TextDecoded LIKE '%UBAH_JADWAL%')")->result_array();
+						WHERE (TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' or TextDecoded LIKE '%UBAH_JADWAL%')
+						order by ReceivingDateTime asc")->result_array();
 			}
 
 		public function jika_sms_salah(){

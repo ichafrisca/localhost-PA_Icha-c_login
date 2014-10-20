@@ -96,7 +96,6 @@
 </nav>
 <br><br><br>
 
-
   <!-- PEGAWAI -->
   <div class="row">
   <div class="large-12 panel">
@@ -111,7 +110,7 @@
               <tr>
                 <td>Tanggal</td>
                 <td>:</td>
-                <td>'.form_input('tgl_absen',$row['tgl_absen'], 'readonly').'</td>
+                <td>'.form_input('tgl_absen',$row['tgl_absen'], 'id="datepicker"').'</td>
               </tr>
             </div>
           </div>
@@ -134,56 +133,43 @@
           </div>
           <br>
           <div class="row">
+          <div class="large-12 columns">
+            <tr>
+              <td>Nama Pegawai</td>
+              <td>:</td>
+              <td>';
+                $dropdown = array('0' => '0');
+                foreach ($dropdown_nmpegawai as $row) {
+                  $dropdown[$row['idpeg']] = $row['nama'];
+                }
+                echo form_dropdown('idpeg', $dropdown, '0');
+                echo
+              '</td>
+            </tr>
+          </div>
+        </div>
+        <br>
+        <div class="row">
             <div class="large-12 columns">
               <tr>
                 <td>Jam</td>
-                  '.form_hidden('idjadwal',$row['idjadwal']);
-                    $dropdown_jam = array(
-                      "-" => "- Pilih Jam -",
-                      "06.00" => "Jam 06.00",
-                      "06.30" => "Jam 06.30",
-                      "07.00" => "Jam 07.00",
-                      "07.30" => "Jam 07.30",
-                      "08.00" => "Jam 08.00",
-                      "08.30" => "Jam 08.30",
-                      "09.00" => "Jam 09.00",
-                      "09.30" => "Jam 09.30",
-                      "10.00" => "Jam 10.00",
-                      "10.30" => "Jam 10.30",
-                      "11.00" => "Jam 11.00",
-                      "11.30" => "Jam 11.30",
-                      "13.00" => "Jam 13.00",
-                      "13.30" => "Jam 13.30",
-                      "14.00" => "Jam 14.00",
-                      "14.30" => "Jam 14.30",
-                      "15.00" => "Jam 15.00",
-                      "15.30" => "Jam 15.30",
-                      "16.00" => "Jam 16.00",
-                      "16.30" => "Jam 16.30",
-                    );
-                    echo '<td width="150" height="25">'.form_dropdown('idjadwal', $dropdown_jam, $row['idjadwal']).'
-                  </td>'.'
+                <td>:</td>
+                <td>
+                  <select name="idjadwal">
+                    <option value="kosong">- Pilih Jam -</option>
+                  </select>
               </tr>
             </div>
           </div><br>
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>Sub Program</td>
-                <td>:</td>  
-                <td>';
-                  $pilihsub = array();
-                  $pilihsub['-'] = "- Pilih Subprogram -";
-                  foreach ($dropdown_subprog->result_array() as $isisub) {
-                    $pilihsub[$isisub['idsubprog']] = $isisub['nmsubprog'];
-                  }
-                  echo form_dropdown('nmsubprog', $pilihsub, $isisub['idsubprog']);
-                  echo '
-                </td>
+                <td>Nama Subprogram</td>
+                <td>:</td>
+                <td><input type="text" name="nmsubprog" readonly></td>
               </tr>
             </div>
           </div>
-          <br/>
 
         <label>
           <input type="submit" value="Save" class="button radius expand">
@@ -202,8 +188,78 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
-	<script type="text/javascript">
-		$(document).foundation();
-	</script>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery.ui.datepicker.validation.min.js"></script> 
+  <link rel="stylesheet" href="/resources/demos/style.css"> 
+
+  <script>
+    $(function() {
+      $( "#datepicker" ).datepicker(
+        {
+          changeMonth: 'true',
+          changeYear: 'true',
+          dateFormat:'yy-mm-dd', 
+          showAnim: 'slideDown',
+          // minDate: 0
+        }
+      );
+    });
+  </script>
+
+   <script>
+    $(document).ready(function(){
+      $("input[value='Save']").prop("disabled", true);
+      $("select[name='idjadwal']").change(function(){
+        var idjadwal=$(this).val();
+        
+        $.ajax({
+          type        : 'GET',
+          url         : '../tgl_subprog/' + idjadwal,
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data){
+            console.log(data[0].nmsubprog);
+            $("input[name='tgl_kelas']").val(data[0].tanggal);
+            $("input[name='nmsubprog']").val(data[0].nmsubprog);
+            var tanggal_absen=$("input[name='tgl_absen']").val();
+            var tanggal_kelas=$("input[name='tgl_kelas']").val();
+            if(tanggal_absen){
+              $("input[value='Save']").prop("disabled", false);
+            }else{
+              alert("tanggal yang di pilih kurang atau lebih dari tanggal jadwal");
+              $("input[value='Save']").prop("disabled", true);
+            }
+          },
+          error       : function(data){
+            alert("Salah :" + data);
+          }
+        })
+      });
+    })
+  </script>
+
+  <script>
+    $(document).ready(function(){
+      $('input[name="tgl_absen"]').change(function() {
+        $.ajax({
+          type        : 'GET',
+          url         : '../json_edit_absen/' + $('input[name="tgl_absen"]').val(), 
+          dataType    : 'json',
+          contentType : 'application/json; charset=utf-8',
+          success     : function(data){
+            $("select[name='idjadwal'] option").next().remove();
+            $.each(data, function(index, element) {
+              $('select[name="idjadwal"]').append("<option value='"+ element.idjadwal +"'>"+ element.jam +"</option>");
+            });
+          },
+          error       : function(data){
+
+          }
+        });
+      });
+    });
+  </script>
 	</body>
 </html>

@@ -26,6 +26,12 @@
 			$this->load->view('json',$data);
 		}
 
+		public function json_edit_absen($tgl){
+			$this->load->model('m_absen');
+			$data['data_json'] = json_encode($this->m_absen->tampil_data_jadwal($tgl)->result_array());
+			$this->load->view('json',$data);
+		}
+
 		public function tgl_subprog($idjadwal){
 			$this->load->model('m_absen');
 			$tanggal = $this->m_absen->view_tgl($idjadwal);
@@ -105,9 +111,10 @@
 		public function form_update_absen($IDABSEN){
 			$this->load->model('m_absen');
 			$data['queryabsen']=$this->m_absen->tampil_edit($IDABSEN);
-			$data['list_status'] = $this ->m_absen-> tampil_status();
+			$data['list_status'] = $this -> m_absen -> tampil_status();
+			$data['validation_errors'] = $this -> session -> flashdata('errors');
 			$data['dropdown_subprog'] = $this->m_absen->tampil_data_subprog();
-			$data['validation_errors'] = $this->session->flashdata('errors');
+			$data['dropdown_nmpegawai'] = $this -> m_absen -> tampil_data_nmpegawai()->result_array();
 			$this->load->view('edit_absensi',$data);
 		}
 
@@ -115,8 +122,10 @@
 		public function edit(){
 			$data=array(
 				'status_absen'		=> $this->input->post('status_absen'),
-				'idjadwal'			=> $this->input->post('IDJADWAL'),
-				'idsubprog'	 	  	=> $this->input->post('nmsubprog')
+				'idpeg_pengganti'	=> $this->input->post('idpeg'),
+				'idjadwal'			=> $this->input->post('idjadwal'),
+				// 'idsubprog'	 	  	=> $this->input->post('nmsubprog'),
+				'tgl_absen'			=>$this->input->post('tgl_absen')
 				);
 			$this->load->model('m_absen');
 			$this->m_absen->edit($data,$this->input->post('idabsen'));
