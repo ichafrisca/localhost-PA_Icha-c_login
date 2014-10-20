@@ -85,7 +85,7 @@
 
 		public function sms_pemberitahuan_gaji($nomor, $nama, $tanggalawal, $tanggalakhir, $jml_pertemuan, $totalgaji){
             $this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
-                VALUES ('$nomor', 'Saudara $nama, total gaji anda dari $tanggalawal sampai tanggal $tanggalakhir dengan jumlah pertemuan $jml_pertemuan, adalah sebesar $totalgaji')");
+                VALUES ('$nomor', 'Saudara $nama, total gaji anda dari tanggal $tanggalawal sampai tanggal $tanggalakhir dengan jumlah pertemuan $jml_pertemuan, adalah sebesar $totalgaji')");
         }
 
         public function nomor_pegawai(){

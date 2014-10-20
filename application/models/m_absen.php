@@ -15,6 +15,10 @@
         	return $this->db->query("SELECT j.idjadwal, j.jam, sp.nmsubprog 
                 FROM jadwal j join subprogram sp on(j.idsubprog=sp.idsubprog) where j.tanggal in('$tgl')");
         }
+        
+        public function tampil_data_subprog(){
+            return $this->db->query('SELECT idsubprog, nmsubprog, gelombang from subprogram where nmsubprog not in("Office")'); 
+        }
 
         public function view_tgl($idjadwal){
             return $this->db->query("SELECT j.tanggal, sp.nmsubprog from jadwal j join subprogram sp on(j.idsubprog=sp.idsubprog) where idjadwal='".$idjadwal."'")->result_array();

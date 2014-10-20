@@ -11,7 +11,7 @@
 		}
 
 		public function ambil_jadwal($id) {
-			$queryjadwal=$this->db->query("SELECT p.nama, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog 
+			$queryjadwal=$this->db->query("SELECT p.nama, j.tanggal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog 
 											from pegawai p join absensi a on(p.idpeg=a.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
 											join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) 
 											join subprogram sp on (j.idsubprog=sp.idsubprog) where p.idpeg='".$id."'");

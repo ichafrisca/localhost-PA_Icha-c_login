@@ -107,12 +107,9 @@
               <tr>
                 <th>No</th>
                 <th>ID Jadwal</th>
-                <th>Jam</th>
+                <th>Shift</th>
                 <th>Periode Tanggal</th>
-                <th>Slot</th>
                 <th>Nama Ruang</th>
-                <th>Sub Program</th>
-                <th>Program</th>
               </tr>
             </thead>
 
@@ -124,10 +121,7 @@
                     echo "<td>".$rows['idjadwal']."</td>";
                     echo "<td>".$rows['jam']."</td>";
                     echo "<td>".$rows['periode_tgl']."</td>";
-                    echo "<td>".$rows['slot']."</td>";
                     echo "<td>".$rows['namaruang']."</td>";
-                    echo "<td>".$rows['nmsubprog']."</td>";
-                    echo "<td>".$rows['nmprogram']."</td>";
                     
                     $i++;
                   echo '</tr>';

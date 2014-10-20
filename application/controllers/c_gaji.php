@@ -42,7 +42,7 @@
 			$this->form_validation->set_rules('idpeg','idpeg','required');
 
 			if ($this->form_validation->run() == FALSE){
-				$this->session->set_flashdata('errors', validation_errors('Ada yang salah'));
+				$this->session->set_flashdata('errors', validation_errors(''));
 				redirect('c_gaji/form_tambah');
 			}else {
 

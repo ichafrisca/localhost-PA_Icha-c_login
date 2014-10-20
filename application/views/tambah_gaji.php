@@ -209,19 +209,19 @@
       $( "#from" ).datepicker({
         dateFormat:'yy-mm-dd', 
         showAnim: 'slideDown',
-        defaultDate: "+1w",
+        // defaultDate: "+1w", "minDate",
         
         onClose: function( selectedDate ) {
-          $( "#to" ).datepicker( "option", "minDate", selectedDate );
+          $( "#to" ).datepicker( "option",  selectedDate );
         }
       });
       $( "#to" ).datepicker({
         dateFormat:'yy-mm-dd', 
         showAnim: 'slideDown',
-        defaultDate: "+1w",
+        // defaultDate: "+1w","maxDate",
         
         onClose: function( selectedDate ) {
-          $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+          $( "#from" ).datepicker( "option",  selectedDate );
         }
       });
     });

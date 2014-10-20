@@ -96,6 +96,7 @@
 </nav>
 <br><br><br>
 
+
   <!-- PEGAWAI -->
   <div class="row">
   <div class="large-12 panel">
@@ -132,6 +133,57 @@
             </div>
           </div>
           <br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Jam</td>
+                  '.form_hidden('idjadwal',$row['idjadwal']);
+                    $dropdown_jam = array(
+                      "-" => "- Pilih Jam -",
+                      "06.00" => "Jam 06.00",
+                      "06.30" => "Jam 06.30",
+                      "07.00" => "Jam 07.00",
+                      "07.30" => "Jam 07.30",
+                      "08.00" => "Jam 08.00",
+                      "08.30" => "Jam 08.30",
+                      "09.00" => "Jam 09.00",
+                      "09.30" => "Jam 09.30",
+                      "10.00" => "Jam 10.00",
+                      "10.30" => "Jam 10.30",
+                      "11.00" => "Jam 11.00",
+                      "11.30" => "Jam 11.30",
+                      "13.00" => "Jam 13.00",
+                      "13.30" => "Jam 13.30",
+                      "14.00" => "Jam 14.00",
+                      "14.30" => "Jam 14.30",
+                      "15.00" => "Jam 15.00",
+                      "15.30" => "Jam 15.30",
+                      "16.00" => "Jam 16.00",
+                      "16.30" => "Jam 16.30",
+                    );
+                    echo '<td width="150" height="25">'.form_dropdown('idjadwal', $dropdown_jam, $row['idjadwal']).'
+                  </td>'.'
+              </tr>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Sub Program</td>
+                <td>:</td>  
+                <td>';
+                  $pilihsub = array();
+                  $pilihsub['-'] = "- Pilih Subprogram -";
+                  foreach ($dropdown_subprog->result_array() as $isisub) {
+                    $pilihsub[$isisub['idsubprog']] = $isisub['nmsubprog'];
+                  }
+                  echo form_dropdown('nmsubprog', $pilihsub, $isisub['idsubprog']);
+                  echo '
+                </td>
+              </tr>
+            </div>
+          </div>
+          <br/>
 
         <label>
           <input type="submit" value="Save" class="button radius expand">

@@ -58,6 +58,7 @@
 									            <tr>
 									            	<th>No</th>
 									            	<th>Nama Pegawai</th>
+									            	<th>Tanggal</th>
 									            	<th>Jam</th>
 									            	<th>Periode Tanggal</th>
 									            	<th>Jumlah Slot</th>
@@ -72,6 +73,7 @@
 							                  		foreach($queryjadwal as $rows) {
 									                    echo "<td>".$i."</td>";
 									                    echo "<td>".$rows['nama']."</td>";
+									                    echo "<td>".$rows['tanggal']."</td>";
 									                    echo "<td>".$rows['jam']."</td>";
 									                    echo "<td>".$rows['periode_tgl']."</td>";
 									                    echo "<td>".$rows['slot']."</td>";

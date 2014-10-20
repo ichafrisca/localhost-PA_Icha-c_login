@@ -105,8 +105,9 @@
 		public function form_update_absen($IDABSEN){
 			$this->load->model('m_absen');
 			$data['queryabsen']=$this->m_absen->tampil_edit($IDABSEN);
-			$data['list_status'] = $this -> m_absen -> tampil_status();
-			// $data['dropdown_nmpegawai'] = $this -> m_absen -> tampil_data_nmpegawai()->result_array();
+			$data['list_status'] = $this ->m_absen-> tampil_status();
+			$data['dropdown_subprog'] = $this->m_absen->tampil_data_subprog();
+			$data['validation_errors'] = $this->session->flashdata('errors');
 			$this->load->view('edit_absensi',$data);
 		}
 
@@ -114,8 +115,8 @@
 		public function edit(){
 			$data=array(
 				'status_absen'		=> $this->input->post('status_absen'),
-				// 'idpeg_pengganti'	=> $this->input->post('idpeg'),
-				// 'tgl_absen'		=>$this->input->post('tgl_absen')
+				'idjadwal'			=> $this->input->post('IDJADWAL'),
+				'idsubprog'	 	  	=> $this->input->post('nmsubprog')
 				);
 			$this->load->model('m_absen');
 			$this->m_absen->edit($data,$this->input->post('idabsen'));

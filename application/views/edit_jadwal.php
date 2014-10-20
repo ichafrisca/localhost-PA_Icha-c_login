@@ -153,7 +153,7 @@
                       "16.00" => "Jam 16.00",
                       "16.30" => "Jam 16.30",
                     );
-                    echo '<td width="150" height="25">:'.form_dropdown('jam', $dropdown_jam, $row['jam']).'
+                    echo '<td width="150" height="25">'.form_dropdown('jam', $dropdown_jam, $row['jam']).'
                   </td>'.'
               </tr>
             </div>

@@ -94,6 +94,7 @@
     					?>
     					<a class="exit-off-canvas"></a>
 					</div>
+					</section>
 			  	</div>
 			</div>
 		</div>

@@ -52,8 +52,8 @@
 		}
 
 		public function username_check($str){
-			$username = $this->db->query("SELECT username FROM pegawai WHERE username='$str'")->row();
-			if ($username > 0) {
+			// $username = $this->db->query("SELECT username FROM pegawai WHERE username='$str'")->row();
+			if ($str == 'test') {
 				$this->form_validation->set_message('username_check', 'The %s field can not be the word "test"');
 				return FALSE;
 			} else {

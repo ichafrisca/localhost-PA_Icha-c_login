@@ -5,7 +5,7 @@
 		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
 	</head>
 
-<body>		   
+<body onload="getInboxSms(1);">		   
  <!-- Header and Nav -->
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
@@ -285,7 +285,7 @@
           }
         });
 
-      }, 1000 * 10); // 1000 = 1 detik
+      }, 1000 * 60); // 1000 = 1 detik
       
     });
   </script>

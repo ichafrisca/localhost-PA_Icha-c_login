@@ -165,7 +165,11 @@
               <tr>
                 <td>Status</td>
                   '.form_hidden('STATUS',$row['status']);
-                    $opsi=array("- Status -","Admin"=>"Admin", "Tutor"=>"Tutor", "Office"=>"Office");
+                    $opsi=array("- Status -",
+                                "Admin"=>"Admin", 
+                                "Tutor"=>"Tutor", 
+                                "Office"=>"Office"
+                                );
                     echo '<td width="150" height="25">:'.form_dropdown('STATUS', $opsi, $row['status']).'</td>'.'
               </tr>
             </div>
@@ -176,7 +180,10 @@
               <tr>
                 <td>Status Kepegawaian</td>
                   '.form_hidden('STAT_PEG',$row['stat_peg']);
-                    $opsi=array("- Status Kepegawaian -","Aktif"=>"Aktif", "Tidak Aktif"=>"Tidak Aktif");
+                    $opsi=array("- Status Kepegawaian -",
+                                "Aktif"=>"Aktif", 
+                                "Tidak Aktif"=>"Tidak Aktif"
+                                );
                     echo '<td width="150" height="25">:'.form_dropdown('STAT_PEG', $opsi, $row['stat_peg']).'</td>'.'
               </tr>
             </div>

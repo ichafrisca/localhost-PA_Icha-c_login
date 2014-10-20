@@ -32,7 +32,7 @@
 								</a>
 							</section>
 							<section class="right tab-bar-section">
-								<h1 class="title">Gaji Pegawai</h1>
+								<h1 class="title">Detail Gaji Pegawai</h1>
 							</section>
 						</nav>
 						<aside class="left-off-canvas-menu">
@@ -104,7 +104,9 @@
 									<?php } else {?>
 										<center><h4><?php echo $kesediaan; ?></h4></center>
 									<?php } ?>
-
+									<center>
+										<h1><a href="<?php echo base_url()?>utama/gajipegawai" id="kembali">Back</a></h1>
+									</center>
 							    </div>
 							</div>
     					</section>

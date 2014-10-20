@@ -108,62 +108,63 @@
 			return;
 		}
 
-		public function ambil_grammar(){
-            $querygrammar=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'GR%'");
-            return $querygrammar;
-        }
-
         public function tampil_id() {
             $maxMe = $this->db->query('SELECT MAX( SUBSTR( idjadwal, 4, 4 ) ) AS MAXID FROM jadwal');
             return $maxMe;
         }
 
-        public function ambil_efast(){
-        $queryefast=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
+        public function ambil_grammar(){
+            $querygrammar=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
+            	from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
+            	on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'PR002%'");
+            return $querygrammar;
+        }
+
+        public function ambil_speaking(){
+			$queryspeaking=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
 				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
-				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'EF%'");
-		return $queryefast;
+				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'PR005%'");
+			return $queryspeaking;
     	}
 
     	public function ambil_pronun(){
 			$querypronun=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
 				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
-				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'PR%'");
+				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'PR004%'");
 			return $querypronun;
-    	}
-
-    	public function ambil_speaking(){
-			$queryspeaking=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
-				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
-				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'SP%'");
-			return $queryspeaking;
-    	}
-
-    	public function ambil_toefl(){
-			$querytoefl=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
-				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
-				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'TO%'");
-			return $querytoefl;
     	}
 
     	public function ambil_vocab(){
 			$queryvocab=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
 				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
-				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'VC%'");
+				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'PR007%'");
 			return $queryvocab;
     	}
 
-    	public function ambil_ofpagi(){
-			$queryofpagi=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
+    	public function ambil_toefl(){
+			$querytoefl=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
 				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
-				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'OP%'");
+				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'PR006%'");
+			return $querytoefl;
+    	}
+
+        public function ambil_efast(){
+        $queryefast=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
+				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
+				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'PR001%'");
+		return $queryefast;
+    	}
+
+
+    	public function ambil_ofpagi(){
+			$queryofpagi=$this->db->query("SELECT j.idjadwal, j.tanggal, j.jam, j.periode_tgl,r.namaruang
+											from jadwal j join ruang r on (j.idruang=r.idruang) where j.jam='Pagi'");
 			return $queryofpagi;
     	}
 
     	public function ambil_ofsiang(){
-			$queryofsiang=$this->db->query("SELECT j.idjadwal, j.jam, j.periode_tgl, s.slot, r.namaruang, sp.nmsubprog, p.nmprogram 
-				from jadwal j join slot s on(j.idslot=s.idslot) join ruang r on (j.idruang=r.idruang) join subprogram sp 
-				on (j.idsubprog=sp.idsubprog) join program p on (sp.idprogram=p.idprogram) WHERE p.idprogram LIKE 'OS%'");
+			$queryofsiang=$this->db->query("SELECT j.idjadwal, j.tanggal, j.jam, j.periode_tgl,r.namaruang
+											from jadwal j join ruang r on (j.idruang=r.idruang) where j.jam='Siang'");
 			return $queryofsiang;
     	}
 	}

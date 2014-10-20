@@ -215,7 +215,7 @@
           changeYear: 'true',
           dateFormat:'yy-mm-dd', 
           showAnim: 'slideDown',
-          minDate: 0
+          // minDate: 0
         }
       );
     });
