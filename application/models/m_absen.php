@@ -49,6 +49,14 @@
             $this->db->update('ABSENSI',$data);
         }
 
+        // public function jam_tersedia($tgl, $jam){
+        //     return $this->db->query("SELECT j.jam, j.tanggal, s.nmsubprog
+        //                             from jadwal j join subprogram s on (j.idsubprog=s.idsubprog) 
+        //                             where j.jam NOT IN ('$jam') and j.tanggal in ('$tgl') 
+        //                             and s.nmsubprog NOT IN ('Office')
+        //                             ");
+        // }
+
         // GANTI ABSEN
 
         public function pegawai_pengganti($tgl, $jam_awal, $jam_akhir){

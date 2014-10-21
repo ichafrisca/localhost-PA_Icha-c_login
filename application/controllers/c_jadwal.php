@@ -304,18 +304,29 @@
 			$tgl 	= $this->input->post('idruang');
 			$data['ruang_tersedia'] = $this -> m_jadwal -> ruang_tersedia($jam, $tgl);
 			$data['dropdown_subprog'] = $this -> m_jadwal -> tampil_data_subprog();
+			$data['validation_errors'] = $this -> session -> flashdata('errors');
 			$this->load->view('edit_jadwal',$data);
 		}
 
 		public function edit(){
-			$data=array(
-					'tanggal' 		  => $this->input->post('tanggal'),
-					'jam'	 		  => $this->input->post('jam'),
-					'idruang' 		  => $this->input->post('namaruang'),
-					'idsubprog'	 	  => $this->input->post('nmsubprog'));
-			$this->load->model('m_jadwal');
-			$this->m_jadwal->edit($data,$this->input->post('idjadwal'));
-			$this->disp();
+			// $this->load->library('form_validation');
+			// $this->form_validation->set_rules('tanggal','ID Absen','required');
+			// $this->form_validation->set_rules('jam','Status Absen','required');
+			// $this->form_validation->set_rules('idruang','Tanggal Absen','required');
+			// $this->form_validation->set_rules('idsubprog','Pegawai Pengganti','required');
+			// if ($this -> form_validation -> run() == FALSE){
+			// 	$this -> session -> set_flashdata('errors', validation_errors(''));
+			// 	redirect('c_jadwal/form_update_jadwal/'.$this->input->post('idjadwal'));
+			// }else {
+				$data=array(
+						'tanggal' 		  => $this->input->post('tanggal'),
+						'jam'	 		  => $this->input->post('jam'),
+						'idruang' 		  => $this->input->post('namaruang'),
+						'idsubprog'	 	  => $this->input->post('nmsubprog'));
+				$this->load->model('m_jadwal');
+				$this->m_jadwal->edit($data,$this->input->post('idjadwal'));
+				$this->disp();
+			// }
 		}
 
 	// EDIT OFFICE

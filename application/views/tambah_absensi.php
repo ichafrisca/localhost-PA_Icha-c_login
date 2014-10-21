@@ -275,5 +275,31 @@
       });
     });
   </script>
+
+  <!-- jam yg uda dipake -->
+   <script>
+  //   $(document).ready(function(){
+  //     $('input[name="tgl_absen"], select[name="idjadwal"]').change(function() {
+  //       $.ajax({
+  //         type        : 'GET',
+  //         url         : 'json_jam_tersedia/' + $('input[name="tgl_absen"]').val() + '/' + $('select[name="idjadwal"]').val(), 
+  //         dataType    : 'json',
+  //         contentType : 'application/json; charset=utf-8',
+  //         success     : function(data){
+  //           $("input[name='tgl_kelas']").next();
+  //           $("input[name='nmsubprog']").next();
+  //           $.each(data, function(index, element) {
+  //             console.log(data);
+  //             $('input[name="tgl_kelas"]').append("<option value='"+ element.idsubprog +"'>"+ element.nmsubprog +"</option>");
+  //             $('input[name="nmsubprog"]').append("<option value='"+ element.nmsubprog +"'>"+ element.nmsubprog +"</option>");
+  //           });
+  //         },
+  //         error       : function(data){
+
+  //         }
+  //       });
+  //     });
+  //   });
+  </script>
 	</body>
 </html>

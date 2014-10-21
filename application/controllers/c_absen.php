@@ -106,6 +106,36 @@
 			return $newID;
 		}
 
+		// public function json_jam_tersedia($tgl, $jam){
+		// 	$this->load->model('m_absen');
+		// 	$data_jam = $this->m_absen->jam_tersedia($tgl, $jam)->result_array();
+
+		// 	// tambah dummy element di akhir untuk looping pengecekan ruang
+		// 	// array_push($data_jam, array("idruang" => "-"));
+
+		// 	// array baru untuk menampung ruangan yang telah di filter
+		// 	$data_jam_filtered = array();
+
+		// 	// filter lagi $data_ruang agar tidak ada data yg sama
+		// 	for ($i = 0; $i < count($data_jam) - 1; $i++) {
+
+		// 	 	// cek apakah tiap elemen sama dengan elemen selanjutnya
+		// 		if ($data_jam[$i]['idsubprog'] != $data_ruang[$i + 1]['idsubprog']) {
+
+		// 			// jika tidak tambahkan ke array baru
+		// 			$data_jam_filtered[$i]['idsubprog'] = $data_jam[$i]['idsubprog'];
+		// 			$data_jam_filtered[$i]['nmsubprog'] = $data_jam[$i]['nmsubprog'];
+		// 			$data_jam_filtered[$i]['tgl_kelas'] = $data_jam[$i]['tgl_kelas'];
+		// 			$data_jam_filtered[$i]['idjadwal'] = $data_jam[$i]['idjadwal'];
+		// 		}
+		// 	}
+
+		// 	// echo("<pre>");
+		// 	// print_r($data_ruang_filtered);exit;
+		// 	$data['data_json'] = json_encode($data_jam_filtered);
+		// 	$this->load->view('json',$data);
+		// }
+
 	// EDIT ABSEN
 
 		public function form_update_absen($IDABSEN){
