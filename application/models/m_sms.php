@@ -14,9 +14,17 @@
 			}
 
 		public function jika_sms_salah(){
-			$smssalah = $this->db->query("SELECT SenderNumber, TextDecoded, ID FROM inbox
-					WHERE TextDecoded NOT LIKE '%IZIN%' and TextDecoded NOT LIKE '%GANTI%' and TextDecoded NOT LIKE '%UBAH_JADWAL%'
-					and Processed='false'")->result_array();
+			$smssalah = $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime 
+											FROM inbox WHERE (
+												TextDecoded NOT REGEXP '^IZIN#PEG+([0-9]{4})+#+[a-zA-Z0-9 ]+#+([0-9]{2})+[.]+([0-9]{2})$'
+													and
+												TextDecoded NOT REGEXP '^GANTI#YA#PEG+([0-9]{4})+#JAD+([0-9]{2})$'
+													and
+												TextDecoded NOT REGEXP '^UBAH_JADWAL#+([0-9]{4})+-+([0-9]{2})+-+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})$'
+													and
+												Processed='false'
+											)
+											order by ReceivingDateTime asc")->result_array();
 			return $smssalah;
 		}
 
