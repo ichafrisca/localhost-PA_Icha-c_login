@@ -2,9 +2,15 @@
     class M_sms extends CI_Model{
 
 		public function dispinbox(){
-			return $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime FROM inbox 
-						WHERE (TextDecoded LIKE '%IZIN%' or TextDecoded LIKE '%GANTI%' or TextDecoded LIKE '%UBAH_JADWAL%')
-						order by ReceivingDateTime asc")->result_array();
+			return $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime 
+										FROM inbox WHERE (
+											TextDecoded REGEXP '^IZIN#PEG+([0-9]{4})+#+[a-zA-Z0-9 ]+#+([0-9]{2})+[.]+([0-9]{2})$'
+												or
+											TextDecoded REGEXP '^GANTI#YA#PEG+([0-9]{4})+#JAD+([0-9]{2})$'
+												or
+											TextDecoded REGEXP '^UBAH_JADWAL#+([0-9]{4})+-+([0-9]{2})+-+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})$'
+										)
+									order by ReceivingDateTime asc")->result_array();
 			}
 
 		public function jika_sms_salah(){
