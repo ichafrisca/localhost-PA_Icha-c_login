@@ -252,6 +252,9 @@
           success     : function(data){
             var totalSmsMasuk = 0;
 
+            // format sms ganti yang benar
+            var SMS_GANTI_PATTERN = /^GANTI#YA#PEG+(\d{4})+#JAD+(\d{2})$/;
+
             //jika ada sms yang belum di proses
             $.each(data, function(index, element) {
               
@@ -260,15 +263,24 @@
                 // tambah 1 setiap ada sms yang bernilai false
                 totalSmsMasuk++;
 
-                //cek jika sms diawali dengan kata GANTI
-                var sms = element.TextDecoded.split('#'); // pecah sms berdasar delimiter #
-                console.log(sms[0]);
-                if (sms[0] == 'GANTI') {
+                // cek jika sms masuk sesuai dengan format sms
+                if (SMS_GANTI_PATTERN.test(element.TextDecoded)) {
+
+                  // pecah sms berdasar delimiter #
+                  var sms = element.TextDecoded.split('#');
+
+                  // insert ke tabel kesediaan
                   insertToKesediaan(sms[1], sms[2], sms[3]);
+
+                  //kirim respon dari sistem ke pengguna
+                  prosesSmsBenar(element.ID, element.SenderNumber);
+                  
+                } else {
+
+                  // kirim respon jika sms tidak sesuai format yang benar
+                  prosesSmsSalah(element.ID, element.SenderNumber);
                 }
 
-                //kirim respon dari sistem ke pengguna
-                prosesSmsBenar(element.ID, element.SenderNumber);  
               } else {
                 console.log("Tidak ada sms di inbox yang belum di proses.");    
               }  
