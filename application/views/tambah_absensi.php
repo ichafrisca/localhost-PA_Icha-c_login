@@ -148,7 +148,7 @@
           <div class="row">
             <div class="large-12 columns">
               <tr>
-                <td>'.form_hidden('idpeg_pengganti',0).'</td>
+                <td>'.form_hidden('idpeg_pengganti','Tidak Ada').'</td>
               </tr>
             </div>
           </div>

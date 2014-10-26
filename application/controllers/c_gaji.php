@@ -21,6 +21,28 @@
 			return $newID;
 		}
 
+	// HAPUS NOMINAL
+
+		public function hapus($idnominal){
+			$this->load->model('m_gaji');
+			$this->m_gaji->hapus($idnominal);
+			$this->memiliki1();
+			echo "<script>";
+			echo "alert('Anda yakin akan menghapus nominal?')";
+			echo "</script>";
+		}
+
+	// HAPUS GAJI
+
+		public function hapusgaji($idgaji){
+			$this->load->model('m_gaji');
+			$this->m_gaji->hapusgaji($idgaji);
+			$this->disp();
+			echo "<script>";
+			echo "alert('Anda yakin akan menghapus gaji?')";
+			echo "</script>";
+		}
+
 	// TAMBAH GAJI
 
 		public function form_tambah(){
@@ -107,7 +129,7 @@
 						'idsubprog'		  => $this->input->post('idsubprog'));
 				$this->load->model('m_gaji');
 				$this->m_gaji->listnominal($gaji);
-				redirect('C_gaji/disp');
+				redirect('C_gaji/memiliki1');
 			}
 		}
 

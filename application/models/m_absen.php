@@ -1,9 +1,16 @@
 <?php
 	class M_absen extends CI_Model{
-    	public function ambil_data_absen(){
-    		$queryabsen=$this->db->query("SELECT a.idabsen, a.status_absen, a.tgl_absen, a.idpeg_pengganti, j.jam, 
+
+        public function total_absen() {
+            return $this->db->count_all('absensi');
+        }
+
+    	public function ambil_data_absen($p = 0, $jumlah = 5){
+    		$sql = "SELECT a.idabsen, a.status_absen, a.tgl_absen, a.idpeg_pengganti, j.jam, 
                         sp.nmsubprog, p.nama, p.no_telp FROM absensi a join jadwal j on (a.idjadwal=j.idjadwal) join pegawai p 
-                        on (a.idpeg=p.idpeg) join subprogram sp on (j.idsubprog=sp.idsubprog) order by idabsen asc");
+                        on (a.idpeg=p.idpeg) join subprogram sp on (j.idsubprog=sp.idsubprog) order by idabsen asc";
+            $sql.=" limit $p, $jumlah";
+            $queryabsen=$this->db->query($sql);
 			return $queryabsen;
     	}
 

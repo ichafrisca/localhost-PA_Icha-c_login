@@ -3,10 +3,22 @@
 
 	// TAMBAH ABSEN
 		
-		public function disp(){
+		public function disp($p=0){
+			$jumlah_per_page = 5;
+
+			$this->load->library('pagination');
 			$this->load->model('m_absen');
+			$config['base_url'] = site_url().'/c_absen/disp/';
+			$config['total_rows'] = $this->m_absen->total_absen();
+			$config['per_page'] = $jumlah_per_page;
+			$this->pagination->initialize($config);
+
+			$data["pagination"] = $this->pagination->create_links();
+			$data["queryabsen"] = $this->m_absen->ambil_data_absen($p, $jumlah_per_page);
+
+			// $this->load->model('m_absen');
 			$data['kesediaan']=$this->m_absen->kesediaan();
-			$data['queryabsen']=$this->m_absen->ambil_data_absen();
+			// $data['queryabsen']=$this->m_absen->ambil_data_absen();
 			$data['inbox']=$this->m_absen->sms();
 			$this->load->view('absensi', $data);	
 		}

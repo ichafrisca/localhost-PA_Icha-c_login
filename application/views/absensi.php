@@ -164,6 +164,7 @@
                 </center>
             </div>
           </div>
+          <?php echo $pagination; ?>  
         </div>
 
         <div class="content" id="panel2">
