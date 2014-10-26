@@ -204,11 +204,11 @@
       kirimPesanBenar(nomor);
     };
 
-    var insertToKesediaan = function(statusSedia, idPeg, idJadwal) {
+    var insertToKesediaan = function(statusSedia, idPeg, idJadwal, nomor) {
       $.ajax({
         type        : 'POST',
         url         : 'insert_kesediaan',
-        data        : {'status': statusSedia, 'idpegawai': idPeg, 'idjadwal': idJadwal},
+        data        : {'status': statusSedia, 'idpegawai': idPeg, 'idjadwal': idJadwal, 'nomor': nomor},
         success     : function(data) {
           console.log('Berhasil insert ke kesediaan');
         },
@@ -254,6 +254,7 @@
 
             // format sms ganti yang benar
             var SMS_GANTI_PATTERN = /^GANTI#YA#PEG+(\d{4})+#JAD+(\d{2})$/;
+            // var SMS_IZIN_PATTERN = /^IZIN#PEG+(\d{4})+#+([a-zA-Z0-9 ])+#/;
 
             //jika ada sms yang belum di proses
             $.each(data, function(index, element) {
@@ -270,7 +271,7 @@
                   var sms = element.TextDecoded.split('#');
 
                   // insert ke tabel kesediaan
-                  insertToKesediaan(sms[1], sms[2], sms[3]);
+                  insertToKesediaan(sms[1], sms[2], sms[3], element.SenderNumber);
 
                   //kirim respon dari sistem ke pengguna
                   prosesSmsBenar(element.ID, element.SenderNumber);

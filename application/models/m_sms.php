@@ -11,7 +11,7 @@
 											TextDecoded REGEXP '^UBAH_JADWAL#+([0-9]{4})+-+([0-9]{2})+-+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})$'
 										)
 									order by ReceivingDateTime asc")->result_array();
-			}
+		}
 
 		public function jika_sms_salah(){
 			$smssalah = $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime 
@@ -28,9 +28,19 @@
 			return $smssalah;
 		}
 
+		public function idpeg(){
+			$idpeg = $this->db->query("SELECT idpeg FROM pegawai")->result_array();
+			return $idpeg;
+		}
+
 		public function insert_sms_benar($nomor){
 			$this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
                 VALUES ('$nomor', 'Terima Kasih akan segera kami proses')");
+		}
+
+		public function insert_pesan_pegawai_gak_dikenal($nomor){
+			$this->db->query("INSERT into outbox (DestinationNumber,TextDecoded) 
+                VALUES ('$nomor', 'Maaf, kode pegawai anda tidak terdaftar pada sistem kami.')");
 		}
 
 		public function insert_sms_salah($nomor){

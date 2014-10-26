@@ -18,6 +18,12 @@
 			$this->load->view('json',$data);
 		}
 
+		public function jsonid(){
+			$this->load->model('m_sms');
+			$data['data_json'] = json_encode($this->m_sms->idpeg());
+			$this->load->view('json', $data);
+		}
+
 		public function jsoninboxbenar(){
 			$this->load->model('m_sms');
 			$data['data_json'] = json_encode($this->m_sms->dispinbox());
@@ -46,15 +52,35 @@
 			$this->load->model('m_sms');
 			
 			// ambil nilai dari ajax POST
-			$status = $this->input->post('status');
-			$idpegawai = $this->input->post('idpegawai');
-			$idjadwal = $this->input->post('idjadwal');
+			$status 	= $this->input->post('status');
+			$idpegawai 	= $this->input->post('idpegawai');
+			$idjadwal 	= $this->input->post('idjadwal');
+			$nomor 		= $this->input->post('nomor');
+
+			// echo $this->isTerdaftar("PEG0001");exit;
 
 			// ambil tanggal besok dari DateTime
 			$besok = new DateTime('tomorrow');
 			$tglsedia = $besok->format('Y-m-d');
 
-			$this->m_sms->insert_kesediaan($status, $idpegawai, $tglsedia, $idjadwal);
+			// jika terdaftar maka insert
+			if ($this->isTerdaftar($idpegawai) == TRUE) {
+				$this->m_sms->insert_kesediaan($status, $idpegawai, $tglsedia, $idjadwal);
+			} else {
+				//jika tidak terdaftar maka beri peringatan
+				$this->load->model('m_sms');
+				$this->m_sms->insert_pesan_pegawai_gak_dikenal($nomor);
+			}
+		}
+
+		private function isTerdaftar($data) {
+			$this->load->model('m_sms');
+			foreach ($this->m_sms->idpeg() as $id) {
+				if ($id['idpeg'] == $data) {
+					return TRUE;
+				}
+			}
+			return FALSE;
 		}
 	}
 ?>
