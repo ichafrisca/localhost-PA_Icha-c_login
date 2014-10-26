@@ -70,7 +70,7 @@
 								        	<tr>
 								        		<td><?php echo $row['nama']; ?></td>
 								        		<td><?php echo $row['kelas']; ?></td>
-								        		<td><?php echo $row['pengganti'] == "0" ? "Hadir" : "Pengganti"; ?></td>
+								        		<td><?php echo $row['pengganti'] == "Tidak Ada" ? "Hadir" : "Pengganti"; ?></td>
 								        		<td><?php echo $row['tanggal']; ?></td>
 								        		<td><?php echo $row['honor']; ?></td>
 								        	</tr>

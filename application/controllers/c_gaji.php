@@ -5,7 +5,7 @@
 
 		public function disp(){
 			$this->load->model('m_gaji');
-			$data['querygaji'] = $this->m_gaji->ambil_gaji()->result_array();
+			$data['querygaji'] = $this->m_gaji->ambil_gaji_display()->result_array();
 			$data['notif'] = null;
 			$this->load->view('gaji_pegawai',$data);
 		}
@@ -77,6 +77,12 @@
 
 	// FORM TAMBAH NOMINAL
 
+		public function memiliki1(){
+			$this->load->model('m_gaji');
+			$data['querynominal'] = $this->m_gaji->ambil_nominal()->result_array();
+			$this->load->view('lihat_nominal', $data);
+		}
+
 		public function memiliki(){
 			$data['newID'] = $this -> next_nominal();
 			$data['dropdown_subprog'] = $this->m_gaji->tampil_nominal()->result_array();
@@ -87,7 +93,7 @@
 		public function tambah_nominal(){
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('idlistnominal','idlistnominal','required');
-			$this->form_validation->set_rules('lisnominal','list nominal','required');
+			$this->form_validation->set_rules('lisnominal','list nominal','required|regex_match[/^[0-9]+$/]');
 			$this->form_validation->set_rules('idsubprog','nama subprogram','required|callback_namasubprog_check');
 
 			if ($this->form_validation->run() == FALSE){

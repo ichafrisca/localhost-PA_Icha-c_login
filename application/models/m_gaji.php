@@ -3,6 +3,13 @@
 
 		public function ambil_gaji() {
 			$querygaji=$this->db->query("SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.bonus, 
+						g.totalgaji, p.nama, p.no_telp, p.idpeg from gaji g join pegawai p on (g.idpeg=p.idpeg) 
+						where MONTHNAME(g.dr_tgl) = MONTHNAME(curdate())");
+			return $querygaji;
+		}
+
+		public function ambil_gaji_display() {
+			$querygaji=$this->db->query("SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.bonus, 
 						g.totalgaji, p.nama, p.no_telp, p.idpeg from gaji g join pegawai p on (g.idpeg=p.idpeg)");
 			return $querygaji;
 		}
@@ -19,6 +26,12 @@
 
 		public function tambah_gaji($gaji){
 			$this->db->insert('GAJI', $gaji);
+		}
+
+		public function ambil_nominal(){
+			$querynominal=$this->db->query("SELECT l.idlistnominal, l.lisnominal, s.nmsubprog from list_nominal l
+										join subprogram s on(l.idsubprog=s.idsubprog)");
+			return $querynominal;
 		}
 
 		public function listnominal($lnominal){
@@ -44,7 +57,7 @@
 					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal, a.idpeg_pengganti as pengganti
         			from absensi a join pegawai p on (a.idpeg=p.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
 					join subprogram s on (j.idsubprog=s.idsubprog)
-					where a.idpeg='$idpegawai' and a.idpeg_pengganti='0' and a.tgl_absen between '$tgl_Awal' 
+					where a.idpeg='$idpegawai' and a.idpeg_pengganti='Tidak Ada' and a.tgl_absen between '$tgl_Awal' 
 					and '$tgl_Akhir'
 					union
 					select p.nama as nama, s.nmsubprog as kelas, 
@@ -59,7 +72,7 @@
 
         public function jml_pertemuan($idpeg,$tglawal,$tglakhir){
         	return $this->db->query("SELECT count(idpeg) as total_hadir from absensi where idpeg='$idpeg' 
-					and idpeg_pengganti = '0' and tgl_absen between '$tglawal' and '$tglakhir'
+					and idpeg_pengganti = 'Tidak Ada' and tgl_absen between '$tglawal' and '$tglakhir'
 					union all
 					select count(idpeg) from absensi where idpeg_pengganti='$idpeg' and tgl_absen
 					between '$tglawal' and '$tglakhir'");
@@ -70,7 +83,7 @@
 	        		(l.idsubprog=k.idsubprog) where k.nmsubprog = s.nmsubprog)) as 'total_honor'
 	        		from absensi a join pegawai p on (a.idpeg=p.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
 	        		join subprogram s on (j.idsubprog=s.idsubprog) where a.idpeg='$id' 
-	        		and a.idpeg_pengganti='0' and a.tgl_absen between '$tgl_awal' and '$tgl_akhir'
+	        		and a.idpeg_pengganti='Tidak Ada' and a.tgl_absen between '$tgl_awal' and '$tgl_akhir'
 	        		union all
 	        		select sum((select l.lisnominal from list_nominal l join subprogram k on (l.idsubprog=k.idsubprog) 
 					where k.nmsubprog = s.nmsubprog)) as honor 

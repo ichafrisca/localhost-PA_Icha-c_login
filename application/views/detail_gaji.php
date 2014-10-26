@@ -126,7 +126,7 @@
                     echo "<td>".$rows['kelas']."</td>";
                     echo "<td>".$rows['honor']."</td>";
                     echo "<td>".$rows['tanggal']."</td>";
-                    $keterangan = $rows['pengganti'] == "0" ? "Hadir" : "Pengganti";
+                    $keterangan = $rows['pengganti'] == "Tidak Ada" ? "Hadir" : "Pengganti";
                     echo "<td>". $keterangan ."</td>";
                     $i++;
                   echo '</tr>';
