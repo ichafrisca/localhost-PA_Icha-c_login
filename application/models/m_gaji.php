@@ -8,9 +8,19 @@
 			return $querygaji;
 		}
 
-		public function ambil_gaji_display() {
-			$querygaji=$this->db->query("SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.bonus, 
-						g.totalgaji, p.nama, p.no_telp, p.idpeg from gaji g join pegawai p on (g.idpeg=p.idpeg)");
+		public function total_gaji() {
+			return $this->db->count_all('gaji');
+		}
+
+		public function total_nominal() {
+			return $this->db->count_all('list_nominal');
+		}
+
+		public function ambil_gaji_display($p = 0, $jumlah = 10) {
+			$sql = "SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.bonus, 
+						g.totalgaji, p.nama, p.no_telp, p.idpeg from gaji g join pegawai p on (g.idpeg=p.idpeg)";
+			$sql.=" limit $p, $jumlah";
+			$querygaji=$this->db->query($sql);
 			return $querygaji;
 		}
 
@@ -49,9 +59,10 @@
 			$this->db->insert('GAJI', $gaji);
 		}
 
-		public function ambil_nominal(){
-			$querynominal=$this->db->query("SELECT l.idlistnominal, l.lisnominal, s.nmsubprog from list_nominal l
-										join subprogram s on(l.idsubprog=s.idsubprog)");
+		public function ambil_nominal($p = 0, $jumlah = 5){
+			$sql = "SELECT l.idlistnominal, l.lisnominal, s.nmsubprog from list_nominal l join subprogram s on(l.idsubprog=s.idsubprog)";
+			$sql.=" limit $p, $jumlah";
+			$querynominal=$this->db->query($sql);
 			return $querynominal;
 		}
 

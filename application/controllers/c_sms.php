@@ -1,9 +1,18 @@
 <?php
 	class C_sms extends CI_Controller{
 
-		public function disp(){
+		public function disp($p=0){
+			$jumlah_per_page = 10;
+			$this->load->library('pagination');
 			$this->load->model('m_sms');
-			$data['inbox'] = $this->m_sms->dispinbox();
+			$config['base_url'] = site_url().'/c_sms/disp/';
+			$config['total_rows'] = $this->m_sms->total_gaji();
+			$config['per_page'] = $jumlah_per_page;
+			$this->pagination->initialize($config);
+
+			$data["pagination"] = $this->pagination->create_links();
+
+			$data['inbox'] = $this->m_sms->dispinbox($p, $jumlah_per_page);
 			$this->load->view('smsgateway', $data);	
 		}
 

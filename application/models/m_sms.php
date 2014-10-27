@@ -1,8 +1,12 @@
 <?php
     class M_sms extends CI_Model{
 
-		public function dispinbox(){
-			return $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime 
+    	public function total_gaji() {
+			return $this->db->count_all('inbox');
+		}
+
+		public function dispinbox($p = 0, $jumlah = 10){
+			$sql = "SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime 
 										FROM inbox WHERE (
 											TextDecoded REGEXP '^IZIN#PEG+([0-9]{4})+#+[a-zA-Z0-9 ]+#+([0-9]{2})+[.]+([0-9]{2})$'
 												or
@@ -10,7 +14,10 @@
 												or
 											TextDecoded REGEXP '^UBAH_JADWAL#+([0-9]{4})+-+([0-9]{2})+-+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})$'
 										)
-									order by ReceivingDateTime asc")->result_array();
+									order by ReceivingDateTime desc";
+			$sql.=" limit $p, $jumlah";
+			$inbox=$this->db->query($sql);
+			return $inbox;
 		}
 
 		public function jika_sms_salah(){

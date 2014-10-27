@@ -116,7 +116,7 @@
               <tbody>
                 <?php
                   $i=1;
-                  foreach ($inbox as $rows) {
+                  foreach ($inbox->result_array() as $rows) {
                     $keterangan = $rows['Processed'] == "true" ? "Sudah di proses" : "Belum di proses";
                     echo '<tr>';
                     echo "<td>".$i."</td>";
@@ -132,6 +132,7 @@
             </table>
             </div>
             </div>
+            <?php echo $pagination; ?>
           </div>
         </div>
       </div>

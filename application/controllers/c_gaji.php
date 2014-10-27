@@ -3,9 +3,19 @@
 		
 	// DISPLAY GAJI
 
-		public function disp(){
+		public function disp($p=0){
+			$jumlah_per_page = 10;
+			$this->load->library('pagination');
 			$this->load->model('m_gaji');
-			$data['querygaji'] = $this->m_gaji->ambil_gaji_display()->result_array();
+			$config['base_url'] = site_url().'/c_gaji/disp/';
+			$config['total_rows'] = $this->m_gaji->total_gaji();
+			$config['per_page'] = $jumlah_per_page;
+			$this->pagination->initialize($config);
+
+			$data["pagination"] = $this->pagination->create_links();
+
+			// $this->load->model('m_gaji');
+			$data['querygaji'] = $this->m_gaji->ambil_gaji_display($p, $jumlah_per_page);
 			$data['notif'] = null;
 			$this->load->view('gaji_pegawai',$data);
 		}
@@ -93,9 +103,18 @@
 
 	// FORM TAMBAH NOMINAL
 
-		public function memiliki1(){
+		public function memiliki1($p=0){
+			$jumlah_per_page = 5;
+			$this->load->library('pagination');
 			$this->load->model('m_gaji');
-			$data['querynominal'] = $this->m_gaji->ambil_nominal()->result_array();
+			$config['base_url'] = site_url().'/c_gaji/memiliki1/';
+			$config['total_rows'] = $this->m_gaji->total_nominal();
+			$config['per_page'] = $jumlah_per_page;
+			$this->pagination->initialize($config);
+
+			$data["pagination"] = $this->pagination->create_links();
+
+			$data['querynominal'] = $this->m_gaji->ambil_nominal($p, $jumlah_per_page);
 			$this->load->view('lihat_nominal', $data);
 		}
 
@@ -204,7 +223,7 @@
 	    			);
 	    	}
 	    	$data['notif'] = "alert('Sms pemberitahuan telah terkirim.');";
-	    	$data['querygaji'] = $querygaji;
+	    	$data['querygaji'] = $this->m_gaji->ambil_gaji_display()->result_array();
 	    	$this->load->view("gaji_pegawai", $data);
 	    }
 	}

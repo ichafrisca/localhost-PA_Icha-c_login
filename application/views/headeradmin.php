@@ -118,7 +118,7 @@
                 <th>Status</th>
                 <th>Status Pegawai</th>
                 <th>Username</th>
-                <th>Password</th>
+                <!-- <th>Password</th> -->
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -137,7 +137,7 @@
                     echo "<td>".$rows['status']."</td>";
                     echo "<td>".$rows['stat_peg']."</td>";
                     echo "<td>".$rows['username']."</td>";
-                    echo "<td>".$rows['password']."</td>";
+                    // echo "<td>".$rows['password']."</td>";
                     echo "<td>".anchor('c_dtpegawai/form_update_pegawai/'.$rows['idpeg'],'Ubah Data')."</td>";
                     
                     $i++;

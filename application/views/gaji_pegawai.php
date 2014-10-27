@@ -135,7 +135,7 @@
             <tbody>
               <?php echo '<tr>';
                 $i=1;
-                  foreach($querygaji as $rows) {
+                  foreach($querygaji->result_array() as $rows) {
                     echo "<td>".$i."</td>";
                     echo "<td>".$rows['idpeg']."</td>";
                     echo "<td>".$rows['nama']."</td>";
@@ -153,6 +153,7 @@
             </tbody>
           </table>
         </center>
+      <?php echo $pagination; ?>
     </div>
   </div>
 

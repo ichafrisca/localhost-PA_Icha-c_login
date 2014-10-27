@@ -100,28 +100,15 @@
   <div class="row">
   <div class="large-12 panel">
   <center><h2>Tambah Pegawai</h2></center>
-  <?php
-      $dropdown_status_pegawai = array(
-          "-" => "- Status -",
-          "Admin" => "Admin",
-          "Tutor" => "Tutor",
-          "Office" => "Office",
-        );
-        $dropdown_status = array(
-          "-" => "- Status Kepegawaian-",
-          "Aktif" => "Aktif",
-          "Nonaktif" => "Nonaktif",
-        );
-
+    <?php
       echo form_open('c_dtpegawai/tambah');
-        echo '
-       
-          <div class="row">
+    ?>
+        <div class="row">
             <div class="large-12 columns">
               <tr>
                 <td>ID Pegawai</td>
                 <td>:</td>
-                <td>'.form_input('idpeg',$newID,'readonly').'</td>
+                <td> <?php echo form_input('idpeg',$newID,'readonly'); ?></td>
               </tr>
             </div>
           </div>
@@ -130,7 +117,9 @@
                <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td>'.form_input('nama').'</td>
+                <td> 
+                  <input id="nama" type="text" name="nama" value="<?php echo set_value('nama'); ?>"/>
+                </td>
               </tr>
               </tr>
             </div>
@@ -140,7 +129,9 @@
               <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td>'.form_textarea('alamat').'</td>
+                <td>
+                  <textarea id="alamat" rows="10" name="alamat"><?php echo set_value('alamat'); ?></textarea>
+                </td>
               </tr>
             </div>
           </div>
@@ -150,7 +141,9 @@
               <tr>
                 <td>Tempat Lahir</td>
                 <td>:</td>
-                <td>'.form_input('tmpt_lahir').'</td>
+                <td> 
+                  <input id="tmpt_lahir" type="text" name="tmpt_lahir" value="<?php echo set_value('tmpt_lahir'); ?>"/>
+                </td>
               </tr>
             </div>
           </div>
@@ -159,8 +152,14 @@
               <tr>
                 <td>Tanggal Lahir</td>
                 <td>:</td>
-                <td>'; $tanggal = array('name'=>'tgl_lahir','id'=>'datepicker');
-                      echo form_input($tanggal ) .'</td>
+                <td>
+                  <input id="datepicker" type="text" name="tgl_lahir" value="<?php echo set_value('tgl_lahir'); ?>"/>
+                  <?php 
+                  //  $tanggal = array('name'=>'tgl_lahir','id'=>'datepicker');
+                  //  echo form_input($tanggal);
+                  //  echo set_value('tgl_lahir');
+                  ?>
+                </td>
               </tr>
             </div>
           </div>
@@ -169,21 +168,38 @@
               <tr>
                 <td>No Telepon</td>
                 <td>:</td>
-                <td>'.form_input('no_telp').'</td>
+                <td> 
+                  <input id="no_telp" type="text" name="no_telp" value="<?php echo set_value('no_telp'); ?>"/>
+                </td>
               </tr>
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
-              <td>Status Pegawai<td>
-                '.form_dropdown('status',  $dropdown_status_pegawai, '-').'
+              <tr>
+                <td>Status Pegawai</td>
+                <td>:</td>
+                <select id="status" name="status">
+                  <option value="-" <?php echo set_select('status', '-', TRUE); ?> >- Status Pegawai -</option>
+                  <option value="Admin" <?php echo set_select('status', 'Admin'); ?> >Admin</option>
+                  <option value="Tutor" <?php echo set_select('status', 'Tutor'); ?> >Tutor</option>
+                  <option value="Office" <?php echo set_select('status', 'Office'); ?> >Office</option>
+                </select>
+              </tr>
             </div>
           </div>
           <br>
           <div class="row">
             <div class="large-12 columns">
-              <td>Status<td>
-                '.form_dropdown('stat_peg',  $dropdown_status, '-').'
+              <tr>
+                <td>Status</td>
+                <td>:</td>
+                <select id="stat_peg" name="stat_peg">
+                  <option value="-" <?php echo set_select('stat_peg', '-', TRUE); ?> >- Status Kepegawaian -</option>
+                  <option value="Aktif" <?php echo set_select('stat_peg', 'Aktif'); ?> >Aktif</option>
+                  <option value="Nonaktif" <?php echo set_select('stat_peg', 'Nonaktif'); ?> >Nonaktif</option>
+                </select>
+              </tr>
             </div>
           </div>
           <br>
@@ -192,7 +208,9 @@
               <tr>
                 <td>Username</td>
                 <td>:</td>
-                <td>'.form_input('username').'</td>
+                <td> 
+                  <input id="username" type="text" name="username" value="<?php echo set_value('username'); ?>"/>
+                </td>
               </tr>
             </div>
           </div>
@@ -201,7 +219,9 @@
               <tr>
                 <td>Password</td>
                 <td>:</td>
-                <td>'.form_password('password').'</td>
+                <td> 
+                  <input id="password" type="password" name="password" value="<?php echo set_value('password'); ?>"/>
+                </td>
               </tr>
             </div>
           </div>
@@ -210,11 +230,10 @@
           <input type="submit" value="Save" class="button radius expand">
         </label>
         <label>
-          <a href='. base_url() .'c_dtpegawai/page class="button radius expand">Back</a>
-        </label>';
-        echo form_close();
-      ?>
-      <?php if (isset($validation_errors)) echo $validation_errors;?>
+          <a href="<?php echo base_url(); ?>c_dtpegawai/page" class="button radius expand">Back</a>
+        </label>
+        <?php echo form_close(); ?>
+      <?php if (isset($error)) echo $error;?>
     </div>
   </div>
 </div>

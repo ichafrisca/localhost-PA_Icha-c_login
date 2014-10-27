@@ -21,7 +21,7 @@
 		public function tambah(){
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('idpeg','ID Pegawai','required');
-			$this->form_validation->set_rules('nama','Nama','required|regex_match[/^[A-Z][-a-zA-Z]+$/]');
+			$this->form_validation->set_rules('nama','Nama','required|regex_match[/^[A-Z][-a-zA-Z\s]+$/]');
 			$this->form_validation->set_rules('alamat','Alamat','required');
 			$this->form_validation->set_rules('tmpt_lahir','Tempat Lahir','required');
 			$this->form_validation->set_rules('tgl_lahir','Tanggal Lahir','required');
@@ -33,7 +33,23 @@
 
 			if ($this -> form_validation -> run() == FALSE){
 				$this -> session -> set_flashdata('errors', validation_errors(''));
-				redirect('c_dtpegawai/form_tambah');
+
+				$data = array(
+							'error'			=> validation_errors(),
+							'newID' 		=> $this -> next_pegawai(),
+							'nama'			=> $this -> input -> post('nama'), 
+							'alamat' 		=> $this -> input -> post('alamat'), 
+							'tmpt_lahir' 	=> $this -> input -> post('tmpt_lahir'), 
+							'tgl_lahir' 	=> $this -> input -> post('tgl_lahir'), 
+							'no_telp' 		=> $this -> input -> post('no_telp'), 
+							'status' 		=> $this -> input -> post('status'), 
+							'stat_peg' 		=> $this -> input -> post('stat_peg'),
+							'username' 		=> $this -> input -> post('username'), 
+							'password' 		=> $this -> input -> post('password')
+						);
+				
+				$this->load->view('tambah_pegawai', $data);
+				//redirect('c_dtpegawai/form_tambah');
 			}else {
 				$data = array('idpeg' 		=> $this -> input -> post('idpeg'), 
 							'nama'			=> $this -> input -> post('nama'), 

@@ -115,7 +115,7 @@
             <tbody>
               <?php echo '<tr>';
                 $i=1;
-                  foreach($querynominal as $rows) {
+                  foreach($querynominal->result_array() as $rows) {
                     echo "<td>".$i."</td>";
                     echo "<td>".$rows['idlistnominal']."</td>";
                     echo "<td>".$rows['lisnominal']."</td>";
@@ -128,6 +128,7 @@
               ?>
             </tbody>
           </table>
+          <?php echo $pagination; ?>
           <h1><a href="<?php echo base_url()?>c_gaji/disp" id="kembali">Back</a></h1>
         </center>
     </div>
