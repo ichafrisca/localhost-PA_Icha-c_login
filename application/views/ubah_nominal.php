@@ -1,11 +1,11 @@
 <html>
-	<head>
-		<title>Gaji Pegawai</title>
-		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
-		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
-	</head>
+  <head>
+    <title>Kepegawaian ELFAST</title>
+    <link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
+  </head>
 
-<body>		   
+<body>       
  <!-- Header and Nav -->
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
@@ -96,50 +96,67 @@
 </nav>
 <br><br><br>
 
-  <!-- Nominal -->
-    <div class="row">
-    <div class="large-12 medium-9 columns panel">
-      <h2 id="tables" style="text-align:center;">Nominal Subprogram</h2><br><br>
-        <center>
-          <table style="width:100%;">
-            <thead>
+  <!-- PEGAWAI -->
+  <div class="row">
+  <div class="large-12 panel">
+  <center><h2>Form Tambah Nominal Gaji</h2></center>
+  <?php
+    foreach ($queryeditnominal->result_array() as $row) {
+      echo form_open('c_gaji/edit_nominal');
+        echo '
+        <br>
+          <div class="row">
+            <div class="large-12 columns">
               <tr>
-                <th>No</th>
-                <th>ID List Nominal</th>
-                <th>Nominal</th>
-                <th>Nama Subprogram</th>
-                <th>Aksi</th>
+                <td>'.form_hidden('idlistnominal',$row['idlistnominal']).'</td>
               </tr>
-            </thead>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Nominal</td>
+                <td>:</td>
+                <td>'.form_input('lisnominal', $row['lisnominal']).'</td>
+              </tr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <tr>
+                <td>Nama Subprogram</td>
+                <td>:</td>
+                <td>'.form_input('nmsubprog', $row['idsubprog'], 'readonly').'</td>'.'
+              </tr>
+            </div>
+          </div>
+          <br>
 
-            <tbody>
-              <?php echo '<tr>';
-                $i=1;
-                  foreach($querynominal as $rows) {
-                    echo "<td>".$i."</td>";
-                    echo "<td>".$rows['idlistnominal']."</td>";
-                    echo "<td>".$rows['lisnominal']."</td>";
-                    echo "<td>".$rows['nmsubprog']."</td>";
-                    echo "<td>".anchor('c_gaji/form_update_nominal/'.$rows['idlistnominal'],'Ubah Nominal')." |
-                                      ".anchor('c_gaji/hapus/'.$rows['idlistnominal'],'Hapus')."</td>";
-                    $i++;
-                  echo '</tr>';
-                  }
-              ?>
-            </tbody>
-          </table>
-          <h1><a href="<?php echo base_url()?>c_gaji/disp" id="kembali">Back</a></h1>
-        </center>
+          
+        <label>
+          <input type="submit" value="Save" class="button radius expand">
+        </label>
+        <label>
+          <a href='. base_url() .'c_gaji/memiliki1 class="button radius expand">Back</a>
+        </label>';
+      
+        echo form_close();
+      }
+      ?>
+      <?php if (isset($validation_errors)) echo $validation_errors;?>
     </div>
   </div>
+</div>
 
-		<!-- javascript foundation -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>    
-  	
-    <script type="text/javascript">
-  		$(document).foundation();
-  	</script>
-	</body>
+    <!-- javascript foundation -->
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>  
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation/foundation.abide.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+  <script src="<?php echo base_url(); ?>assets/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  </body>
 </html>

@@ -14,6 +14,27 @@
 			return $querygaji;
 		}
 
+		public function hapus($idnominal){
+			$this->db->where('idlistnominal',$idnominal);
+			$this->db->delete('list_nominal');
+		}
+
+		public function hapusgaji($idgaji){
+			$this->db->where('idgaji',$idgaji);
+			$this->db->delete('gaji');
+		}
+
+		public function edit_nominal($nominal){
+            $this->db->where('idlistnominal',$nominal);
+            $queryeditnominal=$this->db->get('list_nominal');
+            return $queryeditnominal;
+        }
+
+        public function edit($data, $nominal){
+            $this->db->where('idlistnominal',$nominal);
+            $this->db->update('list_nominal',$data);
+        }
+
 		public function tampil_id() {
 			$maxGJ = $this->db->query('SELECT MAX( SUBSTR( idgaji, 4, 4 ) ) AS MAXID FROM gaji');
 			return $maxGJ;

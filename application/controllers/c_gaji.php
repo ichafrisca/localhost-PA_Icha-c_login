@@ -154,6 +154,38 @@
 			return $newID;
 		}
 
+	// EDIT NOMINAL
+
+		public function form_update_nominal($nominal){
+			$this->load->model('m_gaji');
+			$data['queryeditnominal']=$this->m_gaji->edit_nominal($nominal);
+			$data['dropdown_subprog'] = $this->m_gaji->tampil_nominal()->result_array();
+			$data['validation_errors'] = $this -> session -> flashdata('errors');
+			$this->load->view('ubah_nominal',$data);
+		}
+
+		public function edit_nominal(){
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('idlistnominal','idlistnominal','required');
+			$this->form_validation->set_rules('lisnominal','list nominal','required|regex_match[/^[0-9]+$/]');
+			// $this->form_validation->set_rules('idsubprog','nama subprogram','required|callback_namasubprog_check');
+
+			if ($this->form_validation->run() == FALSE){
+				$this->session->set_flashdata('errors', validation_errors(''));
+				redirect('c_gaji/form_update_nominal/'.$this->input->post('idlistnominal'));
+			}else {
+
+				$gaji = array(
+						'idlistnominal'   => $this->input->post('idlistnominal'),
+						'lisnominal'	  => $this->input->post('lisnominal'),
+						// 'idsubprog'		  => $this->input->post('idsubprog')
+						);
+				$this->load->model('m_gaji');
+				$this->m_gaji->edit($gaji,$this->input->post('idlistnominal'));
+				redirect('C_gaji/memiliki1');
+			}
+		}
+
 	// DETAIL GAJI
 		public function detail_gaji($idpegawai, $tgl_Awal, $tgl_Akhir){
 			$this->load->model('m_gaji');

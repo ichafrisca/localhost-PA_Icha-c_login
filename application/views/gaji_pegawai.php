@@ -101,14 +101,19 @@
     <div class="large-12 medium-9 columns panel">
       <h2 id="tables" style="text-align:center;">Gaji Pegawai</h2><br><br>
       <div class="row">
-        <div class="large-5 columns">
-            <a href="<?php echo base_url();?>c_gaji/memiliki" class="button radius">Masukkan Nominal</a>
-            <a href="<?php echo base_url();?>c_gaji/form_tambah" class="button radius">Tambah Gaji</a>
-        </div>
-        <div class="small-7 columns">
-          <?php echo form_open("c_gaji/sms_gaji"); ?>
-            <input type="submit" class="button radius" value="Kirim Pemberitahuan" />
-          <?php echo form_close(); ?>
+        <div class="small-12 columns">
+          <div class="button-bar">
+            <ul class="button-group">
+              <li><a href="<?php echo base_url();?>c_gaji/memiliki" class="button radius">Tambah Nominal</a></li>
+              <li><a href="<?php echo base_url();?>c_gaji/memiliki1" class="button radius">Lihat Nominal</a></li>
+              <li><a href="<?php echo base_url();?>c_gaji/form_tambah" class="button radius">Tambah Gaji</a></li>
+            </ul>
+            <div class="small-5 columns">
+              <?php echo form_open("c_gaji/sms_gaji"); ?>
+                <input type="submit" class="button radius" value="Kirim Pemberitahuan" />
+              <?php echo form_close(); ?>
+            </div>
+          </div>
         </div>
       </div>
         <center>
@@ -116,7 +121,7 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>idpeg</th>
+                <th>Id Pegawai</th>
                 <th>Nama Pegawai</th>
                 <th>Dari Tanggal</th>
                 <th>Ke Tanggal</th>
@@ -139,8 +144,8 @@
                     echo "<td>".$rows['jml_pertemuan']."</td>";
                     echo "<td>".$rows['bonus']."</td>";
                     echo "<td>".$rows['totalgaji']."</td>";
-                    echo "<td>".anchor('c_gaji/detail_gaji/'.$rows['idpeg'].'/'.$rows['dr_tgl'].'/'.$rows['ke_tgl'],'Detail')."</td>";
-
+                    echo "<td>".anchor('c_gaji/detail_gaji/'.$rows['idpeg'].'/'.$rows['dr_tgl'].'/'.$rows['ke_tgl'],'Detail')." |
+                                      ".anchor('c_gaji/hapusgaji/'.$rows['idgaji'],'Hapus')."</td>";
                     $i++;
                   echo '</tr>';
                   }

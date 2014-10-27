@@ -113,6 +113,7 @@
 										            <div class="large-12 columns">
 										              <tr>
 										                <td>Status</td>
+										                <td>:</td>
 										                  '.form_input('STATUS', $row['status'], 'readonly').'</td>'.'
 										              </tr>
 										            </div>
@@ -121,6 +122,7 @@
 										            <div class="large-12 columns">
 										              <tr>
 										                <td>Status Kepegawaian</td>
+										                <td>:</td>
 										                  '.form_input('STAT_PEG', $row['stat_peg'], 'readonly').'</td>'.'
 										              </tr>
 										            </div>
