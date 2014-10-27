@@ -121,7 +121,7 @@
                     echo "<td>".$rows['lisnominal']."</td>";
                     echo "<td>".$rows['nmsubprog']."</td>";
                     echo "<td>".anchor('c_gaji/form_update_nominal/'.$rows['idlistnominal'],'Ubah Nominal')." |
-                                      ".anchor('c_gaji/hapus/'.$rows['idlistnominal'],'Hapus')."</td>";
+                                      ".anchor('c_gaji/hapus/'.$rows['idlistnominal'],'Hapus', array('class'=>'delete'))."</td>";
                     $i++;
                   echo '</tr>';
                   }
@@ -141,5 +141,15 @@
     <script type="text/javascript">
   		$(document).foundation();
   	</script>
+
+    <script>
+      $(document).ready(function(){
+        $('.delete').click(function(){
+            var answer = confirm('Hapus data nominal?');
+                        // jQuery(this).attr('title') gets anchor title attribute
+            return answer; // answer is a boolean
+            }); 
+    }); 
+    </script>
 	</body>
 </html>

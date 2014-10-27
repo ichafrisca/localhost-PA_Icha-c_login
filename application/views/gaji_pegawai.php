@@ -145,7 +145,7 @@
                     echo "<td>".$rows['bonus']."</td>";
                     echo "<td>".$rows['totalgaji']."</td>";
                     echo "<td>".anchor('c_gaji/detail_gaji/'.$rows['idpeg'].'/'.$rows['dr_tgl'].'/'.$rows['ke_tgl'],'Detail')." |
-                                      ".anchor('c_gaji/hapusgaji/'.$rows['idgaji'],'Hapus')."</td>";
+                                      ".anchor('c_gaji/hapusgaji/'.$rows['idgaji'],'Hapus', array('class'=>'delete'))."</td>";
                     $i++;
                   echo '</tr>';
                   }
@@ -169,6 +169,16 @@
       <?php if ($notif != null){
         echo $notif;
       } ?>
+    </script>
+
+    <script>
+      $(document).ready(function(){
+        $('.delete').click(function(){
+            var answer = confirm('Hapus data gaji?');
+                        // jQuery(this).attr('title') gets anchor title attribute
+            return answer; // answer is a boolean
+            }); 
+    }); 
     </script>
 	</body>
 </html>

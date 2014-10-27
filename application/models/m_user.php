@@ -39,7 +39,7 @@
 					where k.nmsubprog = s.nmsubprog) as honor, a.tgl_absen as tanggal, a.idpeg_pengganti as pengganti
         			from absensi a join pegawai p on (a.idpeg=p.idpeg) join jadwal j on(a.idjadwal=j.idjadwal) 
 					join subprogram s on (j.idsubprog=s.idsubprog)
-					where a.idpeg='$idpegawai' and a.idpeg_pengganti='0' and a.tgl_absen between '$tgl_Awal' 
+					where a.idpeg='$idpegawai' and a.idpeg_pengganti='Tidak Ada' and a.tgl_absen between '$tgl_Awal' 
 					and '$tgl_Akhir'
 					union
 					select p.nama as nama, s.nmsubprog as kelas, 

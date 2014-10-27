@@ -27,9 +27,6 @@
 			$this->load->model('m_gaji');
 			$this->m_gaji->hapus($idnominal);
 			$this->memiliki1();
-			echo "<script>";
-			echo "alert('Anda yakin akan menghapus nominal?')";
-			echo "</script>";
 		}
 
 	// HAPUS GAJI
@@ -38,9 +35,6 @@
 			$this->load->model('m_gaji');
 			$this->m_gaji->hapusgaji($idgaji);
 			$this->disp();
-			echo "<script>";
-			echo "alert('Anda yakin akan menghapus gaji?')";
-			echo "</script>";
 		}
 
 	// TAMBAH GAJI
