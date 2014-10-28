@@ -135,7 +135,6 @@
 				$this->session->set_flashdata('errors', validation_errors(''));
 				redirect('c_gaji/memiliki');
 			}else {
-
 				$gaji = array(
 						'idlistnominal'   => $this->input->post('idlistnominal'),
 						'lisnominal'	  => $this->input->post('lisnominal'),

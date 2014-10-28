@@ -255,7 +255,7 @@
 
             // format sms ganti yang benar
             var SMS_GANTI_PATTERN = /^GANTI#YA#PEG+(\d{4})+#JAD+(\d{2})$/;
-            // var SMS_IZIN_PATTERN = /^IZIN#PEG+(\d{4})+#+([a-zA-Z0-9 ])+#/;
+            // var IZIN = /^IZIN\#PEG[\d]{0,4}\#([a-zA-Z0-9\s]{0,})\#([0-9\.]{5})$/
 
             //jika ada sms yang belum di proses
             $.each(data, function(index, element) {
