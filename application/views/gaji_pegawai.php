@@ -1,11 +1,11 @@
 <html>
-	<head>
-		<title>Gaji Pegawai</title>
-		<link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
-		<link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
-	</head>
+  <head>
+    <title>Gaji Pegawai</title>
+    <link href="<?php echo base_url(); ?>assets/foundation/css/foundation.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/foundation/css/normalize.css" rel="stylesheet" type="text/css">
+  </head>
 
-<body>		   
+<body>       
  <!-- Header and Nav -->
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
@@ -157,29 +157,23 @@
     </div>
   </div>
 
-		<!-- javascript foundation -->
+    <!-- javascript foundation -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/foundation/js/foundation.min.js"></script>    
-  	
+    
     <script type="text/javascript">
-  		$(document).foundation();
-  	</script>
-
-    <script>
-      <?php if ($notif != null){
-        echo $notif;
-      } ?>
+      $(document).foundation();
     </script>
 
     <script>
       $(document).ready(function(){
         $('.delete').click(function(){
-            var answer = confirm('Hapus data gaji?');
+            var answer = confirm('Hapus data nominal?');
                         // jQuery(this).attr('title') gets anchor title attribute
             return answer; // answer is a boolean
             }); 
     }); 
     </script>
-	</body>
+  </body>
 </html>

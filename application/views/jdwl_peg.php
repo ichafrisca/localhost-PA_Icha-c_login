@@ -129,7 +129,7 @@
 
             <tbody>
               <?php echo '<tr>';
-                $i=1;
+                $i=$nomor+1;
                   foreach($queryjadwal->result_array() as $rows) {
                     echo "<td>".$i."</td>";
                     echo "<td>".$rows['idjadwal']."</td>";

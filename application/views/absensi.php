@@ -142,7 +142,7 @@
                     
                     <tbody>
                       <?php echo '<tr>';
-                        $i=1;
+                        $i=$nomor+1;
                           foreach($queryabsen->result_array() as $rows) {
                             echo "<td>".$i."</td>";
                             echo "<td>".$rows['idabsen']."</td>";

@@ -80,6 +80,7 @@ class C_login extends CI_Controller {
 
 					// masang pengaturan ke pagination
 					$this->pagination->initialize($config);
+					$data['nomor']=$p;
 
 					$data["pagination"] = $this->pagination->create_links(); // buat link pagination di view
 					$data["query"] = $this->m_dtpegawai->get_pegawai_page($p, $jumlah_per_page);

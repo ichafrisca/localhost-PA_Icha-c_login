@@ -114,7 +114,7 @@
 
             <tbody>
               <?php echo '<tr>';
-                $i=1;
+                $i=$nomor+1;
                   foreach($querynominal->result_array() as $rows) {
                     echo "<td>".$i."</td>";
                     echo "<td>".$rows['idlistnominal']."</td>";

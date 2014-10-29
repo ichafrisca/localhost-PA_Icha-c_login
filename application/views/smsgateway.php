@@ -116,7 +116,7 @@
               <tbody>
                 <?php
                   $i=1;
-                  foreach ($inbox->result_array() as $rows) {
+                  foreach ($inbox as $rows) {
                     $keterangan = $rows['Processed'] == "true" ? "Sudah di proses" : "Belum di proses";
                     echo '<tr>';
                     echo "<td>".$i."</td>";
@@ -132,7 +132,6 @@
             </table>
             </div>
             </div>
-            <?php echo $pagination; ?>
           </div>
         </div>
       </div>
@@ -255,7 +254,7 @@
 
             // format sms ganti yang benar
             var SMS_GANTI_PATTERN = /^GANTI#YA#PEG+(\d{4})+#JAD+(\d{2})$/;
-            // var IZIN = /^IZIN\#PEG[\d]{0,4}\#([a-zA-Z0-9\s]{0,})\#([0-9\.]{5})$/
+            // var izin = /^IZIN\#PEG[\d]{0,4}\#([a-zA-Z0-9\s]{0,})\#([0-9\.]{5})$/;
 
             //jika ada sms yang belum di proses
             $.each(data, function(index, element) {

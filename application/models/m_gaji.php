@@ -9,18 +9,18 @@
 		}
 
 		public function total_gaji() {
-			return $this->db->count_all('gaji');
-		}
+            return $this->db->count_all('gaji');
+        }
 
-		public function total_nominal() {
-			return $this->db->count_all('list_nominal');
-		}
+        public function total_nominal() {
+            return $this->db->count_all('list_nominal');
+        }
 
-		public function ambil_gaji_display($p = 0, $jumlah = 10) {
-			$sql = "SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.bonus, 
+		public function ambil_gaji_display($p=0, $jumlah=5) {
+			$sql="SELECT g.idgaji, g.dr_tgl, g.ke_tgl, g.jml_pertemuan, g.bonus, 
 						g.totalgaji, p.nama, p.no_telp, p.idpeg from gaji g join pegawai p on (g.idpeg=p.idpeg)";
 			$sql.=" limit $p, $jumlah";
-			$querygaji=$this->db->query($sql);
+            $querygaji=$this->db->query($sql);
 			return $querygaji;
 		}
 
@@ -59,10 +59,10 @@
 			$this->db->insert('GAJI', $gaji);
 		}
 
-		public function ambil_nominal($p = 0, $jumlah = 5){
+		public function ambil_nominal($p=0, $jumlah=5){
 			$sql = "SELECT l.idlistnominal, l.lisnominal, s.nmsubprog from list_nominal l join subprogram s on(l.idsubprog=s.idsubprog)";
 			$sql.=" limit $p, $jumlah";
-			$querynominal=$this->db->query($sql);
+            $querynominal=$this->db->query($sql);
 			return $querynominal;
 		}
 
@@ -137,4 +137,3 @@
             return $this->db->query("SELECT no_telp from pegawai where stat_peg='Aktif'")->result_array();
         }
 	}
-?>

@@ -1,23 +1,17 @@
 <?php
     class M_sms extends CI_Model{
 
-    	public function total_gaji() {
-			return $this->db->count_all('inbox');
-		}
-
-		public function dispinbox($p = 0, $jumlah = 10){
-			$sql = "SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime 
-										FROM inbox WHERE (
+		public function dispinbox(){
+			return $this->db->query("SELECT SenderNumber, TextDecoded, ID, Processed, ReceivingDateTime 
+										FROM inbox WHERE(
 											TextDecoded REGEXP '^IZIN#PEG+([0-9]{4})+#+[a-zA-Z0-9 ]+#+([0-9]{2})+[.]+([0-9]{2})$'
 												or
 											TextDecoded REGEXP '^GANTI#YA#PEG+([0-9]{4})+#JAD+([0-9]{2})$'
 												or
 											TextDecoded REGEXP '^UBAH_JADWAL#+([0-9]{4})+-+([0-9]{2})+-+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})$'
-										)
-									order by ReceivingDateTime desc";
-			$sql.=" limit $p, $jumlah";
-			$inbox=$this->db->query($sql);
-			return $inbox;
+												and 
+											Processed='false')
+									order by ReceivingDateTime asc")->result_array();
 		}
 
 		public function jika_sms_salah(){
@@ -29,8 +23,7 @@
 													and
 												TextDecoded NOT REGEXP '^UBAH_JADWAL#+([0-9]{4})+-+([0-9]{2})+-+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})+#+([0-9]{2})+[.]+([0-9]{2})$'
 													and
-												Processed='false'
-											)
+												Processed='false')
 											order by ReceivingDateTime asc")->result_array();
 			return $smssalah;
 		}

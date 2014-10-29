@@ -20,9 +20,9 @@
 
 		public function tambah(){
 			$this->load->library('form_validation');
-			$this->form_validation->set_rules('idpeg','ID Pegawai','required');
-			$this->form_validation->set_rules('nama','Nama','required|regex_match[/^[A-Z][-a-zA-Z\s]+$/]');
-			$this->form_validation->set_rules('alamat','Alamat','required');
+			$this->form_validation->set_rules('idpeg','ID','required');
+			$this->form_validation->set_rules('nama','Name','required|regex_match[/^[A-Z][-a-zA-Z\s]+$/]');
+			$this->form_validation->set_rules('alamat','Address','required');
 			$this->form_validation->set_rules('tmpt_lahir','Tempat Lahir','required');
 			$this->form_validation->set_rules('tgl_lahir','Tanggal Lahir','required');
 			$this->form_validation->set_rules('no_telp','No Telepon','required|regex_match[/^[0-9]+$/]');
@@ -147,6 +147,7 @@
 			$config['total_rows'] = $this->m_dtpegawai->total_pegawai();
 			$config['per_page'] = $jumlah_per_page;
 			$this->pagination->initialize($config);
+			$data['nomor']=$p;
 
 			$data["pagination"] = $this->pagination->create_links();
 			$data["query"] = $this->m_dtpegawai->get_pegawai_page($p, $jumlah_per_page);

@@ -5,7 +5,7 @@
 			return $this->db->count_all('jadwal');
 		}
 
-		public function ambil_jadwal($p = 0, $jumlah = 10) {
+		public function ambil_jadwal($p = 0, $jumlah = 5) {
 			$sql = "SELECT j.idjadwal, j.tanggal, j.jam, j.periode_tgl,r.namaruang, sp.nmsubprog 
 				from jadwal j join ruang r on (j.idruang=r.idruang) join subprogram sp 
 				on (j.idsubprog=sp.idsubprog) order by idjadwal asc";

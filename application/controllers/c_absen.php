@@ -15,10 +15,9 @@
 
 			$data["pagination"] = $this->pagination->create_links();
 			$data["queryabsen"] = $this->m_absen->ambil_data_absen($p, $jumlah_per_page);
+			$data['nomor']=$p;
 
-			// $this->load->model('m_absen');
 			$data['kesediaan']=$this->m_absen->kesediaan();
-			// $data['queryabsen']=$this->m_absen->ambil_data_absen();
 			$data['inbox']=$this->m_absen->sms();
 			$this->load->view('absensi', $data);	
 		}
@@ -258,14 +257,30 @@
 	    	}
 	    }
 
-	    public function sms_pemberitahuan_jadwal(){
+	    public function sms_pemberitahuan_jadwal($p=0){
+	    	$jumlah_per_page = 5;
+
+			$this->load->library('pagination');
+			$this->load->model('m_absen');
+			$config['base_url'] = site_url().'/c_absen/disp/';
+			$config['total_rows'] = $this->m_absen->total_absen();
+			$config['per_page'] = $jumlah_per_page;
+			$this->pagination->initialize($config);
+
+			$data["pagination"] = $this->pagination->create_links();
+			$data["queryabsen"] = $this->m_absen->ambil_data_absen($p, $jumlah_per_page);
+			$data['nomor']=$p;
+
 	    	$this->load->model("m_absen");
 	    	$sms = $this->m_absen->nomor_pegawai();
 	    	foreach ($sms as $data) {
 	    		$this->m_absen->sms_pemberitahuan_jadwal($data['no_telp']);
 	    	}
 	    	$data['notif'] = "alert('Sms pemberitahuan jadwal telah terkirim.');";
-	    	$data['queryabsen'] = $this->m_absen->ambil_data_absen();
+	    	$data['queryabsen'] = $this->m_absen->ambil_data_absen($p, $jumlah_per_page);
+	    	$data["pagination"] = $this->pagination->create_links();
+	    	$data['nomor']=$p;
+	    	$data['kesediaan']=$this->m_absen->kesediaan();
 	    	$this->load->view("absensi", $data);
 	    }
 
